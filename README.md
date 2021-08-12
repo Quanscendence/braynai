@@ -7,19 +7,20 @@ This is the  downloadable community version. We are open for contributions, feel
 
 
 #Main Contribution Credits
-1.Vatsa Prahallada (https://www.linkedin.com/in/shrivatsaprahallada/)
 
-2.Shrikar Nag (https://www.linkedin.com/in/shrikarnag/)
+Vatsa Prahallada (https://www.linkedin.com/in/shrivatsaprahallada/)
 
-3.Lohith Dayananda Ram (https://www.linkedin.com/in/lohith-d-ram-aba55b17/)
+Shrikar Nag (https://www.linkedin.com/in/shrikarnag/)
 
-4.Ranjitha Rao (https://www.linkedin.com/in/ranjitha-rao-72927429/)
+Lohith Dayananda Ram (https://www.linkedin.com/in/lohith-d-ram-aba55b17/)
 
-5.Vishwanath C (https://www.linkedin.com/in/vishwanath-chennakrishnappa-706063140/)
+Ranjitha Rao (https://www.linkedin.com/in/ranjitha-rao-72927429/)
 
-6.Vijeth Simha (https://www.linkedin.com/in/vijeth-simha-0aa0a5146/)
+Vishwanath C (https://www.linkedin.com/in/vishwanath-chennakrishnappa-706063140/)
 
-7.Deepashree Abhaya
+Vijeth Simha (https://www.linkedin.com/in/vijeth-simha-0aa0a5146/)
+
+Deepashree Abhaya
 
 
 
