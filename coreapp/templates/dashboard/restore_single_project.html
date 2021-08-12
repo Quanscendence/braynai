@@ -1,0 +1,15 @@
+{% extends 'dashboard/index.html' %}
+{% load staticfiles %}
+{% block body %}
+<div class="">
+  <form class="" method="post">
+  	    {%block project%}
+{%endblock project%}
+    {% csrf_token %}
+      <p id="hide" style = "margin-top:8%; margin-left:25%; "> Are you Sure? You want to restore the project?</p>
+      <button style = " margin-left:25%;  id ="submit" type="submit" name="yes" class="btn btn-primary"">Restore </button>
+  </form>
+</div>
+
+
+{% endblock body %}

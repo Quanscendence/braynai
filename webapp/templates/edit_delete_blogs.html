@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {%for b in blogs%}
+    <div>
+      <h3>{{b.main_title}}</h3>
+      <a href="{% url 'single_blog' pk=b.pk %}">
+      <img src="{{b.image.url}}" alt="Blog image"></a>
+      <div>
+        <a href="{% url 'updates' pk=b.pk %}"><button type="submit">Update</button></a>
+        <a href="{% url 'delete' pk=b.pk %}"><button type="submit">Delete</button></a>
+        </div>
+      </div>
+      {%endfor%}
+  </body>
+</html>

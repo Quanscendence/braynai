@@ -1,0 +1,582 @@
+
+{% extends 'login/subpages_base.html' %}
+{% load staticfiles %}
+{% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href="{% static 'dot/75efae7724dbc3c055e918057.css' %}">
+<link rel="stylesheet" href="{% static 'dot/style.css' %}">
+
+<style >
+  #copy_div{
+      padding-top: 2em;
+      padding-bottom: 2em;
+      background: #262626;
+  }
+
+     #footer_info{
+margin-left: -15%;
+       margin-top: 1.4%;
+}
+#footer_details{
+padding-bottom: 0em !important;
+}
+  #dsass_header{
+position: fixed;
+background-color: white;
+-webkit-transition: all ease-out .5s;
+-moz-transition: all ease-out .5s;
+-o-transition: all ease-out .5s;
+transition: all ease-out .5s;
+  }
+  .header_active
+  {
+      background-color: #4a90e2 !important;
+      height: 85px;
+  }
+  .header_act{
+    /* position: relative;
+    top: 7px; */
+    color:white !important;
+
+  }
+#header_img{
+width: 110px;
+margin-top: -4px;
+display: none;
+}
+.loged{
+ /* position: relative;
+ top: 7px; */
+ color:white !important;
+
+}
+
+  #send_msg{
+    display: none;
+  }
+
+  #enterotp{
+      display : none;
+  }
+  #gen_otp{
+      display : none;
+  }
+  #btn_otp{
+    display : none;
+  }
+  #show{
+      display : none;
+}
+#hide{
+    display : none;
+}
+#map {
+  width: 100% !important;
+  height: 0px !important;
+  position: relative !important;
+}
+</style>
+<nav class="colorlib-nav" role="navigation" id="dsass_header">
+<div class="top-menu" style="height: 85px;">
+<div class="container">
+                   <div class="row">
+                       <div class="col-md-2" >
+                         <!-- width: 122px;margin-top: -4px;margin-left: -34%; -->
+                           <a href="{% url 'coreapp:home' %}" >
+                           <img src="{% static 'images/logo.png' %}" style="width: 110px;margin-top: -4px;margin-left: -32%;" id="header_img">
+                           <img src="{% static 'images/header_change.png' %}"  style="width: 110px;margin-top: -4px;margin-left: -32%;" id="logo_img">
+                       </a>
+                       </div>
+                       <div class="col-md-10 text-right menu-1">
+                           <ul>
+                               <li><a href="{% url 'coreapp:home' %}" ><span id="header_id" style="color:#4a90e2;">Home</span></a></li>
+                               <li ><a href="{% url 'login:login' %}"   ><span id="header_log" style="color:#4a90e2;">Login</span></a></li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+</div>
+
+
+</nav>
+
+<div id="colorlib-contact" >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 " >
+        <div class="row">
+          <div class="col-md-12">
+            <div class="contact-info-wrap-flex">
+              <div class="animation-wrapper" >
+                <div class="stagger-visualizer">
+                  <div class="cursor color-red" style="colo"></div>
+                    <div class="dots-wrapper"></div>
+                      </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 " >
+        <!-- <h2 style="position: absolute;top: -20px;">Register</h2> -->
+        <form method='post' enctype="multipart/form-data" style="margin-top: 5%;">
+          {% csrf_token %}
+          <div class="row form-group">
+            <div class="col-md-12" >
+
+            {{signup_link_form.type}}
+
+            </div>
+
+          </div>
+
+          <div class="row form-group">
+
+            <div class="col-md-6">
+              <!-- <label for="lname">Last Name</label> -->
+            {{signup_link_form.first_name}}
+            </div>
+            <div class="col-md-6">
+
+              {{signup_link_form.last_name}}
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <!-- <div class="col-md-6">
+
+              <p id="email_msg" style="color:red;"></p>
+              {{signup_link_form.email}}
+            </div> -->
+            <div class="col-md-6">
+              <!-- <label for="message">Message</label> -->
+              {{signup_link_form.password}}
+            </div>
+          </div>
+
+          <!-- <div class="row form-group">
+
+          </div> -->
+          <div class="row form-group">
+            <div class="col-md-6">
+              <!-- <label for="message">Message</label> -->
+              <p id="gender_msg" style="color:red;"></p>
+              {{signup_link_form.gender}}
+
+            </div>
+            <div class="col-md-6" >
+
+              {{signup_link_form.dob}}
+
+            </div>
+          </div>
+          <!-- <div class="row form-group">
+
+          </div> -->
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              {{signup_link_form.contact_no}}
+              <input type="button" value="VERIFY" class="btn btn-primary" id="Verify_btn" style="margin-top: -57px;margin-left: 60%;">
+              <!-- <button type="button" name="button" class="btn btn-primary" id="Verify_btn">Verify</button> -->
+            </div>
+          </div>
+          <label id="enterotp" >Enter OTP </label>
+          <input type="text" id="gen_otp" name="" value="">
+                  <input type="button" id="btn_otp" name="" class="btn btn-primary" value="VERIFY OTP" style="margin-top: 1%;">
+                  <p id="error_msg" style="color:red;"></p>
+
+
+  <div class="" id="show">
+    <div class="row form-group">
+      <div class="col-md-12" id="locationField" onFocus="geolocate()">
+  {{signup_link_form.address_1}}
+  </div>
+
+
+  </div>
+
+  <div class="row form-group">
+    <div class="col-md-12">
+  {{signup_link_form.zipcode}}
+  </div>
+  </div>
+
+  <div class="row form-group">
+      <div class="col-md-12">
+      <label for="">Upload Image</label>
+    {{signup_link_form.image}}
+    </div>
+    </div>
+</div>
+
+
+<div class="" id="hide" >
+  <div class="row form-group">
+    <div class="col-md-12">
+    {{signup_link_form.company_name}}
+      </div>
+  </div>
+    <div class="row form-group">
+      <div class="col-md-12" id="locationField" onFocus="geolocate()">
+    {{signup_link_form.company_address_1}}
+      </div>
+      </div>
+    <div class="row form-group">
+      <div class="col-md-12">
+    {{signup_link_form.zipcode}}
+      </div>
+      </div>
+    <div class="row form-group">
+      <div class="col-md-12">
+    {{signup_link_form.employee_strength}}
+      </div>
+      </div>
+    <div class="row form-group">
+      <div class="col-md-12">
+    {{signup_link_form.url}}
+      </div>
+      </div>
+      <div class="row form-group">
+       <div class="col-md-12">
+     <label for="">Upload Company Logo</label>
+     {{signup_link_form.image}}
+       </div>
+       </div>
+    </div>
+<div class="form-group">
+  <input type="submit" value="Submit" class="btn btn-primary" id="send_msg">
+</div>
+
+                                        <div class="container">
+                                          {% if signup_link_form.errors %}
+                                          {% for field in signup_link_form  %}
+
+                                          {% for error in field.errors %}
+                                          <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                          </div>
+                                          {% endfor %}
+                                          {% endfor %}
+                                          {% for error in signup_link_form.non_field_errors  %}
+                                          <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                          </div>
+                                          {% endfor %}
+                                          {% endif %}
+
+
+                                      </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="map" class="colorlib-map" ></div>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  {% block script %}
+  <script
+    src="https://code.jquery.com/jquery-1.12.4.js"
+    integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+    crossorigin="anonymous"></script>
+
+
+
+    <script>
+      $('#btn_otp').click(function () {
+        alert("hi")
+        var test =  document.getElementById("id_type").selectedIndex;
+
+        var message = document.getElementById("gen_otp");
+         var getOtp = sessionStorage.getItem('OTP');
+         var input_otp = message.value;
+          if (getOtp == input_otp){
+
+                      var dropdown1 = document.getElementById('id_type');
+                      var textbox = document.getElementById('textbox');
+                    var a = dropdown1.selectedIndex;
+                      if(a == 0){
+                        document.getElementById('hide').style.display = "none";
+                        document.getElementById('show').style.display = "block";
+                      } else if(a == 1) {
+                    document.getElementById('show').style.display = "none";
+                    document.getElementById('hide').style.display = "block";
+                  }
+
+            document.getElementById('gen_otp').style.display = "none";
+            document.getElementById('enterotp').style.display = "none";
+            document.getElementById('btn_otp').style.display = "none";
+           document.getElementById('send_msg').style.display = "block";
+            }
+            else {
+            $("#error_msg").html("Please Enter Valid OTP")
+            // document.getElementById('show').style.display = "none";
+            }
+
+
+        })
+    </script>
+  <script>
+
+   $("#Verify_btn").unbind("click").click(function(){
+     event.stopImmediatePropagation();
+     var contact_no = $('#id_contact_no').val();
+     var alternate_no = $('#id_alternate_no').val();
+     //alert("hi");
+
+     var random_number = Math.floor(10000 + Math.random() * 9000);
+     var setOtp = sessionStorage.setItem('OTP', random_number);
+   $.ajax({
+    url: "/customer/create_user/",
+    method: "POST",
+    headers: {'X-CSRFToken': '{{ csrf_token }}'},
+    data : {"contact_no":contact_no,'random_number':random_number},
+    crossdomain: true,
+    dataType:"json",
+    success: function (data) {
+      if (data.msg =='Success'){
+        console.log("success");
+        document.getElementById('btn_otp').style.display = "block";
+        document.getElementById('gen_otp').style.display = "block";
+        document.getElementById('Verify_btn').style.display = "None";
+        document.getElementById('enterotp').style.display = "block";
+      }
+      else if (data.msg=='error') {
+          $("#error_msg").html("Contact Number is associated with other account");
+          document.getElementById('btn_otp').style.display = "None";
+          document.getElementById('gen_otp').style.display = "None";
+
+  }
+  }
+  })
+  });
+
+
+  </script>
+  <!-- <script>
+
+    $(document).ready(function() {
+                // messages timeout for 10 sec
+                setTimeout(function() {
+                        $('.gr').fadeOut('slow');
+                }, 500); // <-- time in milliseconds, 1000 =  1 sec
+                // delete message
+                $('#error_msg').live('click',function(){
+                        $('#error_msg').parent().attr('style', 'display:none;');
+
+                });.
+        });
+
+  </script> -->
+  <script>
+  $(document).ready(function(){
+   $("#id_email").change(function(){
+     var email_id = $('#id_email').val();
+     console.log(email_id)
+   $.ajax({
+      url: "/customer/verify_email/",
+      method: "POST",
+      headers: {'X-CSRFToken': '{{ csrf_token }}'},
+      data : {"email_id":email_id},
+      success: function (data) {
+        if (data.msg =='Success'){
+          console.log("success");
+
+        }
+        else if (data.msg=='error') {
+            $("#email_msg").html("Entered Email id is Associated with other Account");
+
+    }
+      }
+      })
+    });
+    });
+  </script>
+
+  <script>
+    $('select').on(
+          { "focus": function() {
+              //console.log('clicked!', this, this.value);
+              this.selectedIndex = -1;
+            }
+          , "change": function() {
+              choice = $(this).val();
+                    if(choice === 'Gender'){
+              //console.log('changed!', this, choice);
+              this.blur();
+              $("#gender_msg").html("Please select a gender.");
+                    }
+            }
+          });
+
+  </script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuGOhhMKvSZWd2VPNI2RMrs5Bu2U0eTuU&libraries=places" async defer></script>
+  <!-- <script src="javascripts/scripts.js"></scripts> -->
+
+  <!-- this script is for autocomplete of address -->
+    <script>
+var autocomplete;
+function initialize() {
+ autocomplete = new google.maps.places.Autocomplete(
+   /** @type {HTMLInputElement} */
+   (document.getElementById('id_address_1')),
+   { types: ['geocode'] }
+ );
+ google.maps.event.addListener(autocomplete, 'place_changed', function() {});
+ autoComplete = new google.maps.places.Autocomplete(
+   /** @type {HTMLInputElement} */
+   (document.getElementById('id_company_address_1')),
+   { types: ['geocode'] }
+ );
+ google.maps.event.addListener(autoComplete, 'place_changed', function() {});
+}
+</script>
+
+
+  <!-- end of script is for autocomplete of company address -->
+  <script>
+    $(document).ready(function() {
+        $('#id_dob').datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1950:2019"
+    });
+    });
+</script>
+<!-- this is script is for animated brain -->
+<script src="{%static 'dot/75efae7724dbc3c055e918057.js' %}"></script>
+<script  src="{%static 'dot/script.js' %}"></script>
+<!-- end is script is for animated brain -->
+<script>
+
+
+var scrollpos = window.scrollY;
+var header = document.getElementById("dsass_header");
+var head = document.getElementById("header_id");
+var logg = document.getElementById("header_log");
+
+function add_class_on_scroll() {
+  header.classList.add("header_active");
+         head.classList.add("header_act");
+           logg.classList.add("loged");
+           document.getElementById("logo_img").style.display = "none";
+           document.getElementById("header_img").style.display = "block";
+
+}
+
+function remove_class_on_scroll() {
+  header.classList.remove("header_active");
+       head.classList.remove("header_act");
+       logg.classList.remove("loged");
+       document.getElementById("logo_img").style.display = "block";
+       document.getElementById("header_img").style.display = "none";
+
+}
+
+window.addEventListener('scroll', function(){
+
+  scrollpos = window.scrollY;
+
+  if(scrollpos > 10){
+      add_class_on_scroll();
+  }
+  else {
+      remove_class_on_scroll();
+  }
+  console.log(scrollpos);
+});
+</script>
+  {% endblock script %}
+
+
+{% endblock body %}
+{% block footer %}
+<footer id="colorlib-footer">
+<div class="container">
+<div class="row row-pb-md" id="footer_details" style="position: relative;bottom: 50px;margin-top: 15px;" >
+<div class="col-md-3 colorlib-widget">
+
+</div>
+<div class="col-md-3 colorlib-widget">
+
+</div>
+<div class="col-md-3 colorlib-widget" id="footer_info">
+
+  <p>
+  <ul class="colorlib-footer-links" style="display:flex;list-style:none">
+  <li style="position: absolute;margin-left: -1%;"><a href="#" style="color:#A9A9A9">Credits</a></li>
+  <li style="position: absolute;left: 49%;"><a href="{% url 'coreapp:home' %}" style="color:#A9A9A9">Home</a></li>
+  <li style="position: absolute;left: 93%;"><a href="{% url 'login:login' %}" style="color:#A9A9A9">Login</a></li>
+
+  </ul>
+  <ul class="colorlib-social-icons social_icons" >
+  <li><a href="https://twitter.com/brayntranscend">  <i class="fab fa-twitter-square" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+  <li><a href="https://www.facebook.com/transcendbrayn/"><i class="fab fa-facebook-square" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+  <li><a href="https://linkedin.com/company/transcendbrayn"><i class="fab fa-linkedin" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+  <!-- <li><a href="#"><i class="icon-dribbble" style="color:#4a90e2"></i></a></li> -->
+  </ul>
+
+</p>
+</div>
+
+<!--<div class="col-md-3 colorlib-widget">-->
+<!--    <h4>Recent Blog</h4>-->
+<!--    <div class="f-blog">-->
+<!--    <a href="{% url 'coreapp:blogs' %}" class="blog-img" style="background-image: url('/static/images/blog-1.jpg');">-->
+<!--    </a>-->
+<!--    <div class="desc">-->
+<!--    <h2><a href="{% url 'coreapp:blogs' %}">Photoshoot Technique</a></h2>-->
+<!--    <p class="admin"><span>30 March 2018</span></p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--    <div class="f-blog">-->
+<!--    <a href="{% url 'coreapp:blogs' %}" class="blog-img" style="background-image: url('/static/images/blog-2.jpg');">-->
+<!--    </a>-->
+<!--    <div class="desc">-->
+<!--    <h2><a href="{% url 'coreapp:blogs' %}">Camera Lens Shoot</a></h2>-->
+<!--    <p class="admin"><span>30 March 2018</span></p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--    <div class="f-blog">-->
+<!--    <a href="{% url 'coreapp:blogs' %}" class="blog-img" style="background-image: url('/static/images/blog-3.jpg');">-->
+<!--    </a>-->
+<!--    <div class="desc">-->
+<!--    <h2><a href="{% url 'coreapp:blogs' %}">Imahe the biggest photography studio</a></h2>-->
+<!--    <p class="admin"><span>30 March 2018</span></p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="col-md-3 colorlib-widget">
+<!-- <h4>Contact Info</h4> -->
+<!--<ul class="colorlib-footer-links">-->
+<!--    <li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>-->
+<!--    <li><a href="tel://1234567920"><i class="icon-phone"></i> + 1235 2355 98</a></li>-->
+<!--    <li><a href="mailto:info@yoursite.com"><i class="icon-envelope"></i> info@yoursite.com</a></li>-->
+<!--    <li><a href="#"><i class="icon-location4"></i> yourwebsite.com</a></li>-->
+<!--</ul>-->
+</div>
+</div>
+</div>
+<div class="copy" id="copy_div">
+<div class="container">
+<div class="row">
+<div class="col-md-12 text-center">
+<p style="color:#A9A9A9">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |  <a href="#" ><span style="color:#A9A9A9">Quanscendence Technologies Pvt Ltd</span></a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+
+<div class="gototop js-top">
+<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+</div>
+{% endblock footer %}

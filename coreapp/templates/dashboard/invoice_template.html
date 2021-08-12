@@ -1,0 +1,568 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <!-- favicon
+  ============================================ -->
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'dashboard/img/Brayn_Favicon_75.png' %}">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+  <style media="screen">
+    body {
+
+      font-family: 'Poppins', sans-serif !important;
+    }
+
+    #invoice {
+      padding: 30px;
+    }
+
+    .pay_now_button {
+      background: #008000cf;
+      display: inline-block;
+      font-weight: 400;
+      color: #ffff;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      border: 1px solid transparent;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: .25rem;
+      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .invoice {
+      position: relative;
+      background-color: #FFF;
+      min-height: 680px;
+      /* padding: 15px */
+    }
+
+    .invoice header {
+      /* padding: 10px 0; */
+      margin-bottom: 9px;
+      border-bottom: 1px solid #3989c6
+    }
+
+    .invoice .company-details {
+      text-align: right
+    }
+
+    .invoice .company-details .name {
+      margin-top: 0;
+      margin-bottom: 0
+    }
+
+    .invoice .contacts {
+      margin-bottom: 20px
+    }
+
+    .invoice .invoice-to {
+      text-align: left
+    }
+
+    .invoice .invoice-to .to {
+      margin-top: 0;
+      margin-bottom: 0
+    }
+
+    .invoice .invoice-details {
+      text-align: right
+    }
+
+    .invoice .invoice-details .invoice-id {
+      margin-top: 0;
+      color: #3989c6
+    }
+
+    .invoice main {
+      padding-bottom: 50px
+    }
+
+    .invoice main .thanks {
+      margin-top: -100px;
+      font-size: 2em;
+      margin-bottom: 50px
+    }
+
+    .invoice main .notices {
+      padding-left: 6px;
+      border-left: 6px solid #3989c6
+    }
+
+    .invoice main .notices .notice {
+      font-size: 1.2em
+    }
+
+    .invoice table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      margin-bottom: 20px
+    }
+
+    .invoice table td,
+    .invoice table th {
+      padding: 0% 1%;
+      background: #eee;
+      border-bottom: 1px solid #fff
+    }
+
+    .invoice table th {
+      white-space: nowrap;
+      font-weight: 400;
+      font-size: 16px
+    }
+
+    .invoice table td h3 {
+      margin: 0;
+      font-weight: 400;
+      color: #3989c6;
+      font-size: 1.2em
+    }
+
+    .invoice table .qty,
+    .invoice table .total,
+    .invoice table .unit {
+      text-align: right;
+      font-size: 1.2em
+    }
+
+    .invoice table .no {
+      color: #fff;
+      font-size: 1.6em;
+      background: #3989c6
+    }
+
+    .invoice table .unit {
+      background: #ddd
+    }
+
+    .invoice table .total {
+      background: #3989c6;
+      color: #fff
+    }
+
+    .invoice table tbody tr:last-child td {
+      border: none
+    }
+
+    .invoice table tfoot td {
+      background: 0 0;
+      border-bottom: none;
+      white-space: nowrap;
+      text-align: right;
+      /* padding: 10px 20px; */
+      font-size: 1.2em;
+      border-top: 1px solid #aaa
+    }
+
+    .invoice table tfoot tr:first-child td {
+      border-top: none
+    }
+
+    .invoice table tfoot tr:last-child td {
+      color: #3989c6;
+      font-size: 1.4em;
+      border-top: 1px solid #3989c6
+    }
+
+    .invoice table tfoot tr td:first-child {
+      border: none
+    }
+
+    .invoice footer {
+      width: 100%;
+      text-align: center;
+      color: #777;
+      border-top: 1px solid #aaa;
+      padding: 8px 0
+    }
+
+    @media print {
+      .invoice {
+        font-size: 11px !important;
+        overflow: hidden !important
+      }
+
+      .invoice footer {
+        position: absolute;
+        bottom: 10px;
+        page-break-after: always
+      }
+
+      .invoice>div:last-child {
+        page-break-before: always
+      }
+    }
+  </style>
+
+
+</head>
+
+
+<body>
+
+
+  <!--Author      : @arboshiki-->
+  <div id="invoice">
+
+    <div class="toolbar hidden-print">
+      <div class="text-right">
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script type="text/javascript">
+          var bill
+          var pk
+          var project_id
+
+          var token = '{{csrf_token}}'
+          function payNow(amount, pk, project_id) {
+
+            pk = pk
+
+            project_id = project_id
+            // alert(project_id);
+            bill = parseInt(amount);
+
+            // alert(typeof bill);
+            var options = {
+              key: "",
+              amount: bill, // 2000 paise = INR 20,
+              currency: "USD",
+              name: "Quanscendence Technologies Private Limited",
+              description: "Monthly Bill",
+              image:
+                "",
+              handler: function (response) {
+                // var request = require('request');
+                //       request({
+                //         method: 'POST',
+                //         url: 'https://""@api.razorpay.com/v1/payments/'+response.razorpay_payment_id+'/capture',
+                //         form: {
+                //           amount:100
+                //         }
+                //       }, function (error, response, body) {
+                //         console.log('Status:', response.statusCode);
+                //         console.log('Headers:', JSON.stringify(response.headers));
+                //         console.log('Response:', body);
+                //       });
+                // alert(response.razorpay_payment_id);
+
+                var finalData = {
+                  'invoice_id': pk,
+                  'transaction_id': response.razorpay_payment_id,
+                  'amount': bill,
+
+                };
+
+                $.ajax({
+                  url:
+                    "https://brayn.ai/api/v1/invoice/",
+                    // "http://127.0.0.1:8000/api/v1/invoice/",
+                  type: "POST",
+                  data: JSON.stringify(finalData),
+                  beforeSend: function (xhr) {
+                    xhr.setRequestHeader(
+                      "X-CSRFToken",
+                      token
+                    );
+                  },
+                  contentType: "application/json",
+                  success: function (data) {
+                    redirect_url = "/single-project-details/" + project_id + "/";
+                    location.href = redirect_url;
+                  },
+                });
+
+                // alert("Thank you for your payment\nYour payment ID is: " + response.razorpay_payment_id+data.email);
+              },
+              prefill: {
+                name: "test1234",
+                email: "test@123.com"
+              },
+              notes: {
+                address: "Hello World"
+              },
+              theme: {
+                color: "#F37254"
+              }
+            };
+
+            var rzp1 = new Razorpay(options);
+
+            rzp1.open();
+          }
+
+        </script>
+        <div style="display: flex; margin-left: 84%;">
+          {% if invoice.status == 'Unpaid' and free_tier == False %}
+          <button class="pay_now_button" type="button"
+            onclick="payNow('{{amount}}','{{invoice.pk}}','{{invoice.monthly_cost.project.pk}}')">Pay Now</button>
+          {% elif invoice.status == 'Unpaid' and free_tier == True %}
+
+          <form action="{% url 'coreapp:invoice' pk=invoice.pk %}" method="post">
+            {% csrf_token %}
+            <input type="text" namse="status" value="Paid" hidden>
+
+            <button class="pay_now_button" type="submit">Pay Now</button>
+          </form>
+          {%endif%}
+          <!-- <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i> Print</button> -->
+          <button class="btn btn-info" id="download_pdf" style="margin-left: 10%;"><i class="fa fa-file-pdf-o"></i>
+            Export as PDF</button>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="invoice overflow-auto" id="demo">
+      <div style="min-width: 600px">
+        <header>
+          <div class="row">
+            <div class="col">
+              <a target="_blank" href="https://brayn.ai">
+                <img style="margin-top: 3%;"
+                  src="data:image/png;base64,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"
+                  data-holder-rendered="true" />
+              </a>
+            </div>
+            <div class="col company-details">
+              <h5 class="name">
+                <a target="_blank" href="https://quanscendence.com/">
+                  Quanscendence Technologies Private Limited
+                </a>
+              </h5>
+              <div>Rajajinagar 4th M block, Bengaluru 560010, KA, IND</div>
+              <div>(91) 805 079 6508</div>
+              <div>{{tax.name}}-{{tax.tax_no}}</div>
+              <div>hello@quanscendence.com</div>
+
+            </div>
+          </div>
+        </header>
+        <main>
+          <div class="row contacts">
+            <div class="col invoice-to">
+              <div class="text-gray-light">INVOICE TO:</div>
+
+              {%if customer.type == 'Individual' %}
+              <h3 class="to">{{customer.user.first_name}} {{customer.user.last_name}}</h3>
+              <div class="address">{{customer.address_1}}</div>
+              <div class="email"><a href="{{customer.user.email}}"></a>
+                {{customer.user.email}}</div>
+
+
+
+              {% elif customer.type == 'Company' %}
+
+              <h3 class="to">{{customer.company_name}}</h3>
+              <!-- <div class="address">{{customer.company_address_1}}</div> -->
+              <div>TAX NO: {{customer.vat_gst_no}}</div>
+              <div class="email"><a href="{{customer.user.email}}"></a>
+                {{customer.user.email}}</div>
+              {%endif%}
+            </div>
+            <div class="col invoice-details" style="margin-right:7%">
+              <h3 class="">TAX INVOICE</h3>
+              <div class="date"></div>
+              <div class="date"></div>
+            </div>
+            <div class="col invoice-details">
+              <h3 class="invoice-id">{{invoice.invoice_id}}</h3>
+              <div class="date">Date of Invoice: {{invoice.created | date:"M d,Y" }}</div>
+              <div class="date">Due Date: <span style="color:red;">{{invoice.created | date:"M d,Y" }}</span></div>
+            </div>
+          </div>
+          <table border="0" cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th class="text-left"></th>
+                <th></th>
+                <th></th>
+                <!-- <th class="text-right">HOUR PRICE</th>
+                                <th class="text-right">HOURS</th> -->
+                <th class="text-right">TOTAL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="no">01</td>
+                <td class="text-left">
+                  <h3>
+
+                    USERS
+
+                  </h3>
+
+
+                </td>
+                <td></td>
+                <td></td>
+                <!-- <td class="unit">$0.00</td>
+
+                                <td class="qty">100</td> -->
+                <td class="total">$ {{invoice.monthly_cost.user_cost}}</td>
+              </tr>
+              <tr>
+                <td class="no">02</td>
+                <td class="text-left">
+                  <h3>ENDPOINTS</h3>
+                </td>
+                <td></td>
+                <td></td>
+                <!-- <td class="unit">$40.00</td>
+                                <td class="qty">30</td> -->
+                <td class="total">$ {{invoice.monthly_cost.end_point_cost}}</td>
+              </tr>
+              <tr>
+                <td class="no">03</td>
+                <td class="text-left">
+                  <h3>IQUS</h3>
+                </td>
+                <td></td>
+                <td></td>
+                <!-- <td class="unit">$40.00</td>
+                                <td class="qty">80</td> -->
+                <td class="total">$ {{invoice.monthly_cost.iqs_cost}}</td>
+              </tr>
+
+              <tr>
+                <td class="no">04</td>
+                <td class="text-left">
+                  <h3>DISK SPACE</h3>
+                </td>
+                <td></td>
+                <td></td>
+                <!-- <td class="unit">$40.00</td>
+                                <td class="qty">20</td> -->
+                <td class="total">$ {{invoice.monthly_cost.disk_space_cost}}</td>
+              </tr>
+              <tr>
+                <td class="no">06</td>
+                <td class="text-left">
+                  <h3>MAINTENANCE</h3>
+                </td>
+                <td></td>
+                <td></td>
+                <!-- <td class="unit">$40.00</td>
+                                <td class="qty">20</td> -->
+                <td class="total">$ {{invoice.monthly_cost.monthly_maintenance}}</td>
+              </tr>
+              <tr>
+                <td class="no">05</td>
+                <td class="text-left">
+                  <h3>CUSTOMIZED ASSISTANCE</h3>
+                </td>
+                <td></td>
+                <td></td>
+                <!-- <td class="unit">$40.00</td>
+                                <td class="qty">20</td> -->
+                <td class="total">$ {{invoice.monthly_cost.custom_supprt}}</td>
+              </tr>
+              
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2"></td>
+                <td colspan="2">SUBTOTAL</td>
+                <td>$ {{invoice.bill_amount}}</td>
+              </tr>
+              <tr>
+                <td colspan="2"></td>
+                <td colspan="2">{{tax.tax_representation}}</td>
+                <td>$ {{invoice.tax_amount}}</td>
+              </tr>
+              {% if free_tier == True %}
+              <tr>
+                <td colspan="2"></td>
+                <td colspan="2">EARLY ACCESS DISCOUNT</td>
+                {% if free_tier == True %}
+                <td>$ - {{invoice.total_amount}}</td>
+                {% else %}
+                <td>- 0</td>
+                {%endif%}
+              </tr>
+              {%endif%}
+              <tr>
+                <td colspan="2"></td>
+
+                <td colspan="2">GRAND TOTAL</td>
+                {% if free_tier == True %}
+                <td>$ 0</td>
+                {% else %}
+                <td>$ {{invoice.total_amount}}</td>
+                {% endif %}
+
+
+
+              </tr>
+            </tfoot>
+          </table>
+          <div class="thanks">Thank you!</div>
+          <div class="notices">
+            <div>NOTICE:</div>
+            <div class="notice">We sincerely thank you and your team for this business transaction.</div>
+          </div>
+        </main>
+        <!-- <footer>
+                    Invoice was created on a computer and is valid without the signature and seal.
+                </footer> -->
+      </div>
+      <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+      <div></div>
+    </div>
+  </div>
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/es6-promise@4.2.5/dist/es6-promise.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js'></script>
+  <script src='https://fbktnsetnet.000webhostapp.com/wp-content/uploads/2018/04/html2canvas.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/html2pdf.js@0.9.0/dist/html2pdf.min.js'></script>
+
+  <script type="text/javascript">
+    $('#printInvoice').click(function () {
+      Popup($('.invoice')[0].outerHTML);
+      function Popup(data) {
+        window.print();
+        return true;
+      }
+    });
+    const options = {
+      margin: 1,
+      filename: "INVBRAYN_" + '{{invoice.invoice_id}}' + '.pdf',
+      image: {
+        type: 'jpeg',
+        quality: 0.98
+      },
+      html2canvas: {
+        scale: 2
+      },
+      jsPDF: {
+        unit: 'in',
+        format: 'letter',
+        orientation: 'landscape'
+      }
+    }
+
+    $('#download_pdf').click(function (e) {
+      e.preventDefault();
+      const element = document.getElementById('demo');
+      html2pdf().from(element).set(options).save();
+    });
+  </script>
+</body>
+
+</html>

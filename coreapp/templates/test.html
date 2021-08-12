@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <style type="text/css">
+      .modebar-btn plotlyjsicon modebar-btn--logo{
+           display: none !important;
+        }
+    </style>
+    <div class="">
+<!-- <h4>Dump data query </h4> -->
+{% if graph %}
+<div style="width:600;height:500">
+{{ graph|safe }}
+</div>
+{% endif %}
+      {% autoescape off %}{{ multiple_query }}{% endautoescape %}
+    </div>
+    <div class="">
+      <h3>Query Results</h3>
+      {% autoescape off %}{{ query }}{% endautoescape %}
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,53 @@
+{% extends 'dashboard/project_details.html' %}
+{% load staticfiles %}
+
+{%block body%}
+<!-- START: NAVIGATION THROUGH BREADCRUMBS -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'coreapp:dashboard' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'coreapp:single-project' pk=project.pk %}">{{project}}</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'coreapp:single-project-details' pk=project.pk %}">{{project}} - Details</a></li>
+    <li class="breadcrumb-item active" aria-current="page"> {{project}} - {{ticket.ticket_id}}</li>
+  </ol>
+</nav>
+<!-- END: NAVIGATION THROUGH BREADCRUMBS -->
+
+<h1 style="margin: 2%;">Ticket Details</h1>
+<div class="row" style="margin-left:2%">
+
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">TICKET ID</th>
+          <th scope="col">SUBJECT</th>
+          <th scope="col">DESCRIPTION</th>
+          <th scope="col">RAISED BY</th>
+          <th scope="col">STATUS</th>
+          <th scope="col">SOLUTION DESCRIPTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for issue in ticket.issue.all%}
+        <tr>
+          <td>
+              {{ticket.ticket_id}}
+          </td>
+          <td>
+              {{ticket.subject}}
+          </td>
+          <td> {{issue.whats_need_todo}}</td>
+          <td>{{ticket.customer}}</td>
+          <td>{{ticket.status}}</td>
+          <td>{{issue.solution_description}}</td>
+
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+{%endblock body%}

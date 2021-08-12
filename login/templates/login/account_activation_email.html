@@ -1,0 +1,75 @@
+
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+
+    <header>
+        <img src="https://storage.googleapis.com/brayn-media/images/header_change.png?Expires=1598541179&GoogleAccessId=brayn-media%40brayn-1.iam.gserviceaccount.com&Signature=gaPsOLQlBtiokc7grHaoBYkJxYqPsyH4hRRHNxTG9Ha%2BMEeIrKE5kekFEXd4qZ9FbmbtGFRF6ckpnz8XvCMFhjcqWYyoSdIJkBRD%2F8pHuSHnhscPGsN8ztD%2B0g5PD%2FnG%2Boq6Y5OEuRp3wAiT4Xi19AJsVFv06BTO73CDfF8jwCjzCB88kpEw20ImZuFdGvW%2BUXSDo%2F%2Buwb96mBbTOmf6L29lCWfcRUIH9bjwmQpIqqrxzrONHYjclGBhlxShM3%2BtLNX402%2FUO0nb8hB57X9kuhLhKf1EdXu4lKa42slxx04Lv%2B0UBBiMy1uKjX6%2F1xLejS4%2FuivNcgRBO8Z0vCdx0A%3D%3D"
+            alt="">
+    </header>
+    {% autoescape off %}
+		
+    
+    <p>Hi, </br></br>{{ user.username }}, </br></br></p>
+
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+           Please click the link below to activate your Account: <br/><br/>
+
+           <a href="https://brayn.ai{% url 'login:activate' uidb64=uid token=token %}">Click here to Activate</a>
+
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div><br /><br />
+    Cheers,<br />
+    Team Brayn
+<!--     {% endautoescape %}
+    <div class="row">
+        <div class="col-md-6">
+             Name: {{name}}
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div> -->
+   <!--  <div class="row">
+        <div class="col-md-6">
+            Ticket Status :{{status}}
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div> -->
+    <!-- <div class="row">
+
+        <div class="col-md-6">
+            Ticket ID : {{ticket.ticket_id}}
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div> -->
+
+    
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+

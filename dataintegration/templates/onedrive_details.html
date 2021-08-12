@@ -1,0 +1,24 @@
+{% extends 'dashboard/index.html' %}
+{% load staticfiles %}
+{% block body %}
+<div class=""style="margin-left:17%;margin-top:5%;">
+  <form class="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row"">
+      <label for="">Enter Generated Client id from your onedrive account </label>
+      {{onedrive_details_form.client_id}}
+    </div>
+  <div class="row" ">
+    <label for="">Enter the generated client secret key </label>
+    {{onedrive_details_form.client_secret_key}}
+  </div>
+  <!-- <div class="row" >
+    <label for="">Enter the file path </label>
+    {{onedrive_details_form.path_name}}
+  </div> -->
+  <button type="submit" id="submit" class="btn btn-primary waves-effect waves-light" style="margin-top:2%; ">Submit</button>
+
+  </form>
+</div>
+
+{% endblock %}

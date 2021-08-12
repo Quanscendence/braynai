@@ -1,0 +1,242 @@
+
+
+
+{% extends 'login/subpages_base.html' %}
+{% load staticfiles %}
+{% block body %}
+
+
+<link rel="" href="{% static 'brain/style.css' %}">
+
+<style media="screen">
+  .login_username {
+    border-radius: 8px;
+    margin-left: 14%;
+    width: 68%;
+    height: 43px;
+  }
+
+  button:focus{
+    border: none;
+    border-color: transparent;
+    outline: none;
+  }
+
+  input:focus{
+    outline: none;
+  }
+
+  .btn:focus{
+    outline: 0 !important;
+  }
+
+  .login_password{
+    border-radius: 8px;
+    margin-left: 14%;
+    margin-top: -6%;
+    width: 68%;
+  }
+
+  #login_submit_button {
+    background-color: #4a90e2;
+    border-radius: 5px;
+    color: white;
+    border: #4a90e2;
+    width: 68%;
+  }
+
+  .forgot_password_link {
+    color:#4A90E2;
+    margin-left:37%;
+  }
+
+  #canvas {
+     margin-top: 33%;
+     margin-left: -11%;
+     width: 100%;
+  }
+
+  .error-page-int {
+    margin-top: 28%;
+    margin-bottom: 18%;
+  }
+
+  #header_img  {
+     width: 110px;
+     margin-top: -4px;
+     margin-left: -32%;
+
+  }
+  #logo_img {
+    width: 110px;
+    margin-top: -4px;
+    margin-left: -32%;
+  }
+  @media screen and (max-width: 768px) {
+    .error-page-int {
+      margin-top:0%;
+      margin-bottom: 8%;
+    }
+    #header_img  {
+       width: 110px;
+       margin-top: -4px;
+       margin-left: -4%;
+
+    }
+     #logo_img {
+       width: 110px;
+       margin-top: -4px;
+       margin-left: -4%;
+
+    }
+
+    .colorlib-nav-toggle.colorlib-nav-white > i::after{
+          background: #000;
+    }
+    .colorlib-nav-toggle.colorlib-nav-white > i {
+      background: #000;
+    }
+    .colorlib-nav-toggle.colorlib-nav-white > i::before, .colorlib-nav-toggle.colorlib-nav-white > i::after {
+      background: #000;
+    }
+
+    #colorlib-offcanvas {
+      background: #fff;
+    }
+    #canvas {
+       margin-left: -2%;
+    }
+    .login_username {
+      border-radius: 8px;
+      margin-left: 0%;
+      width: 95%;
+    }
+
+    .forgot_password_link {
+      margin-left:30%;
+    }
+
+    .login_password{
+      border-radius: 8px;
+      margin-left: 0%;
+      margin-top: -6%;
+      width: 95%;
+    }
+
+    #login_submit_button {
+      background-color: #4a90e2;
+      border-radius: 5px;
+      color: white;
+      border: #4a90e2;
+      width: 95%;
+    }
+
+  }
+</style>
+<body style="background-color: #f6f8fa;">
+  <nav class="colorlib-nav" role="navigation" id="dsass_header">
+  <div class="top-menu" style="height: 85px;">
+  <div class="container">
+                      <div class="row">
+                          <div class="col-md-2" >
+                            <!-- width: 122px;margin-top: -4px;margin-left: -34%; -->
+                              <a href="{% url 'coreapp:home' %}" >
+                              <img src="{% static 'images/logo.png' %}"  id="header_img">
+                              <img src="{% static 'images/header_change.png' %}"   id="logo_img">
+                          </a>
+                          </div>
+                          <div class="col-md-10 text-right menu-1">
+                              <ul>
+                                  <li><a href="{% url 'coreapp:home' %}" ><span id="header_id" style="color:#4a90e2 !important;">Home</span></a></li>
+                                  <li ><a href="https://medium.com/braynai"   ><span id="" style="color:#4a90e2;">Blog</span></a></li>
+                                  <li ><a href="{% url 'login:login' %}"   ><span id="header_log" style="color:#4a90e2 !important;">Login</span></a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+  </div>
+
+
+  </nav>
+  <!-- <div class="error-pagewrap" style="margin-left: 30%;margin-right: 30%;"> -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 " >
+        <div class="row">
+          <div class="col-md-12">
+            <div class="contact-info-wrap-flex">
+            <canvas id="canvas"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+    <div class="error-page-int" >
+        <div class="text-center m-b-md custom-login">
+        <h3 class="login_text">PLEASE LOGIN TO CONTINUE</h3>
+        <p></p>
+        </div>
+        <div class="content-error">
+        <div class="hpanel">
+        <div class="panel-body" style="background-color:white; box-shadow: 0 0 5px rgba(0,0,0,.05), 5px 5px 5px rgba(0,0,0,.1);border-radius: 4px;height: 335px;">
+        <form method="POST" id="loginForm" style="margin-left:15px">
+          {% csrf_token %}
+          <div style="color:red;" id="login_error_message">
+              {{msg}}
+          </div>
+          <div style="color:red;" >
+              {{msg_1}}
+          </div>
+        <div class="form-group">
+        <!-- <label class="control-label" for="username">Username</label> -->
+        <br>
+          {{login_form.username}}
+        <!-- <input type="text" placeholder="example@gmail.com" title="Please enter you username" required="" value="" name="username" id="username" class="form-control"> -->
+
+        </div>
+        <div class="form-group">
+        <!-- <label class="control-label" for="password">Password</label> -->
+        <br>
+        {{login_form.password}}
+        <!-- <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password" id="password" class="form-control"> -->
+        </div>
+        <a class="forgot_password_link" href="{% url 'login:password-reset' %}">Forgot Password</a>
+        <div style="text-align:center;">
+        <button  id="login_submit_button">LOGIN</button>
+        </div>
+
+
+        <div style="text-align:center;">
+          <a href="{% url 'login:signup' %}" class="signup_link" style="color:#4a90e2;">SIGNUP</a>
+        </div>
+        <div class="container">
+                     {% if login_form.errors %}
+                     {% for field in login_form  %}
+
+                     {% for error in field.errors %}
+                     <div class="alert alert-danger">
+                       <strong>{{ error|escape }}</strong>
+                     </div>
+                     {% endfor %}
+                     {% endfor %}
+                     {% for error in login_form.non_field_errors  %}
+                     <div class="alert alert-danger">
+                       <strong>{{ error|escape }}</strong>
+                     </div>
+                     {% endfor %}
+                     {% endif %}
+
+
+                   </div>
+        </form>
+        </div>
+        </div>
+        </div>
+        <div class="text-center login-footer">
+        </div>
+    </div>
+    </div>
+            </div>
+              </div>
+<script  src="{%static 'brain/script.js' %}"></script>
+{% endblock body %}

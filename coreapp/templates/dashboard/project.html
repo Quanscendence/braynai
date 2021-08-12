@@ -1,0 +1,1030 @@
+
+{% extends 'dashboard/index.html' %}
+{% load staticfiles %}
+{% block body %}
+
+<style>
+  #submit{
+    display: none;
+  }
+  #time_series{
+    display: none;
+  }
+  #file1_select{
+    width:15%;
+    display : none;
+    margin-top: 5%;
+  }
+  #file2_select{
+    width:15%;
+    display : none;
+    margin-left: 20%;
+    margin-top: -2%;
+  }
+  #file3_select{
+    width:15%;
+    display : none;
+    margin-left: 40%;
+margin-top: -26px;
+  }
+  #time_series_select{
+width: 15%;
+margin-top: 5%;
+display : none;
+  }
+#column_type_options{
+    width:15%;
+    display : none;
+    margin-left: 40%;
+    margin-top: -26px;
+  }
+
+  #hide{
+
+    display : none;
+  }
+  .fileUpload{
+      display : none;
+    }
+#upload{
+    display : none;
+    margin-top: 5%;
+    width: 130px;
+    height: 30px;
+    background: #4a90e2;
+    color: white;
+    border-radius: 2px;
+    border: 1px solid #4a90e2;
+    }
+  #date_format_select{
+
+          display : none;
+        }
+ #date_format_label{
+
+      display : none;
+      }
+#check_for_multiple_date_column{
+
+     display : none;
+  }
+#mul_date_yes
+{
+       display : none;
+       }
+#mul_date_no{
+      display : none;
+    }
+#file1_columns_display{
+        display : none;
+  }
+#file2_columns_display{
+  display : none;
+  }
+#file3_columns_display{
+display : none;
+        }
+
+#column_type_options_mul_date{
+  display : none;
+                }
+#column_type_options_no_mul_date{
+display : none;
+                        }
+
+
+
+
+
+
+td {
+  /* vertical-align: bottom; */
+  border-bottom: 2px solid #dee2e6;
+  padding: 0.5rem 15px;
+  border-width: 0;
+  font-size: 15px !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+  text-align: left;
+}
+td{
+  /* padding: 15px 15px; */
+  border-color: #e9ecef;
+}
+#file_integrate{
+  margin-left: 50%;
+width: 130px;
+height: 30px;
+background: #4a90e2;
+color: white;
+border-radius: 2px;
+border: 1px solid #4a90e2;
+}
+#file_upload{
+  width: 130px;
+height: 30px;
+background: #4a90e2;
+color: white;
+border-radius: 2px;
+border: 1px solid #4a90e2;
+}
+  </style>
+<div class="single-pro-review-area mt-t-30 mg-b-15">
+<div class="container-fluid">
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="product-payment-inner-st">
+<!-- <ul id="myTabedu1" class="tab-review-design"> -->
+<!-- <li class="active"><a href="#description">Basic Information</a></li>
+<li><a href="#reviews"> Account Information</a></li>
+<li><a href="#INFORMATION">Social Information</a></li>
+</ul> -->
+<div id="myTabContent" class="tab-content custom-product-edit">
+<div class="product-tab-list tab-pane fade active in" id="description">
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-left:20%;width: 50%;">
+<div class="review-content-section">
+<div id="dropzone1" class="pro-ad">
+<p id='error_msg'></p>
+<form  class="dropzone dropzone-custom needsclick add-professors" id="project_form" method="post" enctype="multipart/form-data">
+{{project_form.media}}
+{% csrf_token %}
+<!-- <div class="row">
+  <h5 style="color:red;">{{msg}}</h5>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<div class="form-group">
+{{project_form.project_title}}
+</div>
+<div class="form-group">
+{{project_form.industry}}
+</div>
+<div class="form-group">
+{{project_form.data_description}}
+</div>
+<div class="form-group">
+{{project_form.expected_ans}}
+</div>
+<button type="button" name="Upload Files" onclick="upload_file()" id="file_upload">Upload Files</button>
+<button type="button" name="integrate Data"onclick="integrate_data()" id="file_integrate">integrate Data</button>
+<div class="" id="fileupload">
+  <div class="form-group">
+  {{project_form.file_1}}
+  </div>
+  <div class="form-group">
+  {{project_form.file_2}}
+  </div>
+  <div class="form-group">
+  {{project_form.file_3}}
+
+  </div>
+</div>
+</div>
+</div> -->
+
+
+
+<!--  -->
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      PROJECT TITLE
+    </div>
+    <div class="col-sm-6" style="position: relative;right: 29%;top: -16px;">
+      <div class="form-group" style="width: 60%;">
+      {{project_form.project_title}}
+      </div
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+    CATEGORIES
+    </div>
+    <div class="col-sm-6" style="position: relative;right: 29%;top: -16px;">
+      <div class="form-group" style="width: 60%;">
+       {{project_form.industry}}
+      </div
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+    PROJECT DESCRIPTION
+    </div>
+    <div class="col-sm-6" style="position: relative;right: 29%;top: -16px;">
+      <div class="form-group" style="width:60%">
+    <textarea name="data_description" rows="8" cols="40"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+    EXPECTED ANSWER
+    </div>
+    <div class="col-sm-6" style="position: relative;right: 29%;top: -16px;">
+      <div class="form-group" style="width:60%">
+    <textarea name="expected_ans" rows="8" cols="40"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+    FILE 1
+    </div>
+    <div class="col-sm-6 fileUpload" style="position: relative;right: 29%;top: -16px;">
+      <div class="form-group" style="width:60%">
+      {{project_form.file_1}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+    FILE 2
+    </div>
+    <div class="col-sm-6 fileUpload" style="position: relative;right: 29%;top: -16px;">
+      <div class="form-group" style="width:60%">
+      {{project_form.file_2}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+    FILE 3
+    </div>
+    <div class="col-sm-6 fileUpload" style="position: relative;right: 29%;top: -16px;">
+      <div class="form-group" style="width:60%">
+      {{project_form.file_3}}
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<table>
+   <tr> <th></th>
+      <th></th>
+     </tr>
+       <tr>
+         <td >PROJECT TITLE</td>
+         <td><div class="form-group">
+         {{project_form.project_title}}
+         </div></td>
+        </tr>
+          <tr>
+            <td >INDUSTRY</td>
+             <td><div class="form-group">
+             {{project_form.industry}}
+             </div></td>
+           </tr>
+           <tr>
+             <td >PROJECT DESCRIPTION</td>
+              <td><div class="form-group">
+            <textarea name="data_description" rows="8" cols="40"></textarea>
+              </div></td>
+            </tr>
+            <tr>
+              <td >EXPECTED ANSWER</td>
+               <td><div class="form-group">
+               <textarea name="expected_ans" rows="8" cols="40"></textarea>
+               </div></td>
+             </tr>
+             <tr>
+               <td >Pick a color </td>
+                <td><div class="form-group">
+                  <input name="color" class="jscolor {onFineChange:'update(this)'}" >
+
+                  <p  id="rect" style="border: 1px solid gray;width: 54px;height: 27px;margin-left: 60%;margin-top: -7%;"></p>
+                </div></td>
+              </tr>
+
+
+             <tr class="fileUpload" style="width: 179%;">
+               <td >FILE 1</td>
+                <td style="position: relative;left: 41%;"><div class="form-group">
+                {{project_form.file_1}}
+                </div></td>
+              </tr>
+              <tr class="fileUpload" style="width: 180%;">
+                <td >FILE 2</td>
+                 <td style="position: relative;left: 40%;"><div class="form-group">
+                 {{project_form.file_2}}
+                 </div></td>
+               </tr>
+               <tr class="fileUpload" style="width: 180%;">
+                 <td >FILE 3</td>
+                  <td style="position: relative;left: 40%;"><div class="form-group">
+                  {{project_form.file_3}}
+                  </div></td>
+                </tr>
+                <tr class="fileUpload" style="width: 180%;">
+                  <td >Do you have multiple date column?</td>
+                   <td><select id = "multiple_date" class="" name="">
+                     <option value="Yes">Yes</option>
+                     <option value="No">No</option>
+                   </select></td>
+                 </tr>
+            </table>
+            <button type="button" name="Upload Files" onclick="upload_file()" id="file_upload">UPLOAD FILES</button>
+            <button type="button" name="integrate Data"onclick="integrate_data()" id="file_integrate" >INTEGRATE DATA</button>
+
+           <input type="text" name="column_count" id= "column_count" value="1"hidden>
+
+
+
+<!--  -->
+
+
+
+
+
+
+<div class="">
+  <button type="button"  id="upload" class="btn btn-primary waves-effect waves-light"><p style="margin-top: -3%;text-align: center;color: white;">UPLOAD</p></button>
+  <div id="container"   name= "container_details"  style="width: 175%;"></div>
+
+  <div class="" id='hide'>
+    <label for="">Select Connectivity column between  files </label>
+    <input type="text" id="f1"name=""value="">
+    <input type="text" id="f2"name=""  value="">
+    <input type="text" id="f3"name=""  value="">
+  </div>
+  <div class="row">
+  <div class="col-lg-12">
+  <!-- <select name='inptProduct' id="selectoption"></select> -->
+  <label id="connectivity">Select Connectivity column between files </label>
+
+  <select class="" name="file1_columns" id="file1_select" >
+    <option value="no_connectivity">No Connectivity</option>
+  </select>
+  <select class="" name="file2_columns" id="file2_select" >
+<option value="no_connectivity">No Connectivity</option>
+  </select>
+  <select class="" name="file3_columns" id="file3_select" >
+    <option value="no_connectivity">No Connectivity</option>
+
+  </select>
+
+<div>
+<label id="time-series" >Choose Your Time Series Column</label>
+  <select onchange="time_select()" class="" name="time_column" id="time_series_select" >
+    <option value="no_timeseries"> No Time Series</option>
+
+  </select>
+  </div>
+  </div>
+  </div>
+  <div >
+  <label id="date_format_label" >Choose the date format present in your data</label>
+    <select class="" name="date_format" id="date_format_select" >
+      <option value="dd/mm/yyyy"> dd/mm/yyyy</option>
+      <option value="yyyy/mm/dd"> yyyy/mm/dd</option>
+    </select>
+  </div>
+  <div class="" style="margin-top: 2%;margin-left: 12%;">
+    <button type="submit" id="submit" class="btn btn-primary waves-effect waves-light" style="width: 30% !important;">Create Project</button>
+  </div>
+
+
+</div>
+{% if project_form.errors %}
+    {% for field in project_form  %}
+
+    {% for error in field.errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% for error in project_form.non_field_errors  %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+</form>
+<!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+<div class="form-group">
+<input name="department" type="text" class="form-control" placeholder="Department">
+</div>
+<div class="form-group res-mg-t-15">
+<textarea name="description" placeholder="Description"></textarea>
+</div>
+<div class="form-group">
+<select name="gender" class="form-control">
+<option value="none" selected="" disabled="">Select Gender</option>
+<option value="0">Male</option>
+<option value="1">Female</option>
+</select>
+</div>
+<div class="form-group">
+<select name="country" class="form-control">
+<option value="none" selected="" disabled="">Select country</option>
+<option value="0">India</option>
+<option value="1">Pakistan</option>
+<option value="2">Amerika</option>
+<option value="3">China</option>
+<option value="4">Dubai</option>
+<option value="5">Nepal</option>
+</select>
+</div>
+<div class="form-group">
+<select name="state" class="form-control">
+<option value="none" selected="" disabled="">Select state</option>
+<option value="0">Gujarat</option>
+<option value="1">Maharastra</option>
+<option value="2">Rajastan</option>
+<option value="3">Maharastra</option>
+<option value="4">Rajastan</option>
+<option value="5">Gujarat</option>
+</select>
+</div>
+<div class="form-group">
+<select name="city" class="form-control">
+<option value="none" selected="" disabled="">Select city</option>
+<option value="0">Surat</option>
+<option value="1">Baroda</option>
+<option value="2">Navsari</option>
+<option value="3">Baroda</option>
+<option value="4">Surat</option>
+</select>
+</div>
+<div class="form-group">
+<input name="website" type="text" class="form-control" placeholder="Website URL">
+</div> -->
+</div>
+</div>
+
+
+</div>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+<div class="product-tab-list tab-pane fade" id="reviews">
+<!-- <div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="review-content-section">
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<form id="acount-infor" action="#" class="acount-infor">
+<div class="devit-card-custom">
+<div class="form-group">
+<input type="text" class="form-control" name="email" placeholder="Email">
+</div>
+<div class="form-group">
+<input name="phoneno" type="number" class="form-control" placeholder="Phone">
+</div>
+<div class="form-group">
+<input name="password" type="password" class="form-control" placeholder="Password">
+</div>
+<div class="form-group">
+<input name="confarmpassword" type="password" class="form-control" placeholder="Confirm Password">
+</div>
+<a href="#" class="btn btn-primary waves-effect waves-light">Submit</a>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div> -->
+</div>
+</div>
+<!-- <div class="product-tab-list tab-pane fade" id="INFORMATION">
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="review-content-section">
+<div class="row">
+<div class="col-lg-12">
+<div class="devit-card-custom">
+<div class="form-group">
+<input type="url" class="form-control" placeholder="Facebook URL">
+</div>
+<div class="form-group">
+<input type="url" class="form-control" placeholder="Twitter URL">
+</div>
+<div class="form-group">
+<input type="url" class="form-control" placeholder="Google Plus">
+</div>
+<div class="form-group">
+<input type="url" class="form-control" placeholder="Linkedin URL">
+</div>
+<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+</div>
+</div>
+</div>
+</div>
+ </div>
+</div> -->
+</div>
+
+<!-- jquery script -->
+<script
+  src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+  <script src =
+  "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" >
+          </script>
+          <script>
+      function update(jscolor) {
+          // 'jscolor' instance can be used as a string
+          document.getElementById('rect').style.backgroundColor = '#' + jscolor
+      }
+      </script>
+<script>
+  $(document).ready(function(){
+  $("#upload").click(function(){
+    $('#file1_select').empty();
+    $('#file2_select').empty();
+    $('#file3_select').empty();
+    $('#time_series_select').empty()
+    $('#container').empty()
+    var multiple_date_input = document.getElementById('multiple_date').value;
+    var column_count = document.getElementById('column_count').value;
+    console.log(multiple_date_input)
+    var frm = new FormData ($('#project_form').get(0));
+   alert(frm)
+   console.log(frm)
+   if (multiple_date_input == "Yes")
+   {
+     var select_options = [
+     {val : 'Day', text: 'Day'},
+     {val : 'Month', text: 'Month'},
+     {val : 'Year', text: 'Year'},
+     {val : 'Number', text: 'Number'},
+     {val : 'String', text: 'String'},
+   ];
+    console.log(select_options)
+   }
+    else{
+     var select_options = [
+     {val : 'Date', text: 'Date'},
+     {val : 'Number', text: 'Number'},
+     {val : 'String', text: 'String'},
+   ];
+   }
+ $.ajax({
+    url: "/upload_file/",
+    method: "POST",
+    headers: {'X-CSRFToken': '{{ csrf_token }}'},
+    data : frm,
+    cache: false,
+    processData: false,
+    contentType: false,
+    success: function (data) {
+
+      if(data == 'Failure')
+      {
+          $("#error_msg").html("Please fill the form");
+      }
+      else{
+        alert('success');
+        var array=data
+       var x = array.hasOwnProperty('file_1_columns');
+       var y = array.hasOwnProperty('file_2_columns');
+       var z = array.hasOwnProperty('file_3_columns');
+       var whole_data=array.hasOwnProperty('whole_data');
+       var type_options=array.hasOwnProperty('type_options');
+       var allarray = [];
+
+       if(x & y & z){
+         var name1 = "file_1_columns";
+         var name2 = "file_2_columns";
+         var name3 = "file_3_columns";
+
+         var  array1 = array[name1];
+         var array2 = array[name2];
+        var array3 = array[name3];
+
+         console.log('array1',array1)
+         var $container = $("#container")
+        var $container1 = $("#container1")
+
+         array1.forEach(function(value){
+           var $input = $('<input/>')
+           $input.val(value);
+           $input.attr('name','column'+ Number(column_count));
+         $container.append($input);
+           var $select = $('<select>');
+               $select.attr('name','column_select'+Number(column_count));
+           $(select_options).each(function() {
+               $select.append($("<option>").attr('value',this.val).text(this.text));
+               });
+               $container.append($select)
+               document.getElementById('column_count').value = column_count
+               column_count = Number(column_count) + 1
+                console.log(column_count)
+
+         })
+         array2.forEach(function(value){
+           var $input = $('<input/>')
+           $input.val(value);
+           $input.attr('name','column'+ Number(column_count));
+         $container.append($input);
+           var $select = $('<select>');
+               $select.attr('name','column_select'+Number(column_count));
+             $(select_options).each(function() {
+               $select.append($("<option>").attr('value',this.val).text(this.text));
+               });
+               $container.append($select)
+                document.getElementById('column_count').value = column_count
+               column_count = Number(column_count) + 1
+                console.log(column_count)
+         })
+         array3.forEach(function(value){
+           var $input = $('<input/>')
+           $input.val(value);
+           $input.attr('name','column'+ Number(column_count));
+         $container.append($input);
+           var $select = $('<select>');
+               $select.attr('name','column_select'+Number(column_count));
+             $(select_options).each(function() {
+               $select.append($("<option>").attr('value',this.val).text(this.text));
+               });
+               $container.append($select)
+                document.getElementById('column_count').value = column_count
+               column_count = Number(column_count) + 1
+                console.log(column_count)
+         })
+
+       }
+      else  if(x & y){
+         var name1 = "file_1_columns";
+         var name2 = "file_2_columns";
+         var  array1 = array[name1];
+         var array2 = array[name2];
+         console.log('array1',array1)
+         var $container = $("#container")
+
+         array1.forEach(function(value){
+           var $input = $('<input/>')
+           $input.val(value);
+           $input.attr('name','column'+ Number(column_count));
+         $container.append($input);
+           var $select = $('<select>');
+               $select.attr('name','column_select'+Number(column_count));
+             $(select_options).each(function() {
+               $select.append($("<option>").attr('value',this.val).text(this.text));
+               });
+               $container.append($select)
+                document.getElementById('column_count').value = column_count
+               column_count = Number(column_count) + 1
+                console.log(column_count)
+         })
+
+         array2.forEach(function(value){
+           var $input = $('<input/>')
+           $input.val(value);
+           $input.attr('name','column'+ Number(column_count));
+         $container.append($input);
+           var $select = $('<select>');
+               $select.attr('name','column_select'+Number(column_count));
+             $(select_options).each(function() {
+               $select.append($("<option>").attr('value',this.val).text(this.text));
+               });
+               $container.append($select)
+                document.getElementById('column_count').value = column_count
+               column_count = Number(column_count) + 1
+                console.log(column_count)
+         })
+
+
+       }
+       else if (y & z) {
+         var name1 = "file_3_columns";
+         var name2 = "file_2_columns";
+         var  array1 = array[name1];
+         var array2 = array[name2];
+         console.log('array1',array1)
+         var $container = $("#container")
+
+         array1.forEach(function(value){
+           var $input = $('<input/>')
+           $input.val(value);
+           $input.attr('name','column'+ Number(column_count));
+         $container.append($input);
+           var $select = $('<select>');
+               $select.attr('name','column_select'+Number(column_count));
+             $(select_options).each(function() {
+               $select.append($("<option>").attr('value',this.val).text(this.text));
+               });
+               $container.append($select)
+                document.getElementById('column_count').value = column_count
+               column_count = Number(column_count) + 1
+                console.log(column_count)
+         })
+
+         array2.forEach(function(value){
+           var $input = $('<input/>')
+           $input.val(value);
+           $input.attr('name','column'+ Number(column_count));
+         $container.append($input);
+           var $select = $('<select>');
+               $select.attr('name','column_select'+Number(column_count));
+             $(select_options).each(function() {
+               $select.append($("<option>").attr('value',this.val).text(this.text));
+               });
+               $container.append($select)
+                document.getElementById('column_count').value = column_count
+               column_count = Number(column_count) + 1
+                console.log(column_count)
+         })
+
+       }
+       else if (x & z) {
+         var name1 = "file_1_columns";
+         var name2 = "file_3_columns";
+         var  array1 = array[name1];
+         var array2 = array[name2];
+         console.log('array1',array1)
+         var $container = $("#container")
+
+         array1.forEach(function(value){
+           var $input = $('<input/>')
+           $input.val(value);
+           $input.attr('name','column'+ Number(column_count));
+         $container.append($input);
+           var $select = $('<select>');
+               $select.attr('name','column_select'+Number(column_count));
+             $(select_options).each(function() {
+               $select.append($("<option>").attr('value',this.val).text(this.text));
+               });
+               $container.append($select)
+                document.getElementById('column_count').value = column_count
+               column_count = Number(column_count) + 1
+                console.log(column_count)
+         })
+
+         array2.forEach(function(value){
+           var $input = $('<input/>')
+           $input.val(value);
+           $input.attr('name','column'+ Number(column_count));
+         $container.append($input);
+           var $select = $('<select>');
+               $select.attr('name','column_select'+Number(column_count));
+             $(select_options).each(function() {
+               $select.append($("<option>").attr('value',this.val).text(this.text));
+               });
+               $container.append($select)
+                document.getElementById('column_count').value = column_count
+               column_count = Number(column_count) + 1
+                console.log(column_count)
+         })
+
+
+       }
+       else if(x){
+         var name = "file_1_columns";
+         var  array1 = array[name];
+         console.log('array1',array1)
+            var $container = $("#container")
+            array1.forEach(function(value){
+              var $input = $('<input/>');
+              $input.val(value);
+              $input.attr('name','column'+ Number(column_count));
+            $container.append($input);
+              var $select = $('<select>');
+                $select.attr('name','column_select'+Number(column_count));
+                $(select_options).each(function() {
+                  $select.append($("<option>").attr('value',this.val).text(this.text));
+                  });
+                  $container.append($select)
+                   document.getElementById('column_count').value = column_count
+                  column_count = Number(column_count) + 1
+                   console.log(column_count)
+            })
+
+       }
+       else if(y){
+         var name = "file_2_columns";
+         var  array1 = array[name];
+         console.log('array1',array1)
+         var $container = $("#container")
+         array1.forEach(function(value){
+           var $input = $('<input/>')
+           $input.val(value);
+           $input.attr('name','column'+ Number(column_count));
+         $container.append($input);
+           var $select = $('<select>');
+               $select.attr('name','column_select'+Number(column_count));
+             $(select_options).each(function() {
+               $select.append($("<option>").attr('value',this.val).text(this.text));
+               });
+               $container.append($select)
+                document.getElementById('column_count').value = column_count
+               column_count = Number(column_count) + 1
+                console.log(column_count)
+         })
+
+
+       }
+       else if(z){
+         var name = "file_3_columns";
+         var  array1 = array[name];
+         console.log('array1',array1)
+         var $container = $("#container")
+         array1.forEach(function(value){
+           var $input = $('<input/>')
+           $input.val(value);
+           $input.attr('name','column'+ Number(column_count));
+         $container.append($input);
+           var $select = $('<select>');
+              $select.attr('name','column_select'+Number(column_count));
+             $(select_options).each(function() {
+               $select.append($("<option>").attr('value',this.val).text(this.text));
+               });
+               $container.append($select)
+                document.getElementById('column_count').value = column_count
+               column_count = Number(column_count) + 1
+                console.log(column_count)
+         })
+
+       }
+
+       if(x & y & z ){
+         document.getElementById('connectivity').style.display = "block";
+         document.getElementById('file1_select').style.display = "block";
+         document.getElementById('file2_select').style.display = "block";
+         document.getElementById('file3_select').style.display = "block";
+         var name1 = "file_1_columns";
+         var name2 = "file_2_columns";
+         var name3 = "file_3_columns";
+         var  array1 = array[name1];
+         var array2 = array[name2]
+         var array3 = array[name3]
+         selectEl = document.getElementById("file1_select");
+         selectE2 = document.getElementById("file2_select");
+         selectE3 = document.getElementById("file3_select");
+         selectEl.options.add(new Option("No Connectivity", "no_connectivity"));
+         selectE2.options.add(new Option("No Connectivity", "no_connectivity"));
+         selectE3.options.add(new Option("No Connectivity", "no_connectivity"));
+         for(var i = 0; i < array1.length; i++){
+             selectEl.options.add(new Option(array1[i], array1[i]));
+
+         }
+         for(var i = 0; i < array2.length; i++){
+             selectE2.options.add(new Option(array2[i], array2[i]));
+
+         }
+         for(var i = 0; i < array3.length; i++){
+             selectE3.options.add(new Option(array3[i], array3[i]));
+
+         }
+       }
+       else{
+         console.log("2")
+       }
+       if(x & y){
+         document.getElementById('file1_select').style.display = "block";
+         document.getElementById('file2_select').style.display = "block";
+         var name1 = "file_1_columns";
+         var name2 = "file_2_columns";
+        var  array1 = array[name1];
+        var  array2 = array[name2];
+    selectEl = document.getElementById('file1_select');
+    selectE2 = document.getElementById('file2_select');
+    selectEl.options.add(new Option("No Connectivity", "no_connectivity"));
+    selectE2.options.add(new Option("No Connectivity", "no_connectivity"));
+for(var i = 0; i < array1.length; i++){
+    selectEl.options.add(new Option(array1[i], array1[i]));
+
+}
+for(var i = 0; i < array2.length; i++){
+    selectE2.options.add(new Option(array2[i], array2[i]));
+
+}
+
+
+       }
+       else{
+         console.log("3")
+       }
+       if(y & z){
+         document.getElementById('file3_select').style.display = "block";
+         document.getElementById('file2_select').style.display = "block";
+         var name3 = "file_3_columns";
+         var name2 = "file_2_columns";
+        var  array3 = array[name3];
+        var  array2 = array[name2];
+    selectE3 = document.getElementById('file3_select');
+    selectE2 = document.getElementById('file2_select');
+    selectE3.options.add(new Option("No Connectivity", "no_connectivity"));
+    selectE2.options.add(new Option("No Connectivity", "no_connectivity"));
+for(var i = 0; i < array3.length; i++){
+    selectE3.options.add(new Option(array3[i], array3[i]));
+
+}
+for(var i = 0; i < array2.length; i++){
+    selectE2.options.add(new Option(array2[i], array2[i]));
+
+}
+
+
+       }
+       else{
+         console.log("1")
+       }
+
+       if(x & z){
+         document.getElementById('file1_select').style.display = "block";
+         document.getElementById('file3_select').style.display = "block";
+         var name1 = "file_1_columns";
+         var name3 = "file_3_columns";
+        var  array1 = array[name1];
+        var  array3 = array[name3];
+    selectEl = document.getElementById('file1_select');
+    selectE3 = document.getElementById('file3_select');
+    selectEl.options.add(new Option("No Connectivity", "no_connectivity"));
+    selectE3.options.add(new Option("No Connectivity", "no_connectivity"));
+for(var i = 0; i < array1.length; i++){
+    selectEl.options.add(new Option(array1[i], array1[i]));
+
+}
+for(var i = 0; i < array3.length; i++){
+    selectE3.options.add(new Option(array3[i], array3[i]));
+
+}
+
+
+       }
+
+if(whole_data){
+  document.getElementById('time_series_select').style.display = "block";
+
+  var name = "whole_data";
+  var  array4 = array[name];
+// console.log(array4)
+ for(var i = 0; i < array4.length; i++) {
+  var opt = array4;
+    console.log(opt)
+
+  var videoSrcArr = opt ,
+selectEle = document.getElementById('time_series_select');
+selectEle.options.add(new Option("No Time Series Column", "no_timeseries"));
+for(var i = 0; i < videoSrcArr.length; i++){
+selectEle.options.add(new Option(videoSrcArr[i], videoSrcArr[i]));
+
+}
+
+}
+document.getElementById('submit').style.display = "block";
+document.getElementById('time-series').style.display = "block";
+
+
+}
+
+
+}
+    }
+    })
+  });
+});
+
+</script>
+<script>
+document.getElementById('time-series').style.display = "none";
+document.getElementById('connectivity').style.display = "none";
+</script>
+
+
+<script>
+  function upload_file(){
+    // document.getElementsByClassName('fileUpload').style.display = "block";
+    // document.getElementById("upload").style.display = "block";
+    var elems = document.getElementsByClassName('fileUpload');
+  for (var i=0;i<elems.length;i+=1){
+    elems[i].style.display = 'block';
+  }
+  document.getElementById("upload").style.display = "block";
+
+  }
+
+
+</script>
+
+<script>
+  function integrate_data(){
+    document.getElementById("upload").style.display = "none";
+    document.getElementById("file_integrate").style.display = "none";
+    document.getElementById("submit").style.display = "block";
+  }
+</script>
+
+
+
+<script>
+  function time_select(){
+    var time = document.getElementById("time_series_select").value
+    console.log(time)
+    if (time != "No Time Series"){
+      document.getElementById("date_format_select").style.display = "block";
+      document.getElementById("date_format_label").style.display = "block";
+    }
+  }
+</script>
+<script src="{%static 'js/jscolor.js' %}">
+
+</script>
+{% endblock body %}

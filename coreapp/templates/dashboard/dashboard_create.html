@@ -1,0 +1,492 @@
+{%load staticfiles %}
+
+<link rel="stylesheet" href="{% static 'dashboard/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'multi_form/style.css' %}">
+<link rel="stylesheet" href="{% static 'drag_drop/style.css' %}">
+<link rel="stylesheet" href="{% static 'drag_drop/richtext.min.css' %}">
+<link rel="stylesheet" href="{% static 'dashboard/css/side_navigations.css' %}">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/themes/ui-lightness/jquery-ui.css">
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'dashboard/img/Brayn_Favicon_75.png' %}">
+<!-- Loading style style CSS
+============================================ -->
+<link rel="stylesheet" href="{% static 'css/loading_spinner.css' %}">
+
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
+
+
+<style>
+  .fa-spinner{
+    color:#111;
+  }
+  .logo_image_style {
+    float: left;
+    position: relative;
+    z-index: 99;
+    padding-top: 3px;
+    padding-left: 5px;
+  }
+
+  /* .dashboard_creation_button{
+    display:none;
+  } */
+
+  body {
+    background-color: #fff !important;
+  }
+
+  .select2-container {
+    width: 100% !important;
+  }
+
+  .select2-container--default .select2-selection--single {
+    height: 35px !important;
+  }
+
+  .show {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .blog_section {
+    visibility: hidden;
+    opacity: 0;
+    z-index: 999;
+  }
+
+  .shop_section {
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  .mega_section {
+    visibility: hidden;
+    opacity: 0;
+    z-index: 999;
+  }
+
+  .background_color {
+    background: #fff !important;
+    color: #4a90e2 !important
+  }
+
+  .cross_mark_icon {
+    /*float: right; */
+    font-size: 15px;
+    position: absolute;
+    top: -13%;
+    right: -10px;
+    pointer-events: all !important;
+    cursor: pointer;
+    /* margin-left: 32%; */
+    /* color: red; */
+    width: 30px;
+  }
+
+  .cross_mark_icon_style_tools {
+    /* float: right; */
+    font-size: 15px;
+    position: absolute;
+    top: -13%;
+    cursor: pointer;
+    right: -10px;
+    pointer-events: all !important;
+    /* margin-left: 32%; */
+    /* color: red; */
+    width: 30px;
+  }
+
+  .done {
+    pointer-events: none;
+    /* background: #ddd !important; */
+  }
+
+  .hide_text {
+    display: none;
+  }
+
+  .ui-dialog {
+    width: 63% !important;
+    top: 15% !important;
+    left: 18% !important;
+  }
+
+  .ui-widget-overlay {
+    width: 0 !important;
+    bacckground: none !important;
+  }
+
+  .drag-item {
+    position: relative;
+    padding-top: 2%;
+  }
+
+  .ui-icon-closethick {
+    margin-top: -8px !important;
+    margin-left: -8px !important;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+    html {
+      transform: rotate(-90deg);
+      transform-origin: left top;
+      width: 100vh;
+      height: 100vw;
+      overflow-x: hidden;
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+  }
+
+
+</style>
+
+
+
+
+<div class="whole_body_section">
+
+
+<!-- START: Menu section for the page -->
+<!-- <div id="loader" class="center" style="display:none;"></div> -->
+
+<div class="loading-overlay">
+  <span class="fas fa-spinner fa-3x fa-spin"></span>
+  <span class="loading-message">Please wait..it's loading</span>
+</div>
+
+<div class="ruby-wrapper">
+  <a href="/dashboard/" class="logo_image_style"><img src="https://therealmstorage.sgp1.cdn.digitaloceanspaces.com/brayn/images/logos/logo.png" alt="" style="max-width: 85%;"></a>
+  <button class="c-hamburger c-hamburger--htx visible-xs">
+    <span>toggle menu</span>
+  </button>
+  <ul class="ruby-menu">
+    <li class="ruby-menu-mega-shop">
+      <a id="hover_poject_style" style="line-height:50px;" href="{% url 'coreapp:single-project' pk=project.pk %}">PRO :
+        {{project.name}}</a>
+
+      <!-- <span class="ruby-dropdown-toggle"></span> -->
+    </li>
+
+    <!-- <span class="project_titles">PRO : {{project.title}}</span> -->
+
+
+    {% if user_image.image  %}
+    <li class="ruby-menu-right" <img src="{{user_image.image.url}} " alt="user_images" onclick="callLogout()"><a
+        class="up_arrow" href="#">WELCOME {{request.user.first_name}}</a>
+      {% else %}
+    <li class="ruby-menu-right" <img src="https://img.icons8.com/cotton/64/000000/gender-neutral-user--v1.png"
+      onclick="callLogout()"><a class="up_arrow" href="#">WELCOME {{request.user.first_name}}</a>
+      {% endif %}
+      <ul id="logout" onclick="event.stopPropagation()">
+        <li><a href="{%url 'coreapp:logout' %}">Logout</a></li>
+      </ul>
+
+      <span class="ruby-dropdown-toggle"></span>
+  </ul>
+</div>
+<!-- END: Menu section for the page -->
+
+<!-- START: NAVIGATION THROUGH BREADCRUMBS -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'coreapp:dashboard' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'coreapp:single-project' pk=project.pk %}">{{project}}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Dashboard Create</li>
+  </ol>
+</nav>
+<!-- END: NAVIGATION THROUGH BREADCRUMBS -->
+
+<div class="drag-container" style="margin-left: 5%;">
+  <p style="color:red;">{{msg}}</p>
+  <form class="" action="{%url 'coreapp:dashboard-create' pk=project.pk %}" id="dashboard_form_id" method="post">
+    {%csrf_token%}
+    {{dashboard_form.media}}
+    <div class="row" style="padding: 1% 6%;padding-left: 0.7%;">
+      <div class="col-md-2">
+        <label for="" style="color: #111;">NAME</label>
+        {{dashboard_form.name}}
+      </div>
+      <div class="col-md-2">
+        <label for="" style="color: #111;">REPORT FREQUENCY</label>
+        {{dashboard_form.report_frequency}}
+      </div>
+      <div class="col-md-2">
+        <label for="" style="color: #111;">DASHBOARD FOR</label>
+        {{dashboard_form.dashboard_for}}
+      </div>
+      <div class="col-md-3" style="display:none;" id="id_user_div">
+        <label for="" style="color: #111;">PROJECT USERS</label>
+        {{dashboard_form.user}}
+      </div>
+      <div class="col-md-3">
+        <label for="" style="color: #111;">EMAIL ONLY</label>
+        {{dashboard_form.email_users}}
+      </div>
+    </div>
+    <ul class="drag-list">
+      <li class="drag-column drag-column-on-hold " style="width:20%;">
+        <span class="drag-column-header">
+          <h2>ENDPOINTS</h2>
+
+        </span>
+
+        <div class="drag-options" id="options1"></div>
+
+        <ul class="drag-inner-list sticky_header" id="endpoint_container" style="overflow-x:auto;">
+          {%for ep in end_points%}
+          {%if end_point%}
+          {% if end_point.pk == ep.pk %}
+
+          <p></p>
+          {%else%}
+          <li class="drag-item endpoints" id="{{ep.id}}" type="end_point" title="Add this Endpoint">{{ep.name}}
+            <a href="#" class="view_endpoint_text"
+              onclick="window.open('{{domain}}/project-end-point/{{ep.pk}}/','popUpWindow','height=900,width=1200,left=10,top=10,,scrollbars=yes,menubar=no')">View
+            </a>
+          </li>
+          {%endif%}
+          {%else%}
+          <li class="drag-item endpoints" id="{{ep.id}}" type="end_point" title="Add this Endpoint">{{ep.name}}
+            <a href="#" class="view_endpoint_text"
+              onclick="window.open('{{domain}}/project-end-point/{{ep.pk}}/','popUpWindow','height=900,width=1200,left=10,top=10,,scrollbars=yes,menubar=no')">View
+            </a>
+          </li>
+          {%endif%}
+          {%endfor%}
+          <!-- <li class="drag-item" id="test2">ewfewfewfewf</li> -->
+        </ul>
+      </li>
+      <li class="drag-column drag-column-in-progress" style="width:50%;">
+        <span class="drag-column-header">
+          <h2>DASHBOARD | <span id="dashboard_name"></span></h2>
+          <!-- <svg class="drag-header-more" data-target="options2" fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+          </svg> -->
+          <button type="button" name="button" class="remove_elements" title="Delete Selected Elements" onclick="removeArrangedElements()"><i class="fa fa-trash" aria-hidden="true" style="margin-right: 5.5%;"></i>DELETE</button>
+        </span>
+        <div class="drag-options" id="options2"></div>
+        <ul class="drag-inner-list sortable-list sticky_header" id="final_container" title="Drag & Drop elements here">
+          {%if end_point%}
+          <li class="drag-item done __web-inspector-hide-shortcut__" id="{{end_point.pk}}" type="end_point"
+            title="Add this Endpoint">
+            {{end_point.name}}
+            <!-- <i class="fas fa-bars drag-header-more dots_'+el.id+'" aria-hidden="true" id="three_dots"></i>
+            <i class="fas fa-bars cross_mark_icon 10" aria-hidden="true" id="icon-{{end_point.pk}}"></i> -->
+            <input type="checkbox" name="remove_arranged_elements" class="checkbox_styles" />
+            <a href="#" class="view_endpoint_text"
+              onclick="window.open('{{domain}}/project-end-point/{{end_point.pk}}/','popUpWindow','height=900,width=1200,left=10,top=10,,scrollbars=yes,menubar=no')">View
+            </a>
+            <i class="fas fa-bars drag-header-more dots_'+el.id+'" aria-hidden="true" id="three_dots"></i>
+          </li>
+          {%endif%}
+
+        </ul>
+        {%if end_point%}
+        <button class="dashboard_creation_button" type="button" name="button" id="submit_button" onclick="finalSubmit()"
+          title="Click here to create and save dashboard">
+          create dashboard
+        </button>
+        {%else%}
+        <button class="dashboard_creation_button" type="button" name="button" id="submit_button" onclick="finalSubmit()"
+          title="Click here to create and save dashboard" disabled>
+          create dashboard
+        </button>
+        {%endif%}
+      </li>
+
+      <li class="drag-column drag-column-needs-review" style="width:20%;">
+        <span class="drag-column-header">
+          <h2>FORMATTING</h2>
+          <!-- <svg data-target="options3" class="drag-header-more" fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg> -->
+        </span>
+        <div class="drag-options" id="options3"></div>
+        <ul class="drag-inner-list" id="format_container">
+
+          <li class="drag-item rich_text_box"  type="text_editor">
+            <p id="BR0">RICH TEXT </p>
+          </li>
+
+          <li class="drag-item line_spacer_box" title="Add Space between" type="spacer">LINE SPACER</li>
+          <li class="drag-item line_spacer_box" title="Add Columns" type="row_constructor">ROW CONSTRUCTOR</li>
+          <!-- <li class="drag-item"></li>
+				<li class="drag-item"></li> -->
+        </ul>
+      </li>
+      <!-- <li class="drag-column drag-column-approved">
+			<span class="drag-column-header">
+				<h2>Approved</h2>
+				<svg data-target="options4" class="drag-header-more" fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/</svg>
+			</span>
+			<div class="drag-options" id="options4"></div>
+			<ul class="drag-inner-list" id="4">
+				<li class="drag-item"></li>
+				<li class="drag-item"></li>
+			</ul>
+		</li> -->
+    </ul>
+    <input type="text" name="dashboard_format" id="dashboard_format_id" hidden>
+  </form>
+</div>
+<!-- <input class="content" name="example" id="one"> -->
+<div class="" id="display_html">
+
+</div>
+
+<div class="modal_section">
+
+</div>
+
+<div class="modal_section_row">
+
+</div>
+
+</div>
+<!--START: display section of menu items  -->
+<script>
+
+  function blogDropdown(event) {
+    event.stopPropagation();
+    // body...
+    // document.querySelector('.dashboard_link').classList.toggle("background_color");
+    // document.querySelector('.endpoints_link').classList.remove("background_color");
+    // document.querySelector('.data_integration_link').classList.remove("background_color");
+    // document.getElementById("logout").classList.remove("show");
+    document.getElementById("myDropdown").classList.remove("show");
+    document.getElementById("endpoint_dropdown").classList.remove("show");
+    document.getElementById("blog_dropdown").classList.toggle("show");
+
+  }
+
+  function endPointsDropdown(event) {
+
+    event.stopPropagation();
+    // body...
+    // document.querySelector('.endpoints_link').classList.toggle("background_color");
+    // document.querySelector('.dashboard_link').classList.remove("background_color");
+    // document.querySelector('.data_integration_link').classList.remove("background_color");
+    // document.getElementById("logout").classList.remove("show");
+    document.getElementById("myDropdown").classList.remove("show");
+    document.getElementById("blog_dropdown").classList.remove("show");
+
+    document.getElementById("endpoint_dropdown").classList.toggle("show");
+
+  }
+
+
+function showFunction(event) {
+
+  event.stopPropagation();
+    document.getElementById("blog_dropdown").classList.remove("show");
+    document.getElementById("endpoint_dropdown").classList.remove("show");
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+function callLogout() {
+    event.stopPropagation();
+    // body...
+    // document.getElementById("myDropdown").classList.remove("show");
+    // document.getElementById("blog_dropdown").classList.remove("show");
+    // document.getElementById("endpoint_dropdown").classList.remove("show");
+  document.getElementById("logout").classList.toggle("show");
+}
+
+
+</script>
+
+<!--END: display section of menu items  -->
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/dragula.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
+<script>
+    let raw_endpoints_coloumns_data = '{{js_data}}';
+</script>
+
+<script src="{% static 'drag_drop/script.js' %}"></script>
+<script src="{% static 'drag_drop/jquery.richtext.js' %}"></script>
+
+<script>
+
+  $(document).ready(function () {
+    $('.content').richText();
+
+});
+
+
+
+//START: function to display dynamic text
+function displayProjectName() {
+  document.getElementById('dashboard_name').innerHTML = document.getElementById('project_name').value;
+}
+  //END: function to display dynamic text
+</script>
+
+<!-- script for dashboard user hide and seek -->
+<script>
+  document.getElementById('id_user_div').style.display = "none";
+  function dashboardFor() {
+
+    var d_for = $('#id_dashboard_for').val();
+    // alert("c" + d_for);
+    if (d_for == 'Project Users') {
+      document.getElementById('id_user_div').style.display = "block";
+    }
+    else {
+      document.getElementById('id_user_div').style.display = "none";
+    }
+  }
+
+
+
+
+</script>
+
+
+<!-- script for dashboard user hide and seek -->
+
+
+
+<!-- START:  SCRIPT FOR REORDERING  ELEMENTS-->
+<!-- <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/47585/slip.js'></script>
+<script type="text/javascript">
+var ul = document.querySelector('.sortable-list');
+ul.addEventListener('slip:beforereorder', function (e) {
+  if (/demo-no-reorder/.test(e.target.className)) {
+    e.preventDefault();
+  }
+}, false);
+
+ul.addEventListener('slip:beforeswipe', function (e) {
+  if (e.target.nodeName == 'INPUT' || /no-swipe/.test(e.target.className)) {
+    e.preventDefault();
+  }
+}, false);
+
+ul.addEventListener('slip:beforewait', function (e) {
+  if (e.target.className.indexOf('instant') > -1) e.preventDefault();
+}, false);
+
+/*ul.addEventListener('slip:afterswipe', function(e){
+e.target.parentNode.appendChild(e.target);
+}, false);*/
+
+ul.addEventListener('slip:reorder', function (e) {
+  e.target.parentNode.insertBefore(e.target, e.detail.insertBefore);
+  return false;
+}, false);
+
+new Slip(ul);
+
+
+
+
+
+</script> -->
+<!-- END:  SCRIPT FOR REORDERING  ELEMENTS-->

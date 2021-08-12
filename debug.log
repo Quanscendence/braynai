@@ -1,0 +1,20 @@
+[0421/143240.402:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0421/143240.424:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0421/143240.449:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0421/143240.449:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0421/143240.449:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0421/143240.449:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0421/143240.449:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0421/143240.450:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0421/143240.450:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0421/143240.450:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0421/143240.450:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[0421/143240.450:ERROR:process_memory_win.cc(73)] ReadMemory at 0x2d3b7f63c0 of 16 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
+[0421/143240.450:ERROR:exception_snapshot_win.cc(195)] EXCEPTION_POINTERS read failed
+[0421/143240.450:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0421/153104.539:ERROR:file_io_win.cc(161)] CreateFile C:\Users\HP\AppData\Local\Temp\scoped_dir21660_509064259\Crashpad\settings.dat: The system cannot find the file specified. (0x2)
+[0421/221740.487:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0421/221740.488:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0421/221740.488:ERROR:exception_snapshot_win.cc(98)] thread ID 16916 not found in process
+[0421/221740.498:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0421/221740.498:ERROR:exception_snapshot_win.cc(98)] thread ID 25436 not found in process

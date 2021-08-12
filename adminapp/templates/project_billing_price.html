@@ -1,0 +1,182 @@
+{% extends 'admin_dashboard.html' %}
+{% load staticfiles %}
+{% block body %}
+
+
+<div style="position: relative;top: -58px;">
+    <p style="text-align: center;font-size: 20px;color: grey;">Admin Dashboard</p>
+    <hr style="width:100%;margin-top:-1%">
+</div>
+<!-- 
+<div class="analytics-sparkle-area" style="margin-top: -5%;">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" onclick="Pricing()" style="height:68px">
+                <a href="#" style="display: block; height: 100%;">
+                    <div class="analytics-sparkle-line reso-mg-b-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5 id="projects" style="color: grey;text-align: center;line-height:28px">Pricing </h5>
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="height:68px" onclick="Invoice()">
+                <a href="#" style="display: block; height: 100%;">
+                    <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5 style="color:grey;text-align: center;line-height:28px"> INVOICE</h5>
+
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="height:68px">
+                <a href="{% url 'adminapp:conversion-table' %}" style="display: block; height: 100%;">
+                    <div class="analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5 style="color:grey;text-align: center;line-height:28px">Project Pricing</h5>
+
+                            <!-- <h2>$<span class="counter">3500</span> <span class="tuition-fees">Tuition Fees</span></h2>
+                               <span class="text-inverse">80%</span>
+                               <div class="progress m-b-0">
+                                   <div class="progress-bar progress-bar-inverse" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:80%;"> <span class="sr-only">230% Complete</span> </div>
+                               </div> >
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="height:68px">
+                <!-- <a href="{% url 'adminapp:actions' %}" style="display: block; height: 100%;"> >
+                <a href="{% url 'adminapp:actions' %}" style="display: block; height: 100%;">
+                    <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5 style="color:grey;text-align: center;line-height:28px">C</h5>
+                            <!-- <h2> <span class="tuition-fees">View Conversion Table</span></h2> -->
+                            <!-- <span class="text-info">60%</span> -->
+                            <!-- <div class="progress m-b-0">
+                                   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:60%;"> <span class="sr-only">20% Complete</span> </div>
+                               </div> >
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" onclick="" style="height:68px">
+                <a href="#" style="display: block; height: 100%;">
+                    <div class="analytics-sparkle-line reso-mg-b-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5 style="color:grey;text-align: center;line-height:28px;">D</h5>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div id="pricing" style=" margin:85px auto;width: 83%;margin-left: 4%;">
+    <form action="" method="post">
+        {%csrf_token%}
+        <div class="row">
+            <div class="col-md-6"><label for="user">USER</label></div>
+            <div class="col-md-6"> {{form.user}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><label for="user">END POINT</label></div>
+            <div class="col-md-6"> {{form.end_point}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><label for="user">DISK SPACE</label></div>
+            <div class="col-md-6"> {{form.disk_space}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><label for="user">IQS</label></div>
+            <div class="col-md-6"> {{form.iqs}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><label for="user">MONTHLY MAINTENANCE</label></div>
+            <div class="col-md-6"> {{form.monthly_maintenance}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><label for="user">FREE TIER</label></div>
+            <div class="col-md-6"> {{form.free_tire}}</div>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<div id="invoice" style=" margin:85px auto;width: 83%;margin-left: 4%;display: none;">
+    <!-- <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">INVOICE ID</th>
+                <th scope="col">DATE OF GENERATION</th>
+                <th scope="col">FROM - TO</th>
+                <th scope="col">PROJECT</th>
+                <th scope="col">DOWNLOAD INVOICE</th>
+                <th scope="col">STATUS</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoice in project_invoice %}
+
+            <tr scope="row">
+                <td>{{invoice.invoice_id}}</td>
+                <td>{{invoice.created}}</td>
+                <td>{{invoice.from_date}}-{{invoice.to_date}}</td>
+                <td>{{invoice.monthly_cost.project}}</td>
+                <td></td>
+                <td>
+                    <form action="{% url 'adminapp:project-invoice' pk=invoice.pk %}" method="post">
+                        {%csrf_token%}
+                        <select name="status" id="">
+                            <option {% if invoice.status == 'Unpaid' %} selected{%endif%} value="Unpaid">Un Paid
+                            </option>
+                            <option value="Paid" {% if invoice.status == 'Paid' %} selected{%endif%}>Paid</option>
+                        </select><input type="submit" value="UPDATE">
+                    </form>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table> -->
+</div>
+<script>
+
+    function Pricing() {
+        document.getElementById('pricing').style.display = "block";
+        document.getElementById('invoice').style.display = "none";
+    }
+    function Invoice() {
+        document.getElementById('pricing').style.display = "none";
+        document.getElementById('invoice').style.display = "block";
+
+
+    }
+    function B() {
+        document.getElementById('pricing').style.display = "none";
+        document.getElementById('invoice').style.display = "none";
+
+
+    }
+    function C() {
+        document.getElementById('pricing').style.display = "none";
+        document.getElementById('invoice').style.display = "none";
+
+
+    }
+    function D() {
+        document.getElementById('pricing').style.display = "none";
+        document.getElementById('invoice').style.display = "none";
+
+
+    }
+</script>
+
+{%block code%}
+
+{%endblock code%}
+
+{%endblock body%}

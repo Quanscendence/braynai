@@ -1,0 +1,775 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{{seo.seo_title}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{seo.seo_description}}" />
+<meta name="keywords" content="{{seo.seo_keyword}}" />
+<meta name="author" content="" />
+
+
+  <!-- Facebook and Twitter integration -->
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:url" content=""/>
+<meta property="og:site_name" content=""/>
+<meta property="og:description" content=""/>
+<meta name="twitter:title" content="" />
+<meta name="twitter:image" content="" />
+<meta name="twitter:url" content="" />
+<meta name="twitter:card" content="" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="{% static 'dist/style.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400" rel="stylesheet">
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/Brayn_Favicon_75.png' %}">
+<!-- Animate.css -->
+<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+<!-- Icomoon Icon Fonts-->
+<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+<!-- Bootstrap  -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+<!-- Magnific Popup -->
+<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+<!-- Owl Carousel -->
+<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<!-- Theme style  -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<!-- Modernizr JS -->
+<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+<!-- FOR IE9 below -->
+<!--[if lt IE 9]>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+
+<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+
+<!-- START: Calendly  -->
+
+<!-- Calendly badge widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+<script type="text/javascript">Calendly.initBadgeWidget({ url: 'https://calendly.com/braynai?text_color=4a90e2&primary_color=4a90e2', text: 'Schedule a demo', color: '#ffffff', textColor: '#4a90e2', branding: true });</script>
+<!-- Calendly badge widget end -->
+
+<!-- END: Calendly -->
+<style>
+.calendly-badge-content span {
+  display:none !important;
+}
+html {
+  zoom:0.9;
+}
+   body{
+   font-family: 'Poppins', sans-serif;
+   height: auto !important;
+   }
+   #sub_btn{
+       border: 3px solid white;
+       background:#4a90e2;
+       color:white;
+   }
+   #copy_div{
+       padding-top: 2em;
+       padding-bottom: 2em;
+       background: #262626;
+   }
+
+#footer_info{
+    /*margin-left: -15%;*/
+    margin-top: 1.4%;
+}
+
+.footer-container {
+  height: 12vh;
+}
+#footer_details{
+padding-bottom: 0em !important;
+}
+   #dsass_header{
+ position: fixed;
+-webkit-transition: all ease-out .5s;
+-moz-transition: all ease-out .5s;
+-o-transition: all ease-out .5s;
+transition: all ease-out .5s;
+   }
+   .header_active
+   {
+       background-color: white !important;
+   }
+   .header_act{
+  color:#4a90e2;
+   }
+#header_img{
+width: 110px;
+margin-top: -4px;
+display: none;
+}
+.loged{
+    color:#4a90e2;
+}
+
+
+@media screen and (min-width: 769px) {
+
+    /* #show_on_mobile { visibility: hidden; }
+    #show_on_desktop { visibility: visible; } */
+
+    .footer_home_link {
+      position: absolute;
+      left: 17%;
+    }
+    .footer_blog_link {
+      position: absolute;
+      left: 45%;
+    }
+
+    .footer_credits_link {
+      position: absolute;
+      margin-left: 61% !important;
+    }
+
+    .footer_login_link {
+      position: absolute;
+      left: 93%;
+    }
+
+    .social_icons {
+          margin-left: 30%;
+        margin-top: 1%;
+    }
+  .heading_section {
+    position: absolute;
+    top: 35%;
+    left: 20.3%;
+    color: white;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .heading_section {
+    position: absolute;
+    top: 21%;
+    left: 1.3%;
+    color: white;
+  }
+  .footer-container {
+  height: 12vh;
+}
+
+  .heading_section h1 {
+        font-size: 34px !important;
+  }
+  .footer_home_link {
+    position: absolute;
+    left: 37%;
+  }
+  .footer_blog_link {
+    position: absolute;
+    left: 54%;
+  }
+
+  .footer_credits_link {
+    position: absolute;
+    margin-left: 0%;
+    right: 21%;
+  }
+
+  .footer_login_link {
+    position: absolute;
+    left: 87%;
+  }
+  .social_icons {
+    text-align: center;
+  }
+  .mobile_hide {
+    display: none;
+  }
+
+}
+
+.footer-text a{
+  margin-right: 4%;
+}
+
+.calendly-badge-widget {
+  bottom: 91px !important;
+}
+</style>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-57586021-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-57586021-3');
+</script>
+
+
+</head>
+
+<body style="font-family: 'Poppins', sans-serif" >
+
+<!-- <div class="colorlib-loader"></div> -->
+
+<div id="page">
+<nav class="colorlib-nav" role="navigation" id="dsass_header">
+<div class="top-menu">
+<div class="container auto_width">
+                    <div class="row">
+                        <div class="col-md-2" >
+                            <a href="{% url 'coreapp:home' %}" >
+                            <img src="{% static 'images/logo.png' %}" style="width: 110px;margin-top: -4px;" id="logo_img">
+                            <img src="{% static 'images/header_change.png' %}"  id="header_img">
+                        </a>
+                        </div>
+                        <div class="col-md-10 text-right menu-1">
+                            <ul>
+                                <li><a href="{% url 'coreapp:home' %}" ><span id="header_id">Home</span></a></li>
+                                <li ><a href="https://medium.com/braynai"   id="blog_link"><span id="header_log">Blog</span></a></li>
+
+
+                                <li ><a href="{% url 'login:login' %}" id="login_link"><span id="login_text">Login</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+</div>
+
+
+</nav>
+
+{% block body %}
+ <!-- stats - count particles -->
+<section id="home" class="video-hero" style="height: 700px; " data-section="home">
+<div id="particles-js">
+<div class="animate-box heading_section" >
+
+<h1 class="text-center" style="color:white;font-size:40px">Transcending Analytics & Adding Intelligence</h1>
+<p class="text-center" style="font-size:16px">Create Dashboards With Data Visualization, Analytics & Machine Learning For Your Business Improvements</p>
+    <!-- <h3 class="text-center" style="color:white">We Have Made it Available to Everyone</h3> -->
+<p class="text-center"><a href="{% url 'login:signup' %}" class="btn btn-primary btn-lg btn-custom" id="start_for_free_button" style="background: white;color: #4a90e2;border: 1px solid #4a90e2;">START FOR FREE</a></p>
+
+</div>
+</div>
+
+<div class="overlay"></div>
+<a class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=vqqt5p0q-eU',containment:'#home', showControls:false, autoPlay:true, loop:true, mute:true, startAt:0, opacity:1, quality:'default'}"></a>
+          <div class="display-t text-center">
+              <div class="display-tc">
+                  <div class="container">
+                      <div class="col-md-12 col-md-offset-0">
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <div class="colorlib-featured">
+          <div class="row animate-box">
+              <div class="featured-wrap">
+                  <div class="owl-carousel">
+                      <div class="item">
+                          <div class="col-md-8 col-md-offset-2">
+                              <div class="featured-entry">
+                                  <img class="img-responsive" src="{% static 'images/1.png' %}" alt="">
+                              </div>
+                          </div>
+                      </div>
+                      <div class="item">
+                          <div class="col-md-8 col-md-offset-2">
+                              <div class="featured-entry">
+                                  <img class="img-responsive" src="https://therealmstorage.sgp1.cdn.digitaloceanspaces.com/brayn/images/1589474521553.png" alt="">
+                              </div>
+                          </div>
+                      </div>
+                      <div class="item">
+                          <div class="col-md-8 col-md-offset-2">
+                              <div class="featured-entry">
+                                  <img class="img-responsive" src="{% static 'images/3.png' %}" alt="">
+                              </div>
+                          </div>
+                      </div>
+                      <div class="item">
+                          <div class="col-md-8 col-md-offset-2">
+                              <div class="featured-entry">
+                                  <img class="img-responsive" src="{% static 'images/4.png' %}" alt="">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="colorlib-services colorlib-bg-white">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-4 text-center animate-box">
+                      <div class="services">
+                          <span class="icon">
+                              <!-- <i class="icon-browser"></i> -->
+                              <img class="img-responsive" src="{% static 'icons/datavisulaisationicon_55-60px.png' %}" alt="">
+                          </span>
+                          <div class="desc">
+                              <h3>Data Visualization</h3>
+                              <p>Exploring and understanding any range of data visually through
+advanced visualization</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 text-center animate-box">
+                      <div class="services">
+                          <span class="icon">
+                              <!-- <i class="icon-download"></i> -->
+                                <img class="img-responsive" src="{% static 'icons/analyticsicon_62-60px.png' %}" alt="">
+                          </span>
+                          <div class="desc">
+                              <h3>Data Analytics</h3>
+                              <p>Draw Analysis with powerful aggregations to understand your data better</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 text-center animate-box">
+                      <div class="services">
+                          <span class="icon">
+                              <!-- <i class="icon-layers"></i> -->
+                              <img class="img-responsive" src="{% static 'icons/machinelearningicon_60-60px.png' %}" alt="">
+                          </span>
+                          <div class="desc">
+                              <h3>Data Inferencing</h3>
+                              <p>Figure out the solution for your business problems using machine learning algorithms</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 text-center animate-box">
+                      <div class="services">
+                          <span class="icon">
+                              <!-- <i class="icon-layers"></i> -->
+                              <img class="img-responsive" src="{% static 'icons/group_60-60px.png' %}" alt="">
+                          </span>
+                          <div class="desc">
+                              <h3>For Anyone</h3>
+                              <p>Brayn, can be used by anyone from any industry or any scale of businesses also can be used by a person without any technical knowledge</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 text-center animate-box">
+                      <div class="services">
+                          <span class="icon">
+                              <!-- <i class="icon-layers"></i> -->
+                              <img class="img-responsive" src="{% static 'icons/bigdata_60-60px.png' %}" alt="">
+                          </span>
+                          <div class="desc">
+                              <h3>Big Data in Seconds</h3>
+                              <p>Brayn, can process any range of Data in few seconds. Querying the Data has never been easier and now its logical and user friendly</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 text-center animate-box">
+                      <div class="services">
+                          <span class="icon">
+                              <!-- <i class="icon-layers"></i> -->
+                              <img class="img-responsive" src="{% static 'icons/data-processingicon_60-60px.png' %}" alt="">
+                          </span>
+                          <div class="desc">
+                              <h3>Seamless Integrations</h3>
+                              <p>Integrate your data from any sources generated by a Machine or a Human. You can just upload the file or build a Data Funnel for continuous Data Streaming</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- <div class="colorlib-intro">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
+                      <h2>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h2>
+                      <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12 animate-box">
+                      <span class="play"><a href="https://vimeo.com/channels/staffpicks/93951774" class="pulse popup-vimeo"><i class="icon-play3"></i></a></span>
+                  </div>
+              </div>
+          </div>
+      </div> -->
+
+      <!-- <div class="colorlib-work-featured colorlib-bg-white">
+          <div class="container">
+              <div class="row mobile-wrap">
+                  <div class="col-md-5 animate-box">
+                      <div class="mobile-img" style="background-image: url('/static/images/mobile-2.jpg');"></div>
+                  </div>
+                  <div class="col-md-7 animate-box">
+                      <div class="desc">
+                          <h2>Et accusamus</h2>
+                          <div class="features">
+                              <span class="icon"><i class="icon-lightbulb"></i></span>
+                              <div class="f-desc">
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                              </div>
+                          </div>
+                          <div class="features">
+                              <span class="icon"><i class="icon-circle-compass"></i></span>
+                              <div class="f-desc">
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                              </div>
+                          </div>
+                          <div class="features">
+                              <span class="icon"><i class="icon-beaker"></i></span>
+                              <div class="f-desc">
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                              </div>
+                          </div>
+                            <p><a href="#" class="btn btn-primary btn-outline with-arrow"style="color: white;border: 1px solid;background-color: #4a90e2;">START COLLABORATING <i class="icon-arrow-right3"></i></a></p>
+                      </div>
+                  </div>
+              </div>
+              <div class="row mobile-wrap">
+                  <div class="col-md-5 col-md-push-7 animate-box">
+                      <div class="mobile-img" style="background-image: url('/static/images/mobile-1.jpg');"></div>
+                  </div>
+                  <div class="col-md-7 col-md-pull-5 animate-box">
+                      <div class="desc">
+                          <h2>Sed ut perspiciatis</h2>
+                          <div class="features">
+                              <span class="icon"><i class="icon-lightbulb"></i></span>
+                              <div class="f-desc">
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                              </div>
+                          </div>
+                          <div class="features">
+                              <span class="icon"><i class="icon-circle-compass"></i></span>
+                              <div class="f-desc">
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                              </div>
+                          </div>
+                          <div class="features">
+                              <span class="icon"><i class="icon-beaker"></i></span>
+                              <div class="f-desc">
+                                  <p>ELorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                              </div>
+                          </div>
+                      <p><a href="#" class="btn btn-primary btn-outline with-arrow"style="color: white;border: 1px solid;background-color: #4a90e2;">START COLLABORATING <i class="icon-arrow-right3"></i></a></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div> -->
+
+      <!-- <div id="colorlib-counter" class="colorlib-counters" style="background-image: url('/static/images/cover_img_1.jpg');" data-stellar-background-ratio="0.5">
+          <div class="overlay"></div>
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="col-md-4 col-sm-4 text-center animate-box">
+                          <div class="counter-entry">
+                              <span class="icon"><i class="flaticon-ribbon"></i></span>
+                              <div class="desc">
+                                  <span class="colorlib-counter js-counter" data-from="0" data-to="1500" data-speed="5000" data-refresh-interval="50"></span>
+                                  <span class="colorlib-counter-label"> Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4 text-center animate-box">
+                          <div class="counter-entry">
+                              <span class="icon"><i class="flaticon-church"></i></span>
+                              <div class="desc">
+                                  <span class="colorlib-counter js-counter" data-from="0" data-to="500" data-speed="5000" data-refresh-interval="50"></span>
+                                  <span class="colorlib-counter-label">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-md-4 col-sm-4 text-center animate-box">
+                          <div class="counter-entry">
+                              <span class="icon"><i class="flaticon-dove"></i></span>
+                              <div class="desc">
+                                  <span class="colorlib-counter js-counter" data-from="0" data-to="1200" data-speed="5000" data-refresh-interval="50"></span>
+                                  <span class="colorlib-counter-label"> Ut enim ad minim veniam</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div> -->
+
+      <!-- <div class="colorlib-blog">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
+                      <h2> Ut enim ad minim veniam</h2>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4 animate-box">
+                      <article>
+                          <h2>Ut enim ad minim veniam</h2>
+                          <p class="admin"><span>May 12, 2018</span></p>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                          <p class="author-wrap"><a href="#" class="author-img" style="background-image: url('/static/images/person1.jpg');"></a> <a href="#" class="author">by Dave Miller</a></p>
+                      </article>
+                  </div>
+                  <div class="col-md-4 animate-box">
+                      <article>
+                          <h2>Ut enim ad minim veniam</h2>
+                          <p class="admin"><span>May 12, 2018</span></p>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                          <p class="author-wrap"><a href="#" class="author-img" style="background-image: url('/static/images/person2.jpg');"></a> <a href="#" class="author">by Dave Miller</a></p>
+                      </article>
+                  </div>
+                  <div class="col-md-4 animate-box">
+                      <article>
+                          <h2>Ut enim ad minim veniam</h2>
+                          <p class="admin"><span>May 12, 2018</span></p>
+                          <p>Even the all-powerful Pointing has no control </p>
+                          <p class="author-wrap"><a href="#" class="author-img" style="background-image: url('/static/images/person3.jpg');"></a> <a href="#" class="author">by Dave Miller</a></p>
+                      </article>
+                  </div>
+              </div>
+          </div>
+      </div> -->
+
+      <!-- <div id="colorlib-subscribe" class="colorlib-subscribe" style="background-image: url('/static/images/cover_img_1.jpg');" data-stellar-background-ratio="0.5">
+          <div class="overlay"></div>
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-10 col-md-offset-1 text-center colorlib-heading animate-box">
+                      <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h2>
+                      <p>Ut enim ad minim veniam.</p>
+                  </div>
+              </div>
+              <div class="row animate-box">
+                  <div class="col-md-6 col-md-offset-3">
+                      <div class="row">
+                          <div class="col-md-12">
+                          <form class="form-inline qbstp-header-subscribe">
+                              <div class="col-three-forth">
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" id="email" placeholder="Enter your email">
+                                  </div>
+                              </div>
+                              <div class="col-one-third">
+                                  <div class="form-group">
+                                      <button type="submit" class="btn btn-primary" id="sub_btn">SUBSCRIBE NOW</button>
+                                  </div>
+                              </div>
+                          </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div> -->
+
+      <!-- <div class="colorlib-pricing">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
+                      <h2>Lorem Ipsum</h2>
+                      <p>https://www.lipsum.com/</p>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-3 text-center animate-box"> -->
+                      <!-- <div class="pricing">
+                          <h2 class="pricing-heading">Starter</h2>
+                          <div class="price"><sup class="currency"style="color:#4a90e2">$</sup><span style="color:#4a90e2">9</span><small>per month</small></div>
+                          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                          <p><a href="#" class="btn btn-primary" style="background: #4a90e2;color: #fff;border: 1px solid #4a90e2;">Select Plan</a></p>
+                      </div> -->
+                  <!-- </div>
+                  <div class="col-md-3 text-center animate-box"> -->
+                      <!-- <div class="pricing">
+                          <h2 class="pricing-heading">Basic</h2>
+                          <div class="price"><sup class="currency" style="color:#4a90e2">$</sup><span style="color:#4a90e2">27</span><small>per month</small></div>
+                          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                          <p><a href="#" class="btn btn-primary"  style="background: #4a90e2;color: #fff;border: 1px solid #4a90e2;">Select Plan</a></p>
+                      </div> -->
+                  <!-- </div>
+                  <div class="col-md-3 text-center animate-box" style="margin-left: -12%;">
+                      <div class="pricing">
+                          <h2 class="pricing-heading">Pro</h2>
+                          <div class="price"><sup class="currency" style="color:#4a90e2">$</sup><span style="color:#4a90e2">74</span><small>per month</small></div>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut enim ad minim veniam</p>
+                          <p><a href="#" class="btn btn-primary"  style="background: #4a90e2;color: #fff;border: 1px solid #4a90e2;">Select Plan</a></p>
+                      </div>
+                  </div>
+                  <div class="col-md-3 text-center animate-box"> -->
+                      <!-- <div class="pricing">
+                          <h2 class="pricing-heading">Unlimited</h2>
+                          <div class="price"><sup class="currency" style="color:#4a90e2">$</sup><span style="color:#4a90e2">140</span><small>per month</small></div>
+                          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                          <p><a href="#" class="btn btn-primary"  style="background: #4a90e2;color: #fff;border: 1px solid #4a90e2;">Select Plan</a></p>
+                      </div> -->
+                  <!-- </div>
+              </div>
+          </div>
+      </div> -->
+  </div>
+</div>
+{% endblock body %}
+<footer id="colorlib-footer">
+<div class="container footer-container">
+<div class="row row-pb-md" id="footer_details" style="position: relative;bottom: 50px;" >
+<div class="col-md-1 colorlib-widget mobile_hide">
+
+</div>
+<div class="col-md-2 colorlib-widget mobile_hide">
+
+</div>
+<div class="col-md-8 colorlib-widget" id="footer_info">
+
+  <p>
+  <!-- <ul class="colorlib-footer-links" id="show_on_desktop" style="display:flex;list-style:none">
+      <li class="footer_home_link"><a href="{% url 'coreapp:home' %}"><span style="color:#A9A9A9">Home</span></a></li>
+      <li class="footer_blog_link"><a href="https://medium.com/braynai"><span style="color:#A9A9A9">Blog</span></a></li>
+      <li class="footer_login_link"><a href="{% url 'login:login' %}"><span style="color:#A9A9A9">Login</span></a></li>
+      <li class="footer_credits_link"><a href="#"><span style="color:#A9A9A9">Credits</span></a></li>
+  </ul> -->
+  <div class="row footer-text">
+    <div class="col-md-12">
+      <a href="{% url 'coreapp:home' %}"><span style="color:#A9A9A9">Home</span></a>
+      <a href="https://medium.com/braynai"><span style="color:#A9A9A9">Blog</span></a>
+      <a href="{% url 'login:login' %}"><span style="color:#A9A9A9">Login</span></a>
+      <a href="#"><span style="color:#A9A9A9">Credits</span></a>
+      <a href="{% url 'coreapp:privacy-policy' %}"><span style="color:#A9A9A9">Privacy Policy</span></a>
+      <a href="{% url 'coreapp:terms-conditions' %}"><span style="color:#A9A9A9">Terms & Conditions</span></a>
+    </div>
+  </div>
+
+  <ul class="colorlib-social-icons social_icons" >
+  <li><a href="https://twitter.com/brayntranscend">  <i class="fa fa-twitter-square" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+  <li><a href="https://www.facebook.com/transcendbrayn/"><i class="fa fa-facebook-official" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+  <li><a href="https://linkedin.com/company/transcendbrayn"><i class="fa fa-linkedin-square" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+  <!-- <li><a href="#"><i class="icon-dribbble" style="color:#4a90e2"></i></a></li> -->
+  </ul>
+
+</p>
+</div>
+
+
+<div class="col-md-3 colorlib-widget">
+</div>
+</div>
+</div>
+<div class="copy" id="copy_div">
+<div class="container">
+<div class="row">
+<div class="col-md-12 text-center">
+<p style="color:#A9A9A9">
+
+Product is under BETA testing | Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="https://quanscendence.com/" ><span style="color:#A9A9A9">Quanscendence Technologies Pvt Ltd</span></a>
+
+</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+</div>
+
+<div class="gototop js-top">
+<a href="#" class="js-gotop"><i class="fa fa-arrow-up" style="color:#fff;font-size:16px;"></i></a>
+</div>
+
+<!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
+<script  src="{% static 'dist/script.js' %}"></script>
+ {% block script %}
+<script src="{% static 'js/jquery.min.js' %}"></script>
+{% endblock script %}
+<!-- jQuery Easing -->
+<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+<!-- Bootstrap -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- Waypoints -->
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<!-- Stellar Parallax -->
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<!-- YTPlayer -->
+<script src="{% static 'js/jquery.mb.YTPlayer.min.js' %}"></script>
+<!-- Owl carousel -->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<!-- Magnific Popup -->
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/magnific-popup-options.js' %}"></script>
+<!-- Counters -->
+<script src="{% static 'js/jquery.countTo.js' %}"></script>
+<!-- Main -->
+<script src="{% static 'js/main.js' %}"></script>
+<script>
+
+
+var scrollpos = window.scrollY;
+var header = document.getElementById("dsass_header");
+var head = document.getElementById("header_id");
+var logg = document.getElementById("header_log");
+var login_text = document.getElementById("login_text");
+
+function add_class_on_scroll() {
+  header.classList.add("header_active");
+           head.classList.add("header_act");
+           logg.classList.add("loged");
+           login_text.classList.add("loged");
+
+           document.getElementById("logo_img").style.display = "none";
+           document.getElementById("header_img").style.display = "block";
+
+}
+
+function remove_class_on_scroll() {
+  header.classList.remove("header_active");
+       head.classList.remove("header_act");
+       logg.classList.remove("loged");
+       login_text.classList.remove("loged");
+
+       document.getElementById("logo_img").style.display = "block";
+       document.getElementById("header_img").style.display = "none";
+
+}
+
+window.addEventListener('scroll', function(){
+
+  scrollpos = window.scrollY;
+
+  if(scrollpos > 400){
+      add_class_on_scroll();
+  }
+  else {
+      remove_class_on_scroll();
+  }
+
+}
+);
+</script>
+
+
+</body>
+</html>

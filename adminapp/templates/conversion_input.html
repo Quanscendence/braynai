@@ -1,0 +1,22 @@
+
+{% extends 'admin_dashboard.html' %}
+{% load staticfiles %}
+{% block body %}
+
+
+<form class="" method="post" enctype="multipart/form-data" style="margin-top: -5%;">
+  {% csrf_token %}
+  <div class="row"style="margin-left:35%;margin-top:10%;width:30%">
+    {{conversion_inputs.character}}
+  </div>
+<div class="row" style="margin-left:35%;width:30%;margin-top:2%">
+  {{conversion_inputs.function}}
+</div>
+<div style="margin-top:2%;text-align:center">
+<button type="submit" id="submit" class=" waves-effect waves-light" style="border:#4a90e2;color:white;background-color:#4a90e2;margin-top:2%;width:15% ;height: 30px;
+    border-radius: 5px; ">Submit</button>
+</div>
+</form>
+
+
+{% endblock body %}

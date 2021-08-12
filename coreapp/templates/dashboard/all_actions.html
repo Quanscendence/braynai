@@ -1,0 +1,9 @@
+{% extends 'admin_dashboard.html' %}
+{% load staticfiles %}
+{% block body %}
+  <body>
+    {% for a in actions %}
+    <p>{{a}}</p>
+    {% endfor %}
+  </body>
+{% endblock body %}

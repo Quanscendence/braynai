@@ -1,0 +1,1194 @@
+{% extends 'dashboard/project_details.html' %}
+{% load staticfiles %}
+
+{% block body %}
+<!-- Loading style style CSS
+============================================ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
+<link rel="stylesheet" href="{% static 'css/loading_spinner.css' %}">
+<link rel="stylesheet" href="{% static 'multi_form/style.css' %}">
+
+<style>
+    .logo_image_style {
+        float: left;
+        position: relative;
+        z-index: 99;
+    }
+
+    .show {
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    body {
+        background-color: #0000 !important;
+    }
+
+    .select2-container {
+        width: 100% !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+        height: 35px !important;
+    }
+
+    /*style for the switch toggle radio buttons*/
+    .switch-field {
+        display: flex;
+        margin-bottom: 36px;
+        overflow: hidden;
+    }
+
+    .switch-field input {
+        position: absolute !important;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        width: 1px;
+        border: 0;
+        overflow: hidden;
+    }
+
+    .switch-field label {
+        background-color: #e4e4e4;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 14px;
+        line-height: 1;
+        text-align: center;
+        padding: 8px 16px;
+        margin-right: -1px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+        transition: all 0.1s ease-in-out;
+    }
+
+    .switch-field label:hover {
+        cursor: pointer;
+
+    }
+
+    .switch-field input:checked+label {
+        background-color: #a5dc86;
+        box-shadow: none;
+    }
+
+    .switch-field label:first-of-type {
+        border-radius: 4px 0 0 4px;
+    }
+
+    .switch-field label:last-of-type {
+        border-radius: 0 4px 4px 0;
+    }
+
+    /*end of style switch toggle button*/
+
+    /*style for scroll */
+    .scroller {
+        overflow: auto;
+        height: 90px !important;
+    }
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 20px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #4a90e2;
+        border-radius: 10px;
+    }
+
+    /*end of style for scroll*/
+
+
+
+    .right_margin {
+        margin-right: 2%;
+    }
+
+    .file_names {
+        list-style-type: none;
+        color: #4a90e2;
+        margin-left: 3%;
+        height: 80px;
+        overflow-y: auto;
+    }
+
+    .file_names li:before {
+        content: "\2714\0020";
+    }
+
+    label {
+        text-transform: uppercase;
+    }
+
+    .info_icon {
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        margin-left: 6%;
+        /* position: absolute;
+        right: 13%;
+        bottom: 8%;
+        z-index: 999; */
+    }
+    .info_icon {
+      width: 19px;
+      margin-left: 1%;
+      height: 19px;
+      margin-top: -0.1%;
+    }
+
+    .modal {
+    position: fixed;
+    top: 50%;
+    display: block;
+    left: 50%;
+    background: transparent;
+    /* right: 0; */
+    right: unset;
+    bottom: unset;
+    width: 100%;
+    /* min-width: 0; */
+    max-width: 100%;
+    /* max-width: 630px; */
+    /* min-width: 320px; */
+    height: auto;
+    z-index: 2000;
+    visibility: hidden;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+</style>
+<div class="loading-overlay">
+  <span class="fas fa-spinner fa-3x fa-spin"></span>
+  <span class="loading-message">Please wait..it's loading</span>
+</div>
+
+
+
+
+
+<form class="steps" accept-charset="UTF-8" enctype="multipart/form-data" novalidate="" id="project_form">
+  {%csrf_token%}
+  {{form.media}}
+  <ul id="progressbar">
+    <li class="active">Project  Files Info</li>
+    <li>File upload</li>
+    <li class="file_list">NAN SELECTION</li>
+    <li>File Relationship</li>
+    <!-- <li></li> -->
+  </ul>
+
+
+
+  <!-- USER INFORMATION FIELD SET -->
+  <fieldset id="first_fieldset">
+    <!-- <h2 class="fs-title" </h2><img src="{% static 'images/info.png' %}" class="info_icon"
+      title="Click the color palette to choose the color of the dashboard"> -->
+    <!-- <h3 class="fs-subtitle">We just need some basic information to begin your scoring</h3> -->
+      <div class="row" style="overflow:auto;">
+        <div class="display_next" style="margin-top:1%;">
+          <h2 class="fs-title">Present File/s Schema</h2>
+          <img src="https://therealmstorage.sgp1.cdn.digitaloceanspaces.com/brayn/images/info.png" id="icon2" class="info_icon modal-trigger explanation"
+            title="Click the color palette to choose the color of the dashboard" data-modal-id="modal-3">
+        </div>
+        <h5>No Of Files : <span style="margin-left: 0.2%;">{{file_count}}</span></h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>FILE NAME</th>
+              <th>COLUMNS</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for file_name,value in project_schema.schema.items %}
+
+            <tr>
+              <td>{{file_name}}</td>
+              <td class="scroller">{{value.columns}}</td>
+
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+      </div>
+      {% if project_relations %}
+      <h4>Relationships Between The Project Files</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              Primarykey
+            </th>
+            <th>
+              File Name
+            </th>
+            <th>
+              ForeignKey
+            </th>
+            <th>
+              File Name
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for r in project_relations %}
+          <tr>
+            <td>{{r.relation.primarykey.column}}</td>
+            <td>{{r.relation.primarykey.}}</td>
+            <td>{{r.relation.foreignkey.column}}</td>
+            <td>{{r.relation.foreignkey.file}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {%endif%}
+
+    <div style="position:relative"></div>
+    <input type="button" id="first_button" data-page="1"  name="next" class="next action-button" style="position:absolute;bottom: 2%;right: 4%;" value="Next">
+    <!-- <div class="" style="display:flex;">
+      <img src="{% static 'images/info.png' %}" class=""/>
+      <input type="button" data-page="1" name="next" class="next action-button" value="Next"
+      onclick="projectCreate()"  >
+    </div> -->
+    <!-- <div class="explanation btn btn-small modal-trigger" data-modal-id="modal-3">
+    <i class="question-log fa fa-question-circle"></i> What Is This?</div> -->
+  </fieldset>
+
+
+
+  <!-- ACQUISITION FIELD SET -->
+  <fieldset id="second_fieldset">
+    <h2 class="fs-title">upload your data</h2>
+    <!-- <h3 class="fs-subtitle">How have you been doing in acquiring donors?</h3> -->
+    <!-- Begin Total Number of Donors in Year 1 Field -->
+    <div
+      class="form-item webform-component webform-component-textfield hs_total_number_of_donors_in_year_1 field hs-form-field"
+      id="webform-component-acquisition--amount-1">
+
+      <!-- <label for="edit-submitted-acquisition-amount-1 total_number_of_donors_in_year_1-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">What was your number of total donors in year 1? *</label> -->
+
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="" style="display:flex;">
+          <div class="">
+            <!-- <label for="">wefwpeofn</label> -->
+            <!-- <input type="radio" name="upload_files" value="" style="width: 26px;margin-top: 64%;" checked> -->
+          </div>
+          <div class="" style="width: 100%;margin-top: 5%;">
+
+            <!-- <label for="id_files">Upload File/s</label> -->
+
+                <div class="" style="display:flex;">
+
+                  <div class="disable_functionality" style="width: 100%;">
+                    <!-- <label for="id_files">Upload File/s</label> -->
+
+                    <div class="file_upload_section">
+                      {{form.files}}
+                      <p style="color: #8D9498;font-size: 17px;">Drag & Drop here or click to Upload.<br />
+                        <span>(CSV-UTF-8/XLSX)</span>
+                      </p>
+
+                    </div>
+
+
+                    <p id="no_of_files" style="display:none;">No Of File Selected</p>
+                    <ul class="file_names">
+
+                    </ul>
+
+                    <!-- <span class="error1" style="display: none;">
+                      <i class="error-log fa fa-exclamation-triangle"></i>
+                    </span> -->
+                  </div>
+                </div>
+            <!-- <div class="file_upload_section">
+              <! {{project_form.files}} >
+              <p>Drag your files here or click in this area.</p>
+              <ul class="file_names">
+
+              </ul>
+            </div> -->
+
+            <span class="error1" style="display: none;">
+              <i class="error-log fa fa-exclamation-triangle"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="" style="display:flex;">
+          <div class="">
+            <!-- <label for="">wefwpeofn</label> -->
+            <!-- <input type="radio" name="upload_files" value="" style="width: 26px;margin-top: 64%;"> -->
+          </div>
+          <div class="">
+            <!-- <label for="id_files">Data Integration</label> -->
+            <!-- {{project_form.files}}
+              <span class="error1" style="display: none;">
+                  <i class="error-log fa fa-exclamation-triangle"></i>
+              </span> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End Total Number of Donors in Year 1 Field -->
+
+    <!-- Begin Total Number of Donors in Year 2 Field -->
+    <!-- <div class="form-item webform-component webform-component-textfield hs_total_number_of_donors_in_year_2 field hs-form-field" id="webform-component-acquisition--amount-2">
+
+        <label for="edit-submitted-acquisition-amount-2 total_number_of_donors_in_year_2-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">What was your number of total donors in year 2? *</label>
+
+       {{project_form.file_2}}
+        <span class="error1" style="display: none;">
+            <i class="error-log fa fa-exclamation-triangle"></i>
+        </span>
+      </div> -->
+    <!-- End Total Number of Donors in Year 2 Field -->
+
+    <!-- Begin Calc of Total Number of Donors Fields -->
+    <!-- THIS FIELD IS NOT EDITABLE | GRAYED OUT -->
+    <!-- <div class="form-item webform-component webform-component-textfield webform-container-inline hs_total_donor_percent_change field hs-form-field">
+
+        <label for="edit-submitted-acquisition-percent-change total_donor_percent_change-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">Total Donors Percent Change</label>
+
+        {{project_form.file_3}}
+      </div> -->
+    <!-- End Calc of Total Number of Donors Fields -->
+    <div style="position:relative">
+
+      </div>
+    <input type="button" data-page="2" name="previous" class="previous action-button" value="Previous" />
+    <input type="button" data-page="2" onclick="readFiles()" name="next" class="next action-button" style="position: absolute;right: 3%;bottom: 3%;" value="Next" />
+    <!-- <div class="explanation btn btn-small modal-trigger" data-modal-id="modal-3">What Is This?</div> -->
+  </fieldset>
+  <fieldset id="third_fieldset">
+
+
+    <div class="nan_section">
+      <h2 class="fs-title">Choose Nan/s</h2>
+      <div class="">
+        <div class="row scroller " id="metadata_id" style="display:flex;">
+          <div class="col-md-12 "></div>
+        </div>
+      </div>
+    </div>
+      <input type="button" data-page="3" name="previous" class="previous action-button nan_section_button" value="Previous" />
+      <input type="button" data-page="3" onclick="fileUpload()" name="next" class="next action-button fixed_button nan_section_button" value="Next" />
+      <!-- <div class="explanation btn btn-small modal-trigger" data-modal-id="modal-3">What Is This?</div> -->
+
+
+    <!-- Tryout -->
+    <div class="relationship_section" style="display:none;">
+      <h2 class="fs-title">Make us understand your data</h2>
+      <div>
+        <!-- <div class="row">
+          <div class="col-md-6" style="margin-top: 2%;">
+            <label style="width: 55%;">
+              Choose Time Series Column:
+            </label>
+            <div class="" style="width: 88%;">
+              <p id="time_series_select_error" style="display: none;color:red;"></p>
+              <select name="time_series_column" id="time_series_select" data-autocomplete-light-language="en"
+                data-autocomplete-light-function="select2" tabindex="-1" class="select2-hidden-accessible"
+                aria-hidden="true">
+                <option value="no-time-series">-------------</option>
+              </select>
+            </div>
+          </div>
+        </div> -->
+        <div style="margin-bottom: 3%;">
+          <p id="relation_error_msg_id" style="display:none;"></p>
+
+          <div class="row" id="relation_create_row_id">
+            <label style="margin-left:1.3%;">Choose your Relation between files</label>
+            <div class="col-md-12" style="display:flex;">
+              <div class="" style="width: 43%;">
+                <select name="primarykey_relation" id="primarykey_relation_id" data-autocomplete-light-language="en"
+                  data-autocomplete-light-function="select2" tabindex="-1" class="select2-hidden-accessible"
+                  aria-hidden="true">
+                  <option value="">-------------</option>
+                </select>
+              </div>
+              <div class="" style="width: 43%;margin-left: 2%;">
+                <select name="foreignkey_relation" id="foreignkey_relation_id"  data-autocomplete-light-language="en"
+                  data-autocomplete-light-function="select2" tabindex="-1" class="select2-hidden-accessible"
+                  aria-hidden="true">
+                  <option value="">-------------</option>
+                </select>
+              </div>
+              <button type="button" class="action-button data_append_button" valu="Create"
+                onclick="RelatioshipCreate()">Create</button>
+            </div>
+          </div>
+          <div class="row" id="table_display_section" style="display:none">
+            <div class="col-md-12 table_content">
+              <table class="table table-striped" id="relationship_table">
+                <thead>
+                  <tr>
+                    <th scope="row">Primarykey File</th>
+                    <th>Primarykey Column</th>
+                    <th>ForeignKey File</th>
+                    <th>ForeignKey Column</th>
+                  </tr>
+                </thead>
+                <tbody id="relation_div_id">
+
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+
+
+      </div>
+      </div>
+      <input type="button" data-page="3" name="previous" class="previous action-button relationship_section_button" style="display:none" value="Previous" />
+      <input type="button" data-page="3" name="next" class="next action-button fixed_button relationship_section_button" style="display:none" onclick="metaDataGet()" value="Submit" />
+
+
+    <!-- End of tryouts -->
+  </fieldset>
+
+
+
+  <!-- Cultivation FIELD SET -->
+
+
+
+
+  <!-- Cultivation2 FIELD SET -->
+
+  <fieldset id="fourth_fieldset">
+    <h2 class="fs-title">Make us understand your data</h2>
+    <div>
+      <!-- <div class="row">
+        <div class="col-md-6" style="margin-top: 2%;">
+          <label style="width: 55%;">
+            Choose Time Series Column:
+          </label>
+          <div class="" style="width: 88%;">
+            <p id="time_series_select_error" style="display: none;color:red;"></p>
+            <select name="time_series_column" id="time_series_select" data-autocomplete-light-language="en"
+              data-autocomplete-light-function="select2" tabindex="-1" class="select2-hidden-accessible"
+              aria-hidden="true">
+              <option value="no-time-series">-------------</option>
+            </select>
+          </div>
+        </div>
+      </div> -->
+      <div style="margin-bottom: 3%;">
+        <p id="relation_error_msg_id" style="display:none;"></p>
+
+        <div class="row" id="relation_create_row_id">
+          <label style="margin-left:1.3%;">Choose your Relation bettween files</label>
+          <div class="col-md-12" style="display:flex;">
+            <div class="" style="width: 43%;">
+              <select name="primarykey_relation" id="primarykey_relation_id" data-autocomplete-light-language="en"
+                data-autocomplete-light-function="select2" tabindex="-1" class="select2-hidden-accessible"
+                aria-hidden="true">
+                <option value="">-------------</option>
+              </select>
+            </div>
+            <div class="" style="width: 43%;margin-left: 2%;">
+              <select name="foreignkey_relation" id="foreignkey_relation_id" data-autocomplete-light-language="en"
+                data-autocomplete-light-function="select2" tabindex="-1" class="select2-hidden-accessible"
+                aria-hidden="true">
+                <option value="">-------------</option>
+              </select>
+
+              <p class="test_industry" style="display: none;">{{form.industry}}</p>
+            </div>
+            <button type="button" class="action-button data_append_button" valu="Create"
+              onclick="RelatioshipCreate()">Create</button>
+          </div>
+        </div>
+        <div class="row" id="table_display_section" style="display:none">
+          <div class="col-md-12 table_content">
+            <table class="table table-striped" id="relationship_table">
+              <thead>
+                <tr>
+                  <th scope="row">Primarykey File</th>
+                  <th>Primarykey Column</th>
+                  <th>ForeignKey File</th>
+                  <th>ForeignKey Column</th>
+                </tr>
+              </thead>
+              <tbody id="relation_div_id">
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+
+
+    </div>
+    <input type="button" data-page="4" name="previous" class="previous action-button" value="Previous" />
+    <input type="button" data-page="4" name="next" class="next action-button fixed_button" onclick="metaDataGet()" value="Submit" />
+    <!-- <div class="explanation btn btn-small modal-trigger" data-modal-id="modal-3">What Is This?</div> -->
+  </fieldset>
+
+</form>
+ <!-- Modal -info -->
+  <div class="container">
+    <div id="modal-3" class="modal" data-modal-effect="slide-top">
+      <div class="modal-content">
+        <h2 class="fs-title">PRESENT FILE/S SCHEMA</h2>
+        <h3 class="fs-subtitle">Getting the most out of your data</h3>
+        <p style="text-align: left;">These are the data files currently uploaded for this project. Click 'NEXT' to upload additional file(s)</p>
+        <input type="button" name="next" class="action-button modal-close" value="Got it!">
+      </div>
+    </div>
+  </div>
+
+  <!-- RETENTION FIELD SET -->
+  <!-- <fieldset>
+    <h2 class="fs-title">Choose Nan/s</h2>
+    <div class="">
+      <div class="row scroller " id="metadata_id" style="display:flex;">
+        <div class="col-md-12 "></div>
+      </div>
+    </div>
+
+
+    <input type="button" data-page="5" name="previous" class="previous action-button" value="Previous" />
+    <input id="submit" class="hs-button primary large action-button next" onclick="metaDataUpload()" type="button"
+      value="Submit">
+    <div class="explanation btn btn-small modal-trigger" data-modal-id="modal-3">What Is This?</div>
+  </fieldset> -->
+
+  <!-- <fieldset>
+    <h2 class="fs-title">Thank you for creating the project!</h2>
+    <h3 class="fs-subtitle">Please wait for few seconds as you will be redirected to Project dashboard!</h3>
+    <div class="explanation btn btn-small modal-trigger" data-modal-id="modal-3">What Is This?</div>
+  </fieldset> -->
+  <input type="text" name="project" id="id_project" value="{{project.pk}}" style="visibility: hidden;" />
+  <!-- partial -->
+</form>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+<script src='https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js'></script>
+<script src="{% static 'multi_form/script.js' %}"></script>
+
+
+<script>
+  //script for the  project from first step of multistep form  //
+  var current_fs, next_fs, previous_fs;
+  var left, opacity, scale;
+  var animating;
+
+
+  $(".next").click(function () {
+
+      // if (animating) return false;
+      // animating = true;
+      current_fs = $(this).parent();
+      console.log("fwefi"+current_fs)
+      next_fs = $(this).parent().next();
+      console.log("fwewfewe"+next_fs)
+      $('.select2-container').show();
+      $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+      console.log(next_fs)
+
+      // For first button
+      if(next_fs.context.id=="first_button"){
+            movetoNext('move_true')
+      }
+
+      else if(next_fs.context.id==="second_button"){
+        $('#choose_nan').hide()
+        readFiles();
+
+      }
+
+      else if(next_fs.context.id==="third_button"){
+          fileUpload();
+      }
+
+      else if(next_fs.context.id==="fourth_button") {
+          metaDataGet()
+      }
+
+      //
+  });
+
+// START :  FUNCTION TO MOVE TO NEXT SECTION UPON SUCESS FROM AJAX
+  function movetoNext(status) {
+    console.log(status)
+    if(status === 'move_false'){
+      document.querySelector('.loading-overlay').style.display = "none";
+      $('.nan_section').hide();
+      $('.file_list').hide();
+      $('.relationship_section').show();
+      $('.nan_section_button').hide();
+      $('.relationship_section_button').show();
+
+      return false;
+    }
+    else {
+      document.querySelector('.loading-overlay').style.display = "none";
+      next_fs.show();
+      current_fs.animate({
+          opacity: 0
+      }, {
+          step: function (now, mx) {
+              scale = 1 - (1 - now) * 0.2;
+              left = (now * 50) + "%";
+              opacity = 1 - now;
+              current_fs.css({
+                  'transform': 'scale(' + scale + ')'
+              });
+              next_fs.css({
+                  'left': left,
+                  'opacity': opacity
+              });
+          },
+          duration: 800,
+          complete: function () {
+              current_fs.hide();
+              animating = false;
+          },
+          easing: 'easeInOutExpo'
+      });
+    }
+
+  }
+// END :  FUNCTION TO MOVE TO NEXT SECTION UPON SUCESS FROM AJAX
+
+  //end of script to create project from first step of multistep form //
+
+</script>
+<script type="text/javascript">//script to upload files from second step of multistep form //
+
+
+
+
+
+</script>
+<script type="text/javascript">
+  //script for file headers upload
+  function fileUpload() {
+    // document.getElementById('loader').style.display = "block";
+    document.querySelector('.loading-overlay').style.display = "block";
+    var frm = new FormData($('#project_form').get(0));
+    var pk = $('#id_project').val();
+    var primarykey_relation_select = $('#primarykey_relation_id');
+    var foreignkey_relation_select = $('#foreignkey_relation_id');
+
+    $.ajax({
+      url: "/add-on/nan-fill/"+pk+"/",
+      method: "POST",
+      headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+      data: frm,
+      cache: false,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        if (data.error) {
+          document.querySelector('.loading-overlay').style.display = "none";
+          alert(data.error);
+        }
+        else if (data.pk) {
+          document.querySelector('.loading-overlay').style.display = "none";
+
+          sucessFunction(data.pk)
+          return false;
+
+        }
+        else if (data.relation_all_columns) {
+          movetoNext('move_true');
+          document.querySelector('.loading-overlay').style.display = "none";
+          for (let [key, value] of Object.entries(data.relation_all_columns)) {
+
+            primarykey_relation_select.append('<option value="' + key + '">' + value + '</option>');
+          };
+          for (let [key, value] of Object.entries(data.relation_all_columns)) {
+            foreignkey_relation_select.append('<option value="' + key + '">' + value + '</option>');
+          };
+        }
+
+      }
+
+
+    });
+  }
+
+</script>
+<script type="text/javascript">
+  function fileHeaderYes(file_name) {
+    var checked = document.getElementById(file_name + '_header_yes');
+    // alert("value"+checked);
+    if (checked.checked == true) {
+      // alert('true');
+      document.getElementById(file_name + '_header_disply').style.display = "block";
+      document.getElementById(file_name + '_header').style.display = "none";
+      document.getElementById(file_name + '_header_row_div').style.display = "block";
+    }
+    else {
+      // alert('false');
+      document.getElementById(file_name + '_header').style.display = "block";
+      document.getElementById(file_name + '_header_row_div').style.display = "none";
+      document.getElementById(file_name + '_header_disply').style.display = "none";
+    }
+
+
+  }
+  function fileHeaderNo(file_name) {
+    // alert("called" + file_name);
+
+    var checked = document.getElementById(file_name + '_header_no');
+    // alert("value" + checked);
+    if (checked.checked == true) {
+      // alert('true');
+      document.getElementById(file_name + '_header').style.display = "block";
+      document.getElementById(file_name + '_header_disply').style.display = "none";
+      document.getElementById(file_name + '_header_row_div').style.display = "none";
+    }
+    else {
+      // alert('false');
+      document.getElementById(file_name + '_header_disply').style.display = "none";
+      document.getElementById(file_name + '_header').style.display = "none";
+      document.getElementById(file_name + '_header_row_div').style.display = "block";
+    }
+
+
+  }
+  function file2No() {
+    var checked = document.getElementById('file_2_no')
+    if (checked == true) {
+      document.getElementById('file_2_header').style.display = "none";
+    }
+    else {
+      document.getElementById('file_2_header').style.display = "block";
+    }
+
+
+  }
+  function file2Yes() {
+    var checked = document.getElementById('file_2_yes')
+    if (checked == true) {
+      document.getElementById('file_2_header').style.display = "block";
+    }
+    else {
+      document.getElementById('file_2_header').style.display = "none";
+    }
+
+
+  }
+  function file3No() {
+    var checked = document.getElementById('file_3_no')
+    if (checked == true) {
+      document.getElementById('file_3_header').style.display = "none";
+    }
+    else {
+      document.getElementById('file_3_header').style.display = "block";
+    }
+
+
+  }
+  function file3Yes() {
+    var checked = document.getElementById('file_3_yes')
+    if (checked == true) {
+      document.getElementById('file_3_header').style.display = "block";
+    }
+    else {
+      document.getElementById('file_3_header').style.display = "none";
+    }
+
+
+  }
+</script>
+
+<!-- script for relationship and metadata hadling -->
+<script type="text/javascript">
+  /// start script for metadata handling
+  function metaDataGet() {
+
+    // alert("called");
+    // document.getElementById('loader').style.display = "block";
+    document.querySelector('.loading-overlay').style.display = "block";
+    var frm = new FormData($('#project_form').get(0));
+    var pk = $('#id_project').val();
+    var primarykey_relation_select = $('#primarykey_relation_id');
+    var foreignkey_relation_select = $('#foreignkey_relation_id');
+
+    $.ajax({
+      url: "/add-on/final/"+pk+"/",
+      method: "POST",
+      headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+      data: frm,
+      cache: false,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        if (data.error) {
+          document.querySelector('.loading-overlay').style.display = "none";
+          alert(data.error);
+        }
+        else if (data.pk) {
+          document.querySelector('.loading-overlay').style.display = "none";
+
+          sucessFunction(data.pk)
+        }
+
+      }
+
+
+    });
+  }
+  /// end script for metadata handling
+
+
+  /// start script for metadata create
+  function metaDataUpload() {
+    document.getElementById('loading-overlay').style.display = "block";
+    var frm = new FormData($('#project_form').get(0));
+    var pk = $('#id_project').val();
+
+
+
+    $.ajax({
+      url: "/project/",
+      method: "POST",
+      headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+      data: frm,
+      cache: false,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        document.getElementById('loading-overlay').style.display = "none";
+        if (data.msg) {
+          alert(data.msg);
+          sucessFunction(data.pk)
+        }
+        else {
+          alert(data.error_msg)
+        }
+
+
+
+        console.log(data);
+
+      }
+    });
+  }
+  /// end script for metadata create
+
+
+</script>
+<script type="text/javascript">
+  /// start script for Relatioship handling
+  function RelatioshipCreate() {
+    var frm = new FormData($('#project_form').get(0));
+    var pk = $('#id_project').val();
+
+    document.getElementById('relation_error_msg_id').style.display = "none";
+
+    var primarykey_relation_select = $('#primarykey_relation_id');
+    var foreignkey_relation_select = $('#foreignkey_relation_id');
+
+
+
+    $.ajax({
+      url: "/file/relationship/" + pk + "/",
+      method: "POST",
+      headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+      data: frm,
+      cache: false,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        // alert(JSON.stringify(data.error_msg))
+        if (data.relation_list) {
+          // table.tBodies[0].rows.length;
+          var html = `
+                    <tr id="${data.relation_list.id}">
+                      <td scope="row">${data.relation_list.file_1}</td>
+                      <td>${data.relation_list.column_1}</td>
+                      <td scope="row">${data.relation_list.file_2}</td>
+                      <td>${data.relation_list.column_2}<i class="fa fa-trash" aria-hidden="true" style="margin-left:11%;"  onclick="RelatioshipDelete('${data.relation_list.id}')"></i></td>
+                    </tr>
+                    `;
+          $('#relation_div_id').append(html);
+          $('#table_display_section').show();
+          $("#foreignkey_relation_id").val($("#foreignkey_relation_id option:eq()").val());
+          $('#select2-foreignkey_relation_id-container').html("");
+          $("#primarykey_relation_id").val($("#primarykey_relation_id option:eq()").val());
+          $('#select2-primarykey_relation_id-container').html("");
+        }
+        else if (data.error_msg) {
+          alert(data.error_msg);
+        }
+
+      }
+    });
+  }
+  /// end script for Relatioship handling
+</script>
+<!-- end script for Relatioship and metadata handling -->
+
+<script type="text/javascript">
+
+    //START: script for filnames display
+    $(document).ready(function () {
+
+      // document.querySelector('.file_names').style.overflow = 'hidden';
+      fileCollection = [];
+
+      // var file_names = document.querSelector('.input_files');
+      $('.addon_file').change(function () {
+        files = $(this)[0].files;
+        delete files[0]
+        console.log(files);
+        $(".file_names").children().remove();
+        // $('#id_files').val(files)
+        // fileCollection.push(files);
+        // // console.log(fileCollection);
+        // fileCollection.forEach((item, i) => {
+        //   // console.log(item);
+        //   files[i] = item;
+        // });
+
+        console.log(files);
+        $('#no_of_files').show();
+        $('#no_of_files').text(this.files.length + " file(s) selected");
+        if (this.files.length === 0) {
+          // document.querySelector('.file_names').style.overflow = 'hidden';
+          $(".file_names").children().remove();
+        }
+
+        // $('.file_upload_section p').text(file_names.value + " file(s) selected");
+        for (var i = 0; i < files.length; i++) {
+          // var html = `<li >${files[i].name}<i class="fa fa-times-circle file_delete_icon" aria-hidden="true" id=${files[i].name} onclick="deleteFile(this,${i})"></i></li>`;
+          var html = `<li >${files[i].name}</li>`;
+          // document.querySelector('.file_names').style.overflowY = 'scroll';
+          $(".file_names").append(html);
+        }
+      });
+    });
+    //END: script for filnames display
+</script>
+
+<script>
+  document.getElementById('color_id').style.background = "#4a90e2";
+  document.getElementById('color_id').value = "rgb(74, 144, 226)";
+
+  var files = {};
+  var fileCollection
+  //  start script to delete the relation
+  function RelatioshipDelete(pk) {
+    var frm = new FormData($('#project_form').get(0));
+    var table = document.getElementById("relationship_table");
+    document.getElementById('relation_error_msg_id').style.display = "none";
+    // alert("called" + pk);
+    var primarykey_relation_select = $('#primarykey_relation_id');
+    var foreignkey_relation_select = $('#foreignkey_relation_id');
+    $("#" + pk).remove();
+    if (table.tBodies[0].rows.length < 1) {
+      $('#table_display_section').hide();
+    }
+
+
+
+    $.ajax({
+      url: "/file/relationship/delete/" + pk + "/",
+      method: "POST",
+      headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+      data: frm,
+      cache: false,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        // alert(JSON.stringify(data.error_msg))
+        if (data.error_msg) {
+          alert(data.error_msg);
+
+
+        }
+        else {
+          id = '#' + data.id;
+          $(id).remove();
+
+
+        }
+        $("#foreignkey_relation_id").val($("#foreignkey_relation_id option:eq()").val());
+        $('#select2-foreignkey_relation_id-container').html("");
+        $("#primarykey_relation_id").val($("#primarykey_relation_id option:eq()").val());
+        $('#select2-primarykey_relation_id-container').html("");
+        if (table.tBodies[0].rows.length < 2) {
+          $('#table_display_section').hide();
+        }
+
+      }
+    });
+  }
+  //  end  script to delete the relation
+
+
+  //START: script for Deleting Files
+  function deleteFile(ele, index) {
+    console.log(files[index]);
+    delete files;
+    console.log(files);
+
+    ele.parentNode.parentNode.removeChild(ele.parentNode);
+  }
+  //END: script for Deleting Files
+
+  //START: Color selection script
+  function selectedColor(ele) {
+
+    document.getElementById('color_id').style.background = ele.style.background;
+    document.getElementById('color_id').value = ele.style.background;
+  }
+  //END: Color selection script
+
+
+
+
+
+
+
+
+  //Delete later
+
+function readFiles() {
+    // document.getElementById('loader').style.display = "block";
+    document.querySelector('.loading-overlay').style.display = "block";
+    var frm = new FormData($('#project_form').get(0));
+    var pk = $('#id_project').val();
+    var metadata = $('#metadata_id');
+    $("#metadata_id").empty();
+    var primarykey_relation_select = $('#primarykey_relation_id');
+    var foreignkey_relation_select = $('#foreignkey_relation_id');
+
+    $.ajax({
+      url: "/add-on/"+pk+"/",
+      method: "POST",
+      headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+      data: frm,
+      cache: false,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        if (data.error) {
+          document.querySelector('.loading-overlay').style.display = "none";
+          alert(data.error);
+        }
+        else if (data.pk) {
+          document.querySelector('.loading-overlay').style.display = "none";
+          sucessFunction(data.pk)
+          return false
+
+        }
+        else if (data.relation_all_columns) {
+          movetoNext('move_false');
+          document.querySelector('.loading-overlay').style.display = "none";
+
+
+          for (let [key, value] of Object.entries(data.relation_all_columns)) {
+            primarykey_relation_select.append('<option value="' + key + '">' + value + '</option>');
+          };
+          for (let [key, value] of Object.entries(data.relation_all_columns)) {
+            foreignkey_relation_select.append('<option value="' + key + '">' + value + '</option>');
+          };
+        }
+        else if (data.all_columns) {
+          movetoNext('move_true');
+          for (let [key, value] of Object.entries(data.all_columns)) {
+            for (let [k, v] of Object.entries(data.column_nan)) {
+              if (key == k){
+                var count = v
+
+              }
+
+
+            }
+
+
+            if (value == 0) {
+              var html = `<div class="right_margin"><span>${key}</span><br />NAN Count ${count}<br><select id="${key}_select" name="${key}_select" onchange="selectFunction('${key}')" ><option value="zero" selected>Zero</option><option value="previous" >Previous Value</option><option value="drop" >Delete Row</option><option value="delete_column" >Delete Column</option><option value="custom_value" >Create New Value</option></select> <input type="number" id="${key}_input" name="${key}_input" style="display:none" desabled></div>`
+
+              $("#metadata_id").append(html)
+            }
+            else if (value == "None") {
+              var html =`<div class="right_margin"><span> ${key} </span><br />NAN Count ${count}<br><select id="${key}_select" name="${key}_select" onchange="selectFunction('${key}')"><option value="None" selected>None</option><option value="previous" >Previous Value</option><option value="drop" >Delete Row</option><option value="delete_column" >Delete Column</option><option value="custom_value" >Create New Value</option></select><input type="text" id="${key}_input" name="${key}_input" style="display:none" desabled></div>`
+              $("#metadata_id").append(html)
+            }
+          }
+        }
+      }
+
+
+    });
+  }
+function sucessFunction(pk) {
+  // var url = "ttp://127.0.0.1:8000/single-project/" + pk + "/"
+  document.querySelector('.loading-overlay').style.display = "none";
+  var url = "https://brayn.ai/single-project/" + pk + "/";
+  window.location = url;
+}
+
+
+
+function escapeHTML(str) {
+  return new Option(str).innerHTML;
+}
+//end of script to upload files from second step of multistep form
+
+
+
+// fuction for the imputation
+function selectFunction(name){
+  // alert(name);
+  id  = '#'+name+'_select'
+  input_id = '#'+name+'_input'
+  var value = $(id).val()
+  if (value == 'custom_value'){
+    $(input_id).prop( "disabled", false );
+    // $(id).prop( "disabled", true );
+    // $(id).hide();
+    $(input_id).show();
+  }
+  else{
+    $(input_id).prop( "disabled", true );
+    // $(id).prop( "disabled", true );
+    // $(id).hide();
+    $(input_id).hide();
+
+  }
+
+}
+</script>
+
+
+
+
+
+<script src="{%static 'js/jscolor.js' %}"></script>
+
+
+{% endblock body %}

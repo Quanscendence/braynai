@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <body>
+    {%for s in seo %}
+    <div>
+      <h3>{{s.choices}}</h3>
+      <p>{{s.seo_title}}</p>
+      <p>{{s.seo_description}}</p>
+      <p>{{s.seo_keyword}}</p>
+      </div>
+      <div>
+        <a href="{% url 'seo:updates' pk=s.pk %}"><button type="submit">Update</button></a>
+        </div>
+      {%endfor%}
+  </body>
+  </body>
+</html>

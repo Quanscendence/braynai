@@ -1,0 +1,366 @@
+{% extends 'login/subpages_base.html' %}
+{% load staticfiles %}
+{% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href="{% static 'dot/75efae7724dbc3c055e918057.css' %}">
+<link rel="stylesheet" href="{% static 'dot/style.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .fa {
+        font-size: 24px;
+        margin-left: 5%;
+        color: #4a90e2;
+    }
+
+    #send_msg {
+        width: 180px;
+        border-radius: 5px;
+        background-color: #4a90e2;
+        border: 2px solid #4a90e2;
+    }
+
+    #copy_div {
+        padding-top: 2em;
+        padding-bottom: 2em;
+        background: #262626;
+    }
+
+    #footer_info {
+        margin-left: -15%;
+        margin-top: 1.4%;
+    }
+
+    #footer_details {
+        padding-bottom: 0em !important;
+    }
+
+    #dsass_header {
+        position: fixed;
+        background-color: white;
+        -webkit-transition: all ease-out .5s;
+        -moz-transition: all ease-out .5s;
+        -o-transition: all ease-out .5s;
+        transition: all ease-out .5s;
+    }
+
+    .header_active {
+        background-color: #4a90e2 !important;
+        height: 85px;
+    }
+
+    .header_act {
+        /* position: relative;
+    top: 7px; */
+        color: white !important;
+
+    }
+
+    #header_img {
+        width: 110px;
+        margin-top: -4px;
+        display: none;
+    }
+
+    .loged {
+        /* position: relative;
+ top: 7px; */
+        color: white !important;
+
+    }
+
+    .msg-error {
+        color: #c65848;
+    }
+
+    .g-recaptcha.error {
+        border: solid 2px #c64848;
+        padding: .2em;
+        width: 20em;
+    }
+
+    #map {
+        width: 100% !important;
+        height: 0px !important;
+        position: relative !important;
+    }
+
+    #btn-validate {
+        width: 180px;
+        border-radius: 5px;
+        background-color: #4a90e2;
+        border: 2px solid #4a90e2;
+        color: white;
+    }
+
+    /* .js-captcha-refresh{
+  margin-left: 5%;
+    background: #4a90e2;
+    width: 15%;
+    border: 1px solid #4a90e2;
+    border-radius: 4px;
+    color: white;
+    height: 30px;
+} */
+
+
+</style>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+    crossorigin="anonymous"></script>
+
+<script>
+    //   $( '#btn-validate' ).click(function(){
+    //
+    // })
+
+    function submitForm() {
+        var $captcha = $('#recaptcha'),
+            response = grecaptcha.getResponse();
+
+        if (response.length === 0) {
+            $('.msg-error').text("reCAPTCHA is mandatory");
+            if (!$captcha.hasClass("error")) {
+                $captcha.addClass("error");
+            }
+        } else {
+            $('.msg-error').text('');
+            $captcha.removeClass("error");
+            $('#signup_form').submit();
+        }
+    }
+</script>
+<nav class="colorlib-nav" role="navigation" id="dsass_header">
+    <div class="top-menu" style="height: 85px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <!-- width: 122px;margin-top: -4px;margin-left: -34%; -->
+                    <a href="{% url 'coreapp:home' %}">
+                        <img src="{% static 'images/logo.png' %}"
+                            style="width: 110px;margin-top: -4px;margin-left: -32%;" id="header_img">
+                        <img src="{% static 'images/header_change.png' %}"
+                            style="width: 110px;margin-top: -4px;margin-left: -32%;" id="logo_img">
+                    </a>
+                </div>
+                <div class="col-md-10 text-right menu-1">
+                    <ul>
+                        <li><a href="{% url 'coreapp:home' %}"><span id="header_id"
+                                    style="color:#4a90e2;">Home</span></a></li>
+                        <li><a href="{% url 'login:login' %}"><span id="header_log"
+                                    style="color:#4a90e2;">Login</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</nav>
+
+<div id="colorlib-contact">
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-md-6 ">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="contact-info-wrap-flex">
+                            <div class="animation-wrapper">
+                                <div class="stagger-visualizer">
+                                    <div class="cursor color-red" style="colo"></div>
+                                    <div class="dots-wrapper"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+                <p>Invalid Activation Link</p>
+
+
+        </div>
+    </div>
+</div>
+<div id="map" class="colorlib-map"></div>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+{% block script %}
+<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+    crossorigin="anonymous"></script>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuGOhhMKvSZWd2VPNI2RMrs5Bu2U0eTuU&libraries=places" async
+    defer></script>
+<!-- <script src="javascripts/scripts.js"></scripts> -->
+
+
+
+<!-- this is script is for animated brain -->
+<script src="{%static 'dot/75efae7724dbc3c055e918057.js' %}"></script>
+<script src="{%static 'dot/script.js' %}"></script>
+<!-- end is script is for animated brain -->
+
+<script>
+
+
+    var scrollpos = window.scrollY;
+    var header = document.getElementById("dsass_header");
+    var head = document.getElementById("header_id");
+    var logg = document.getElementById("header_log");
+
+    function add_class_on_scroll() {
+        header.classList.add("header_active");
+        head.classList.add("header_act");
+        logg.classList.add("loged");
+        document.getElementById("logo_img").style.display = "none";
+        document.getElementById("header_img").style.display = "block";
+
+    }
+
+    function remove_class_on_scroll() {
+        header.classList.remove("header_active");
+        head.classList.remove("header_act");
+        logg.classList.remove("loged");
+        document.getElementById("logo_img").style.display = "block";
+        document.getElementById("header_img").style.display = "none";
+
+    }
+
+    window.addEventListener('scroll', function () {
+
+        scrollpos = window.scrollY;
+
+        if (scrollpos > 10) {
+            add_class_on_scroll();
+        }
+        else {
+            remove_class_on_scroll();
+        }
+        console.log(scrollpos);
+    });
+
+
+
+
+
+</script>
+{% endblock script %}
+
+
+{% endblock body %}
+<footer id="colorlib-footer" style="position: absolute;width: 100%;margin-top: 100%;">
+    <div class="container">
+        <div class="row row-pb-md" id="footer_details" style="position: relative;bottom: 50px;margin-top: 15px;">
+            <div class="col-md-3 colorlib-widget">
+
+            </div>
+            <div class="col-md-3 colorlib-widget">
+
+            </div>
+            <div class="col-md-3 colorlib-widget" id="footer_info">
+
+              <p>
+              <ul class="colorlib-footer-links" id="show_on_desktop" style="display:flex;list-style:none">
+                  <li class="footer_home_link"><a href="{% url 'coreapp:home' %}"><span style="color:#A9A9A9">Home</span></a></li>
+                  <li class="footer_blog_link"><a href="https://medium.com/braynai"><span style="color:#A9A9A9">Blog</span></a></li>
+                  <li class="footer_login_link"><a href="{% url 'login:login' %}"><span style="color:#A9A9A9">Login</span></a></li>
+                  <li class="footer_credits_link"><a href="#"><span style="color:#A9A9A9">Credits</span></a></li>
+              </ul>
+
+              <ul class="colorlib-social-icons social_icons" style="top: 28px;">
+              <li><a href="https://twitter.com/brayntranscend">  <i class="fab fa-twitter-square" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+              <li><a href="https://www.facebook.com/transcendbrayn/"><i class="fab fa-facebook-square" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+              <li><a href="https://linkedin.com/company/transcendbrayn"><i class="fab fa-linkedin" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+              <!-- <li><a href="#"><i class="icon-dribbble" style="color:#4a90e2"></i></a></li> -->
+              </ul>
+
+            </p>
+            </div>
+
+
+
+
+
+            <script>
+                // $('.js-captcha-refresh').click(function(){
+                function refresh_button() {
+                    $.getJSON("/captcha/refresh/", function (result) {
+                        $('.captcha').attr('src', result['image_url']);
+                        $('#id_captcha_0').val(result['key'])
+                    });
+                    //
+                    // $form = $(this).parents('basic_signup');
+                    //
+                    // $.getJSON($(this).data('url'), {}, function(json) {
+                    //     // This should update your captcha image src and captcha hidden input
+                    // });
+                    //
+                    // return false;
+                }
+
+            </script>
+            <!--<div class="col-md-3 colorlib-widget">-->
+            <!--    <h4>Recent Blog</h4>-->
+            <!--    <div class="f-blog">-->
+            <!--    <a href="{% url 'coreapp:blogs' %}" class="blog-img" style="background-image: url('/static/images/blog-1.jpg');">-->
+            <!--    </a>-->
+            <!--    <div class="desc">-->
+            <!--    <h2><a href="{% url 'coreapp:blogs' %}">Photoshoot Technique</a></h2>-->
+            <!--    <p class="admin"><span>30 March 2018</span></p>-->
+            <!--    </div>-->
+            <!--    </div>-->
+            <!--    <div class="f-blog">-->
+            <!--    <a href="{% url 'coreapp:blogs' %}" class="blog-img" style="background-image: url('/static/images/blog-2.jpg');">-->
+            <!--    </a>-->
+            <!--    <div class="desc">-->
+            <!--    <h2><a href="{% url 'coreapp:blogs' %}">Camera Lens Shoot</a></h2>-->
+            <!--    <p class="admin"><span>30 March 2018</span></p>-->
+            <!--    </div>-->
+            <!--    </div>-->
+            <!--    <div class="f-blog">-->
+            <!--    <a href="{% url 'coreapp:blogs' %}" class="blog-img" style="background-image: url('/static/images/blog-3.jpg');">-->
+            <!--    </a>-->
+            <!--    <div class="desc">-->
+            <!--    <h2><a href="{% url 'coreapp:blogs' %}">Imahe the biggest photography studio</a></h2>-->
+            <!--    <p class="admin"><span>30 March 2018</span></p>-->
+            <!--    </div>-->
+            <!--    </div>-->
+            <!--</div>-->
+
+            <div class="col-md-3 colorlib-widget">
+                <!-- <h4>Contact Info</h4> -->
+                <!--<ul class="colorlib-footer-links">-->
+                <!--    <li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>-->
+                <!--    <li><a href="tel://1234567920"><i class="icon-phone"></i> + 1235 2355 98</a></li>-->
+                <!--    <li><a href="mailto:info@yoursite.com"><i class="icon-envelope"></i> info@yoursite.com</a></li>-->
+                <!--    <li><a href="#"><i class="icon-location4"></i> yourwebsite.com</a></li>-->
+                <!--</ul>-->
+            </div>
+        </div>
+    </div>
+    <div class="copy" id="copy_div">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p style="color:#A9A9A9">
+
+                        Product is under BETA testing | Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | <a
+                            href="https://quanscendence.com/"><span style="color:#A9A9A9">Quanscendence Technologies Pvt
+                                Ltd</span></a>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+</div>

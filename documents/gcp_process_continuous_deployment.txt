@@ -1,0 +1,15 @@
+##### GCP CONTINUOS DEPLOYMENT PROCESS ###### STEP BY STEP SETUP ####
+
+1. Debug should be set to false
+2. Code For the https redirection.
+3. Database for Production
+4. Code for https redirection
+5. Static Files for production
+
+
+Code to uncomment for DEPLOYMENT.
+1. Classifier import should be uncommented.
+
+
+Command to run for DEPLOYMENT
+gcloud app deploy

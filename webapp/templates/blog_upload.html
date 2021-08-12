@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  </head>
+  <body>
+
+        {{ form.media }}
+
+    <form method="post"enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-6">
+          <label for=""> Main Title: {{form.main_title}}</label>
+          <a class="btn btn-light btn-xl js-scroll-trigger" href="{% url 'webapp:edit_delete_blogs' %}" style="float: right;">All Blogs!</a>
+          <label for=""> One Line Discription: {{form.single_line_body}}</label>
+        </div>
+          </div>
+        <div class="col-md-6">
+          <label for=""> Image: {{form.image}}</label>
+            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+          <label for=""> Data of Publish: {{form.date_of_publish}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for=""> Content: {{form.content}}</label>
+        </div>
+      <div class="col-md-6">
+        <label for=""> SEO Title: {{form.seo_title}}</label>
+        <label for=""> SEO Discription: {{form.seo_description}}</label>
+        <label for=""> SEO Keyword: {{form.seo_keyword}}</label>
+
+      </div>
+      </div>
+      <button type="submit">Send</button>
+        <script>
+    $( function() {
+      $( "#datepicker" ).datepicker();
+
+      $( "#datepicker" ).datepicker( "dateFormat", 'yy-mm-dd' );
+    } );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,236 @@
+{% extends 'admin_dashboard.html' %}
+{% load staticfiles %}
+{% block body %}
+<style media="screen">
+  .fa-bolt {
+    margin-left: 3%;
+    font-size: 22px;
+  }
+  .inputstyle_pricing{
+    display:none;
+}
+</style>
+
+<div style="position: relative;top: -58px;">
+    <p style="text-align: center;font-size: 20px;color: grey;">Machine Learning Dashboard | API Update</p>
+    <hr style="width:100%;margin-top:-1%">
+</div>
+
+<div class="analytics-sparkle-area" style="margin-top: -5%;">
+    <div class="container-fluid">
+
+
+        <!-- START:API TABLE -->
+          <div id="api_table_section" >
+           <form method="post">
+            {% csrf_token %}
+          <div class="row">
+            <div class="col-md-4">
+              <label>PROJECT</label>
+              {{ml_request.end_point.project}}
+
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label>ENDPOINT </label>
+              {{ml_request.end_point}}
+
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label>USER</label>
+              {{ml_request.user.first_name}} {{ml_request.user.email}}
+
+            </div>
+
+          </div>
+          <div class="row" style="margin-bottom: 1%;">
+            <div class="col-md-4">
+              <label> STATUS</label>
+              {{form.status}}
+
+            </div>
+
+          </div>
+          <div class="row" style="margin-bottom: 1%;">
+            <div class="col-md-4">
+              <label>API</label>
+              {{form.api}}
+
+            </div>
+
+          </div>
+          <div class="row" style="margin-bottom: 1%;">
+            <div class="col-md-4">
+              <label>TOKEN</label>
+              {{form.token}}
+
+            </div>
+
+          </div>
+          <button class="btn btn-primary">UPDATE</button>
+
+
+
+
+           </form>
+
+          </div>
+        <!-- END:API TABLE -->
+    </div>
+</div>
+
+
+<div id="invoice"  style=" margin:85px auto;width: 83%;margin-left: 4%;display: none;">
+  <div id="projectstyle_pricing" style=" margin:85px auto;width: 83%;margin-left: 4%;">
+    <input type="search" id="search_pricing" class="form-control inputstyle_pricing" placeholder="Search" style="margin-bottom: 4%;border: 2px solid lightgray;width:110%">
+    <div id="pricing_root" style="width: 110%"></div>
+    <div class="pages"></div>
+  </div>
+   <!-- <table class="table table-striped">
+       <thead>
+           <tr>
+               <th scope="col">INVOICE ID</th>
+               <th scope="col">DATE OF GENERATION</th>
+               <th scope="col">FROM - TO</th>
+               <th scope="col" >PROJECT</th>
+               <th scope="col">DOWNLOAD INVOICE</th>
+               <th scope="col">STATUS</th>
+
+           </tr>
+       </thead>
+       <tbody>
+           {% for invoice in project_invoice %}
+
+           <tr scope="row">
+              <td >{{invoice.invoice_id}}</td>
+              <td>{{invoice.created}}</td>
+              <td>{{invoice.from_date}}-{{invoice.to_date}}</td>
+              <td>{{invoice.monthly_cost.project}}</td>
+              <td></td>
+              <td> <form method="post">
+                  {%csrf_token%}
+                  <select name="status" id=""><option {% if invoice.status == 'Unpaid' %} selected{%endif%} value="Unpaid">Un Paid</option>
+                <option value="Paid" {% if invoice.status == 'Paid' %} selected{%endif%}>Paid</option></select><input type="submit" value="UPDATE">
+              </form> </td>
+           </tr>
+           {%endfor%}
+       </tbody>
+   </table> -->
+   <div style="margin-left: 14%;">
+  <form action="{% url 'adminapp:project-invoice' %}" method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-4"><label>INVOICE ID</label><input type="text" class="form-control" name="inv_id" ></div>
+      <div class="col-md-4"><label>STATUS</label><select name="status" class="form-control">
+        <option value="Paid">PAID</option><option value="Unpaid">UNPAID</option>
+      </select> </div>
+      <div class="col-md-4"><button type="submit" class="btn btn-primary" style="margin-top:8.4%;
+    height: 40px;">UPDATE</button></div>
+    </div>
+</div>
+
+
+  </form>
+</div>
+
+
+
+<script>
+
+    const displayApiTable = ()=>{
+      $('#api_table_section').show()
+    }
+
+    const customModelling = ()=>{
+      $('#api_table_section').hide()
+    }
+</script>
+
+
+<!-- START: Invoice table script -->
+<script>
+
+var clickHandler = function(){
+
+   event.stopImmediatePropagation();
+ $.ajax({
+  url: "/administrator/all_invoice/",
+  method: "POST",
+  headers: {'X-CSRFToken': '{{ csrf_token }}'},
+  success: function (data) {
+    document.getElementById('projectstyle_pricing').style.display = "block"
+    document.getElementById('users').style.display = "none"
+    $(".inputstyle_pricing").show();
+
+  var data =  data.invoice_list;
+  console.log(data)
+
+  var columns = {
+    'project': 'PROJECT NAME',
+    'inv_id': 'INVOICE ID',
+    'dog':"DATE OF GENERATION",
+    'from_to':"FROM-TO",
+    'status':"STATUS",
+
+
+  }
+
+var TestData = {
+    data: data,
+    columns: columns
+}
+console.log(TestData)
+var table = $('#pricing_root').tableSortable({
+    data: TestData.data,
+    columns: TestData.columns,
+    dateParsing: true,
+    processHtml: function(row, key) {
+        return row[key]
+    },
+    columnsHtml: function(value, key) {
+        return value;
+    },
+    pagination: 5,
+    showPaginationLabel: true,
+    prevText: 'Prev',
+    nextText: 'Next',
+    searchField: $('#search_pricing'),
+    responsive: [
+        {
+            maxWidth: 992,
+            minWidth: 769,
+            columns: TestData.col,
+            pagination: true,
+            paginationLength: 3
+        },
+        {
+            maxWidth: 768,
+            minWidth: 0,
+            columns: TestData.colXS,
+            pagination: true,
+            paginationLength: 2
+        }
+    ]
+})
+
+}
+});
+};
+
+
+
+
+$('#projects').one('click', clickHandler);
+</script>
+<!-- END: Invoice table script -->
+
+{%block code%}
+
+{%endblock code%}
+
+{%endblock body%}

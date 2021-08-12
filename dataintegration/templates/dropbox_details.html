@@ -1,0 +1,26 @@
+{% extends 'dashboard/index.html' %}
+{% load staticfiles %}
+{%block project%}
+{%endblock project%}
+{% block body %}
+<div class=""style="margin-left:17%;margin-top:5%;">
+  <form class="" method="post" enctype="multipart/form-data" style="margin: 12% 15% 0 6%;">
+    {% csrf_token %}
+    <div class="row"
+      <label for="">Upload Generated Access token from your dropbox account </label>
+      {{dropbox_details_form.access_token}}
+    </div>
+  <div class="row" >
+    <label for="">Enter the path of the file </label>
+    {{dropbox_details_form.path_name}}
+  </div>
+  <div class="row" >
+    <label for="">Select How Frequently you want to upload Data</label>
+    {{dropbox_details_form.data_range}}
+  </div>
+  <button type="submit" id="submit" class="btn btn-primary waves-effect waves-light" style="margin-top:2%; ">Submit</button>
+
+  </form>
+</div>
+
+{% endblock %}

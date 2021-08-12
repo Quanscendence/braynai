@@ -1,0 +1,375 @@
+{% extends 'admin_dashboard.html' %}
+{% load staticfiles %}
+{% block body %}
+<style media="screen">
+  .fa-bolt {
+    margin-left: 3%;
+    font-size: 22px;
+  }
+  .inputstyle_pricing{
+    display:none;
+}
+</style>
+
+<div style="position: relative;top: -58px;">
+    <p style="text-align: center;font-size: 20px;color: grey;">Machine Learning Dashboard</p>
+    <hr style="width:100%;margin-top:-1%">
+</div>
+
+<div class="analytics-sparkle-area" style="margin-top: -5%;">
+    <div class="container-fluid">
+        <div class="row">
+            <a href="#" style="display: block; height: 100%;">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" onclick="displayApiTable()" style="height:68px">
+
+                    <div class="analytics-sparkle-line reso-mg-b-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5  style="color: grey;text-align: center;line-height:28px">API</h5>
+                        </span>
+                    </div>
+
+            </div>
+            </a>
+            <a href="#" style="display: block; height: 100%;">
+              <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" onclick="customModelling()" style="height:68px" onclick="Invoice()">
+
+                      <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30" style="height:68px">
+                          <span class="analytics-content">
+                              <h5 id="projects" style="color:grey;text-align: center;line-height:28px">Custom Modelling</h5>
+
+                          </span>
+                      </div>
+
+              </div>
+            </a>
+            <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="height:68px" onclick="allProjectPricing()">
+
+                    <div class="analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5 style="color:grey;text-align: center;line-height:28px"   >Custom Pricing</h5>
+
+
+                        </span>
+                    </div>
+
+            </div> -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="height:68px">
+                <!-- <a href="{% url 'adminapp:actions' %}" style="display: block; height: 100%;"> -->
+                <a href="#" style="display: block; height: 100%;">
+                    <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5 style="color:grey;text-align: center;line-height:28px"></h5>
+                            <!-- <h2> <span class="tuition-fees">View Conversion Table</span></h2> -->
+                            <!-- <span class="text-info">60%</span> -->
+                            <!-- <div class="progress m-b-0">
+                                   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:60%;"> <span class="sr-only">20% Complete</span> </div>
+                               </div> -->
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12"  style="height:68px">
+                <a href="#" style="display: block; height: 100%;">
+                    <div class="analytics-sparkle-line reso-mg-b-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5 style="color:grey;text-align: center;line-height:28px;"></h5>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+        <!-- START:API TABLE -->
+          <div id="api_table_section" style="display:none;">
+              <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">PROJECT</th>
+                        <th scope="col">ENDPOINT</th>
+                        <th scope="col">REQUESTED</th>
+                        <th scope="col">STATUS</th>
+                        <th scope="col">USER</th>
+                        <th scope="col">MODEL NAME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {% for api in ml_requests %}
+                    <tr>
+
+                       <td>{{api.end_point.project}} </td>
+                      <td><a href="{% url 'adminapp:api-request-status' pk=api.pk%}">{{api.end_point}}</a></td>
+                      <td>{{api.created}}</td>
+                      <td>{{api.status}}</td>
+                      <td>{{api.user}}</td>
+                      <td>{{api.end_point.algorithm}}</td>
+
+
+                    </tr>
+                    {%endfor%}
+                </tbody>
+              </table>
+          </div>
+        <!-- END:API TABLE -->
+    </div>
+</div>
+
+<div id="pricing"  style=" margin:85px auto;width: 83%;margin-left: 4%;display: none;">
+    <form action="" method="post">
+        {%csrf_token%}
+        <div class="row">
+            <div class="col-md-6">
+              <label for="user">EACH USER/MONTH ($)</label>{{form.user}}
+            </div>
+            <!-- <div class="col-md-6"> </div> -->
+        </div><br /><br />
+        <div class="row">
+            <div class="col-md-6">
+              <label for="user">EACH END POINT/MONTH ($)</label>
+              {{form.end_point}}
+            </div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+        <div class="row">
+            <div class="col-md-6"><label for="user">EACH BILLED MB DISK SPACE ($)</label>{{form.disk_space}}</div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+        <div class="row">
+            <div class="col-md-6"><label for="user">EACH BILLED IQU ($)</label>{{form.iqs}}</div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+        <div class="row">
+            <div class="col-md-6"><label for="user">MONTHLY MAINTENANCE ($)</label>{{form.monthly_maintenance}}</div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+        <div class="row">
+            <div class="col-md-6"><label for="user">EARLY BIRD OFFER {{form.free_tire}}</label></div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<div id="single-project-pricing" style=" margin:85px auto;width: 83%;margin-left: 4%;display: none;text-transform: uppercase;">
+  <form action="{% url 'adminapp:single-project-pricing' %}" method="post" >
+    {%csrf_token%}
+    {{ project_form.media}}
+    <div class="row">
+            <div class="col-md-6"><label for="user">choose custom Project</label><br />{{project_form.project}}<i class="fa fa-bolt" style="" aria-hidden="true"></i></div>
+            <div class="col-md-6"> </div>
+    </div><br /><br />
+    <div class="row">
+            <div class="col-md-6"><label for="user">EACH USER/MONTH (custom $)</label>{{project_form.user}}</div>
+            <div class="col-md-6"> </div>
+    </div><br /><br />
+        <div class="row">
+            <div class="col-md-6"><label for="user">EACH END POINT/MONTH (custom $)</label>{{project_form.end_point}}</div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+        <div class="row">
+            <div class="col-md-6"><label for="user">EACH BILLED MB DISK SPACE (custom $)</label>{{project_form.disk_space}}</div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+        <div class="row">
+            <div class="col-md-6"><label for="user">EACH BILLED IQU (custom $)</label>{{project_form.iqs}}</div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+        <div class="row">
+            <div class="col-md-6"><label for="user">MONTHLY MAINTENANCE (custom $)</label>{{project_form.monthly_maintenance}}</div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+
+        <div class="row">
+            <div class="col-md-6"><label for="user">CUSTOM Assistance COST ($)</label>{{project_form.custom_cost}}</div><br /><br />
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+        <div class="row">
+            <div class="col-md-6"><label for="user">Earlybird offer</label><br />{{project_form.free_tire}}</div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+
+        <button type="submit">Submit</button>
+
+
+  </form>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">PROJECT</th>
+                <th scope="col"></th>
+                <!-- <th scope="col">DATE OF GENERATION</th>
+                <th scope="col">FROM - TO</th>
+                <th scope="col">PROJECT</th>
+                <th scope="col">DOWNLOAD INVOICE</th>
+                <th scope="col">STATUS</th> -->
+
+            </tr>
+        </thead>
+        <tbody>
+
+
+            {% for project_pricing in all_project_pricing %}
+
+            <tr scope="row">
+                    <td>{{project_pricing.project}}</td>
+                    <td>
+                      <form action="{% url 'adminapp:project-pricing-delete' pk=project_pricing.pk %}"  method="post">{% csrf_token %}
+                      <button type="submit">
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                      </form>
+                    </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+<div id="invoice"  style=" margin:85px auto;width: 83%;margin-left: 4%;display: none;">
+  <div id="projectstyle_pricing" style=" margin:85px auto;width: 83%;margin-left: 4%;">
+    <input type="search" id="search_pricing" class="form-control inputstyle_pricing" placeholder="Search" style="margin-bottom: 4%;border: 2px solid lightgray;width:110%">
+    <div id="pricing_root" style="width: 110%"></div>
+    <div class="pages"></div>
+  </div>
+   <!-- <table class="table table-striped">
+       <thead>
+           <tr>
+               <th scope="col">INVOICE ID</th>
+               <th scope="col">DATE OF GENERATION</th>
+               <th scope="col">FROM - TO</th>
+               <th scope="col" >PROJECT</th>
+               <th scope="col">DOWNLOAD INVOICE</th>
+               <th scope="col">STATUS</th>
+
+           </tr>
+       </thead>
+       <tbody>
+           {% for invoice in project_invoice %}
+
+           <tr scope="row">
+              <td >{{invoice.invoice_id}}</td>
+              <td>{{invoice.created}}</td>
+              <td>{{invoice.from_date}}-{{invoice.to_date}}</td>
+              <td>{{invoice.monthly_cost.project}}</td>
+              <td></td>
+              <td> <form method="post">
+                  {%csrf_token%}
+                  <select name="status" id=""><option {% if invoice.status == 'Unpaid' %} selected{%endif%} value="Unpaid">Un Paid</option>
+                <option value="Paid" {% if invoice.status == 'Paid' %} selected{%endif%}>Paid</option></select><input type="submit" value="UPDATE">
+              </form> </td>
+           </tr>
+           {%endfor%}
+       </tbody>
+   </table> -->
+   <div style="margin-left: 14%;">
+  <form action="{% url 'adminapp:project-invoice' %}" method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-4"><label>INVOICE ID</label><input type="text" class="form-control" name="inv_id" ></div>
+      <div class="col-md-4"><label>STATUS</label><select name="status" class="form-control">
+        <option value="Paid">PAID</option><option value="Unpaid">UNPAID</option>
+      </select> </div>
+      <div class="col-md-4"><button type="submit" class="btn btn-primary" style="margin-top:8.4%;
+    height: 40px;">UPDATE</button></div>
+    </div>
+</div>
+
+
+  </form>
+</div>
+
+
+
+<script>
+
+    const displayApiTable = ()=>{
+      $('#api_table_section').show()
+    }
+
+    const customModelling = ()=>{
+      $('#api_table_section').hide()
+    }
+</script>
+
+
+<!-- START: Invoice table script -->
+<script>
+
+var clickHandler = function(){
+
+   event.stopImmediatePropagation();
+ $.ajax({
+  url: "/administrator/all_invoice/",
+  method: "POST",
+  headers: {'X-CSRFToken': '{{ csrf_token }}'},
+  success: function (data) {
+    document.getElementById('projectstyle_pricing').style.display = "block"
+    document.getElementById('users').style.display = "none"
+    $(".inputstyle_pricing").show();
+
+  var data =  data.invoice_list;
+  console.log(data)
+
+  var columns = {
+    'project': 'PROJECT NAME',
+    'inv_id': 'INVOICE ID',
+    'dog':"DATE OF GENERATION",
+    'from_to':"FROM-TO",
+    'status':"STATUS",
+
+
+  }
+
+var TestData = {
+    data: data,
+    columns: columns
+}
+console.log(TestData)
+var table = $('#pricing_root').tableSortable({
+    data: TestData.data,
+    columns: TestData.columns,
+    dateParsing: true,
+    processHtml: function(row, key) {
+        return row[key]
+    },
+    columnsHtml: function(value, key) {
+        return value;
+    },
+    pagination: 5,
+    showPaginationLabel: true,
+    prevText: 'Prev',
+    nextText: 'Next',
+    searchField: $('#search_pricing'),
+    responsive: [
+        {
+            maxWidth: 992,
+            minWidth: 769,
+            columns: TestData.col,
+            pagination: true,
+            paginationLength: 3
+        },
+        {
+            maxWidth: 768,
+            minWidth: 0,
+            columns: TestData.colXS,
+            pagination: true,
+            paginationLength: 2
+        }
+    ]
+})
+
+}
+});
+};
+
+
+
+
+$('#projects').one('click', clickHandler);
+</script>
+<!-- END: Invoice table script -->
+
+{%block code%}
+
+{%endblock code%}
+
+{%endblock body%}

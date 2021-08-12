@@ -1,0 +1,3947 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>brayn </title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <!-- favicon
+
+
+============================================ -->
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'dashboard/img/Brayn_Favicon_75.png' %}">
+  <!-- Google Fonts
+============================================ -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+  <!-- Bootstrap CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/bootstrap.min.css' %}">
+  <!-- Bootstrap CSS
+============================================ -->
+  <!-- <link rel="stylesheet" href="{% static 'dashboard/css/font-awesome.min.css' %}"> -->
+  <!-- owl.carousel CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/owl.carousel.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/owl.theme.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/owl.transitions.css' %}">
+  <!-- animate CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/animate.css' %}">
+  <!-- normalize CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/normalize.css' %}">
+  <!-- meanmenu icon CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/meanmenu.min.css' %}">
+  <!-- main CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}">
+  <!-- educate icon CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/educate-custon-icon.css' %}">
+  <!-- morrisjs CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/morrisjs/morris.css' %}">
+  <!-- mCustomScrollbar CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/scrollbar/jquery.mCustomScrollbar.min.css' %}">
+  <!-- metisMenu CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/metisMenu/metisMenu.min.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/metisMenu/metisMenu-vertical.css' %}">
+  <!-- calendar CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/calendar/fullcalendar.min.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/calendar/fullcalendar.print.min.css' %}">
+
+  <!-- <link rel='stylesheet' href='http://brienlabs.com/ruby-mega-menu/css/ruby-transitions.css'>
+    <link rel='stylesheet' href='http://brienlabs.com/ruby-mega-menu/css/ruby-main.css'> -->
+  <!-- style CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'dashboard/css/side_navigations.css' %}">
+  <!-- responsive CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/responsive.css' %}">
+
+  <!-- Loading style style CSS
+  ============================================ -->
+  <link rel="stylesheet" href="{% static 'css/loading_spinner.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
+
+  <!-- modernizr JS
+============================================ -->
+  <script src="{% static 'dashboard/js/vendor/modernizr-2.8.3.min.js' %}"></script>
+
+
+
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+
+  <style>
+    html {
+      zoom: 1 !important;
+    }
+
+    /* remove plotly icon */
+    .modebar-btn plotlyjsicon modebar-btn--logo {
+      display: none !important;
+    }
+
+    .js-plotly-plot .plotly .modebar-btn--logo {
+      display: none !important;
+    }
+
+    /* end */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* #show_me {
+     display: none;
+          } */
+    /* .default_side{
+                margin-left: -8%;
+          }
+          .no_default{
+                margin-left: 10%;
+          } */
+    .div_aside {
+      margin-left: -8%;
+    }
+
+    .new_class {
+      margin-left: 10%;
+    }
+
+    .header_row {
+      background: #4a90e2;
+      width: 118%;
+      margin-left: -12.2%;
+    }
+    .no-swipe span {
+    width: 82% !important;
+}
+    .fa-bars {
+        float: right;
+        color: #111;
+        margin-top: 1%;
+    }
+    .new_header {
+      background: #4a90e2;
+      width: 100%;
+      margin-left: 5.8%;
+    }
+
+    #hide_seek {
+      display: none;
+    }
+
+    /* .sidenav_right{
+      opacity: 1;
+      width: 200px;
+      height: auto;
+
+  }
+  .closebtn_right{
+    position: absolute;
+    margin-top: -16%;
+    margin-right: 78%;
+  } */
+
+
+    .mega_section {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    .blog_section {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    .shop_section {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    .show {
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    .background_color {
+      background: #fff !important;
+      color: #4a90e2 !important
+    }
+
+    .query_button {
+      background-color: #4a90e2;
+      color: white;
+      border: #4a90e2;
+      border-radius: 8px;
+      margin-top: 3px;
+      padding: 4px 6px;
+    }
+
+    .menu_section_style {
+      background: #4a90e2;
+      padding-top: 4px;
+      padding-left: 4px;
+      padding-right: 5px;
+    }
+
+    .cross_arrow {
+      width: 1.5%;
+      float: right;
+      margin-right: 2%;
+      margin-top: 1%;
+    }
+
+    .close {
+      cursor: pointer;
+      position: absolute;
+      font-size: 38px;
+      top: 3%;
+      z-index: 1111111;
+      right: 0%;
+      padding: 16px 16px;
+      transform: translate(0%, -50%);
+    }
+
+    .close_2 {
+      cursor: pointer;
+      position: absolute;
+      font-size: 38px;
+      top: 11%;
+      right: 0%;
+      padding: 16px 16px;
+      transform: translate(0%, -50%);
+    }
+
+    .project_titles {
+
+      line-height: 50px;
+      color: #efefef;
+      font-size: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-left: 17%;
+    }
+
+    .logo_image_style {
+      float: left;
+      position: relative;
+      z-index: 99;
+    }
+
+    .highlight {
+      background: #e0dddd;
+    }
+
+    /*style for modal */
+    .modal {
+      display: none;
+      position: fixed;
+      padding-top: 50px;
+      left: 0;
+      top: 0%;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      position: relative;
+      background-color: white;
+      top: 27%;
+      padding: 20px;
+      margin: auto;
+      width: 75%;
+      -webkit-animation-name: animatetop;
+      -webkit-animation-duration: 0.4s;
+      animation-name: animatetop;
+      animation-duration: 0.4s
+    }
+
+    .close-btn {
+      float: right;
+      color: lightgray;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .close-btn:hover {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    @-webkit-keyframes animatetop {
+      from {
+        top: -300px;
+        opacity: 0
+      }
+
+      to {
+        top: 0;
+        opacity: 1
+      }
+    }
+
+    @keyframes animatetop {
+      from {
+        top: -300px;
+        opacity: 0
+      }
+
+      to {
+        top: 0;
+        opacity: 1
+      }
+    }
+
+    /*end of style for modal */
+
+    .select2-container {
+      width: 100% !important;
+    }
+
+    table {
+      border: none !important;
+    }
+
+    .select_width {
+      /* width: 50%; */
+    }
+
+    .label_left {
+      float: left;
+    }
+
+    .info-close-btn {
+      float: right;
+      color: lightgray;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .plot_submit_button {
+      background-color: #4a90e2;
+      color: #fff;
+      border: none;
+      /* font-size: 14px; */
+      text-transform: uppercase;
+      padding: 1% 5%;
+      border-radius: 8px;
+    }
+
+    .disable_class {
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+
+    .checkbox_list {
+      position: relative;
+    }
+
+
+
+    .modal-content-group-box {
+      top: 68% !important;
+      left: 33% !important;
+      width: 24% !important;
+      -webkit-animation-name: animatebottom !important;
+      -webkit-animation-duration: 0.4s !important;
+      animation-name: animatebottom !important;
+      animation-duration: 0.4s !important
+    }
+    .border_class {
+      width: 95%;
+      margin-left: 2%;
+    }
+
+    .delete_modal_buttons {
+      display: flex;
+      flex-direction: row;
+      /* align-content: flex-end; */
+      justify-content: center;
+      margin-top: 22%;
+    }
+
+
+    .delete_modal_buttons button {
+      margin-right: 3%;
+      background: none;
+      color: #4a90e2;
+      border: 1px solid #4a90e2;
+      border-radius: 10px;
+      padding: 2% 4%;
+    }
+
+    .delete_modal_buttons button:hover {
+      color: #fff;
+      background-color: #4a90e2;
+    }
+
+    .delete_modal:hover {
+      color: #fff !important;
+      background-color: red !important;
+      border: 1px solid red;
+    }
+  </style>
+
+
+  <script>
+// function myFunction() {
+//   var x = document.getElementById("hide_me");
+//   if (x.style.display === "none") {
+//     x.style.display = "block";
+//     document.getElementById('show_me').style.display = "none";
+//
+//   } else {
+//     x.style.display = "none";
+//
+//     document.getElementById('show_me').style.display = "block";
+//   }
+// }
+  </script>
+</head>
+
+<body style="font-family: 'Poppins', sans-serif;">
+  <!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+  <!-- <div id="loader" class="center" style="display:none;"></div> -->
+
+  <div class="loading-overlay">
+    <span class="fas fa-spinner fa-3x fa-spin"></span>
+    <span class="loading-message">Please wait..it's loading</span>
+  </div>
+
+  <div class="all-content-wrapper">
+    <div class="header-advance-area">
+
+
+    </div>
+  </div>
+
+
+  <!-- START: RUBY DEMO HEADER -->
+  <div class="ruby-menu-demo-header zoom_functionality" style="position:sticky;top:0;">
+
+    <div class="row menu_section_style">
+      <div class="col-md-2">
+
+      </div>
+      <div class="col-md-12">
+        <!-- ########################### -->
+        <!-- START: RUBY HORIZONTAL MENU -->
+        <div class="ruby-wrapper">
+          <a href="{% url 'coreapp:dashboard' %}" class="logo_image_style"><img src="{% static 'images/logo.png' %}"
+              alt="" style="max-width: 85%;"></a>
+          <button class="c-hamburger c-hamburger--htx visible-xs">
+            <span>toggle menu</span>
+          </button>
+          <ul class="ruby-menu" style="padding-left: 15%;">
+            <!-- <li><a href="#">Home</a></li>   -->
+            <!-- <li><a href="#">Classic</a>
+      <ul class="hover">
+        <li><a href="#">2nd Level #1</a></li>
+        <li><a href="#">2nd Level #2</a></li>
+        <li><a href="#">2nd Level #3</a>
+          <ul>
+            <li><a href="#"><i class="fa fa-university" aria-hidden="true"></i>3rd Level #1</a>
+              <ul>
+                <li><a href="#">4th Level #1</a></li>
+                <li><a href="#">4th Level #2</a></li>
+              </ul>
+            <span class="ruby-dropdown-toggle"></span></li>
+            <li><a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>3rd Level #2</a></li>
+            <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i>3rd Level #3</a>
+              <ul>
+                <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i>4th Level #1</a></li>
+                <li><a href="#"><i class="fa fa-print" aria-hidden="true"></i>4th Level #2</a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>4th Level #3</a></li>
+              </ul>
+            <span class="ruby-dropdown-toggle"></span></li>
+          </ul>
+        <span class="ruby-dropdown-toggle"></span></li>
+        <li class="ruby-open-to-left"><a href="#">2nd Level #4</a>
+          <ul>
+            <li><a href="#">3rd Level #1</a></li>
+            <li><a href="#">3rd Level #2</a></li>
+            <li><a href="#">3rd Level #3</a></li>
+          </ul>
+        <span class="ruby-dropdown-toggle"></span></li>
+        <li><a href="#">2nd Level #5</a></li>
+      </ul>
+    <span class="ruby-dropdown-toggle"></span>
+   </li> -->
+
+            <li class="ruby-menu-mega-blog" onclick="blogDropdown(event)" style="display:none">
+              <a class="up_arrow dashboard_link" href="#">Dashboards</a>
+              <div class="blog_section" id="blog_dropdown" style="height: 269.359px !important; "
+                onclick="event.stopPropagation()">
+
+              </div>
+              <span class="ruby-dropdown-toggle"></span>
+            </li>
+            <li style="">
+              <a id="hover_poject_style" href="{% url 'coreapp:project-end-point' pk=end_point.pk%}"
+                onclick="loadDiv()">End Point :
+                {{end_point}}</a>
+            </li>
+            <li>
+              <a id="hover_poject_style" href="{% url 'coreapp:single-project' pk=end_point.project.pk%}"
+                onclick="loadDiv()">PRO :
+                {{end_point.query.project}}</a></li>
+
+            {% if permission == 'Admin' or permission == 'Delete' or permission == 'Write'%}
+            <!-- <li class="visual_display_project_id"><button type="button" id="modal-btn" class="btn btn-outline-primary create_button" >CREATE</button></li>{%endif%} -->
+            {% if customer.image  %}
+            <li class="ruby-menu-right">
+              <img src="{{customer.image.url}} " alt="user_images" onclick="callLogout()">
+              <a class="up_arrow" href="#">WELCOME {{request.user.first_name}}</a>
+              {% else %}
+            <li class="ruby-menu-right" <img src="https://img.icons8.com/cotton/64/000000/gender-neutral-user--v1.png"
+              onclick="callLogout()">
+              <a class="up_arrow" href="#">WELCOME {{request.user.first_name}}</a>
+              {% endif %}
+
+              <ul id="logout" onclick="event.stopPropagation()">
+                <li><a href="{%url 'coreapp:logout' %}">Logout</a></li>
+              </ul>
+              <!-- <ul>
+        <li><a href="#">2nd Level #1</a></li>
+        <li><a href="#">2nd Level #2</a></li>
+        <li class="ruby-open-to-left"><a href="#">2nd Level #3</a>
+          <ul>
+            <li class="ruby-open-to-left"><a href="#"><i class="fa fa-university" aria-hidden="true"></i>3rd Level #1</a>
+              <ul>
+                <li><a href="#">4th Level #1</a></li>
+                <li><a href="#">4th Level #2</a></li>
+              </ul>
+            <span class="ruby-dropdown-toggle"></span></li>
+            <li><a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>3rd Level #2</a></li>
+            <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i>3rd Level #3</a>
+            </li><li><a href="#"><i class="fa fa-file" aria-hidden="true"></i>3rd Level #4</a>
+              <ul>
+                <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i>4th Level #1</a></li>
+                <li><a href="#"><i class="fa fa-print" aria-hidden="true"></i>4th Level #2</a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>4th Level #3</a></li>
+              </ul>
+            <span class="ruby-dropdown-toggle"></span></li>
+          </ul>
+        <span class="ruby-dropdown-toggle"></span></li>
+        <li class="ruby-open-to-left"><a href="#">2nd Level #4</a>
+          <ul>
+            <li><a href="#">3rd Level #1</a></li>
+            <li><a href="#">3rd Level #2</a></li>
+            <li><a href="#">3rd Level #3</a></li>
+          </ul>
+        <span class="ruby-dropdown-toggle"></span></li>
+        <li><a href="#">2nd Level #5</a></li>
+      </ul> -->
+              <span class="ruby-dropdown-toggle"></span></li>
+
+
+
+          </ul>
+        </div>
+        <!-- END:   RUBY HORIZONTAL MENU -->
+        <!-- ########################### -->
+      </div>
+    </div>
+
+  </div>
+  <!-- END: RUBY DEMO HEADER -->
+
+  {% block body %}
+
+
+  <!-- START: NAVIGATION THROUGH BREADCRUMBS -->
+  <nav class="zoom_functionality" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'coreapp:dashboard' %}">Home</a></li>
+      <li class="breadcrumb-item"><a
+          href="{% url 'coreapp:single-project' pk=end_point.project.pk %}">{{end_point.project}}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{end_point}}</li>
+    </ol>
+  </nav>
+  <!-- END: NAVIGATION THROUGH BREADCRUMBS -->
+
+  <!-- Mobile Menu start -->
+  <div class="mobile-menu-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="mobile-menu">
+            <nav id="dropdown">
+              <ul class="mobile-menu-nav">
+                <li><a data-toggle="collapse" data-target="#Charts" href="{% url 'coreapp:home' %}">Home <span
+                      class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                <li><a data-toggle="collapse" data-target="#Charts" href="{% url 'coreapp:dashboard' %}">Dashboard <span
+                      class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                <li><a data-toggle="collapse" data-target="#Charts" href="{% url 'coreapp:about' %}">About <span
+                      class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                <li><a data-toggle="collapse" data-target="#Charts" href="{% url 'coreapp:services' %}">Services <span
+                      class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                  <!-- <ul class="collapse dropdown-header-top">
+                                    <li><a href="index.html">Dashboard v.1</a></li>
+                                    <li><a href="index-1.html">Dashboard v.2</a></li>
+                                    <li><a href="index-3.html">Dashboard v.3</a></li>
+                                    <li><a href="analytics.html">Analytics</a></li>
+                                    <li><a href="widgets.html">Widgets</a></li>
+                                </ul> -->
+                </li>
+                <!-- <li><a href="events.html">Event</a></li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demoevent" class="collapse dropdown-header-top">
+                                    <li><a href="all-professors.html">All Professors</a>
+                                    </li>
+                                    <li><a href="add-professor.html">Add Professor</a>
+                                    </li>
+                                    <li><a href="edit-professor.html">Edit Professor</a>
+                                    </li>
+                                    <li><a href="professor-profile.html">Professor Profile</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#demopro" href="#">Students <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demopro" class="collapse dropdown-header-top">
+                                    <li><a href="all-students.html">All Students</a>
+                                    </li>
+                                    <li><a href="add-student.html">Add Student</a>
+                                    </li>
+                                    <li><a href="edit-student.html">Edit Student</a>
+                                    </li>
+                                    <li><a href="student-profile.html">Student Profile</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="democrou" class="collapse dropdown-header-top">
+                                    <li><a href="all-courses.html">All Courses</a>
+                                    </li>
+                                    <li><a href="add-course.html">Add Course</a>
+                                    </li>
+                                    <li><a href="edit-course.html">Edit Course</a>
+                                    </li>
+                                    <li><a href="course-profile.html">Courses Info</a>
+                                    </li>
+                                    <li><a href="course-payment.html">Courses Payment</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#demolibra" href="#">Library <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demolibra" class="collapse dropdown-header-top">
+                                    <li><a href="library-assets.html">Library Assets</a>
+                                    </li>
+                                    <li><a href="add-library-assets.html">Add Library Asset</a>
+                                    </li>
+                                    <li><a href="edit-library-assets.html">Edit Library Asset</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#demodepart" href="#">Departments <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demodepart" class="collapse dropdown-header-top">
+                                    <li><a href="departments.html">Departments List</a>
+                                    </li>
+                                    <li><a href="add-department.html">Add Departments</a>
+                                    </li>
+                                    <li><a href="edit-department.html">Edit Departments</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demo" class="collapse dropdown-header-top">
+                                    <li><a href="mailbox.html">Inbox</a>
+                                    </li>
+                                    <li><a href="mailbox-view.html">View Mail</a>
+                                    </li>
+                                    <li><a href="mailbox-compose.html">Compose Mail</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
+                                    <li><a href="google-map.html">Google Map</a>
+                                    </li>
+                                    <li><a href="data-maps.html">Data Maps</a>
+                                    </li>
+                                    <li><a href="pdf-viewer.html">Pdf Viewer</a>
+                                    </li>
+                                    <li><a href="x-editable.html">X-Editable</a>
+                                    </li>
+                                    <li><a href="code-editor.html">Code Editor</a>
+                                    </li>
+                                    <li><a href="tree-view.html">Tree View</a>
+                                    </li>
+                                    <li><a href="preloader.html">Preloader</a>
+                                    </li>
+                                    <li><a href="images-cropper.html">Images Cropper</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Chartsmob" class="collapse dropdown-header-top">
+                                    <li><a href="bar-charts.html">Bar Charts</a>
+                                    </li>
+                                    <li><a href="line-charts.html">Line Charts</a>
+                                    </li>
+                                    <li><a href="area-charts.html">Area Charts</a>
+                                    </li>
+                                    <li><a href="rounded-chart.html">Rounded Charts</a>
+                                    </li>
+                                    <li><a href="c3.html">C3 Charts</a>
+                                    </li>
+                                    <li><a href="sparkline.html">Sparkline Charts</a>
+                                    </li>
+                                    <li><a href="peity.html">Peity Charts</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Tablesmob" class="collapse dropdown-header-top">
+                                    <li><a href="static-table.html">Static Table</a>
+                                    </li>
+                                    <li><a href="data-table.html">Data Table</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="formsmob" class="collapse dropdown-header-top">
+                                    <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                    </li>
+                                    <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                    </li>
+                                    <li><a href="password-meter.html">Password Meter</a>
+                                    </li>
+                                    <li><a href="multi-upload.html">Multi Upload</a>
+                                    </li>
+                                    <li><a href="tinymc.html">Text Editor</a>
+                                    </li>
+                                    <li><a href="dual-list-box.html">Dual List Box</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Appviewsmob" class="collapse dropdown-header-top">
+                                    <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                    </li>
+                                    <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                    </li>
+                                    <li><a href="password-meter.html">Password Meter</a>
+                                    </li>
+                                    <li><a href="multi-upload.html">Multi Upload</a>
+                                    </li>
+                                    <li><a href="tinymc.html">Text Editor</a>
+                                    </li>
+                                    <li><a href="dual-list-box.html">Dual List Box</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Pagemob" class="collapse dropdown-header-top">
+                                    <li><a href="{% url 'login:signup' %}">Login</a>
+                                    </li>
+                                    <li><a href="register.html">Register</a>
+                                    </li>
+                                    <li><a href="lock.html">Lock</a>
+                                    </li>
+                                    <li><a href="password-recovery.html">Password Recovery</a>
+                                    </li>
+                                    <li><a href="404.html">404 Page</a></li>
+                                    <li><a href="500.html">500 Page</a></li>
+                                </ul>
+                            </li> -->
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Mobile Menu-->
+  <!-- <div class="container-fluid">
+               <div class="row">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                       <div class="logo-pro">
+                           <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                       </div>
+                   </div>
+               </div>
+           </div> -->
+
+  <div class="header-advance-area">
+
+    <!-- Mobile Menu start -->
+    <!-- <div class="mobile-menu-area">
+       <div class="container">
+           <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                   <div class="mobile-menu">
+                       <nav id="dropdown">
+                           <ul class="mobile-menu-nav">
+                               <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul class="collapse dropdown-header-top">
+                                       <li><a href="index.html">Dashboard v.1</a></li>
+                                       <li><a href="index-1.html">Dashboard v.2</a></li>
+                                       <li><a href="index-3.html">Dashboard v.3</a></li>
+                                       <li><a href="analytics.html">Analytics</a></li>
+                                       <li><a href="widgets.html">Widgets</a></li>
+                                   </ul>
+                               </li>
+                               <li><a href="events.html">Event</a></li>
+                               <li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="demoevent" class="collapse dropdown-header-top">
+                                       <li><a href="all-professors.html">All Professors</a>
+                                       </li>
+                                       <li><a href="add-professor.html">Add Professor</a>
+                                       </li>
+                                       <li><a href="edit-professor.html">Edit Professor</a>
+                                       </li>
+                                       <li><a href="professor-profile.html">Professor Profile</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#demopro" href="#">Students <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="demopro" class="collapse dropdown-header-top">
+                                       <li><a href="all-students.html">All Students</a>
+                                       </li>
+                                       <li><a href="add-student.html">Add Student</a>
+                                       </li>
+                                       <li><a href="edit-student.html">Edit Student</a>
+                                       </li>
+                                       <li><a href="student-profile.html">Student Profile</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="democrou" class="collapse dropdown-header-top">
+                                       <li><a href="all-courses.html">All Courses</a>
+                                       </li>
+                                       <li><a href="add-course.html">Add Course</a>
+                                       </li>
+                                       <li><a href="edit-course.html">Edit Course</a>
+                                       </li>
+                                       <li><a href="course-profile.html">Courses Info</a>
+                                       </li>
+                                       <li><a href="course-payment.html">Courses Payment</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#demolibra" href="#">Library <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="demolibra" class="collapse dropdown-header-top">
+                                       <li><a href="library-assets.html">Library Assets</a>
+                                       </li>
+                                       <li><a href="add-library-assets.html">Add Library Asset</a>
+                                       </li>
+                                       <li><a href="edit-library-assets.html">Edit Library Asset</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#demodepart" href="#">Departments <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="demodepart" class="collapse dropdown-header-top">
+                                       <li><a href="departments.html">Departments List</a>
+                                       </li>
+                                       <li><a href="add-department.html">Add Departments</a>
+                                       </li>
+                                       <li><a href="edit-department.html">Edit Departments</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="demo" class="collapse dropdown-header-top">
+                                       <li><a href="mailbox.html">Inbox</a>
+                                       </li>
+                                       <li><a href="mailbox-view.html">View Mail</a>
+                                       </li>
+                                       <li><a href="mailbox-compose.html">Compose Mail</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
+                                       <li><a href="google-map.html">Google Map</a>
+                                       </li>
+                                       <li><a href="data-maps.html">Data Maps</a>
+                                       </li>
+                                       <li><a href="pdf-viewer.html">Pdf Viewer</a>
+                                       </li>
+                                       <li><a href="x-editable.html">X-Editable</a>
+                                       </li>
+                                       <li><a href="code-editor.html">Code Editor</a>
+                                       </li>
+                                       <li><a href="tree-view.html">Tree View</a>
+                                       </li>
+                                       <li><a href="preloader.html">Preloader</a>
+                                       </li>
+                                       <li><a href="images-cropper.html">Images Cropper</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="Chartsmob" class="collapse dropdown-header-top">
+                                       <li><a href="bar-charts.html">Bar Charts</a>
+                                       </li>
+                                       <li><a href="line-charts.html">Line Charts</a>
+                                       </li>
+                                       <li><a href="area-charts.html">Area Charts</a>
+                                       </li>
+                                       <li><a href="rounded-chart.html">Rounded Charts</a>
+                                       </li>
+                                       <li><a href="c3.html">C3 Charts</a>
+                                       </li>
+                                       <li><a href="sparkline.html">Sparkline Charts</a>
+                                       </li>
+                                       <li><a href="peity.html">Peity Charts</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="Tablesmob" class="collapse dropdown-header-top">
+                                       <li><a href="static-table.html">Static Table</a>
+                                       </li>
+                                       <li><a href="data-table.html">Data Table</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="formsmob" class="collapse dropdown-header-top">
+                                       <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                       </li>
+                                       <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                       </li>
+                                       <li><a href="password-meter.html">Password Meter</a>
+                                       </li>
+                                       <li><a href="multi-upload.html">Multi Upload</a>
+                                       </li>
+                                       <li><a href="tinymc.html">Text Editor</a>
+                                       </li>
+                                       <li><a href="dual-list-box.html">Dual List Box</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="Appviewsmob" class="collapse dropdown-header-top">
+                                       <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                       </li>
+                                       <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                       </li>
+                                       <li><a href="password-meter.html">Password Meter</a>
+                                       </li>
+                                       <li><a href="multi-upload.html">Multi Upload</a>
+                                       </li>
+                                       <li><a href="tinymc.html">Text Editor</a>
+                                       </li>
+                                       <li><a href="dual-list-box.html">Dual List Box</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="Pagemob" class="collapse dropdown-header-top">
+                                       <li><a href="login.html">Login</a>
+                                       </li>
+                                       <li><a href="register.html">Register</a>
+                                       </li>
+                                       <li><a href="lock.html">Lock</a>
+                                       </li>
+                                       <li><a href="password-recovery.html">Password Recovery</a>
+                                       </li>
+                                       <li><a href="404.html">404 Page</a></li>
+                                       <li><a href="500.html">500 Page</a></li>
+                                   </ul>
+                               </li>
+                           </ul>
+                       </nav>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div> -->
+    <!-- Mobile Menu end -->
+    <!-- <div class="breadcome-area">
+       <div class="container-fluid">
+           <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                   <div class="breadcome-list single-page-breadcome">
+                       <div class="row">
+                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                               <div class="breadcome-heading">
+                                   <form role="search" class="sr-input-func">
+                                       <input type="text" placeholder="Search..." class="search-int form-control">
+                                       <a href="#"><i class="fa fa-search"></i></a>
+                                   </form>
+                               </div>
+                           </div>
+                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                               <ul class="breadcome-menu">
+                                   <li><a href="#">Home</a> <span class="bread-slash">/</span>
+                                   </li>
+                                   <li><span class="bread-blod">Tree View</span>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div> -->
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 control_panel_section zoom_functionality">
+      <div class="sticky_header_control_panel">
+        <div class="" style="display:flex">
+          <h3 style="padding-left: 3%;padding-top: 3%;">CONTROL PANEL</h3>
+          <img src="{% static 'images/info.png' %}"
+               style="width: 15px;height: 15px;margin-top: 4%;margin-left: 2%;"
+               id="modal-btn"
+               onclick="document.getElementById('control_panel_info_modal').style.display='block'"
+          >
+        </div>
+        <ul id="sortable-list" class="unordered_list">
+          {%if end_point.alignment_object %}
+          {%for k, elem in end_point.alignment_object.items %}
+          {%if elem.type == 'query' %}
+          <li class="no-swipe list_item instant" id="query_list" title="Click & Hold to Sort">
+            <input type="checkbox" class="checkbox_list" name="" id="query" value="query" checked>
+            <span style="position:absolute;margin-left:2%;">QUERY<i class="fas fa-bars" title="Click & Hold to Sort"></i></span>
+          </li>
+          {% elif elem.type == 'table' %}
+          <li class="no-swipe list_item instant" id="table_list" title="Click & Hold to Sort">
+            <input type="checkbox" class="checkbox_list" id="table" name="" value="table" checked>
+            <span style="position:absolute;margin-left:2%;">TABLE<i class="fas fa-bars" title="Click & Hold to Sort"></i></span>
+
+          </li>
+          {% elif elem.type == 'plot' %}
+          <li class="no-swipe list_item instant" id="plot_list" title="Click & Hold to Sort">
+            <input type="checkbox" class="checkbox_list" id="plot" name="" value="plot" checked>
+              <span style="position:absolute;margin-left:2%;">VISUALIZATION<i class="fas fa-bars" title="Click & Hold to Sort"></i></span>
+
+          </li>
+          {% elif elem.type == 'ml' %}
+          <li class="no-swipe list_item instant" id="ml_list" title="Click & Hold to Sort">
+            <input type="checkbox" class="checkbox_list" id="machine_learning" name="" value="ml"
+              onclick="displayMLFeatures()" checked>
+            <span style="position:absolute;margin-left:2%;">MACHINE LEARNING<i class="fas fa-bars" title="Click & Hold to Sort"></i></span>
+
+          </li>
+          {% elif elem.type == 'cp' %}
+          <li class="no-swipe list_item instant" id="cp_list" data-toggle="tooltip" data-placement="top"
+            title="COMING SOON..!">
+            <input type="checkbox" disabled class="checkbox_list" id="code_plugin"  name="" value="cp" checked>
+            <span style="position:absolute;margin-left:2%;">INSIGHTS<i class="fas fa-bars"></i></span>
+          </li>
+          {% endif %}
+          {% endfor %}
+          {% if non_query_object.query == True %}
+
+          <li class="no-swipe list_item instant" id="query_list" title="Click & Hold to Sort">
+            <input type="checkbox" class="checkbox_list" name="" id="query" value="query">
+            <span style="position:absolute;margin-left:2%;">QUERY<i class="fas fa-bars" title="Click & Hold to Sort"></i></span>
+          </li>
+          {%endif%}
+
+          {% if non_query_object.table == True %}
+
+          <li class="no-swipe list_item instant" id="table_list" title="Click & Hold to Sort">
+            <input type="checkbox" class="checkbox_list" id="table" name="" value="table">
+            <span style="position:absolute;margin-left:2%;">TABLE<i class="fas fa-bars" title="Click & Hold to Sort"></i></span>
+
+          </li>
+          {%endif%}
+          {% if non_query_object.plot == True %}
+
+          <li class="no-swipe list_item instant" id="plot_list" title="Click & Hold to Sort">
+            <input type="checkbox" class="checkbox_list" id="plot" name="" value="plot">
+            <span style="position:absolute;margin-left:2%;">VISUALIZATION<i class="fas fa-bars" title="Click & Hold to Sort"></i></span>
+
+          </li>
+          {%endif%}
+          {% if non_query_object.ml == True %}
+
+          <li class="no-swipe list_item instant" id="ml_list" title="Click & Hold to Sort">
+            <input type="checkbox" class="checkbox_list" id="machine_learning" name="" value="ml"
+              onclick="displayMLFeatures()">
+            <span style="position:absolute;margin-left:2%;">MACHINE LEARNING<i class="fas fa-bars" title="Click & Hold to Sort"></i></span>
+
+          </li>
+
+          {%endif%}
+          {% if non_query_object.cp == True %}
+
+          <li class="no-swipe list_item instant" id="cp_list" data-toggle="tooltip" data-placement="top"
+            title="COMING SOON..!">
+            <input type="checkbox" disabled class="checkbox_list" id="code_plugin" name="" value="cp">
+            <span style="position:absolute;margin-left:2%;">INSIGHTS<i class="fas fa-bars"></i></span>
+          </li>
+
+
+          {%endif%}
+          {%else%}
+          <li class="no-swipe list_item instant" id="query_list" title="Click & Hold to Sort">
+            <input type="checkbox" class="checkbox_list" name="" id="query" value="query" checked>
+            <span style="position:absolute;margin-left:2%;">QUERY<i class="fas fa-bars" title="Click & Hold to Sort"></i></span>
+          </li>
+          <li class="no-swipe list_item instant" id="table_list" title="Click & Hold to Sort">
+            <input type="checkbox" class="checkbox_list" id="table" name="" value="table" checked>
+            <span style="position:absolute;margin-left:2%;">TABLE<i class="fas fa-bars" title="Click & Hold to Sort"></i></span>
+
+          </li>
+          <li class="no-swipe list_item instant" id="plot_list" title="Click & Hold to Sort">
+            <input type="checkbox" class="checkbox_list" id="plot" name="" value="plot" checked>
+            <span style="position:absolute;margin-left:2%;">VISUALIZATION<i class="fas fa-bars" title="Click & Hold to Sort"></i></span>
+
+          </li>
+          <li class="no-swipe list_item instant" id="ml_list" title="Click & Hold to Sort">
+            <input type="checkbox" class="checkbox_list" id="machine_learning" name="" value="ml"
+              onclick="displayMLFeatures()">
+            <span style="position:absolute;margin-left:2%;">MACHINE LEARNING<i class="fas fa-bars" title="Click & Hold to Sort"></i></span>
+
+          </li>
+          <li class="no-swipe list_item instant" id="cp_list" data-toggle="tooltip" data-placement="top"
+            title="COMING SOON..!">
+            <input type="checkbox" disabled class="checkbox_list" id="code_plugin" name="" value="cp">
+            <span style="position:absolute;margin-left:2%;">INSIGHTS<i class="fas fa-bars"></i></span>
+          </li>
+          {%endif%}
+        </ul>
+        <form id="endpoint_object_form" method="post"
+          action="{%url 'coreapp:project-end-point-alignment' pk=end_point.pk %}" method="post">
+          {%csrf_token%}
+          <input type="text" name="end_point_object" class="end_point_object"
+            value="{% if end_point.alignment_object%}{{end_point.alignment_object}}{%endif%}" hidden>
+          <button type="button" class="control_panel_button" name="button"
+            onclick="applyChanges('apply_changes_object')">APPLY
+            CHANGES
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-9">
+
+      <div class="row" style="margin-top: 1%;text-align:center;background: #fff;font-size:16px;">
+        <form id="create_endpoint_object_form" class="zoom_functionality"
+          action="{% url 'coreapp:project-end-point-edit' pk=end_point.pk %}" method="post" style="margin-left:2%;">
+          {%csrf_token%}
+          <!-- <div class="row">
+            <div class="col-md-3"><label for="">END POINT NAME:</label></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"><label for="">DATA UPDATE FREQUENCY:</label></div>
+          </div> -->
+          <div class="row">
+            <div class="col-md-4">
+              <label for="endpoint_name_field" style="margin-right: 62%;">ENDPOINT NAME</label><br />
+              {{ep_form.end_point_name}}
+            </div>
+            <div class="col-md-4">
+              <label for="id_frequency" style="float: left;">CHOOSE FREQUENCY</label><br />
+              {{ep_form.frequency}}
+            </div>
+
+            <!-- <input type="text" id="endpoint_name_field" class="form-control" name="end_point_name" value="{{ end_point.name}}" required
+              style="width:25%;text-transform: uppercase;"> -->
+            <input type="text" name="end_point_object" class="end_point_object"
+              value="{% if end_point.alignment_object%}{{end_point.alignment_object}}{%endif%}" hidden>
+
+            <div class="col-md-4" style="text-align:left;padding: 0;">
+              <button type="button" value="UPDATE" class="create_enpoint ml_disabled_button"
+                onclick="applyChanges('create_endpoint_object')" style="margin-top:7%;width:75%;">UPDATE
+                ENPOINT</button>
+                <button type="button" style="margin-top:7%;width:75%;display:none"
+                        class="create_enpoint ml_enable_button"
+                        name="button"
+                        data-toggle="tooltip" title="Please go to ML section below to train the Brayn and create Endpoint"
+                        >
+                        UPDATE ENDPOINT
+                </button>
+            </div>
+
+          </div>
+        </form>
+
+        {%if end_point.alignment_object %}
+        {%for k, elem in end_point.alignment_object.items %}
+        <!-- {{elem}} -->
+        {%if elem.type == 'query' %}
+        <div class="col-md-12 zoom_functionality" style="margin-left: 1%;text-align: left;">
+          <span style="font-size: 18px;font-weight: bold;text-transform: uppercase;">Query</span>
+          : {{end_point.query.where_query}}&nbsp; {{end_point.query.group_query}}&nbsp;
+
+          &nbsp;{{end_point.query.aggregation_query}} {{end_point.query.expected_range}}
+        </div>
+        {%elif elem.type == 'table' %}
+        <div class="col-md-12 zoom_functionality border_class" style="background:#fff;margin-bottom: 4%;margin-top: 4%;">
+
+          <div class="" style="display:flex;margin-left: 1%;">
+            <div class="" style="display:flex;">
+              <h3 style="text-transform: uppercase;">Query Results</h3>
+              &nbsp;&nbsp;&nbsp;<img src="{% static 'images/info.png' %}"
+                style="width: 15px;height: 15px;margin-top: 3%;" id="modal-btn"
+                onclick="document.getElementById('query_results_info_modal').style.display='block'"
+                >
+            </div>
+
+            <!-- <h3 style="margin-bottom: 1%;margin-left: 1%;font-size: 15px;">VIEW OF YOUR DATA</h3> -->
+            <div class="date_frame_info" style="margin-left:2%;">
+              <span> Columns : {{row_count}}</span>
+              <span style="margin-left: 2%;"> Rows : {{ column_count}}</span>
+            </div>
+          </div>
+          <div class="scroller visual_display_query_results" style="width:100%;">
+            <!-- <p>Data Column Count:{{df_column_count}}</p>
+          <p>Data Row Count:{{df_rows}}</p> -->
+            {% autoescape off %}{{ query }}{% endautoescape %}
+          </div>
+        </div>
+
+
+        {%elif elem.type == 'plot' %}
+        <div class="col-md-12 border_class" style="background:#fff;zoom:1;">
+          <div class="" style="display:flex">
+            <h3>VISUALIZATION</h3>
+            &nbsp;&nbsp;&nbsp;
+            <img src="{% static 'images/info.png' %}"
+              style="width: 15px;height: 15px;margin-top: 0.6%;margin-left:1%;"
+              id="modal-btn"
+              onclick="document.getElementById('visualization_info_modal').style.display='block'"
+              >
+          </div>
+
+          {% if graph %}
+          <div style="width:600;height:500">
+            {{ graph|safe }}
+          </div>
+          {% endif %}
+          <form action="{% url 'coreapp:project-end-point-plot' pk=end_point.pk %}" method="post"
+            style="margin-bottom:4%;margin-left:1%;">
+            {%csrf_token%}
+            <div class="row zoom_functionality">
+              <!-- <label class="col-sm-2 col-form-label">Plot</label> -->
+              {% if permission == 'Admin' or permission == 'Delete' or permission == 'Write'%}
+              <div class="col-sm-10" style="text-align:left;background:#fff">
+                <label class="col-form-label" for="plot_selection">UPDATE YOUR PLOT</label><br />
+                <select name="plot_type" class="form-control" style="width:30%;" id="plot_selection" onchange="selectVisualiztionPlots(this)">
+                  <option value="choose_type">CHOOSE TYPE</option>
+                <option value="bar">Bar Plot</option>
+                <option value="box_plot">Box Plot</option>
+                <option value="bubble_plot">Bubble Plot</option>
+                <option value="cat">Cat Plot</option>
+                <option value="histogram">Histogram Plot</option>
+                <option value="horizontal_bar">Horizontal Bar Plot</option>
+                <option value="heatmap">Heatmap</option>
+                <option value="line_2d">Line PLot 2D</option>
+                <option value="line_3d">Line Plot 3D</option>
+                <option value="pie_chart">Pie Chart</option>
+
+                <option value="scatter_2d">Scatter Plot 2D</option>
+                <option value="scatter_3d">Scatter PLot 3D</option>
+                <option value="time_series_plot">Time Series Plot</option>
+                </select>
+              </div>
+              {%endif%}
+            </div>
+
+            <!--START: 2D PLOT SECTION  -->
+            <div class="row zoom_functionality" id="2d_plot_section" style="display:none;margin-top: 1%;">
+              <div class="col-md-12">
+                <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                  Select Columns
+                </p>
+              </div>
+
+              <div class="col-md-3" style="text-align:left;">
+                <label for="">X AXIS</label>
+
+                <select class="select_width form-control" id="2d_x" name="x_2d">
+                  <option value="">---</option>
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+                </select>
+              </div>
+
+              <div class="col-md-3">
+                <label class="label_left" for="">Y AXIS</label>
+                <select class="select_width form-control" id="2d_y" name="y_2d">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+
+              <div class="col-md-3">
+                <label for="" class="label_left">COLOR</label>
+                <select class="select_width form-control" id="3d_x" name="color_2d">
+                  <option value="">---</option>
+
+                  {%for c in string_columns %}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+
+              <div class="col-md-5" style="text-align:left;padding: 0;">
+                <button type="submit" class="graph_submit_button" name="button">SUBMIT</button>
+              </div>
+            </div>
+            <!--END: 2D PLOT SECTION  -->
+
+
+                    <!-- STARR: BAR PLOT SECTION -->
+
+          <div class="row zoom_functionality" id="bar_section" style="display:none;margin-top: 1%;">
+            <div class="col-md-12">
+              <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                SELECT COLUMNS
+              </p>
+            </div>
+
+            <div class="col-md-3" style="text-align:left;">
+              <label for="">X AXIS</label>
+
+              <select class="select_width form-control" id="bar_x" name="bar_x">
+                <option value="">---</option>
+
+                {%for c in string_columns%}
+
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">Y AXIS</label>
+              <select class="select_width form-control" id="bar_y" name="bar_y">
+                <option value="">---</option>
+
+                {%for c in number_columns%}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">COLOR</label>
+              <select class="select_width form-control" name="bar_color">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-5" style="text-align:left;padding: 0;">
+              <button type="submit" class="graph_submit_button" name="button">CHANGE THE PLOT</button>
+            </div>
+          </div>
+
+
+          <!-- END : BAR PLOT SECTION -->
+
+          <!-- SATART": HORIZONTAL BAR SECTION -->
+
+
+          <div class="row zoom_functionality" id="h_bar_section" style="display:none;margin-top: 1%;">
+            <div class="col-md-12">
+              <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                SELECT COLUMNS
+              </p>
+            </div>
+
+            <div class="col-md-3" style="text-align:left;">
+              <label for="">X AXIS</label>
+
+              <select class="select_width form-control" id="h_bar_x" name="h_bar_x">
+                <option value="">---</option>
+
+                {%for c in number_columns%}
+
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">Y AXIS</label>
+              <select class="select_width form-control" id="h_bar_y" name="h_bar_y">
+                <option value="">---</option>
+
+                {%for c in string_columns%}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">COLOR</label>
+              <select class="select_width form-control" name="h_bar_color">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-5" style="text-align:left;padding: 0;">
+              <button type="submit" class="graph_submit_button" name="button">CHANGE THE PLOT</button>
+            </div>
+          </div>
+
+
+
+
+          <!-- END: HORIZONTAL BAR SECTION -->
+                              <!--START: COUNT PLOT SECTION  -->
+          <div class="row zoom_functionality" id="count_plot_section" style="display:none;margin-top: 1%;">
+            <div class="col-md-12">
+              <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                SELECT COLUMNS
+              </p>
+            </div>
+
+            <div class="col-md-3" style="text-align:left;">
+              <label for="">X AXIS</label>
+
+              <select class="select_width form-control" id="count_x" name="count_x">
+                <option value="">---</option>
+
+                {%for c in df_columns%}
+
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+
+              </select>
+            </div>
+           <!--  <div class="col-md-3">
+              <label for="">Y AXIS</label>
+              <select class="select_width form-control" id="2d_y" name="y_2d">
+                <option value="">---</option>
+
+                {%for c in df_columns%}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div> -->
+            <div class="col-md-3">
+              <label for="">COLOR</label>
+              <select class="select_width form-control" name="count_color">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-5" style="text-align:left;padding: 0;">
+              <button type="submit" class="graph_submit_button" name="button">CHANGE THE PLOT</button>
+            </div>
+          </div>
+          <!--END: COUNT PLOT SECTION  -->
+          <!--START: CAT PLOT SECTION  -->
+          <div class="row zoom_functionality" id="cat_plot_section" style="display:none;margin-top: 1%;">
+            <div class="col-md-12">
+              <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                SELECT COLUMNS
+              </p>
+            </div>
+
+            <div class="col-md-3" style="text-align:left;">
+              <label for="">X AXIS</label>
+
+              <select class="select_width form-control" id="cat_x" name="cat_x">
+                <option value="">---</option>
+
+                {%for c in df_columns%}
+
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">Y AXIS</label>
+              <select class="select_width form-control" id="cat_y" name="cat_y">
+                <option value="">---</option>
+
+                {%for c in df_columns%}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">COLOR</label>
+              <select class="select_width form-control" name="cat_color">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+              <div class="col-md-3">
+              <label for="">FACET COLUMN</label>
+              <select class="select_width form-control" name="facet_col">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-5" style="text-align:left;padding: 0;">
+              <button type="submit" class="graph_submit_button" name="button">CHANGE THE PLOT</button>
+            </div>
+          </div>
+          <!--END: CAT PLOT SECTION  -->
+          <!--START: HEATMAP SECTION  -->
+          <div class="row zoom_functionality" id="heatmap_section" style="display:none;margin-top: 1%;">
+            <div class="col-md-12">
+              <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                SELECT COLUMNS
+              </p>
+            </div>
+
+            <div class="col-md-3" style="text-align:left;">
+              <label for="">X AXIS</label>
+
+              <select class="select_width form-control" id="heatmap_x" name="heatmap_x">
+                <option value="">---</option>
+
+                {%for c in df_columns%}
+
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">Y AXIS</label>
+              <select class="select_width form-control" id="heatmap_y" name="heatmap_y">
+                <option value="">---</option>
+
+                {%for c in df_columns%}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+           <!--  <div class="col-md-3">
+              <label for="">COLOR</label>
+              <select class="select_width form-control" name="cat_color">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div> -->
+              <!-- <div class="col-md-3">
+              <label for="">FACET COLUMN</label>
+              <select class="select_width form-control" name="facet_col">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div> -->
+            <div class="col-md-5" style="text-align:left;padding: 0;">
+              <button type="submit" class="graph_submit_button" name="button">CHANGE THE PLOT</button>
+            </div>
+          </div>
+          <!--END: HEATMAP SECTION  -->
+
+
+            <!--START: 3D PLOT SECTION  -->
+            <div class="row zoom_functionality" id="3d_plot_section" style="display:none;">
+              <div class="col-md-12">
+                <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                  SELECT COLUMNS
+                </p>
+              </div>
+              <div class="col-md-3" style="text-align:left;">
+                <label for="" class="label_left">X AXIS</label>
+                <select class="select_width form-control" id="3d_y" name="x_3d">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="" class="label_left">Y AXIS</label>
+                <select class="select_width form-control" name="y_3d">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="" class="label_left">Z AXIS</label>
+                <select class="select_width form-control" id="z" name="z">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="" class="label_left">COLOR</label>
+                <select class="select_width form-control" name="color_3d">
+                  <option value="">---</option>
+
+                  {%for c in string_columns %}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+                </select>
+              </div>
+              <div class="col-md-5" style="text-align:left;padding: 0;">
+                <button type="submit" class="graph_submit_button" name="button">SUBMIT</button>
+              </div>
+            </div>
+            <!--END: 3D PLOT SECTION  -->
+
+
+
+
+            <!--START: BUBBLE PLOT SECTION  -->
+            <div class="row zoom_functionality" id="bubble_plot_section" style="display:none;margin-top: 1%;">
+              <div class="col-md-12">
+                <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                  SELECT COLUMNS
+                </p>
+              </div>
+
+              <div class="col-md-3" style="text-align:left;">
+                <label for="" class="label_left">X AXIS</label>
+                <select class="select_width form-control" id="3d_x" name="x_bubble_plot">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="" class="label_left">Y AXIS</label>
+                <select class="select_width form-control" id="3d_y" name="y_bubble_plot">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="" class="label_left">COLOR</label>
+                <select class="select_width form-control" name="color_3d">
+                  <option value="">---</option>
+
+                  {%for c in string_columns %}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+                </select>
+              </div>
+
+              <div class="col-md-3" style="text-align:left;">
+                <label for="" class="label_left">SIZE</label>
+
+                <select class="select_width form-control" id="bubble_plot_size" name="size">
+                  <option value="">---</option>
+
+                  {%for c in number_columns%}
+
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+
+                </select>
+              </div>
+              <div class="col-md-5" style="text-align:left;margin-top:1%;">
+                <label for="" class="label_left">NAME</label>
+                <select class="select_width form-control" id="bubble_plot_hover" name="hover_name" >
+                  <option value="">---</option>
+
+                  {%for c in string_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-12" style="text-align:left;padding: 0;">
+                <button type="submit" class="graph_submit_button" name="button" onclick="loadDiv()"
+                  style="padding: 1% 5%;margin-left:1%;">SUBMIT</button>
+              </div>
+            </div>
+            <!--END: BUBBLE PLOT SECTION  -->
+
+            <!--START: PIE CHART SECTION  -->
+            <div class="row zoom_functionality" id="pie_chart_section" style="display:none;margin-top: 1%;">
+              <div class="col-md-12">
+                <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                  SELECT COLUMNS
+                </p>
+              </div>
+
+              <div class="col-md-3" style="text-align:left;">
+                <label for="" class="label_left">VALUE</label>
+
+                <select class="select_width form-control" id="pie_chart_value" name="values">
+                  <option value="">---</option>
+                  {%for c in number_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+                </select>
+              </div>
+              <div class="col-md-5">
+                <label for="" class="label_left">NAME</label>
+                <select class="select_width form-control" id="pie_chart_name" name="names" style="width: 91%;">
+                  <option value="">---</option>
+
+                  {%for c in string_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-5" style="text-align:left;padding: 0;">
+                <button type="submit" class="graph_submit_button" name="button" onclick="loadDiv()">SUBMIT</button>
+              </div>
+            </div>
+            <!--END: PIE CHART SECTION  -->
+
+
+
+            <!--START: TIME SERIES PLOT SECTION -->
+            <div class="row zoom_functionality" id="time_series_plot_section" style="display:none;margin-top: 1%;">
+              <div class="col-md-12">
+                <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                  SELECT COLUMNS
+                </p>
+              </div>
+
+              <div class="col-md-3" style="text-align:left;">
+                <label for="" class="label_left">X AXIS</label>
+
+                <select class="select_width form-control" id="time_series_x" name="x_time_series">
+                  <option value="">---</option>
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+                </select>
+              </div>
+              <div class="col-md-5">
+                <label for="" class="label_left">Y AXIS</label>
+                <select class="select_width form-control" id="time_series_y" name="y_time_series" style="width: 91%;">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-5" style="text-align:left;padding: 0;">
+                <button type="submit" class="graph_submit_button" name="button">SUBMIT</button>
+              </div>
+            </div>
+            <!--END: TIME SERIES PLOT SECTION  -->
+
+
+            <input type="text" name="end_point_object" class="end_point_object"
+              value="{% if end_point.alignment_object%}{{end_point.alignment_object}}{%endif%}" hidden>
+            <input type="text" name="update_endpoint" value="True" hidden>
+            <!-- <input type="submit" value="Submit"> -->
+          </form>
+
+
+        </div>
+        {%elif elem.type == 'ml' %}
+        {%if end_point.algorithm%}
+        <!-- algorithm -->
+        <!-- START:Machine Learning DETAILS -->
+          <div class="col-md-12 border_class_endpoint_page" style="margin-top:3%;margin-bottom: 3%;text-align:left">
+            <h3 >MACHINE LEARNING</h3>
+
+            <div class="" style="grid-template-columns: 1fr 1fr;margin-top: 2%;">
+
+
+              <input name="nav" type="radio" class="nav home-radio" id="home"  checked="checked"/>
+              <div class="page home-page">
+                <div class="page-contents">
+
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <div class="card card_border_class">
+                        <div class="card-body">
+                          <h5 class="card-title">ACCURACY</h5>
+                          <p class="card-text">
+                            {% if accuracy_list.MAE %}MAE: {{accuracy_list.MAE}}<br>MSE: {{accuracy_list.MSE}}
+                            <br>
+                          RMSE: {{accuracy_list.RMSE}}{%else%} {{accuracy_list.accuracy}}{%endif%}</p>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="card card_border_class">
+                        <div class="card-body">
+                          <h5 class="card-title">TARGET</h5>
+                          <p class="card-text">{{target}}</p>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="card card_border_class">
+                        <div class="card-body">
+                          <h5 class="card-title">FEATURES</h5>
+                          <div class="features_break_point">
+                            <p class="card-text">{% for column in features_ml_display %}{{column}}<br>{%endfor%}</p>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="card card_border_class">
+                        <div class="card-body">
+                          <h5 class="card-title">INSTANCE DETAILS</h5>
+                          <p class="card-text">{{end_point.algorithm.type_of_prediction}}</p>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="col-md-4">
+                <form method="post" action="{% url 'coreapp:project-end-point-algorithm' pk=end_point.pk %}" id="delete_trained_brayn">
+                  {% csrf_token %}
+                  <input type="" name="delete_ml_obj" class="delete_model_query_object" hidden>
+                        <button class="predict_brayn_button" onclick="document.getElementById('delete_modal_section').style.display='block'" style="padding: 4% 3%;margin-left:0;width:77%;margin-top: 7%;" type="button" name="button">DELETE TRAINED BRAYN</button>
+                </form>
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+              <!-- <label class="nav" for="home">
+                <span>
+                  BRAYN DETAILS
+                </span>
+              </label> -->
+
+
+            </div>
+          </div>
+
+          <!-- END: Machine Learning DETAILS -->
+          {%else%}
+
+          <!-- START:New tabs for Machiene Learning -->
+          <div class="col-md-12 machine_learning_section border_class" id="machine_learning_div" style="display:block">
+            <div class="" style="display:flex">
+              <h3>MACHINE LEARNING</h3>
+              <img src="{% static 'images/info.png' %}"
+                style="width: 15px;height: 15px;margin-left: 2%;margin-top: 0.7%;"
+                 id="modal-btn"
+                  onclick="document.getElementById('machine_learning_info_modal').style.display='block'"
+                 >
+
+            </div>
+            <p style="font-size: 13px;">Here you can train the brayn and use it for your future predictions</p>
+            <form action="{% url 'coreapp:project-end-point-update' pk=end_point.pk%}" method="post" id="model_form_submission">
+            <div class="">
+
+              <!--START: Target Group Modal -->
+              <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content modal-content-group-box">
+                  <span class="close" style="top: 14%;" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+                  <h3 style="font-size:13px">NUMBER OF GROUPS TO BE DIVIDED</h3>
+
+                    <div class="alert alert-danger group_value_error_message"  role="alert" style="display:none;font-size:10px;">
+                      PLEASE ENTER VALUE AND SUBMIT FORM!
+                      <button type="button" class="close" onclick="$('.group_value_error_message').hide()" aria-label="Close" style="position:relative;font-size:25px">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <input type="number" name="no_of_" class="form-control entered_group_value"  value="" placeholder="">
+                    <button type="button" class="group_submit_button" name="button" onclick="getGroupsValue()">SUBMIT</button>
+
+                    </div>
+                  </div>
+              <!--END: Target Group Modal -->
+
+
+              <input name="nav" type="radio" class="nav home-radio" id="home" checked="checked" />
+              <div class="page home-page">
+                <div class="page-contents">
+
+                  <!--START:  Form Error Messages -->
+                  <div class="alert alert-danger target_error_message error_display_format"  role="alert" >
+                    PLEASE SELECT THE TARGET AND FEATURE TO TRAIN THE BRAYN
+                    <button type="button" class="close" onclick="$('.target_error_message').hide()" aria-label="Close" style="position:relative">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="alert alert-danger endpoint_name_error_message error_display_format"  role="alert" >
+                    KINDLY ENTER THE ENDPOINT NAME ABOVE AND SUBMIT!
+                    <button type="button" class="close" onclick="$('.endpoint_name_error_message').hide()" aria-label="Close" style="position:relative">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="alert alert-danger feature_error_message error_display_format"  role="alert" >
+                    PLEASE SELECT THE TARGET AND FEATURES TO TRAIN THE BRAYN
+                    <button type="button" class="close" onclick="$('.feature_error_message').hide()" aria-label="Close" style="position:relative">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <!--END: Form Error Messages -->
+
+                  {%csrf_token%}
+                  <div class="row" style="padding: 0 5% 0% 0%; margin-top: 1%;">
+                    <div class="col-md-4">
+                      <label for="target_selection">TARGET</label>
+                      <select class="form-control selected_option_value" id="target_selection" name="ml_target" size="4" multiple="multiple" >
+                        {%for c in feature_columns%}
+                          <option value="{{c}}" title="">{{c}}</option>
+                        {%endfor%}
+                      </select>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="features_selection">FEATURES</label>
+                      <select id="features_selection" class="form-control selected_option_value" name="ml_feature_select"  multiple required="required">
+                          {%for c in feature_columns%}
+                            <option value="{{c}}">{{c}}</option>
+                          {%endfor%}
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="prediction_type">PREDICTION TYPE</label>
+                        <select class="form-control" required name="type_of_prediction" id="prediction_type" >
+                          <option value="Classification"> CLASSIFICATION</option>
+                          <option value="Linear">LINEAR</option>
+                        </select>
+                        <input type="text" class="ml_name"  name="ml_name" value="test" hidden="" readonly>
+                        <input type="text" class="ml_frequency" name="ml_frequency" value="daily" hidden="" readonly>
+                        <input type="text" class="ml_query_object" name="ml_query_object" value="test" hidden="" readonly>
+                        <input type="text" class="no_of_groups" name="no_of_groups" value="daily" hidden="" readonly>
+
+
+                      <!-- <div class="col-m-4"> -->
+                          <button class="model_training_button" type="button" name="button" onclick="modelFormSubmission()">TRAIN THE BRAYN</button>
+                          <p class="group_paragraph" style="display:none;margin-left: 3%;">GROUPS SELECTED: <span id="groups_value"></span></p>
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </form>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+
+          <!-- END:New tabs for Machiene Learning -->
+          {%endif%}
+        {%endif%}
+        {%endfor%}
+        {%else%}
+        <div class="col-md-12" style="margin-left: 1%;text-align: left;">
+          <span style="font-size: 18px;font-weight: bold;text-transform: uppercase;">Query</span>
+          : {{end_point.where_query}}&nbsp; {{end_point.query.group_query}}&nbsp;
+          &nbsp;{{end_point.query.aggregation_query}} {{end_point.query.expected_range}}
+        </div>
+        <div class="col-md-12 zoom_functionality border_class" style="background:#fff;margin-bottom: 4%;margin-top: 4%;">
+
+          <div class="" style="display:flex;margin-left: 1%;">
+            <div class="" style="display:flex;">
+              <h3 style="text-transform: uppercase;">Query Results</h3>
+              &nbsp;&nbsp;&nbsp;<img src="{% static 'images/info.png' %}"
+                style="width: 15px;height: 15px;margin-top: 3%;" id="modal-btn"
+                onclick="document.getElementById('query_results_info_modal').style.display='block'"
+                >
+            </div>
+
+            <!-- <h3 style="margin-bottom: 1%;margin-left: 1%;font-size: 15px;">VIEW OF YOUR DATA</h3> -->
+            <div class="date_frame_info">
+              <span> Columns : {{df_column_count}}</span>
+              <span style="margin-left: 2%;"> Rows : {{df_rows}}</span>
+            </div>
+          </div>
+          <div class="scroller visual_display_query_results" style="width:100%;">
+            <!-- <p>Data Column Count:{{df_column_count}}</p>
+                <p>Data Row Count:{{df_rows}}</p> -->
+            {% autoescape off %}{{ query }}{% endautoescape %}
+          </div>
+        </div>
+        <div class="col-md-12 border_class" style="background:#fff;zoom:1;">
+          <div class="" style="display:flex">
+            <h3>VISUALIZATION</h3>
+            &nbsp;&nbsp;&nbsp;
+            <img src="{% static 'images/info.png' %}"
+              style="width: 15px;height: 15px;margin-top: 0.6%;margin-left:1%;"
+              id="modal-btn"
+              onclick="document.getElementById('visualization_info_modal').style.display='block'"
+              >
+          </div>
+          {% if graph %}
+          <div style="width:600;height:500">
+            {{ graph|safe }}
+          </div>
+          <form action="{% url 'coreapp:project-end-point-plot' pk=end_point.pk %}" method="post"
+            style="margin-bottom:4%;margin-left:1%;">
+            {%csrf_token%}
+            <div class="row">
+              <!-- <label class="col-sm-2 col-form-label">Plot</label> -->
+              {% if permission == 'Admin' or permission == 'Delete' or permission == 'Write'%}
+              <div class="col-sm-10" style="text-align:left;">
+
+                <label class="col-form-label" for="plot_selection" style="text-align:left;">UPDATE YOUR
+                  PLOT</label><br />
+                <select name="plot_type" class="form-control" style="width:30%;" id="" onchange="selectVisualiztionPlots(this)">
+                  <option value="choose_type">CHOOSE TYPE</option>
+                <option value="bar">Bar Plot</option>
+                <option value="box_plot">Box Plot</option>
+                <option value="bubble_plot">Bubble Plot</option>
+                <option value="cat">Cat Plot</option>
+                <option value="histogram">Histogram Plot</option>
+                <option value="horizontal_bar">Horizontal Bar Plot</option>
+                <option value="heatmap">Heatmap</option>
+                <option value="line_2d">Line PLot 2D</option>
+                <option value="line_3d">Line Plot 3D</option>
+                <option value="pie_chart">Pie Chart</option>
+
+                <option value="scatter_2d">Scatter Plot 2D</option>
+                <option value="scatter_3d">Scatter PLot 3D</option>
+                <option value="time_series_plot">Time Series Plot</option>
+
+                </select>
+
+              </div>
+              {%else%}
+              <p>Not Permited</p>
+              {%endif%}
+            </div>
+
+            <!--START: 2D PLOT SECTION  -->
+            <div class="row" id="2d_plot_section" style="display:none;">
+              <div class="col-md-12">
+                <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                  SELECT COLUMNS
+                </p>
+              </div>
+
+              <div class="col-md-3" style="text-align:left;">
+                <label for="" class="label_left">X AXIS</label>
+
+                <select class="select_width form-control" id="2d_x" name="x_2d">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="" class="label_left">Y AXIS</label>
+                <select class="select_width form-control" id="2d_y" name="y_2d">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="" class="label_left">COLOR</label>
+                <select class="select_width form-control" name="color_2d">
+                  <option value="">---</option>
+
+                  {%for c in string_columns %}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-5" style="text-align:left;padding: 0;">
+                <button type="submit" class="graph_submit_button" name="button">SUBMIT</button>
+              </div>
+            </div>
+            <!--END: 2D PLOT SECTION  -->
+
+
+                    <!-- STARR: BAR PLOT SECTION -->
+
+          <div class="row zoom_functionality" id="bar_section" style="display:none;margin-top: 1%;">
+            <div class="col-md-12">
+              <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                SELECT COLUMNS
+              </p>
+            </div>
+
+            <div class="col-md-3" style="text-align:left;">
+              <label for="">X AXIS</label>
+
+              <select class="select_width form-control" id="bar_x" name="bar_x">
+                <option value="">---</option>
+
+                {%for c in strin_columns%}
+
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">Y AXIS</label>
+              <select class="select_width form-control" id="bar_y" name="bar_y">
+                <option value="">---</option>
+
+                {%for c in number_columns%}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">COLOR</label>
+              <select class="select_width form-control" name="bar_color">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-5" style="text-align:left;padding: 0;">
+              <button type="submit" class="graph_submit_button" name="button">CHANGE THE PLOT</button>
+            </div>
+          </div>
+
+
+          <!-- END : BAR PLOT SECTION -->
+
+          <!-- SATART": HORIZONTAL BAR SECTION -->
+
+
+          <div class="row zoom_functionality" id="h_bar_section" style="display:none;margin-top: 1%;">
+            <div class="col-md-12">
+              <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                SELECT COLUMNS
+              </p>
+            </div>
+
+            <div class="col-md-3" style="text-align:left;">
+              <label for="">X AXIS</label>
+
+              <select class="select_width form-control" id="h_bar_x" name="h_bar_x">
+                <option value="">---</option>
+
+                {%for c in number_columns%}
+
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">Y AXIS</label>
+              <select class="select_width form-control" id="h_bar_y" name="h_bar_y">
+                <option value="">---</option>
+
+                {%for c in string_columns%}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">COLOR</label>
+              <select class="select_width form-control" name="h_bar_color">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-5" style="text-align:left;padding: 0;">
+              <button type="submit" class="graph_submit_button" name="button">CHANGE THE PLOT</button>
+            </div>
+          </div>
+
+
+
+
+          <!-- END: HORIZONTAL BAR SECTION -->
+                              <!--START: COUNT PLOT SECTION  -->
+          <div class="row zoom_functionality" id="count_plot_section" style="display:none;margin-top: 1%;">
+            <div class="col-md-12">
+              <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                SELECT COLUMNS
+              </p>
+            </div>
+
+            <div class="col-md-3" style="text-align:left;">
+              <label for="">X AXIS</label>
+
+              <select class="select_width form-control" id="count_x" name="count_x">
+                <option value="">---</option>
+
+                {%for c in df_columns%}
+
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+
+              </select>
+            </div>
+           <!--  <div class="col-md-3">
+              <label for="">Y AXIS</label>
+              <select class="select_width form-control" id="2d_y" name="y_2d">
+                <option value="">---</option>
+
+                {%for c in df_columns%}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div> -->
+            <div class="col-md-3">
+              <label for="">COLOR</label>
+              <select class="select_width form-control" name="count_color">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-5" style="text-align:left;padding: 0;">
+              <button type="submit" class="graph_submit_button" name="button">CHANGE THE PLOT</button>
+            </div>
+          </div>
+          <!--END: COUNT PLOT SECTION  -->
+          <!--START: CAT PLOT SECTION  -->
+          <div class="row zoom_functionality" id="cat_plot_section" style="display:none;margin-top: 1%;">
+            <div class="col-md-12">
+              <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                SELECT COLUMNS
+              </p>
+            </div>
+
+            <div class="col-md-3" style="text-align:left;">
+              <label for="">X AXIS</label>
+
+              <select class="select_width form-control" id="cat_x" name="cat_x">
+                <option value="">---</option>
+
+                {%for c in string_columns%}
+
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">Y AXIS</label>
+              <select class="select_width form-control" id="cat_y" name="cat_y">
+                <option value="">---</option>
+
+                {%for c in number_columns%}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">COLOR</label>
+              <select class="select_width form-control" name="cat_color">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+              <div class="col-md-3">
+              <label for="">FACET COLUMN</label>
+              <select class="select_width form-control" name="facet_col">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+            <div class="col-md-5" style="text-align:left;padding: 0;">
+              <button type="submit" class="graph_submit_button" name="button">CHANGE THE PLOT</button>
+            </div>
+          </div>
+          <!--END: CAT PLOT SECTION  -->
+          <!--START: HEATMAP SECTION  -->
+          <div class="row zoom_functionality" id="heatmap_section" style="display:none;margin-top: 1%;">
+            <div class="col-md-12">
+              <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                SELECT COLUMNS
+              </p>
+            </div>
+
+            <div class="col-md-3" style="text-align:left;">
+              <label for="">X AXIS</label>
+
+              <select class="select_width form-control" id="heatmap_x" name="heatmap_x">
+                <option value="">---</option>
+
+                {%for c in string_columns%}
+
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">Y AXIS</label>
+              <select class="select_width form-control" id="heatmap_y" name="heatmap_y">
+                <option value="">---</option>
+
+                {%for c in df_columns%}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div>
+           <!--  <div class="col-md-3">
+              <label for="">COLOR</label>
+              <select class="select_width form-control" name="cat_color">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div> -->
+              <!-- <div class="col-md-3">
+              <label for="">FACET COLUMN</label>
+              <select class="select_width form-control" name="facet_col">
+                <option value="">---</option>
+
+                {%for c in string_columns %}
+                <option value="{{c}}">{{c}}</option>
+                {%endfor%}
+
+              </select>
+            </div> -->
+            <div class="col-md-5" style="text-align:left;padding: 0;">
+              <button type="submit" class="graph_submit_button" name="button">CHANGE THE PLOT</button>
+            </div>
+          </div>
+          <!--END: HEATMAP SECTION  -->
+
+            <!--START: 3D PLOT SECTION  -->
+            <div class="row" id="3d_plot_section" style="display:none;">
+              <div class="col-md-12">
+                <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                  SELECT COLUMNS
+                </p>
+              </div>
+              <div class="col-md-3" style="text-align:left;">
+                <label for="" class="label_left">X AXIS</label>
+                <select class="select_width form-control" id="3d_x" name="x_3d">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="" class="label_left">Y AXIS</label>
+                <select class="select_width form-control" id="3d_y" name="y_3d">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="" class="label_left">Z AXIS</label>
+                <select class="select_width form-control" id="z" name="z">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-5" style="text-align:left;margin-top:1%;">
+                <label for="" class="label_left">NAME</label>
+                <select class="select_width form-control" id="bubble_plot_hover" name="bubble_plot_hover_name" >
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-12" style="text-align:left;padding: 0;">
+                <button type="submit" class="graph_submit_button" name="button" onclick="loadDiv()"
+                  style="padding: 1% 5%;margin-left:1%;">SUBMIT</button>
+              </div>
+            </div>
+
+
+
+
+
+            <!--START: BUBBLE PLOT SECTION  -->
+            <div class="row zoom_functionality" id="bubble_plot_section" style="display:none;margin-top: 1%;">
+              <div class="col-md-12">
+                <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                  SELECT COLUMNS
+                </p>
+              </div>
+              <div class="col-md-3" style="text-align:left;">
+                <label for="" class="label_left">X AXIS</label>
+                <select class="select_width form-control" id="3d_x" name="x_bubble_plot">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="" class="label_left">Y AXIS</label>
+                <select class="select_width form-control" id="3d_y" name="y_bubble_plot">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="" class="label_left">COLOR</label>
+                <select class="select_width form-control" name="color_3d">
+                  <option value="">---</option>
+
+                  {%for c in string_columns %}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+                </select>
+              </div>
+
+              <div class="col-md-3" style="text-align:left;">
+                <label for="" class="label_left">SIZE</label>
+
+                <select class="select_width form-control" id="bubble_plot_size" name="bubble_plot_size_name">
+                  <option value="">---</option>
+
+                  {%for c in number_columns%}
+
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+
+                </select>
+              </div>
+              <div class="col-md-5">
+                <label for="" class="label_left">HOVER NAME</label>
+                <select class="select_width form-control" id="bubble_plot_hover" name="bubble_plot_hover_name" style="width: 91%;">
+                  <option value="">---</option>
+
+                  {%for c in string_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-5" style="text-align:left;padding: 0;">
+                <button type="submit" class="graph_submit_button" name="button" onclick="loadDiv()">SUBMIT</button>
+              </div>
+            </div>
+            <!--END: BUBBLE PLOT SECTION  -->
+
+
+            <!--START: PIE CHART SECTION  -->
+            <div class="row zoom_functionality" id="pie_chart_section" style="display:none;margin-top: 1%;">
+              <div class="col-md-12">
+                <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                  SELECT COLUMNS
+                </p>
+              </div>
+
+              <div class="col-md-3" style="text-align:left;">
+                <label for="" class="label_left">VALUE</label>
+
+                <select class="select_width form-control" id="pie_chart_value" name="pie_chart_value_name">
+                  <option value="">---</option>
+                  {%for c in number_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+                </select>
+              </div>
+              <div class="col-md-5">
+                <label for="" class="label_left">NAME</label>
+                <select class="select_width form-control" id="pie_chart_name" name="pie_chart_name_options" style="width: 91%;">
+                  <option value="">---</option>
+
+                  {%for c in string_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-5" style="text-align:left;padding: 0;">
+                <button type="submit" class="graph_submit_button" name="button" onclick="loadDiv()">SUBMIT</button>
+              </div>
+            </div>
+            <!--END: PIE CHART SECTION  -->
+
+
+
+
+
+
+
+
+            <!--START: TIME SERIES PLOT SECTION -->
+            <div class="row zoom_functionality" id="time_series_plot_section" style="display:none;margin-top: 1%;">
+              <div class="col-md-12">
+                <p style="text-align:left;font-weight:bold;margin: 0;margin-top: 1%;margin-bottom: 1%;">
+                  SELECT COLUMNS
+                </p>
+              </div>
+
+              <div class="col-md-3" style="text-align:left;">
+                <label for="" class="label_left">X AXIS</label>
+
+                <select class="select_width form-control" id="time_series_x" name="x_time_series">
+                  <option value="">---</option>
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+                </select>
+              </div>
+              <div class="col-md-5">
+                <label for="" class="label_left">Y AXIS</label>
+                <select class="select_width" id="time_series_y" name="y_time_series" style="width: 91%;">
+                  <option value="">---</option>
+
+                  {%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-5" style="text-align:left;padding: 0;">
+                <button type="submit" class="graph_submit_button" name="button">SUBMIT</button>
+              </div>
+            </div>
+            <!--END: TIME SERIES PLOT SECTION  -->
+
+
+
+            <input type="text" name="end_point_object" class="end_point_object" hidden>
+            <!-- <input type="submit" value="Submit"> -->
+          </form>
+          <!--END: 3D PLOT SECTION  -->
+          {% endif %}
+          <!--  ML div start -->
+          <!-- <div class="row" id="machine_learning_div" style="display:none;">
+
+              <div class="col-md-6"> <label for="target-select"> TARGET SELECT</label>
+                <select name="ml_target" class="ml_algorithem">{%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+                </select>
+              </div>
+              <div class="col-md-6"> <label for="feature-select"> FEATURE SELECT</label>
+                <select name="ml_feature" multiple="multiple" data-autocomplete-light-language="en"
+                  data-autocomplete-light-function="select2" tabindex="-1" class="ml_algorithem select2-hidden-accessible"
+                  aria-hidden="true" id="ml_featureselect" multiple>{%for c in df_columns%}
+                  <option value="{{c}}">{{c}}</option>
+                  {%endfor%}
+                </select>
+              </div> -->
+          <!-- <select >
+
+                          <option value="1">January</option>
+                          <option value="12">December</option>
+                        </select> -->
+
+          <!-- </div> -->
+          <!--  ML div end -->
+
+
+
+
+
+          {%endif%}
+
+
+
+          <!-- START:New tabs for Machiene Learning -->
+          <div class="col-md-12 machine_learning_section border_class" id="machine_learning_div" style="display:none">
+            <div class="" style="display:flex">
+              <h3 >MACHINE LEARNING</h3>
+              <img src="{% static 'images/info.png' %}"
+                style="width: 15px;height: 15px;margin-left: 2%;margin-top: 0.7%;"
+                id="modal-btn"
+                onclick="document.getElementById('machine_learning_info_modal').style.display='block'"
+                >
+
+            </div>
+            <p style="font-size: 13px;">Here you can train the brayn and use it for your future predictions</p>
+            <form action="{% url 'coreapp:project-end-point-update' pk=end_point.pk%}" method="post" id="model_form_submission">
+            <div class="">
+
+              <!--START: Target Group Modal -->
+              <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content modal-content-group-box">
+                  <span class="close" style="top: 14%;" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+                  <h3 style="font-size:13px">NUMBER OF GROUPS TO BE DIVIDED</h3>
+
+                    <div class="alert alert-danger group_value_error_message"  role="alert" style="display:none;font-size:10px;">
+                      PLEASE ENTER VALUE AND SUBMIT FORM!
+                      <button type="button" class="close" onclick="$('.group_value_error_message').hide()" aria-label="Close" style="position:relative;font-size:25px">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <input type="number" name="no_of_groups" class="form-control entered_group_value"  value="" placeholder="">
+                    <button type="button" class="group_submit_button" name="button" onclick="getGroupsValue()">SUBMIT</button>
+
+                    </div>
+                  </div>
+              <!--END: Target Group Modal -->
+
+
+              <input name="nav" type="radio" class="nav home-radio" id="home" checked="checked" />
+              <div class="page home-page">
+                <div class="page-contents">
+
+                  <!--START:  Form Error Messages -->
+                  <div class="alert alert-danger target_error_message error_display_format"  role="alert" >
+                    PLEASE SELECT THE TARGET AND FEATURE TO TRAIN THE BRAYN
+                    <button type="button" class="close" onclick="$('.target_error_message').hide()" aria-label="Close" style="position:relative">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="alert alert-danger endpoint_name_error_message error_display_format"  role="alert" >
+                    KINDLY ENTER THE ENDPOINT NAME ABOVE AND SUBMIT!
+                    <button type="button" class="close" onclick="$('.endpoint_name_error_message').hide()" aria-label="Close" style="position:relative">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="alert alert-danger feature_error_message error_display_format"  role="alert" >
+                    PLEASE SELECT THE TARGET AND FEATURES TO TRAIN THE BRAYN
+                    <button type="button" class="close" onclick="$('.feature_error_message').hide()" aria-label="Close" style="position:relative">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <!--END: Form Error Messages -->
+
+                  {%csrf_token%}
+                  <div class="row" style="padding: 0 5% 0% 0%; margin-top: 1%;">
+                    <div class="col-md-4">
+                      <label for="target_selection">TARGET</label>
+                      <select class="form-control selected_option_value" id="target_selection" name="ml_target" size="4" multiple="multiple" >
+                        {%for c in feature_columns%}
+                          <option value="{{c}}" title="">{{c}}</option>
+                        {%endfor%}
+                      </select>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="features_selection">FEATURES</label>
+                      <select id="features_selection" class="form-control selected_option_value" name="ml_feature_select"  multiple required="required">
+                          {%for c in  feature_columns%}
+                            <option value="{{c}}">{{c}}</option>
+                          {%endfor%}
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="prediction_type">PREDICTION TYPE</label>
+                        <select class="form-control" required name="type_of_prediction" id="prediction_type" >
+                          <option value="Classification"> CLASSIFICATION</option>
+                          <option value="Linear">LINEAR</option>
+                        </select>
+                        <input type="text" class="ml_name"  name="ml_name" value="test" hidden="" readonly>
+                        <input type="text" class="ml_frequency" name="ml_frequency" value="daily" hidden="" readonly>
+                        <input type="text" class="ml_query_object" name="ml_query_object" value="test" hidden="" readonly>
+                        <input type="text" class="no_of_groups" name="no_of_groups" value="daily" hidden="" readonly>
+
+
+                      <!-- <div class="col-m-4"> -->
+                          <button class="model_training_button" type="button" name="button" onclick="modelFormSubmission()">TRAIN THE BRAYN</button>
+                          <p class="group_paragraph" style="display:none;margin-left: 3%;">GROUPS SELECTED: <span id="groups_value"></span></p>
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </form>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+
+          <!-- END:New tabs for Machiene Learning -->
+
+        </div>
+        <!-- START: Query Results info MODAL -->
+        <div class="modal" id="query_results_info_modal" style="display:none">
+          <div class="modal-content" style="width:38%">
+            <span class="info-close-btn" onclick="closeViewDataModal()" style="margin-top: -4%;">×</span>
+            <div style="text-align:center;">
+              <h3 style="">Query Results</h3>
+              <!-- <p style="font-size:23px;margin:6%;" class="countdown_text">Give us
+                <span style="margin: 0 2%;font-weight: 600;font-size: 23px;" id="clock"></span>more minutes
+              </p> -->
+              <!-- <p style="font-size:16px;margin:6%;display:none" class="expired_text" >We are almost there. Just unwrapping few things. You will be redirected soon.</p> -->
+            </div>
+            <p style="text-align:center">These are the results of your query. The total number of rows and columns in the result are shown to teh right of the i icon. Scroll down and/or to the right to view the complete results. </p>
+          </div>
+        </div>
+        <!-- END: Query Results info MODAL -->
+
+
+        <!-- START: Visualization info MODAL -->
+        <div class="modal" id="visualization_info_modal" style="display:none">
+          <div class="modal-content" style="width:38%">
+            <span class="info-close-btn" onclick="closeViewDataModal()" style="margin-top: -4%;">×</span>
+            <div style="text-align:center;">
+              <h3 style="">Visualizations</h3>
+              <!-- <p style="font-size:23px;margin:6%;" class="countdown_text">Give us
+                <span style="margin: 0 2%;font-weight: 600;font-size: 23px;" id="clock"></span>more minutes
+              </p> -->
+              <!-- <p style="font-size:16px;margin:6%;display:none" class="expired_text" >We are almost there. Just unwrapping few things. You will be redirected soon.</p> -->
+            </div>
+            <p style="text-align:center">This pane supports a list of visualization options
+        Choose a plot from the dropdown list under 'UPDATE YOUR PLOT' to present your data. You can then customize the visualization by selecting the appropriate columns to add to the chart axes and parameters. Once done, click the 'CHANGE THE PLOT' button to update the chart.
+            </p>
+          </div>
+        </div>
+        <!-- END: Visualization info MODAL -->
+
+        <!-- START: CONTROL PANEL  MODAL -->
+        <div class="modal" id="control_panel_info_modal" style="display:none">
+          <div class="modal-content" style="width:56%">
+            <span class="info-close-btn" onclick="closeViewDataModal()" style="margin-top: -4%;">×</span>
+            <div style="text-align:center;margin-bottom:5%;">
+              <h3 style="">CONTROL PANEL</h3>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <!-- <p style="text-align:center">An eye for an I. </p> -->
+              </div>
+              <div class="col-md-6">
+                  <iframe width="330" height="200" src="https://www.youtube.com/embed/_D8fWhyZdxg?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- END: CONTROL PANEL  MODAL -->
+
+        <!-- START: Machine Learning Info MODAL -->
+        <div class="modal" id="machine_learning_info_modal" style="display:none">
+          <div class="modal-content" style="width:56%">
+            <span class="info-close-btn" onclick="closeViewDataModal()" style="margin-top: -4%;">×</span>
+            <div style="text-align:center;">
+              <h3 style="margin-bottom:5%;">MACHINE LEARNING</h3>
+              <!-- <p style="font-size:23px;margin:6%;" class="countdown_text">Give us
+                <span style="margin: 0 2%;font-weight: 600;font-size: 23px;" id="clock"></span>more minutes
+              </p> -->
+              <!-- <p style="font-size:16px;margin:6%;display:none" class="expired_text" >We are almost there. Just unwrapping few things. You will be redirected soon.</p> -->
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <!-- <p style="text-align:center">An eye for an I. </p> -->
+              </div>
+              <div class="col-md-6">
+
+                  <iframe width="330" height="200" src="https://www.youtube.com/embed/NPuA-wq85AU?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END: Machine Learning Info MODAL -->
+
+
+        <div class="modal" id="query_results_modal">
+
+          <div class="modal-content">
+            <span class="info-close-btn" onclick="closeViewDataModal()">×</span>
+            <p>wefwefef</p>
+            <p>wefwefef</p>
+            <p>wefwefef</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- START: COUNTER TIMER MODAL -->
+      <div class="modal" id="counter_modal_timer" style="display:none">
+        <div class="modal-content" style="width:38%">
+          <div style="text-align:center;">
+            <h3 style="">YOUR BRAYN IS GETTING TRAINED</h3>
+            <p style="font-size:23px;margin:6%;" class="countdown_text">Give us<span style="margin: 0 2%;font-weight: 600;font-size: 23px;" id="clock"></span>more minutes</p>
+            <p style="font-size:16px;margin:6%;display:none" class="expired_text" >We are almost there. Just unwrapping few things. You will be redirected soon.</p>
+          </div>
+          <p style="text-align: center;">Please do not refresh page or close Tab/Window. <br>You will be redirected soon!<br><br>
+            <span style="">Have a cup of coffee or a Sandwich.</span></p>
+        </div>
+      </div>
+      <!-- END: COUNTER TIMER MODAL -->
+
+
+      <!-- START: DELETE TRAINEED MODEL  MODAL -->
+      <div class="modal" id="delete_modal_section" style="display:none">
+        <div class="modal-content" style="width:29%">
+          <div style="text-align:center;">
+            <h5 style="">ARE YOU SURE YOU WANT TO DELETE?</h5>
+            <!-- <p style="font-size:23px;margin:6%;" class="countdown_text">Give us<span style="margin: 0 2%;font-weight: 600;font-size: 23px;" id="clock"></span>more minutes</p>
+            <p style="font-size:16px;margin:6%;display:none" class="expired_text" >We are almost there. Just unwrapping few things. You will be redirected soon.</p>
+          </div>
+          <p style="text-align: center;">Please do not refresh page or close Tab/Window. <br>You will be redirected soon!<br><br>
+            <span style="">Have a cup of coffee or a Sandwich.</span></p> -->
+          <div class="delete_modal_buttons">
+            <button type="button" name="button" class="delete_modal" onclick="deleteTrainedBrayn()">yes i'm sure</button>
+            <button type="button" name="button" style="margin-right: 0;" onclick="document.getElementById('delete_modal_section').style.display='none'">No i dont want</button>
+          </div>
+        </div>
+      </div>
+      <!-- END: DELETE TRAINEED MODEL MODAL -->
+    </div>
+
+
+
+
+
+
+  </div>
+
+
+  <!-- <div class="">
+
+</div> -->
+  <!-- <input type="button" value="button name" onclick="window.open('http://127.0.0.1:8000/single-project/1/','popUpWindow','height=900,width=1200,left=10,top=10,,scrollbars=yes,menubar=no')" /> -->
+  {% endblock body %}
+  <!-- plot js
+        ============================================ -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <script src="{% static 'dashboard/js/vendor/jquery-1.12.4.min.js' %}"></script>
+
+  <!-- bootstrap J
+============================================ -->
+  <script src="{% static 'dashboard/js/bootstrap.min.js' %}"></script>
+  <!-- wow JS
+============================================ -->
+  <script src="{% static 'dashboard/js/wow.min.js' %}"></script>
+  <!-- price-slider JS
+============================================ -->
+  <script src="{% static 'dashboard/js/jquery-price-slider.js' %}"></script>
+  <!-- meanmenu JS
+============================================ -->
+  <script src="{% static 'dashboard/js/jquery.meanmenu.js' %}"></script>
+  <!-- owl.carousel JS
+============================================ -->
+  <script src="{% static 'dashboard/js/owl.carousel.min.js' %}"></script>
+  <!-- sticky JS
+============================================ -->
+  <script src="{% static 'dashboard/js/jquery.sticky.js' %}"></script>
+  <!-- scrollUp JS
+============================================ -->
+  <script src="{% static 'dashboard/js/jquery.scrollUp.min.js' %}"></script>
+  <!-- counterup JS
+============================================ -->
+  <script src="{% static 'dashboard/js/counterup/jquery.counterup.min.js' %}"></script>
+  <script src="{% static 'dashboard/js/counterup/waypoints.min.js' %}"></script>
+  <script src="{% static 'dashboard/js/counterup/counterup-active.js' %}"></script>
+  <!-- mCustomScrollbar JS
+============================================ -->
+  <script src="{% static 'dashboard/js/scrollbar/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+  <script src="{% static 'dashboard/js/scrollbar/mCustomScrollbar-active.js' %}"></script>
+  <!-- metisMenu JS
+============================================ -->
+  <script src="{% static 'dashboard/js/metisMenu/metisMenu.min.js' %}"></script>
+  <script src="{% static 'dashboard/js/metisMenu/metisMenu-active.js' %}"></script>
+  <!-- morrisjs JS
+============================================ -->
+  <!-- <script src="{% static 'dashboard/js/morrisjs/raphael-min.js' %}"></script>
+<script src="{% static 'dashboard/js/morrisjs/morris.js' %}"></script>
+<script src="{% static 'dashboard/js/morrisjs/morris-active.js' %}"></script> -->
+  <!-- morrisjs JS
+============================================ -->
+  <!-- <script src="{% static 'dashboard/js/sparkline/jquery.sparkline.min.js' %}"></script>
+<script src="{% static 'dashboard/js/sparkline/jquery.charts-sparkline.js' %}"></script>
+<script src="{% static 'dashboard/js/sparkline/sparkline-active.js' %}"></script> -->
+  <!-- calendar JS
+============================================ -->
+  <!-- <script src="{% static 'dashboard/js/calendar/moment.min.js' %}"></script>
+<script src="{% static 'dashboard/js/calendar/fullcalendar.min.js' %}"></script>
+<script src="{% static 'dashboard/js/calendar/fullcalendar-active.js' %}"></script> -->
+  <!-- plugins JS
+============================================ -->
+  <script src="{% static 'dashboard/js/plugins.js' %}"></script>
+  <!-- main JS
+============================================ -->
+  <script src="{% static 'dashboard/js/main.js' %}"></script>
+  <!-- tawk chat JS
+============================================ -->
+  <!-- <script src="{% static 'dashboard/js/tawk-chat.js' %}"></script> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+  <!-- START:SCRIPT FOR COUNTER TIMER -->
+  <script type="text/javascript">
+  function countdown( elementName, minutes, seconds )
+  {
+    var element, endTime, hours, mins, msLeft, time;
+
+    function twoDigits( n )
+    {
+        return (n <= 9 ? "0" + n : n);
+    }
+
+    function updateTimer()
+    {
+        msLeft = endTime - (+new Date);
+        if ( msLeft < 1000 ) {
+            // element.innerHTML = "countdown's over!";
+            $('.countdown_text').hide()
+            $('.expired_text').show()
+        } else {
+            time = new Date( msLeft );
+            hours = time.getUTCHours();
+            mins = time.getUTCMinutes();
+            element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
+            setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+        }
+    }
+
+    element = document.getElementById( elementName );
+    endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+    updateTimer();
+  }
+  </script>
+  <!-- END:SCRIPT FOR COUNTER TIMER -->
+
+
+
+
+  <!-- Test script -->
+  <script>
+    var closebtns = document.getElementsByClassName("close");
+    var i;
+
+    for (i = 0; i < closebtns.length; i++) {
+      closebtns[i].addEventListener("click", function () {
+        document.getElementById("myDropdown").classList.remove("show");
+        document.getElementById("blog_dropdown").classList.remove("show");
+        document.querySelector('.data_integration_link').classList.remove("background_color");
+        document.querySelector('.dashboard_link').classList.remove("background_color");
+      }, true);
+    }
+    function showFunction(event) {
+
+      event.stopPropagation();
+      // alert(e);
+      document.querySelector('.data_integration_link').classList.toggle("background_color");
+      document.querySelector('.dashboard_link').classList.remove("background_color");
+      document.getElementById("logout").classList.remove("show");
+      document.getElementById("blog_dropdown").classList.remove("show");
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+
+    function blogDropdown(event) {
+
+      event.stopPropagation();
+      // body...
+      document.querySelector('.dashboard_link').classList.toggle("background_color");
+      document.querySelector('.data_integration_link').classList.remove("background_color");
+      document.getElementById("logout").classList.remove("show");
+      document.getElementById("myDropdown").classList.remove("show");
+      document.getElementById("blog_dropdown").classList.toggle("show");
+
+    }
+
+    function shopDropdown(event) {
+
+      event.stopPropagation();
+      // body...
+      document.getElementById("shop_dropdown").classList.toggle("show");
+
+    }
+
+    function callLogout() {
+      event.stopPropagation();
+      // body...
+      // document.getElementById("myDropdown").classList.remove("show");
+      // document.getElementById("blog_dropdown").classList.remove("show");
+      document.getElementById("logout").classList.toggle("show");
+    }
+
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+
+      document.getElementById("logout").classList.remove("show");
+      // document.querySelector('.data_integration_link').classList.remove("background_color");
+      document.querySelector('.dashboard_link').classList.remove("background_color");
+      // document.getElementById("myDropdown").classList.remove("show");
+      // document.getElementById("blog_dropdown").classList.remove("show");
+      // document.getElementById("shop_dropdown").classList.remove("show");
+    }
+
+  </script>
+  <!-- test script -->
+
+
+
+  <!-- partial -->
+  <!-- <script src='http://brienlabs.com/ruby-mega-menu/js/jquery-3.1.0.min.js'></script>
+  <script src='http://brienlabs.com/ruby-mega-menu/js/ruby-demo.js'></script>
+  <script src='http://brienlabs.com/ruby-mega-menu/js/ruby-main.js'></script> -->
+
+
+  <!-- START: Reorder drag and drop script -->
+  <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/47585/slip.js'></script>
+  <script type="text/javascript">
+
+  var ml_check = localStorage.getItem('ml_check');
+  if(ml_check === "true"){
+    var checkBox = document.getElementById('machine_learning');
+
+    if (checkBox.checked == true) {
+      $('.ml_enable_button').show()
+      $('.ml_disabled_button').hide()
+    }
+  }
+
+
+
+    var endpoint_name             = document.getElementById('endpoint_name_field').value;
+    let query_elements            = document.getElementById('sortable-list').children;
+    var final_arranged_elements   = {};
+    // var endpoint_frequency        = ;
+    var ml_name                   = $('.ml_name').val();
+    var ml_frequency              = $('.ml_frequency').val();
+    var ml_query_object           = $('.ml_query_object').val();
+    var no_of_groups              = $('.no_of_groups').val();
+
+    var ul = document.getElementById('sortable-list');
+
+    // START: Reading checkbox elements and setting background to grey for default selected elements
+    var inputElements = document.getElementsByClassName('checkbox_list');
+    for (var i = 0; inputElements[i]; ++i) {
+      if (!inputElements[i].checked) {
+        $("#" + inputElements[i].id).parent().addClass("highlight");
+      }
+
+    }
+    // END: Reading checkbox elements and setting background to grey for default selected elements
+
+
+    // START: function to toggle background color on checkbox click
+    $("input[type='checkbox']").change(function () {
+      if ($(this).is(":checked")) {
+        $(this).parent().removeClass("highlight");
+
+      } else {
+
+        $(this).parent().addClass("highlight");
+      }
+    });
+    // END: function to toggle background color on checkbox click
+
+    ul.addEventListener('slip:beforereorder', function (e) {
+      if (/demo-no-reorder/.test(e.target.className)) {
+        e.preventDefault();
+      }
+    }, false);
+
+    ul.addEventListener('slip:beforeswipe', function (e) {
+      if (e.target.nodeName == 'INPUT' || /no-swipe/.test(e.target.className)) {
+        e.preventDefault();
+      }
+    }, false);
+
+    ul.addEventListener('slip:beforewait', function (e) {
+      if (e.target.className.indexOf('instant') > -1) e.preventDefault();
+    }, false);
+
+    /*ul.addEventListener('slip:afterswipe', function(e){
+    e.target.parentNode.appendChild(e.target);
+    }, false);*/
+
+    ul.addEventListener('slip:reorder', function (e) {
+      e.target.parentNode.insertBefore(e.target, e.detail.insertBefore);
+      return false;
+    }, false);
+
+    new Slip(ul);
+
+    //START: Function for ML Features display
+    function displayMLFeatures() {
+      var checkBox = document.getElementById('machine_learning');
+      localStorage.setItem('ml_check',true);
+      if (checkBox.checked == true) {
+        // $('#machine_learning_message').show();
+        $(this).parent().addClass("highlight");
+        $('.ml_enable_button').show()
+        $('.ml_disabled_button').hide()
+        $('#machine_learning_div').show();
+
+      } else {
+        $('.ml_enable_button').hide()
+        $('.ml_disabled_button').show()
+        $('#machine_learning_div').hide();
+      }
+    }
+    //END: Function for ML Features display
+
+
+    // start Model Form submission
+    var final_group_value;
+    function modelFormSubmission() {
+
+      var prediction_type = $('#prediction_type').val();
+      var target_val = $('#target_selection').val();
+      var feature_val = $('#features_selection').val();
+
+      if(prediction_type ==="Linear" && target_val ===null)
+      {
+
+        $('.target_error_message').show();
+        setTimeout(()=>{
+            $('.target_error_message').hide();
+        },3000)
+      }
+      else if(prediction_type ==="Linear" && target_val !==null)
+      {
+        callModelSubmission('linear')
+      }
+      else if(prediction_type === "Classification"){
+
+        if(feature_val === null ) {
+            $('.feature_error_message').show();
+            setTimeout(()=>{
+                $('.feature_error_message').hide();
+            },3000)
+            return false
+        }
+        if(feature_val.length !== [] && target_val ===null && final_group_value===undefined){
+          $('#myModal').show()
+          return false
+        }
+
+        if(target_val !==null || feature_val !== null){
+          if(target_val !==null && feature_val !== null){
+              callModelSubmission('calltimer');
+          } else {
+            callModelSubmission('classification');
+          }
+        }
+      }
+    }
+
+    // End of Model Form submission
+
+    function callModelSubmission(type) {
+      if(ml_name === '' ) {
+        $('.endpoint_name_error_message').show();
+        setTimeout(()=>{
+            $('.endpoint_name_error_message').hide();
+        },3000)
+        return false
+      }
+      applyChanges('model_form')
+      ml_name         = document.getElementById('endpoint_name_field').value;
+      ml_frequency    = $("#id_frequency :selected").val()
+      ml_query_object = final_arranged_elements
+      no_of_groups    = final_group_value
+      $('.ml_name').val(document.getElementById('endpoint_name_field').value)
+      $('.ml_query_object').val(JSON.stringify(ml_query_object))
+      $('.ml_frequency').val($("#id_frequency :selected").val())
+      $('.no_of_groups').val(final_group_value)
+      if(type === 'calltimer') {
+        document.querySelector('.loading-overlay').style.display = "none";
+        $('#counter_modal_timer').show()
+        countdown( "clock", 30, 0 );
+      }
+      $('#model_form_submission').submit();
+    }
+
+    // Function to delete trained brayn
+
+    function deleteTrainedBrayn() {
+      $('#machine_learning').attr('checked',false);
+      for (var i = 0; inputElements[i]; ++i) {
+        if (inputElements[i].checked) {
+          // console.log(inputElements[i].value);
+          for (var k = 0; k < query_elements.length; k++) {
+            $("#" + inputElements[i].id).parent().removeClass("highlight");
+            final_arranged_elements['element' + i] = {};
+            final_arranged_elements['element' + i].type = inputElements[i].value;
+
+          }
+        }
+      }
+      $('.delete_model_query_object').val(JSON.stringify(final_arranged_elements));
+      $("#delete_trained_brayn").submit();
+    }
+    // Function to delete trained brayn
+
+    // start of group field value display
+    function getGroupsValue() {
+      var group_value = $('.entered_group_value').val();
+        final_group_value = group_value;
+        if(group_value === ''){
+          $('.group_value_error_message').show()
+        }
+        else {
+
+          $('#myModal').hide()
+          $('.group_paragraph').show()
+          document.getElementById('groups_value').innerHTML =group_value;
+        }
+    }
+    // End of group field value display
+
+    // START: SELECT OPTIONS DISABLE FUNCTIONALITY
+    $('select[name*="ml_target"]').removeAttr('multiple')
+    const $selects = $(".selected_option_value");
+    $selects.on('change', function (evt) {
+        const selectedValue = [];
+        $selects.find(':selected').filter(function(idx, el) {
+          return $(el).attr('value');
+        }).each(function(idx, el) {
+          selectedValue.push($(el).attr('value'));
+        });
+        $selects.find('option').each(function(idx, option) {
+          if (selectedValue.indexOf($(option).attr('value')) > -1) {
+            if ($(option).is(':checked')) {
+              return;
+            } else {
+              $(this).attr('disabled', true);
+            }
+          } else {
+            $(this).attr('disabled', false);
+          }
+        });
+    });
+
+    // END: SELECT OPTIONS DISABLE FUNCTIONALITY
+
+
+    // Function to to submit the query design requirements
+    function applyChanges(form_name) {
+      endpoint_name = document.getElementById('endpoint_name_field').value;
+      // document.getElementById('loader').style.display = "block";
+      document.querySelector('.loading-overlay').style.display = "block";
+      // alert(JSON.stringify(final_arranged_elements));
+
+      for (var i = 0; inputElements[i]; ++i) {
+        if (inputElements[i].checked) {
+          // console.log(inputElements[i].value);
+          for (var k = 0; k < query_elements.length; k++) {
+            $("#" + inputElements[i].id).parent().removeClass("highlight");
+            final_arranged_elements['element' + i] = {};
+            final_arranged_elements['element' + i].type = inputElements[i].value;
+
+          }
+        }
+      }
+      console.log(final_arranged_elements);
+      $('.end_point_object').val(JSON.stringify(final_arranged_elements));
+
+      if (form_name === 'apply_changes_object') {
+        $('#endpoint_object_form').submit();
+
+      } else if (form_name === 'create_endpoint_object') {
+        if (endpoint_name === '') {
+
+          // document.getElementById('loader').style.display = "none";
+          document.querySelector('.loading-overlay').style.display = "none";
+          document.getElementById('error_message').style.display = "block";
+          setTimeout(function () {
+            $('#error_message').fadeOut('fast');
+          }, 3000); //
+        } else {
+          $('#create_endpoint_object_form').submit();
+        }
+
+      }
+
+    }
+
+
+  </script>
+  <!-- END: Reorder drag and drop script -->
+
+
+    <!-- START: SELECTION OF VISULAIZATION PLOTS -->
+
+    <script type="text/javascript">
+
+      function selectVisualiztionPlots(self) {
+        var selectedValue = self.options[self.selectedIndex].value;
+        if (selectedValue === 'scatter_2d' || selectedValue === 'box_plot' ||  selectedValue === 'time_series_plot') {
+
+          if (selectedValue === 'time_series_plot') {
+            document.getElementById('time_series_plot_section').style.display = "block";
+            document.getElementById('2d_plot_section').style.display = "none";
+            document.getElementById('3d_plot_section').style.display = "none";
+            document.getElementById('bubble_plot_section').style.display = "none";
+            document.getElementById('pie_chart_section').style.display = "none";
+            document.getElementById('count_plot_section').style.display = "none";
+            document.getElementById('cat_plot_section').style.display = "none";
+            document.getElementById('heatmap_section').style.display = "none";
+
+            document.getElementById('count_plot_section').style.display = "none";
+            document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+            $('#time_series_x').attr('required', true);
+            $('#time_series_y').attr('required', true);
+            $('#2d_x').attr('required', false);
+            $('#2d_y').attr('required', false);
+            $('#3d_x').attr('required', false);
+            $('#3d_y').attr('required', false);
+            $('#z').attr('required', false);
+            $('#bubble_plot_x').attr('required', false);
+            $('#bubble_plot_y').attr('required', false);
+            $('#bubble_plot_size').attr('required', false);
+            $('#bubble_plot_hover').attr('required', false);
+            $('#pie_chart_name').attr('required', false);
+            $('#pie_chart_value').attr('required', false);
+            $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+
+          }
+
+          else {
+            document.getElementById('2d_plot_section').style.display = "block";
+            document.getElementById('3d_plot_section').style.display = "none";
+            document.getElementById('bubble_plot_section').style.display = "none";
+            document.getElementById('pie_chart_section').style.display = "none";
+            document.getElementById('time_series_plot_section').style.display = "none";
+            document.getElementById('cat_plot_section').style.display = "none";
+            document.getElementById('count_plot_section').style.display = "none";
+            document.getElementById('heatmap_section').style.display = "none";
+            document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+            $('#2d_x').attr('required', true);
+            $('#2d_y').attr('required', true);
+            $('#3d_x').attr('required', false);
+            $('#3d_y').attr('required', false);
+            $('#z').attr('required', false);
+            $('#bubble_plot_x').attr('required', false);
+            $('#bubble_plot_y').attr('required', false);
+            $('#bubble_plot_size').attr('required', false);
+            $('#bubble_plot_hover').attr('required', false);
+            $('#pie_chart_name').attr('required', false);
+            $('#pie_chart_value').attr('required', false);
+            $('#time_series_x').attr('required', false);
+            $('#time_series_y').attr('required', false);
+            $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heeatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+          }
+
+
+        }
+        else if (selectedValue == 'heatmap'){
+          document.getElementById('2d_plot_section').style.display = "none";
+            document.getElementById('3d_plot_section').style.display = "none";
+            document.getElementById('bubble_plot_section').style.display = "none";
+            document.getElementById('pie_chart_section').style.display = "none";
+            document.getElementById('time_series_plot_section').style.display = "none";
+            document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "block";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+            $('#2d_x').attr('required', false);
+            $('#2d_y').attr('required', false);
+            $('#3d_x').attr('required', false);
+            $('#3d_y').attr('required', false);
+            $('#z').attr('required', false);
+            $('#bubble_plot_x').attr('required', false);
+            $('#bubble_plot_y').attr('required', false);
+            $('#bubble_plot_size').attr('required', false);
+            $('#bubble_plot_hover').attr('required', false);
+            $('#pie_chart_name').attr('required', false);
+            $('#pie_chart_value').attr('required', false);
+            $('#time_series_x').attr('required', false);
+            $('#time_series_y').attr('required', false);
+            $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', true);
+            $('#heatmap_y').attr('required', true);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+
+        }
+        else if (selectedValue === 'scatter_3d') {
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "block";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#3d_x').attr('required', true);
+          $('#3d_y').attr('required', true);
+          $('#z').attr('required', true);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+        }
+        else if (selectedValue === 'choose_type') {
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+
+        }
+        else if (selectedValue === 'line_2d') {
+          document.getElementById('2d_plot_section').style.display = "block";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+
+          $('#2d_x').attr('required', true);
+          $('#2d_y').attr('required', true);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+        }
+        else if (selectedValue === 'line_3d') {
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "block";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#3d_x').attr('required', true);
+          $('#3d_y').attr('required', true);
+          $('#z').attr('required', true);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+
+        }
+        else if (selectedValue === 'horizontal_bar') {
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "block";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+
+
+          $('#bar_x').attr('required', false);
+          $('#bar_y').attr('required', false);
+          $('#h_bar_x').attr('required', true);
+          $('#h_bar_y').attr('required',true);
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+        }
+        else if (selectedValue === 'bar') {
+          document.getElementById('bar_section').style.display = "block";
+          document.getElementById('h_bar_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+
+
+          $('#bar_x').attr('required', true);
+          $('#bar_y').attr('required', true);
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#h_bar_x').attr('required', false);
+          $('#h_bar_y').attr('required', false);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+        }
+        else if (selectedValue == 'count'){
+
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "block";
+          document.getElementById('heatmap_section').style.display = "none";
+
+
+
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', true);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+        }
+        else if (selectedValue == 'cat'){
+
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "block";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', true);
+            $('#cat_y').attr('required', true);
+            $('#facet_col').attr('required', true);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+        }
+        else if (selectedValue === 'histogram') {
+          document.getElementById('2d_plot_section').style.display = "block";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+          $('#2d_x').attr('required', true);
+          $('#2d_y').attr('required', true);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+          $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+          $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+
+        }
+        else if (selectedValue === 'bubble_plot') {
+          document.getElementById('bubble_plot_section').style.display = "block";
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+
+          $('#bubble_plot_x').attr('required', true);
+          $('#bubble_plot_y').attr('required', true);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          // $('#z').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+
+
+        }
+        else if (selectedValue === 'pie_chart') {
+          document.getElementById('pie_chart_section').style.display = "block";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', true);
+          $('#pie_chart_value').attr('required', true);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+
+        }
+      }
+    </script>
+
+    <!-- END: SELECTION OF VISULAIZATION PLOTS -->
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#ml_featureselect').multiselect();
+    });
+
+
+
+    function loadDiv() {
+      document.querySelector('.loading-overlay').style.display = "block";
+    }
+
+    const closeViewDataModal = ()=>{
+      document.getElementById('query_results_info_modal').style.display='none'
+      document.getElementById('visualization_info_modal').style.display='none'
+      document.getElementById('machine_learning_info_modal').style.display='none'
+      document.getElementById('control_panel_info_modal').style.display='none';
+    }
+
+  </script>
+
+</body>
+
+</html>

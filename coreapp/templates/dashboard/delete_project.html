@@ -1,0 +1,33 @@
+{% extends 'dashboard/index.html' %}
+{% load staticfiles %}
+{% block body %}
+<style>
+  #div_center{
+    margin-top: 20%;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    width: 50%;
+    margin-left: 25%;
+    padding: 30px;
+    box-shadow:0px 0px 18px 3px rgba(0,0,0,0.13);
+  }
+</style>
+<div class="" id="div_center">
+      {%block project%}
+{%endblock project%}
+  <!-- <h4>Are you sure? You want to delete the following project</h4> -->
+  <h5>Project Title : {{project}}</h5>
+  
+  <form class="" method="post">
+    {% csrf_token %}
+    <p style="color:red;">{{msg}}</p>
+    <h4>Please Enter the Title of the Project</h4>
+    <input name="project_title" type="text" onselectstart="return false" onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off/><br>
+    <p style="margin-top:1%;">If need be, you can restore this project in next 30 days</p>
+    <button class="btn btn-primary"type="Submit" name="yes" style="margin-top:1%;">YES , DELETE</button>
+    <button class="btn btn-primary"type="Submit" name="no"style="margin-top:1%;">NO , TAKE ME BACK</button>
+  </form>
+</div>
+
+{% endblock body %}

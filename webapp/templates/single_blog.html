@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div>
+      <h3>{{blog.main_title}}</h3>
+      <img src="{{blog.image.url}}" alt="Blog image" />
+      <p>{{blog.single_line_body}}</p><br>
+      <p>{{blog.content|safe}}</p><br>
+      <p>{{blog.date_of_publish}}</p>
+    </div>
+<div class="">
+  <h5>Comment Section</h5>
+
+      {% for c in comments%}
+      <div class="">
+      <p>{{c.comment}}</p>
+      <p>{{c.first_name}}</p>
+    </div>
+    {%endfor%}
+    </div>
+    <div class="">
+
+  <h5>Comment Form</h5>
+    <form method="post"enctype="multipart/form-data">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit">Send</button>
+        </form>
+          </div>
+  </body>
+</html>

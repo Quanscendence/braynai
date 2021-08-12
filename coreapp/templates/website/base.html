@@ -1,0 +1,127 @@
+{%extends 'coreapp/templtes/website/base_style.html'%}
+{%block body%}
+{%block header %}
+
+<body style="font-family: 'Poppins', sans-serif" onload="initialize()" >
+
+<!-- <div class="colorlib-loader"></div> -->
+
+<div id="page">
+ <nav class="colorlib-nav" role="navigation" id="dsass_header">
+<div class="top-menu" style="height: 85px;">
+<div class="container">
+                    <div class="row">
+                        <div class="col-md-2" >
+                          <!-- width: 122px;margin-top: -4px;margin-left: -34%; -->
+                            <a href="{% url 'coreapp:home' %}" >
+                            <img src="{% static 'images/logo.png' %}" style="width: 110px;margin-top: -4px;margin-left: -32%;" id="header_img">
+                            <img src="{% static 'images/header_change.png' %}"  style="width: 110px;margin-top: -4px;margin-left: -32%;" id="logo_img">
+                        </a>
+                        </div>
+                        <div class="col-md-10 text-right menu-1">
+                            <ul>
+                                <li><a href="{% url 'coreapp:home' %}" ><span id="header_id" style="color:#4a90e2;">Home</span></a></li>
+                                <li ><a href="{% url 'login:login' %}"   ><span id="header_log" style="color:#4a90e2;">Login</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+</div>
+
+
+</nav>
+{%endblock header%}
+{%block content%}
+<!--  you code here  -->
+{%endblock content%}
+{% block footer %}
+
+<footer id="colorlib-footer">
+<div class="container">
+<div class="row row-pb-md" id="footer_details" style="position: relative;bottom: 50px;" >
+<div class="col-md-3 colorlib-widget">
+
+</div>
+<div class="col-md-3 colorlib-widget">
+
+</div>
+<div class="col-md-3 colorlib-widget" id="footer_info">
+
+  <p>
+  <ul class="colorlib-footer-links" id="show_on_desktop" style="display:flex;list-style:none">
+      <li class="footer_home_link"><a href="{% url 'coreapp:home' %}"><span style="color:#A9A9A9">Home</span></a></li>
+      <li class="footer_blog_link"><a href="https://medium.com/braynai"><span style="color:#A9A9A9">Blog</span></a></li>
+      <li class="footer_login_link"><a href="{% url 'login:login' %}"><span style="color:#A9A9A9">Login</span></a></li>
+      <li class="footer_credits_link"><a href="#"><span style="color:#A9A9A9">Credits</span></a></li>
+  </ul>
+
+  <ul class="colorlib-social-icons social_icons" >
+  <li><a href="https://twitter.com/brayntranscend">  <i class="fa fa-twitter-square" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+  <li><a href="https://www.facebook.com/transcendbrayn/"><i class="fa fa-facebook-official" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+  <li><a href="https://linkedin.com/company/transcendbrayn"><i class="fa fa-linkedin-square" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+  <!-- <li><a href="#"><i class="icon-dribbble" style="color:#4a90e2"></i></a></li> -->
+  </ul>
+
+</p>
+</div>
+
+<!--<div class="col-md-3 colorlib-widget">-->
+<!--    <h4>Recent Blog</h4>-->
+<!--    <div class="f-blog">-->
+<!--    <a href="{% url 'coreapp:blogs' %}" class="blog-img" style="background-image: url('/static/images/blog-1.jpg');">-->
+<!--    </a>-->
+<!--    <div class="desc">-->
+<!--    <h2><a href="{% url 'coreapp:blogs' %}">Photoshoot Technique</a></h2>-->
+<!--    <p class="admin"><span>30 March 2018</span></p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--    <div class="f-blog">-->
+<!--    <a href="{% url 'coreapp:blogs' %}" class="blog-img" style="background-image: url('/static/images/blog-2.jpg');">-->
+<!--    </a>-->
+<!--    <div class="desc">-->
+<!--    <h2><a href="{% url 'coreapp:blogs' %}">Camera Lens Shoot</a></h2>-->
+<!--    <p class="admin"><span>30 March 2018</span></p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--    <div class="f-blog">-->
+<!--    <a href="{% url 'coreapp:blogs' %}" class="blog-img" style="background-image: url('/static/images/blog-3.jpg');">-->
+<!--    </a>-->
+<!--    <div class="desc">-->
+<!--    <h2><a href="{% url 'coreapp:blogs' %}">Imahe the biggest photography studio</a></h2>-->
+<!--    <p class="admin"><span>30 March 2018</span></p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="col-md-3 colorlib-widget">
+<!-- <h4>Contact Info</h4> -->
+<!--<ul class="colorlib-footer-links">-->
+<!--    <li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>-->
+<!--    <li><a href="tel://1234567920"><i class="icon-phone"></i> + 1235 2355 98</a></li>-->
+<!--    <li><a href="mailto:info@yoursite.com"><i class="icon-envelope"></i> info@yoursite.com</a></li>-->
+<!--    <li><a href="#"><i class="icon-location4"></i> yourwebsite.com</a></li>-->
+<!--</ul>-->
+</div>
+</div>
+</div>
+<div class="copy" id="copy_div">
+<div class="container">
+<div class="row">
+<div class="col-md-12 text-center">
+<p style="color:#A9A9A9">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |   by <a href="#" ><span style="color:#A9A9A9">Quanscendence Technologies Pvt Ltd</span></a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+
+<div class="gototop js-top">
+<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+</div>
+{% endblock footer %}
+
+
+{%endblock body%}

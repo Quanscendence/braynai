@@ -1,0 +1,3785 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>brayn </title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <!-- favicon
+============================================ -->
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'dashboard/img/Brayn_Favicon_75.png' %}">
+  <!-- Google Fonts
+============================================ -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+  <!-- Bootstrap CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/bootstrap.min.css' %}">
+  <!-- Bootstrap CSS
+============================================ -->
+  <!-- <link rel="stylesheet" href="{% static 'dashboard/css/font-awesome.min.css' %}"> -->
+  <!-- owl.carousel CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/owl.carousel.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/owl.theme.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/owl.transitions.css' %}">
+  <!-- animate CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/animate.css' %}">
+  <!-- normalize CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/normalize.css' %}">
+  <!-- meanmenu icon CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/meanmenu.min.css' %}">
+  <!-- main CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}">
+  <!-- educate icon CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/educate-custon-icon.css' %}">
+  <!-- morrisjs CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/morrisjs/morris.css' %}">
+  <!-- mCustomScrollbar CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/scrollbar/jquery.mCustomScrollbar.min.css' %}">
+  <!-- metisMenu CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/metisMenu/metisMenu.min.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/metisMenu/metisMenu-vertical.css' %}">
+  <!-- calendar CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/calendar/fullcalendar.min.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/calendar/fullcalendar.print.min.css' %}">
+
+  <!-- <link rel='stylesheet' href='http://brienlabs.com/ruby-mega-menu/css/ruby-transitions.css'>
+    <link rel='stylesheet' href='http://brienlabs.com/ruby-mega-menu/css/ruby-main.css'> -->
+  <!-- style CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'dashboard/css/side_navigations.css' %}">
+  <!-- responsive CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/responsive.css' %}">
+  <!-- modernizr JS
+============================================ -->
+  <script src="{% static 'dashboard/js/vendor/modernizr-2.8.3.min.js' %}"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+
+  <style>
+    /*style for calender icon */
+    .ui-datepicker-trigger {
+      max-width: 100%;
+      margin-top: 2%;
+      margin-right: 1%;
+      height: 16px;
+    }
+
+
+
+    /*end of style for calender icon*/
+
+    /*style for scroll */
+    .scroller {
+      overflow: auto;
+      height: 145px !important;
+    }
+
+    /*end of style for scroll*/
+
+    /* remove plotly icon */
+    .modebar-btn plotlyjsicon modebar-btn--logo {
+      display: none !important;
+    }
+
+    .js-plotly-plot .plotly .modebar-btn--logo {
+      display: none !important;
+    }
+
+    /* end */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      width: 100%;
+    }
+
+    button:focus{
+      border: none;
+      border-color: transparent;
+      outline: none;
+    }
+
+    input:focus{
+      outline: none;
+    }
+
+    .btn:focus{
+      outline: 0 !important;
+    }
+
+
+    /* #show_me {
+     display: none;
+          } */
+    /* .default_side{
+                margin-left: -8%;
+          }
+          .no_default{
+                margin-left: 10%;
+          } */
+    .div_aside {
+      margin-left: -8%;
+    }
+
+    .new_class {
+      margin-left: 10%;
+    }
+
+    .header_row {
+      background: #4a90e2;
+      width: 118%;
+      margin-left: -12.2%;
+    }
+
+    .new_header {
+      background: #4a90e2;
+      width: 100%;
+      margin-left: 5.8%;
+    }
+
+    #hide_seek {
+      display: none;
+    }
+
+    .info-close-btn {
+      float: right;
+      color: lightgray;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* .sidenav_right{
+      opacity: 1;
+      width: 200px;
+      height: auto;
+
+  }
+  .closebtn_right{
+    position: absolute;
+    margin-top: -16%;
+    margin-right: 78%;
+  } */
+
+
+    .mega_section {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    .blog_section {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    .shop_section {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    .show {
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    .visual_display {
+      display: none;
+    }
+
+    .background_color {
+      background: #fff !important;
+      color: #4a90e2 !important
+    }
+
+
+    .query_button {
+      background-color: #4a90e2;
+      color: white;
+      border: #4a90e2;
+      text-transform: uppercase;
+      width: 100%;
+      padding: 2% 0%;
+      /* margin-top: 1%; */
+      margin-left: 1%;
+      border-radius: 5px;
+    }
+
+    input {
+      border-radius: 8px !important;
+    }
+
+    select {
+      border-radius: 8px !important;
+    }
+
+    .menu_section_style {
+      background: #4a90e2;
+      padding-top: 4px;
+      padding-left: 4px;
+      padding-right: 5px;
+    }
+
+    .cross_arrow {
+      width: 1.5%;
+      float: right;
+      margin-right: 2%;
+      margin-top: 1%;
+    }
+
+    .close {
+      cursor: pointer;
+      position: absolute;
+      font-size: 38px;
+      top: 11%;
+      right: 0%;
+      padding: 16px 16px;
+      transform: translate(0%, -50%);
+    }
+
+    .close_2 {
+      cursor: pointer;
+      position: absolute;
+      font-size: 38px;
+      top: 11%;
+      right: 0%;
+      padding: 16px 16px;
+      transform: translate(0%, -50%);
+    }
+
+
+
+    .logo_image_style {
+      float: left;
+      position: relative;
+      z-index: 99;
+    }
+
+
+    /*style for modal */
+    .modal {
+      display: none;
+      position: fixed;
+      padding-top: 50px;
+      left: 0;
+      top: 0%;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      position: relative;
+      background-color: white;
+      padding: 20px;
+      margin: auto;
+      width: 48%;
+      -webkit-animation-name: animatetop;
+      text-align: center;
+      -webkit-animation-duration: 0.4s;
+      animation-name: animatetop;
+      animation-duration: 0.4s
+    }
+
+    .close-btn {
+      float: right;
+      color: lightgray;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .close-btn:hover {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    @-webkit-keyframes animatetop {
+      from {
+        top: -300px;
+        opacity: 0
+      }
+
+      to {
+        top: 0;
+        opacity: 1
+      }
+    }
+
+    @keyframes animatetop {
+      from {
+        top: -300px;
+        opacity: 0
+      }
+
+      to {
+        top: 0;
+        opacity: 1
+      }
+    }
+
+    /*end of style for modal */
+
+    .select2-container {
+      width: 100% !important;
+    }
+
+    #hiddenField {
+      display: none;
+    }
+
+
+
+    .select_width {
+      width: 75% !important;
+      border-radius: 5px !important;
+    }
+
+
+.logout_li_element{
+  position: absolute;
+  bottom: 16px;
+  /* top: 51%; */
+  left: -10%;
+  color: #fff;
+  font-size: 17px;
+  }
+.logout_li_element:hover{
+  color: green;
+}
+  .background_color_buuton{
+    background: #4a90e2;
+    text-transform: uppercase;
+  }
+
+  ul.ruby-menu > li.ruby-menu-right:hover {
+    background: none !important;
+  }
+  ul.ruby-menu > .disable_hover > a:hover, ul.ruby-menu > .disable_hover:hover > a, ul.ruby-menu > .disable_hover.ruby-active-menu-item > a:hover, ul.ruby-menu > .disable_hover.ruby-active-menu-item:hover > a{
+    background: none !important;
+    color:#fff;
+  }
+  ul.ruby-menu > .disable_hover > a:hover {
+    background: #fff !important;
+    color: #4a90e2;
+  }
+
+  html {
+    zoom:0.9 !important;
+  }
+
+  .fixed_width {
+    table-layout: fixed;
+    word-break: break-word;
+    width: 128% !important;
+    max-width: 128% !important;
+  }
+
+
+
+
+  .fa-recycle {
+    position: absolute;
+    right: 1%;
+    bottom: 2%;
+    font-size: 29px;
+    color: #4a90e2;
+    cursor: pointer;
+  }
+
+  .fa-recycle:hover {
+    color: red;
+
+  }
+
+  .fa-plus-square:hover{
+    color: red
+  }
+  </style>
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+  <!-- Loading style style CSS
+  ============================================ -->
+  <link rel="stylesheet" href="{% static 'css/loading_spinner.css' %}">
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57586021-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-57586021-3');
+  </script>
+</head>
+
+<body style="font-family: 'Poppins', sans-serif;">
+  <!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+
+  <div class="all-content-wrapper">
+    <!-- <div id="loader" class="center" style="display:none;"></div> -->
+    <div class="loading-overlay">
+      <span class="fas fa-spinner fa-3x fa-spin"></span>
+      <span class="loading-message">Please wait..it's loading</span>
+    </div>
+
+    <!-- <div id="load"></div> -->
+    <div class="header-advance-area">
+
+      <!-- START: RUBY DEMO HEADER -->
+      <div class="ruby-menu-demo-header" style="position:sticky;top:0;">
+
+        <div class="row menu_section_style">
+          <div class="col-md-2">
+
+          </div>
+          <div class="col-md-12">
+            <!-- ########################### -->
+            <!-- START: RUBY HORIZONTAL MENU -->
+            <div class="ruby-wrapper">
+              <a href="{% url 'coreapp:dashboard' %}" class="logo_image_style"><img src="{% static 'images/logo.png' %}"
+                  alt="" style="max-width: 85%;"></a>
+              <button class="c-hamburger c-hamburger--htx visible-xs">
+                <span>toggle menu</span>
+              </button>
+              <ul class="ruby-menu" style="padding-left: 10%;">
+                <!-- <li><a href="#">Home</a></li>   -->
+                <!-- <li><a href="#">Classic</a>
+          <ul class="hover">
+            <li><a href="#">2nd Level #1</a></li>
+            <li><a href="#">2nd Level #2</a></li>
+            <li><a href="#">2nd Level #3</a>
+              <ul>
+                <li><a href="#"><i class="fa fa-university" aria-hidden="true"></i>3rd Level #1</a>
+                  <ul>
+                    <li><a href="#">4th Level #1</a></li>
+                    <li><a href="#">4th Level #2</a></li>
+                  </ul>
+                <span class="ruby-dropdown-toggle"></span></li>
+                <li><a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>3rd Level #2</a></li>
+                <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i>3rd Level #3</a>
+                  <ul>
+                    <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i>4th Level #1</a></li>
+                    <li><a href="#"><i class="fa fa-print" aria-hidden="true"></i>4th Level #2</a></li>
+                    <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>4th Level #3</a></li>
+                  </ul>
+                <span class="ruby-dropdown-toggle"></span></li>
+              </ul>
+            <span class="ruby-dropdown-toggle"></span></li>
+            <li class="ruby-open-to-left"><a href="#">2nd Level #4</a>
+              <ul>
+                <li><a href="#">3rd Level #1</a></li>
+                <li><a href="#">3rd Level #2</a></li>
+                <li><a href="#">3rd Level #3</a></li>
+              </ul>
+            <span class="ruby-dropdown-toggle"></span></li>
+            <li><a href="#">2nd Level #5</a></li>
+          </ul>
+        <span class="ruby-dropdown-toggle"></span>
+       </li> -->
+
+
+
+                <li class="ruby-menu-mega-blog" onclick="blogDropdown(event)">
+                  <a class="up_arrow dashboard_link" href="#">Dashboards</a>
+                  <div class="blog_section" id="blog_dropdown" style="height: 269.359px !important; "
+                    onclick="event.stopPropagation()">
+                    <!-- <span class="close">&times;</span> -->
+                    <div style="height: 269.359px !important; ">
+                      <span class="close" style="top: 5.5%;">&times;</span>
+
+
+                        <a class="dashboard_button_hover" href="{% url 'coreapp:dashboard-create' pk=project.pk %}" >
+                          <button  class="create_dashboard_button">
+                          Create Dashboard
+                          </button>
+                        </a>
+
+                      <table class="table table-striped" ,border="0">
+                        <thead>
+                          <tr>
+                            <th> TITLE</th>
+                            <th>Dashboard Date & Time</th>
+                            <th>Created By</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% if dashboard %}
+                          {% for d in dashboard %}
+                          <tr onclick="loadDiv()">
+
+                            <td onclick="loadDiv()">{% if request.user.email ==  d.project.admin_user.email  %}
+                              <a
+                                href="{{domain}}/project-dashboard/{{d.pk}}/" onclick="loadDiv()">{{d.name}}</a>{% elif request.user.email == d.dashboard_admin_user.email %}<a
+                                href="{{domain}}/project-dashboard/{{d.pk}}/" onclick="loadDiv()">{{d.name}}</a>{%elif  request.user in d.dashboard_users.all %}<a
+                                href="{{domain}}/project-dashboard/{{d.pk}}/" onclick="loadDiv()">{{d.name}}</a>{% elif d.dashboard_for == 'Public'  %}<a
+                                href="{{domain}}/project-dashboard/{{d.pk}}/" onclick="loadDiv()">{{d.name}}</a> {%else%}<a href="#"
+                                data-toggle="tooltip" title="Private Dashboard">{{d.name}}</a> {%endif%}
+                            </td>
+                            <td onclick="loadDiv()">{% if request.user.email ==  d.project.admin_user.email  %}<a
+                                href="{{domain}}/project-dashboard/{{d.pk}}/" onclick="loadDiv()" onclick="loadDiv()">{{d.created}}</a>{% elif request.user.email == d.dashboard_admin_user.email %}<a
+                                href="{{domain}}/project-dashboard/{{d.pk}}/" onclick="loadDiv()" onclick="loadDiv()">{{d.created}}</a>{%elif  request.user in d.dashboard_users.all %}<a
+                                href="{{domain}}/project-dashboard/{{d.pk}}/" onclick="loadDiv()" onclick="loadDiv()">{{d.created}}</a>{% elif d.dashboard_for == 'Public'  %}<a
+                                href="{{domain}}/project-dashboard/{{d.pk}}/" onclick="loadDiv()" onclick="loadDiv()">{{d.created}}</a> {%else%}<a href="#"
+                                data-toggle="tooltip" title="Private Dashboard">{{d.created}}</a> {%endif%}
+                            </td>
+                            <td onclick="loadDiv()"> {% if request.user.email ==  d.project.admin_user.email  %}<a
+                                href="{{domain}}/project-dashboard/{{d.pk}}/" onclick="loadDiv()">{{d.dashboard_admin_user}}</a>{% elif request.user.email == d.dashboard_admin_user.email %}<a
+                                href="{{domain}}/project-dashboard/{{d.pk}}/" onclick="loadDiv()">{{d.dashboard_admin_user}}</a>{%elif  request.user in d.dashboard_users.all %}<a
+                                href="{{domain}}/project-dashboard/{{d.pk}}/" onclick="loadDiv()">{{d.dashboard_admin_user}}</a>{% elif d.dashboard_for == 'Public'  %}<a
+                                href="{{domain}}/project-dashboard/{{d.pk}}/" onclick="loadDiv()">{{d.dashboard_admin_user}}</a> {%else%}<a
+                                href="#" data-toggle="tooltip" title="Private Dashboard">{{d.dashboard_admin_user}}</a>
+                              {%endif%}
+                            </td>
+                          </tr>
+
+
+                        </tbody>
+
+                        {% endfor %}
+                        {%endif%}
+                      </table>
+                    </div>
+                  </div>
+                  <span class="ruby-dropdown-toggle"></span>
+                </li>
+
+                <li class="ruby-menu-mega-blog" onclick="endPointsDropdown(event)">
+                  <a class="up_arrow endpoints_link" href="#">Endpoints</a>
+                  <div class="blog_section" id="endpoint_dropdown" style="height: 269.359px !important; "
+                    onclick="event.stopPropagation()">
+                    <!-- <span class="close">&times;</span> -->
+                    <div style="height: 269.359px !important; ">
+                      <span class="close" id="endpoint_close_button" onclick="closeEndpoint()"
+                        style="top: 5.5%;">&times;</span>
+                      <!-- <p style="margin-top: 5%;">Created Endpoints </p> -->
+                      <table class="table table-striped" ,border="0">
+                        <thead>
+                          <tr>
+                            <th> TITLE</th>
+                            <th>End Point Date & Time</th>
+                            <th>Created By</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% if project_endpoints %}
+                          {% for ep in  project_endpoints %}
+                          <tr>
+                            <td><a href="{{domain}}/endpoint/{{ep.pk}}/">{{ep.name}}</a></td>
+                            <td><a href="{{domain}}/endpoint/{{ep.pk}}/">{{ep.created}}</a></td>
+                            <td><a href="{{domain}}/endpoint/{{ep.pk}}/">{{ep.user}}</a></td>
+
+                          </tr>
+
+
+                        </tbody>
+
+                        {% endfor %}
+                        {%endif%}
+                      </table>
+                    </div>
+                  </div>
+                  <span class="ruby-dropdown-toggle"></span>
+                </li>
+
+
+
+                <li class="ruby-menu-mega mega-class" id="dropbtn" onclick="showFunction(event)">
+                  <a class="up_arrow data_integration_link" href="#">Data Integrations</a>
+                  <!-- <img src="{% static 'images/cross_arrow.png' %}" alt="" class="cross_arrow img" > -->
+                  <div id="myDropdown" style="overflow:auto !important;" class="ruby-grid ruby-grid-lined mega_section"
+                    onclick="event.stopPropagation();">
+                    <!-- <span class="close" id="close_btn">&times;</span> -->
+
+                    <div class="ruby-row">
+                      <span class="close">&times;</span>
+                      <div class="ruby-col-8">
+                        {% if permission == 'Admin' or permission == 'Delete' or permission == 'Write'%}
+
+                        <h3 class="ruby-list-heading">INTEGRATIONS LIST</h3>
+                        <ul>
+                          <div class="row">
+                            <div class="col-md-4">
+                                <!-- <a href="#">
+
+                                  <img src="https://img.icons8.com/color/48/000000/google-drive.png"
+                                    style="display: inline-block;width: 19%;"><span style="font-weight: bold;">GOOGLE
+                                    DRIVE</span></a><br><br> -->
+                                <a href="{% url 'dataintegration:sheet-details' pk=project.pk %}"><img
+                                    src="https://img.icons8.com/color/48/000000/google-sheets.png"
+                                    style="display: inline-block;width: 13%;"><span style="font-weight: bold;">GOOGLE
+                                    SHEETS</span></a><br><br>
+                                <a href="{% url 'dataintegration:dropbox-details' pk=project.pk %}"><img
+                                    src="https://img.icons8.com/color/48/000000/dropbox.png"
+                                    style="display: inline-block;width: 13%;"><span
+                                    style="font-weight: bold;">DROPBOX</span></a><br><br>
+                                <a href="/add-on/{{project.pk}}"><img
+                                    src="https://img.icons8.com/color/48/000000/file.png" style="display: inline-block;width: 13%;"><span
+                                    style="font-weight: bold;">ADD ON FILES</span></a><br><br>
+
+                            </div>
+                            <div class="col-md-4">
+                              <a href="{% url 'dataintegration:dropbox-details' pk=project.pk %}"><img
+                                  src="https://therealmstorage.sgp1.cdn.digitaloceanspaces.com/brayn/images/logos/segment_icon.png" style="display: inline-block;width: 13%;"><span
+                                  style="font-weight: bold;margin-left: 1%;">SEGMENT</span></a><br><br>
+
+                              <a href="{% url 'dataintegration:api-data-add' pk=project.pk %}"><img
+                                  src="https://therealmstorage.sgp1.cdn.digitaloceanspaces.com/brayn/images/logos/rest_api.png" style="display: inline-block;width: 15%;"><span
+                                  style="font-weight: bold;margin-left: 1%;">REST API</span></a><br><br>
+                            </div>
+                          </div>
+
+                          <!-- <img src="https://segment.com/favicon.ico" style="display: inline-block;width: 13%;margin: 0 4% 0 2%;"><span style="font-weight: bold;">SEGMENT</span> -->
+                        </ul>
+                        {%else%}
+                        <p></p>
+                        {%endif%}
+                      </div>
+                      <!-- <div class="ruby-col-2 hidden-md">
+              <h3 class="ruby-list-heading">List with Icons</h3>
+              <ul>
+                <li><a href="#"><i class="fa fa-motorcycle" aria-hidden="true"></i>Menu Item #1</a></li>
+                <li><a href="#"><i class="fa fa-music" aria-hidden="true"></i>Menu Item #2</a></li>
+                <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Menu Item #3</a></li>
+                <li><a href="#"><i class="fa fa-sliders" aria-hidden="true"></i>Menu Item #4</a></li>
+                <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i>Menu Item #5</a></li>
+              </ul>
+            </div> -->
+                      <!-- <div class="ruby-col-3 ruby-col-4-md">
+              <h3 class="ruby-list-heading">List with Images + Desc</h3>
+              <ul class="ruby-list-with-images">
+                <li><a href="#"><img src="img/c-1.png">Menu Item #1</a><span class="ruby-list-desc">Lorem ipsum dolor sit</span></li>
+                <li><a href="#"><img src="img/c-2.png">Menu Item #2</a><span class="ruby-list-desc">Lorem ipsum dolor sit</span></li>
+                <li><a href="#"><img src="img/c-3.png">Menu Item #3</a><span class="ruby-list-desc">Lorem ipsum dolor sit</span></li>
+              </ul>
+            </div> -->
+                      <!-- <div class="ruby-col-5">
+              <h3 class="ruby-list-heading">Multiple Lists with Icons</h3>
+              <div class="ruby-row">
+                <div class="ruby-col-4 ruby-col-6-md">
+                  <ul>
+                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i>Menu Item</a></li>
+                    <li><a href="#"><i class="fa fa-signal" aria-hidden="true"></i>Menu Item</a></li>
+                    <li><a href="#"><i class="fa fa-send" aria-hidden="true"></i>Menu Item</a></li>
+                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>Menu Item</a></li>
+                    <li><a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Menu Item</a></li>
+                  </ul>
+                </div>
+                <div class="ruby-col-4 ruby-col-6-md" style="padding-left:10px">
+                  <ul>
+                    <li><a href="#"><i class="fa fa-rocket" aria-hidden="true"></i>Menu Item</a></li>
+                    <li><a href="#"><i class="fa fa-warning" aria-hidden="true"></i>Menu Item</a></li>
+                    <li><a href="#"><i class="fa fa-upload" aria-hidden="true"></i>Menu Item</a></li>
+                    <li><a href="#"><i class="fa fa-umbrella" aria-hidden="true"></i>Menu Item</a></li>
+                    <li><a href="#"><i class="fa fa-trophy" aria-hidden="true"></i>Menu Item</a></li>
+                  </ul>
+                </div>
+                <div class="ruby-col-4 hidden-md" style="padding-left:15px">
+                  <ul>
+                    <li><a href="#"><i class="fa fa-map-o" aria-hidden="true"></i>Menu Item</a></li>
+                    <li><a href="#"><i class="fa fa-image" aria-hidden="true"></i>Menu Item</a></li>
+                    <li><a href="#"><i class="fa fa-legal" aria-hidden="true"></i>Menu Item</a></li>
+                    <li><a href="#"><i class="fa fa-paint-brush" aria-hidden="true"></i>Menu Item</a></li>
+                    <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i>Menu Item</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div> -->
+                    </div>
+                  </div>
+                  <span class="ruby-dropdown-toggle"></span>
+                </li>
+
+                <li class="ruby-menu-mega-shop" onclick="shopDropdown(event)"><a
+                    href="{% url 'coreapp:add-users' pk=project.pk %}">User management</a>
+                  <!-- <div style="height: 263px;" class="shop_section" id="shop_dropdown">
+            <ul>
+              <li class="ruby-active-menu-item"><a href="#">Clothing</a>
+                <div class="ruby-grid ruby-grid-lined">
+                  <div class="ruby-row">
+                    <div class="ruby-col-2">
+                      <h3 class="ruby-list-heading">TOPS</h3>
+                      <ul>
+                        <li><a href="#">Menu Item #1</a></li>
+                        <li><a href="#">Menu Item #2</a></li>
+                        <li><a href="#">Menu Item #3</a></li>
+                        <li><a href="#">Menu Item #4</a></li>
+                        <li><a href="#">Menu Item #5</a></li>
+                      </ul>
+                    </div>
+                    <div class="ruby-col-2">
+                      <img src="img/outerwear-2.jpg">
+                    </div>
+                    <div class="ruby-col-2">
+                      <h3 class="ruby-list-heading">BOTTOM</h3>
+                      <ul>
+                        <li><a href="#">Menu Item #1</a></li>
+                        <li><a href="#">Menu Item #2</a></li>
+                        <li><a href="#">Menu Item #3</a></li>
+                        <li><a href="#">Menu Item #4</a></li>
+                        <li><a href="#">Menu Item #5</a></li>
+                      </ul>
+                    </div>
+                    <div class="ruby-col-2">
+                      <h3 class="ruby-list-heading">NIGHTWEAR</h3>
+                      <ul>
+                        <li><a href="#">Menu Item #1</a></li>
+                        <li><a href="#">Menu Item #2</a></li>
+                        <li><a href="#">Menu Item #3</a></li>
+                        <li><a href="#">Menu Item #4</a></li>
+                        <li><a href="#">Menu Item #5</a></li>
+                      </ul>
+                    </div>
+                    <div class="ruby-col-2">
+                      <img src="img/outerwear-3.jpg">
+                    </div>
+                    <div class="ruby-col-2">
+                      <h3 class="ruby-list-heading">SWIMWEAR</h3>
+                      <ul>
+                        <li><a href="#">Menu Item #1</a></li>
+                        <li><a href="#">Menu Item #2</a></li>
+                        <li><a href="#">Menu Item #3</a></li>
+                        <li><a href="#">Menu Item #4</a></li>
+                        <li><a href="#">Menu Item #5</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              <span class="ruby-dropdown-toggle"></span></li>
+              <li><a href="#">Outerwear</a>
+                <div class="ruby-grid ruby-grid-lined">
+                  <div class="ruby-row">
+                    <div class="ruby-col-3">
+                      <img src="img/outerwear.jpg">
+                    </div>
+                    <div class="ruby-col-3">
+                      <h3 class="ruby-list-heading">COATS</h3>
+                      <ul>
+                        <li><a href="#">Menu Item #1</a></li>
+                        <li><a href="#">Menu Item #2</a></li>
+                        <li><a href="#">Menu Item #3</a></li>
+                        <li><a href="#">Menu Item #4</a></li>
+                        <li><a href="#">Menu Item #5</a></li>
+                        <li><a href="#">Menu Item #6</a></li>
+                        <li><a href="#">Menu Item #7</a></li>
+                      </ul>
+                    </div>
+                    <div class="ruby-col-3">
+                      <h3 class="ruby-list-heading">JACKETS</h3>
+                      <ul>
+                        <li><a href="#">Menu Item #1</a></li>
+                        <li><a href="#">Menu Item #2</a></li>
+                        <li><a href="#">Menu Item #3</a></li>
+                        <li><a href="#">Menu Item #4</a></li>
+                        <li><a href="#">Menu Item #5</a></li>
+                        <li><a href="#">Menu Item #6</a></li>
+                        <li><a href="#">Menu Item #7</a></li>
+                      </ul>
+                    </div>
+                    <div class="ruby-col-3">
+                      <h3 class="ruby-list-heading">LEATHER</h3>
+                      <ul>
+                        <li><a href="#">Menu Item #1</a></li>
+                        <li><a href="#">Menu Item #2</a></li>
+                        <li><a href="#">Menu Item #3</a></li>
+                        <li><a href="#">Menu Item #4</a></li>
+                        <li><a href="#">Menu Item #5</a></li>
+                        <li><a href="#">Menu Item #6</a></li>
+                        <li><a href="#">Menu Item #7</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              <span class="ruby-dropdown-toggle"></span></li>
+              <li><a href="#">Bags &amp; Shoes</a>
+                <div class="ruby-grid ruby-grid-lined">
+                  <div class="ruby-row">
+                    <div class="ruby-col-3">
+                      <img src="img/bags.jpg">
+                    </div>
+                    <div class="ruby-col-3">
+                      <h3 class="ruby-list-heading">BAGS</h3>
+                      <ul>
+                        <li><a href="#">Menu Item #1</a></li>
+                        <li><a href="#">Menu Item #2</a></li>
+                        <li><a href="#">Menu Item #3</a></li>
+                        <li><a href="#">Menu Item #4</a></li>
+                        <li><a href="#">Menu Item #5</a></li>
+                      </ul>
+                    </div>
+                    <div class="ruby-col-3">
+                      <h3 class="ruby-list-heading">SHOES</h3>
+                      <ul>
+                        <li><a href="#">Menu Item #1</a></li>
+                        <li><a href="#">Menu Item #2</a></li>
+                        <li><a href="#">Menu Item #3</a></li>
+                        <li><a href="#">Menu Item #4</a></li>
+                        <li><a href="#">Menu Item #5</a></li>
+                      </ul>
+                    </div>
+                    <div class="ruby-col-3">
+                      <img src="img/shoes.jpg">
+                    </div>
+                  </div>
+                </div>
+              <span class="ruby-dropdown-toggle"></span></li>
+              <li><a href="#">Accessories</a>
+                <div class="ruby-grid ruby-grid-lined">
+                  <div class="ruby-row">
+                    <div class="ruby-col-3">
+                      <img src="img/eyewear.jpg">
+                      <h3 class="ruby-list-heading" style="margin-top: 16px;">EYEWEAR</h3>
+                      <ul>
+                        <li><a href="#">Menu Item #1</a></li>
+                        <li><a href="#">Menu Item #2</a></li>
+                        <li><a href="#">Menu Item #3</a></li>
+                        <li><a href="#">Menu Item #4</a></li>
+                      </ul>
+                    </div>
+                    <div class="ruby-col-3">
+                      <img src="img/jewellery.jpg">
+                      <h3 class="ruby-list-heading" style="margin-top: 16px;">JEWELLERY</h3>
+                      <ul>
+                        <li><a href="#">Menu Item #1</a></li>
+                        <li><a href="#">Menu Item #2</a></li>
+                        <li><a href="#">Menu Item #3</a></li>
+                        <li><a href="#">Menu Item #4</a></li>
+                      </ul>
+                    </div>
+                    <div class="ruby-col-3">
+                      <img src="img/watches.jpg">
+                      <h3 class="ruby-list-heading" style="margin-top: 16px;">WATCHES</h3>
+                      <ul>
+                        <li><a href="#">Menu Item #1</a></li>
+                        <li><a href="#">Menu Item #2</a></li>
+                        <li><a href="#">Menu Item #3</a></li>
+                        <li><a href="#">Menu Item #4</a></li>
+                      </ul>
+                    </div>
+                    <div class="ruby-col-3">
+                      <img src="img/textile.jpg">
+                      <h3 class="ruby-list-heading" style="margin-top: 16px;">OTHERS</h3>
+                      <ul>
+                        <li><a href="#">Menu Item #1</a></li>
+                        <li><a href="#">Menu Item #2</a></li>
+                        <li><a href="#">Menu Item #3</a></li>
+                        <li><a href="#">Menu Item #4</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              <span class="ruby-dropdown-toggle"></span></li>
+              <li><a href="#">Collections</a>
+                <div class="ruby-grid ruby-grid-lined">
+                  <div class="ruby-row">
+                    <div class="ruby-col-3">
+                      <img src="img/collection-accessori.jpg">
+                    </div>
+                    <div class="ruby-col-3">
+                      <img src="img/collection-bridal.jpg">
+                    </div>
+                    <div class="ruby-col-3">
+                      <img src="img/collection-cube.jpg">
+                    </div>
+                    <div class="ruby-col-3">
+                      <img src="img/collection-elegante.jpg">
+                    </div>
+                  </div>
+                  <div class="ruby-row">
+                    <div class="ruby-col-3">
+                      <img src="img/collection-maxmara.jpg">
+                    </div>
+                    <div class="ruby-col-3">
+                      <img src="img/collection-sfilata.jpg">
+                    </div>
+                    <div class="ruby-col-3">
+                      <img src="img/collection-shine.jpg">
+                    </div>
+                    <div class="ruby-col-3">
+                      <img src="img/collection-s-maxmara.jpg">
+                    </div>
+                  </div>
+                </div>
+              <span class="ruby-dropdown-toggle"></span></li>
+            </ul>
+          </div> -->
+                  <span class="ruby-dropdown-toggle"></span>
+                </li>
+                <li><a href="{% url 'coreapp:single-project-details' pk=project.pk %}" onclick="LoadDiv()">Project details</a></li>
+                <li id="hover_poject_style" class="project_titles">PRO : {{project.name}}</li>
+                <li id="hover_poject_style" class="project_titles">YOU ARE :{% if permission == 'Admin' %} Admin {% elif permission == 'Delete' %} Writer + {% elif permission == 'Write'%} Writer{% elif permission == 'Read' %}Reader {%endif%}</li>
+                {% if user_image.image  %}
+                <!-- <i class="fa fa-comments" aria-hidden="true"></i> -->
+                <li class="ruby-menu-right disable_hover" <img src="{{user_image.image.url}} " alt="user_images"
+                   style="position:relative;">
+                  <!-- <i class="fa fa-comments logout_li_element" aria-hidden="true" onclick="document.getElementById('chat_box_modal').style.display='block'"></i> -->
+                  <a class="up_arrow logout_li_element" href="#" onclick="callLogout()">WELCOME {{request.user.first_name}}</a>
+                  {% else %}
+
+                <li class="ruby-menu-right disable_hover" <img
+                  src="https://img.icons8.com/cotton/64/000000/gender-neutral-user--v1.png" style="position:relative;">
+                  <!-- <i class="fa fa-comments logout_li_element" aria-hidden="true" onclick="displayChatWindow()"  ></i> -->
+                  <a class="up_arrow " href="#" onclick="callLogout()"> WELCOME {{request.user.first_name}}</a>
+                  {% endif %}
+
+                  <ul id="logout" onclick="event.stopPropagation()">
+                    <li><a href="{%url 'coreapp:logout' %}">Logout</a></li>
+                  </ul>
+
+                  <span class="ruby-dropdown-toggle"></span>
+                </li>
+              </ul>
+            </div>
+            <!-- END:   RUBY HORIZONTAL MENU -->
+            <!-- ########################### -->
+          </div>
+        </div>
+
+      </div>
+      <!-- END: RUBY DEMO HEADER -->
+
+
+      {% block body %}
+
+
+
+
+      <!-- Mobile Menu start -->
+      <div class="mobile-menu-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="mobile-menu">
+                <nav id="dropdown">
+                  <ul class="mobile-menu-nav">
+                    <li><a data-toggle="collapse" data-target="#Charts" href="{% url 'coreapp:home' %}">Home <span
+                          class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                    <li><a data-toggle="collapse" data-target="#Charts" href="{% url 'coreapp:dashboard' %}">Dashboard
+                        <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                    <li><a data-toggle="collapse" data-target="#Charts" href="{% url 'coreapp:about' %}">About <span
+                          class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                    <li><a data-toggle="collapse" data-target="#Charts" href="{% url 'coreapp:services' %}">Services
+                        <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                      <!-- <ul class="collapse dropdown-header-top">
+                                    <li><a href="index.html">Dashboard v.1</a></li>
+                                    <li><a href="index-1.html">Dashboard v.2</a></li>
+                                    <li><a href="index-3.html">Dashboard v.3</a></li>
+                                    <li><a href="analytics.html">Analytics</a></li>
+                                    <li><a href="widgets.html">Widgets</a></li>
+                                </ul> -->
+                    </li>
+                    <!-- <li><a href="events.html">Event</a></li> -->
+                    <!-- <li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demoevent" class="collapse dropdown-header-top">
+                                    <li><a href="all-professors.html">All Professors</a>
+                                    </li>
+                                    <li><a href="add-professor.html">Add Professor</a>
+                                    </li>
+                                    <li><a href="edit-professor.html">Edit Professor</a>
+                                    </li>
+                                    <li><a href="professor-profile.html">Professor Profile</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                    <!-- <li><a data-toggle="collapse" data-target="#demopro" href="#">Students <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demopro" class="collapse dropdown-header-top">
+                                    <li><a href="all-students.html">All Students</a>
+                                    </li>
+                                    <li><a href="add-student.html">Add Student</a>
+                                    </li>
+                                    <li><a href="edit-student.html">Edit Student</a>
+                                    </li>
+                                    <li><a href="student-profile.html">Student Profile</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                    <!-- <li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="democrou" class="collapse dropdown-header-top">
+                                    <li><a href="all-courses.html">All Courses</a>
+                                    </li>
+                                    <li><a href="add-course.html">Add Course</a>
+                                    </li>
+                                    <li><a href="edit-course.html">Edit Course</a>
+                                    </li>
+                                    <li><a href="course-profile.html">Courses Info</a>
+                                    </li>
+                                    <li><a href="course-payment.html">Courses Payment</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                    <!-- <li><a data-toggle="collapse" data-target="#demolibra" href="#">Library <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demolibra" class="collapse dropdown-header-top">
+                                    <li><a href="library-assets.html">Library Assets</a>
+                                    </li>
+                                    <li><a href="add-library-assets.html">Add Library Asset</a>
+                                    </li>
+                                    <li><a href="edit-library-assets.html">Edit Library Asset</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                    <!-- <li><a data-toggle="collapse" data-target="#demodepart" href="#">Departments <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demodepart" class="collapse dropdown-header-top">
+                                    <li><a href="departments.html">Departments List</a>
+                                    </li>
+                                    <li><a href="add-department.html">Add Departments</a>
+                                    </li>
+                                    <li><a href="edit-department.html">Edit Departments</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                    <!-- <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demo" class="collapse dropdown-header-top">
+                                    <li><a href="mailbox.html">Inbox</a>
+                                    </li>
+                                    <li><a href="mailbox-view.html">View Mail</a>
+                                    </li>
+                                    <li><a href="mailbox-compose.html">Compose Mail</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                    <!-- <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
+                                    <li><a href="google-map.html">Google Map</a>
+                                    </li>
+                                    <li><a href="data-maps.html">Data Maps</a>
+                                    </li>
+                                    <li><a href="pdf-viewer.html">Pdf Viewer</a>
+                                    </li>
+                                    <li><a href="x-editable.html">X-Editable</a>
+                                    </li>
+                                    <li><a href="code-editor.html">Code Editor</a>
+                                    </li>
+                                    <li><a href="tree-view.html">Tree View</a>
+                                    </li>
+                                    <li><a href="preloader.html">Preloader</a>
+                                    </li>
+                                    <li><a href="images-cropper.html">Images Cropper</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                    <!-- <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Chartsmob" class="collapse dropdown-header-top">
+                                    <li><a href="bar-charts.html">Bar Charts</a>
+                                    </li>
+                                    <li><a href="line-charts.html">Line Charts</a>
+                                    </li>
+                                    <li><a href="area-charts.html">Area Charts</a>
+                                    </li>
+                                    <li><a href="rounded-chart.html">Rounded Charts</a>
+                                    </li>
+                                    <li><a href="c3.html">C3 Charts</a>
+                                    </li>
+                                    <li><a href="sparkline.html">Sparkline Charts</a>
+                                    </li>
+                                    <li><a href="peity.html">Peity Charts</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                    <!-- <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Tablesmob" class="collapse dropdown-header-top">
+                                    <li><a href="static-table.html">Static Table</a>
+                                    </li>
+                                    <li><a href="data-table.html">Data Table</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                    <!-- <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="formsmob" class="collapse dropdown-header-top">
+                                    <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                    </li>
+                                    <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                    </li>
+                                    <li><a href="password-meter.html">Password Meter</a>
+                                    </li>
+                                    <li><a href="multi-upload.html">Multi Upload</a>
+                                    </li>
+                                    <li><a href="tinymc.html">Text Editor</a>
+                                    </li>
+                                    <li><a href="dual-list-box.html">Dual List Box</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                    <!-- <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Appviewsmob" class="collapse dropdown-header-top">
+                                    <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                    </li>
+                                    <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                    </li>
+                                    <li><a href="password-meter.html">Password Meter</a>
+                                    </li>
+                                    <li><a href="multi-upload.html">Multi Upload</a>
+                                    </li>
+                                    <li><a href="tinymc.html">Text Editor</a>
+                                    </li>
+                                    <li><a href="dual-list-box.html">Dual List Box</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                    <!-- <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Pagemob" class="collapse dropdown-header-top">
+                                    <li><a href="{% url 'login:signup' %}">Login</a>
+                                    </li>
+                                    <li><a href="register.html">Register</a>
+                                    </li>
+                                    <li><a href="lock.html">Lock</a>
+                                    </li>
+                                    <li><a href="password-recovery.html">Password Recovery</a>
+                                    </li>
+                                    <li><a href="404.html">404 Page</a></li>
+                                    <li><a href="500.html">500 Page</a></li>
+                                </ul>
+                            </li> -->
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Mobile Menu-->
+      <!-- <div class="container-fluid">
+               <div class="row">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                       <div class="logo-pro">
+                           <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                       </div>
+                   </div>
+               </div>
+           </div> -->
+
+      <div class="header-advance-area">
+
+        <!-- Mobile Menu start -->
+        <!-- <div class="mobile-menu-area">
+       <div class="container">
+           <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                   <div class="mobile-menu">
+                       <nav id="dropdown">
+                           <ul class="mobile-menu-nav">
+                               <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul class="collapse dropdown-header-top">
+                                       <li><a href="index.html">Dashboard v.1</a></li>
+                                       <li><a href="index-1.html">Dashboard v.2</a></li>
+                                       <li><a href="index-3.html">Dashboard v.3</a></li>
+                                       <li><a href="analytics.html">Analytics</a></li>
+                                       <li><a href="widgets.html">Widgets</a></li>
+                                   </ul>
+                               </li>
+                               <li><a href="events.html">Event</a></li>
+                               <li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="demoevent" class="collapse dropdown-header-top">
+                                       <li><a href="all-professors.html">All Professors</a>
+                                       </li>
+                                       <li><a href="add-professor.html">Add Professor</a>
+                                       </li>
+                                       <li><a href="edit-professor.html">Edit Professor</a>
+                                       </li>
+                                       <li><a href="professor-profile.html">Professor Profile</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#demopro" href="#">Students <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="demopro" class="collapse dropdown-header-top">
+                                       <li><a href="all-students.html">All Students</a>
+                                       </li>
+                                       <li><a href="add-student.html">Add Student</a>
+                                       </li>
+                                       <li><a href="edit-student.html">Edit Student</a>
+                                       </li>
+                                       <li><a href="student-profile.html">Student Profile</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="democrou" class="collapse dropdown-header-top">
+                                       <li><a href="all-courses.html">All Courses</a>
+                                       </li>
+                                       <li><a href="add-course.html">Add Course</a>
+                                       </li>
+                                       <li><a href="edit-course.html">Edit Course</a>
+                                       </li>
+                                       <li><a href="course-profile.html">Courses Info</a>
+                                       </li>
+                                       <li><a href="course-payment.html">Courses Payment</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#demolibra" href="#">Library <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="demolibra" class="collapse dropdown-header-top">
+                                       <li><a href="library-assets.html">Library Assets</a>
+                                       </li>
+                                       <li><a href="add-library-assets.html">Add Library Asset</a>
+                                       </li>
+                                       <li><a href="edit-library-assets.html">Edit Library Asset</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#demodepart" href="#">Departments <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="demodepart" class="collapse dropdown-header-top">
+                                       <li><a href="departments.html">Departments List</a>
+                                       </li>
+                                       <li><a href="add-department.html">Add Departments</a>
+                                       </li>
+                                       <li><a href="edit-department.html">Edit Departments</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="demo" class="collapse dropdown-header-top">
+                                       <li><a href="mailbox.html">Inbox</a>
+                                       </li>
+                                       <li><a href="mailbox-view.html">View Mail</a>
+                                       </li>
+                                       <li><a href="mailbox-compose.html">Compose Mail</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
+                                       <li><a href="google-map.html">Google Map</a>
+                                       </li>
+                                       <li><a href="data-maps.html">Data Maps</a>
+                                       </li>
+                                       <li><a href="pdf-viewer.html">Pdf Viewer</a>
+                                       </li>
+                                       <li><a href="x-editable.html">X-Editable</a>
+                                       </li>
+                                       <li><a href="code-editor.html">Code Editor</a>
+                                       </li>
+                                       <li><a href="tree-view.html">Tree View</a>
+                                       </li>
+                                       <li><a href="preloader.html">Preloader</a>
+                                       </li>
+                                       <li><a href="images-cropper.html">Images Cropper</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="Chartsmob" class="collapse dropdown-header-top">
+                                       <li><a href="bar-charts.html">Bar Charts</a>
+                                       </li>
+                                       <li><a href="line-charts.html">Line Charts</a>
+                                       </li>
+                                       <li><a href="area-charts.html">Area Charts</a>
+                                       </li>
+                                       <li><a href="rounded-chart.html">Rounded Charts</a>
+                                       </li>
+                                       <li><a href="c3.html">C3 Charts</a>
+                                       </li>
+                                       <li><a href="sparkline.html">Sparkline Charts</a>
+                                       </li>
+                                       <li><a href="peity.html">Peity Charts</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="Tablesmob" class="collapse dropdown-header-top">
+                                       <li><a href="static-table.html">Static Table</a>
+                                       </li>
+                                       <li><a href="data-table.html">Data Table</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="formsmob" class="collapse dropdown-header-top">
+                                       <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                       </li>
+                                       <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                       </li>
+                                       <li><a href="password-meter.html">Password Meter</a>
+                                       </li>
+                                       <li><a href="multi-upload.html">Multi Upload</a>
+                                       </li>
+                                       <li><a href="tinymc.html">Text Editor</a>
+                                       </li>
+                                       <li><a href="dual-list-box.html">Dual List Box</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="Appviewsmob" class="collapse dropdown-header-top">
+                                       <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                       </li>
+                                       <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                       </li>
+                                       <li><a href="password-meter.html">Password Meter</a>
+                                       </li>
+                                       <li><a href="multi-upload.html">Multi Upload</a>
+                                       </li>
+                                       <li><a href="tinymc.html">Text Editor</a>
+                                       </li>
+                                       <li><a href="dual-list-box.html">Dual List Box</a>
+                                       </li>
+                                   </ul>
+                               </li>
+                               <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                   <ul id="Pagemob" class="collapse dropdown-header-top">
+                                       <li><a href="login.html">Login</a>
+                                       </li>
+                                       <li><a href="register.html">Register</a>
+                                       </li>
+                                       <li><a href="lock.html">Lock</a>
+                                       </li>
+                                       <li><a href="password-recovery.html">Password Recovery</a>
+                                       </li>
+                                       <li><a href="404.html">404 Page</a></li>
+                                       <li><a href="500.html">500 Page</a></li>
+                                   </ul>
+                               </li>
+                           </ul>
+                       </nav>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div> -->
+        <!-- Mobile Menu end -->
+        <!-- <div class="breadcome-area">
+       <div class="container-fluid">
+           <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                   <div class="breadcome-list single-page-breadcome">
+                       <div class="row">
+                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                               <div class="breadcome-heading">
+                                   <form role="search" class="sr-input-func">
+                                       <input type="text" placeholder="Search..." class="search-int form-control">
+                                       <a href="#"><i class="fa fa-search"></i></a>
+                                   </form>
+                               </div>
+                           </div>
+                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                               <ul class="breadcome-menu">
+                                   <li><a href="#">Home</a> <span class="bread-slash">/</span>
+                                   </li>
+                                   <li><span class="bread-blod">Tree View</span>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div> -->
+      </div>
+      {%  block breadcrumb%}
+      <!-- START: NAVIGATION THROUGH BREADCRUMBS -->
+      <!-- <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'coreapp:dashboard' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">Library</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{project}}</li>
+  </ol>
+</nav> -->
+      <!-- END: NAVIGATION THROUGH BREADCRUMBS -->
+      {% endblock breadcrumb %}
+      <div class="row" style="margin-top: 1%; margin-left: 1%;margin-right: 1%;">
+
+        <div class="" style="display:flex;">
+          <h3 style="margin-bottom: 1%;margin-left: 1%;font-size: 15px;">VIEW OF YOUR DATA</h3>
+          &nbsp;&nbsp;&nbsp;
+          <img src="{% static 'images/info.png' %}" style="width: 15px;height: 15px;"
+            onclick="document.getElementById('view_data_modal').style.display='block'">
+          <div class="date_frame_info">
+            <span> Columns : {{df_columns_count}} </span>
+            <span style="margin-left: 2%;"> Rows : {{df_rows}} </span>
+
+          </div>
+          <form method="post" id="project-rows-col-data-form" target="_blank"
+            action="{% url 'coreapp:project-rows-col-data' pk=project.pk %}" style="width: 43%;">
+            {%csrf_token%}
+
+            <div class="" style="display:flex;">
+              <span><input type="number" id="from_row" placeholder="FROM ROW NO" class="form-control element_height"
+                  name="rows" required></span>
+              <span><input type="number" id="to_row" placeholder="TO ROW NO" class="form-control element_height"
+                  name="columns" required></span>
+
+              <button type="button" onclick="filterROWS('{{project.pk}}')"
+                class="row_submission_button element_height">GET ROWS</button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+        <div class="row">
+          <div class="boxed_layout">
+            <div class="col-md-12 scroller">
+              {% autoescape off %}{{ res_df__table_content }}{% endautoescape %}
+            </div>
+          </div>
+        </div>
+
+        <div class="row project_dashboard_query_section">
+          <div class="col-md-12 ">
+            <div style="display: flex;">
+              <h3 style="font-size: 15px;">ENTER YOUR QUERY</h3>
+              &nbsp;&nbsp;&nbsp;
+              <img src="{% static 'images/info.png' %}" style="width: 15px;height: 15px;"
+                onclick="document.getElementById('enter_your_query_modal').style.display='block'">
+              <p style="color:red;width: 84%;" id="query_error_message">{{msg}}</p>
+              <p class="grouping_column_error_message">Please add grouping columns or time frequency before adding aggregations</p>
+            </div>
+
+            {%if query%}
+            <!-- Update form -->
+            <form class="" action="{%url 'coreapp:project-query' pk=project.pk%}" method="post" style="">
+              {%csrf_token%}
+              <div class="row">
+                <i class="fa fa-plus-square add_columns" style="top: 40%;" aria-hidden="true" onclick="document.getElementById('group_column_modal').style.display='block'" title="Add Grouping Columns"></i>
+                <i class="fa fa-plus-square add_filters" style="top: 40%;" aria-hidden="true" onclick="document.getElementById('add_filtering_modal').style.display='block'" title="Add Filters"></i>
+                <i class="fa fa-plus-square aggregation_coumns" style="top: 40%;" aria-hidden="true" onclick="openAggregationModal()" title="Add Aggregations"></i>
+                <div class="col-md-12">
+                  <div class="row" >
+                    <div class="col-md-4">
+                      <label class="query_fields">Add Filters </label>
+                      <input type="text" name="where_query" readonly class="form-control" value="{{query.where_query}}" id="where_query_field"
+                        placeholder="ex: column1==['row_value_1','row_value_2',] & column_2>1"
+                        onclick="document.getElementById('add_filtering_modal').style.display='block'"
+                        style="margin-right: 1%;background: #fff;">
+                        <i class="fas fa-sync-alt refresh_icon" title="Clear Field" onclick="document.getElementById('where_query_field').value=''"></i>
+                     </div>
+                     <div class="col-md-4">
+                       <label class="query_fields">Choose Grouping Columns</label>
+                       <input type="text" id="grouping_column_field" readonly name="grouping_colums" class="form-control"
+                       placeholder="ex: column_1,column_2,column_3,..etc " value="{{query.group_query}}"
+
+                        onclick="document.getElementById('group_column_modal').style.display='block'"
+                       style="background: #fff;"
+                          >
+                          <i class="fas fa-sync-alt refresh_icon" title="Clear Field" onclick="document.getElementById('grouping_column_field').value=''"></i>
+                     </div>
+                     <div class="col-md-4">
+                       <label class="query_fields">Add Aggregations</label>
+                       <input type="text" name="aggregation_query" readonly
+                       class="form-control aggregated_values" value="{{query.aggregation_query}}"
+                         placeholder="ex: {'column_1':'sum','column_2':'mean',..etc}"
+                          onclick="openAggregationModal()"
+                         style="background: #fff;" >
+                         <i class="fas fa-sync-alt refresh_icon" title="Clear Field" onclick="document.querySelector('.aggregated_values').value=''"></i>
+                     </div>
+
+
+
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12" style="margin-top:1%;">
+                  <div class="row" >
+
+                    {% if time_series_project %}
+                    <div class="col-md-4 date_section" style="width:33.3%;">
+                      <input type="text" id="query_from_date" class="form-control" name="start_date"
+                        value="{{start_date}}" placeholder="Start Date" style="margin-right: 1%;" >
+                      <input type="text" id="hiddenField" class="datepicker">
+                      <select id="prefill_from_date_id" name="fromdate_select" data-point="{{project.pk}}"
+                        class="form-control"  >
+                        <option value="">------------</option>
+                        <option value="day">Day Before</option>
+                        <option value="week">Week Before</option>
+                        <option value="month">Month Before</option>
+                        <option value="year"> Year Before</option>
+                      </select>
+                        <input type="text" id="query_to_date" class="form-control" name="end_date" value="{{end_date|date:'Y-m-d H:i'}}"
+                          placeholder="End Date" style="margin-right: 1%;" >
+                      <select id="prefill_to_date_id" name="todate_select" data-point="{{project.pk}}"
+                        class="form-control" >
+                        <option value="">------------</option>
+                        <option value="today">Today</option>
+                        <option value="day">Day Before</option>
+                        <option value="week">Week Before</option>
+                        <option value="month">Month Before</option>
+                        <option value="year"> Year Before</option>
+
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <select class="form-control" name="frequency" id="frequency" class="form-control" style="margin-left: 0.7%;">
+                        <option value="" >-------</option>
+                        <option value="min" {%if query.expected_range == 'min' %} selected{%endif%}>Minutes</option>
+                        <option value="hour" {%if query.expected_range == 'hour' %} selected{%endif%}>Hourly</option>
+                        <option value="day" {%if query.expected_range == 'day' %} selected{%endif%}>Daily</option>
+                        <option value="week" {%if query.expected_range == 'week' %} selected{%endif%}>Weekly</option>
+                        <option value="month" {%if query.expected_range == 'month' %} selected{%endif%}>Monthly</option>
+                        <option value="year" {%if query.expected_range == 'year' %} selected{%endif%}>Yearly</option>
+                        <option value="quarterly" {%if query.expected_range == 'quarterly' %} selected{%endif%}>Quarterly
+                        </option>
+                      </select>
+                    </div>
+                    {%else%}
+                    <div class="col-md-4 date_section" style="width:33.3%;">
+                      <input type="text"  class="form-control" name="start_date" value="{{start_date}}"
+                        placeholder="Start Date" style="margin-right: 1%;" disabled>
+                      <!-- <input type="text" id="hiddenField" class="datepicker"> -->
+                      <select id="prefill_from_date_id" name="fromdate_select" data-point="{{project.pk}}" class="form-control" disabled>
+                        <option value="">------------</option>
+                        <option value="day">Day Before</option>
+                        <option value="week">Week Before</option>
+                        <option value="month">Month Before</option>
+                        <option value="year"> Year Before</option>
+                      </select>
+                      <input type="text"  class="form-control" name="end_date" value="{{end_date|date:'Y-m-d H:i'}}"
+                        placeholder="End Date" style="margin-right: 1%;" disabled>
+                      <select id="prefill_to_date_id" name="todate_select" data-point="{{project.pk}}" class="form-control" disabled>
+                        <option value="">------------</option>
+                        <option value="today">Today</option>
+                        <option value="day">Day Before</option>
+                        <option value="week">Week Before</option>
+                        <option value="month">Month Before</option>
+                        <option value="year"> Year Before</option>
+
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <select class="form-control" name="frequency" id="frequency" class="form-control" style="margin-left: 0.7%;width:32.3%;" disabled>
+                        <option value="">-------</option>
+                        <option value="min" {%if query.expected_range == 'min' %} selected{%endif%}>Minutes</option>
+                        <option value="hour" {%if query.expected_range == 'hour' %} selected{%endif%}>Hourly</option>
+                        <option value="day" {%if query.expected_range == 'day' %} selected{%endif%}>Daily</option>
+                        <option value="week" {%if query.expected_range == 'week' %} selected{%endif%}>Weekly</option>
+                        <option value="month" {%if query.expected_range == 'month' %} selected{%endif%}>Monthly</option>
+                        <option value="year" {%if query.expected_range == 'year' %} selected{%endif%}>Yearly</option>
+                        <option value="quarterly" {%if query.expected_range == 'quarterly' %} selected{%endif%}>Quarterly
+                        </option>
+                      </select>
+                    </div>
+                    {%endif%}
+
+
+                    <div class="col-md-4" style="text-align: center;">
+                      <button type="submit" name="button" class="query_button" onclick="LoadDiv()">update query</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </form>
+            <!-- End of Update form -->
+
+
+
+            <!-- Normal form -->
+            {%else%}
+
+
+
+
+
+
+
+            <form class="" action="{%url 'coreapp:project-query' pk=project.pk%}" method="post"
+              style="margin-top: 1.5%;">
+              {%csrf_token%}
+              <div class="row">
+                <i class="fa fa-plus-square add_columns" aria-hidden="true" onclick="document.getElementById('group_column_modal').style.display='block'" title="Add Grouping Columns"></i>
+                <i class="fa fa-plus-square add_filters" aria-hidden="true" onclick="document.getElementById('add_filtering_modal').style.display='block'" title="Add Filters"></i>
+                <i class="fa fa-plus-square aggregation_coumns" aria-hidden="true" onclick="openAggregationModal()" title="Add Aggregations"></i>
+                <div class="col-md-12">
+                  <div class="row" style="">
+
+                    <div class="col-md-4">
+                      <label>Add Filters</label>
+                      <input type="text" class="form-control" readonly name="where_query" id="where_query_field" value="{{where_query}}"
+                        placeholder="ex: column1==['row_value_1','row_value_2',] & column_2>1"
+                        onclick="document.getElementById('add_filtering_modal').style.display='block'"
+                        style="background: #fff;">
+                        <i class="fas fa-sync-alt refresh_icon" title="Clear Field" onclick="document.getElementById('where_query_field').value=''"></i>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Choose Grouping Columns</label>
+                      <input type="text" id="grouping_column_field" readonly class="form-control" name="grouping_colums" value="{{group_query}}"
+                        placeholder="ex: column_1,column_2,column_3,..etc "
+                        onclick="document.getElementById('group_column_modal').style.display='block'"
+                        style="background: #fff;">
+                        <i class="fas fa-sync-alt refresh_icon" title="Clear Field" onclick="document.getElementById('grouping_column_field').value=''"></i>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Add Aggregations</label>
+                      <input type="text" class="form-control aggregated_values" readonly name="aggregation_query" value="{{aggregation_query}}"
+                        placeholder="ex: {'column_1':'sum','column_2':'mean',..etc}"
+                        onclick="openAggregationModal()"
+                        style="background: #fff;">
+                      <i class="fas fa-sync-alt refresh_icon" title="Clear Field" onclick="document.querySelector('.aggregated_values').value=''"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12" style="margin-top:1%;">
+                  <div class="row">
+
+                    {% if time_series_project %}
+                      <div class="col-md-4 date_section" style="width:33.3%">
+                      <input type="text" id="query_from_date" class="form-control" name="start_date"
+                        value="{{start_date}}" placeholder="Start Date" style="margin-right: 1%;">
+                      <input type="text" id="hiddenField" class="datepicker">
+                      <select id="prefill_from_date_id" name="fromdate_select" data-point="{{project.pk}}"
+                        class="form-control">
+                        <option value="">------------</option>
+                        <option value="day">Day Before</option>
+                        <option value="week">Week Before</option>
+                        <option value="month">Month Before</option>
+                        <option value="year"> Year Before</option>
+                      </select>
+                      <input type="text" id="query_to_date" class="form-control" name="end_date" value="{{end_date}}"
+                        placeholder="End Date" style="margin-right: 1%;">
+                      <select id="prefill_to_date_id" name="todate_select" data-point="{{project.pk}}"
+                        class="form-control">
+                        <option value="">------------</option>
+                        <option value="today">Today</option>
+                        <option value="day">Day Before</option>
+                        <option value="week">Week Before</option>
+                        <option value="month">Month Before</option>
+                        <option value="year"> Year Before</option>
+
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <select name="frequency" id="frequency" class="form-control" >
+                      <option value="">-------------</option>
+                        <option value="min">Minutes</option>
+                        <option value="hour">Hourly</option>
+                        <option value="day">Daily</option>
+                        <option value="week">Weekly</option>
+                        <option value="month">Monthly</option>
+                        <option value="year">Yearly</option>
+                        <option value="quarterly">Quarterly</option>
+                      </select>
+                    </div>
+                    {%else%}
+                    <div class="col-md-4 date_section" style="width:33.3%">
+                      <input type="text" class="form-control" name="start_date" value="{{start_date}}"
+                        placeholder="Start Date" style="margin-right: 1%;" disabled>
+                      <!-- <input type="text" id="hiddenField" class="datepicker" disabled> -->
+                      <select id="prefill_from_date_id" name="fromdate_select" data-point="{{project.pk}}" class="form-control" disabled>
+                        <option value="">------------</option>
+                        <option value="day">Day Before</option>
+                        <option value="week">Week Before</option>
+                        <option value="month">Month Before</option>
+                        <option value="year"> Year Before</option>
+                      </select>
+                      <input type="text"  class="form-control" name="end_date" value="{{end_date}}" placeholder="End Date"
+                        style="margin-right: 1%;" disabled>
+                      <select id="prefill_to_date_id" name="todate_select" data-point="{{project.pk}}" class="form-control" disabled>
+                        <option value="">------------</option>
+                        <option value="today">Today</option>
+                        <option value="day">Day Before</option>
+                        <option value="week">Week Before</option>
+                        <option value="month">Month Before</option>
+                        <option value="year"> Year Before</option>
+
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <select name="frequency" id="frequency" class="form-control" style="margin-left: 2%;" disabled>
+                        <option value="">-------------</option>
+                        <option value="min">Minutes</option>
+                        <option value="hour">Hourly</option>
+                        <option value="day">Daily</option>
+                        <option value="week">Weekly</option>
+                        <option value="month">Monthly</option>
+                        <option value="year">Yearly</option>
+                        <option value="quarterly">Quarterly</option>
+                      </select>
+                    </div>
+
+                    {%endif%}
+
+
+                    <div class="col-md-4">
+                      <div class="" style="text-align: center;">
+                        {% if permission == 'Admin' or permission == 'Delete' or permission == 'Write'%}
+                        <button type="submit" name="button" class="query_button"  onclick="LoadDiv()">Query it</button>
+                        {%else%}
+                        <a href="#" style="color:#fff;" data-toggle="tooltip" title="Not Permited to Query">
+                        <button type="button" name="button" class="query_button"  onclick="LoadDiv()">Query it</button></a>
+                        {%endif%}
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </form>
+            {%endif%}
+
+            <!--End of Normal form -->
+          </div>
+        </div>
+        <div class="row" style="margin-top: 1%;background:#fff">
+
+          <div class="" style="display:flex;">
+            <div class="" style="width:55%;">
+              <div style="display:flex;">
+                <h3 style="margin-left: 4%;font-size: 15px;">QUERIES</h3>
+                &nbsp;&nbsp;&nbsp;
+                <img src="{% static 'images/info.png' %}" style="width: 15px;height: 15px;"
+                  onclick="document.getElementById('queries_modal').style.display='block'">
+              </div>
+
+            </div>
+            <div class="" style="width:42%;display:flex;">
+              <div class="" style="width:19%;">
+
+              </div>
+              <div class="" style="width:81%;text-align:right;">
+                <!-- <button type="button" class="btn btn-3 btn-outline-primary">Primary</button> -->
+                {% if permission == 'Admin' or permission == 'Delete' %}
+
+                <button type="button" class="btn btn-outline-secondary edit_button" id="query_update"
+                  onclick="query_update()">EDIT</button>
+                <button type="button" class="btn btn-outline-danger delete_button"
+                  onclick="query_delete()">DELETE</button>
+                {% elif  permission == 'Write'%}
+
+                <button type="button" class="btn btn-outline-secondary edit_button" id="query_update"
+                  onclick="query_update()">EDIT</button>
+
+                {%endif%}
+
+              </div>
+            </div>
+          </div>
+          <form method="post" id="query_update_form" action="">
+            {%csrf_token%}
+            <input type="text" name="update_pk" id="update_form_pk" hidden>
+
+          </form>
+          <form method="post" id="query_delete_form" action="{% url 'coreapp:project-query-delete' %}">
+            {%csrf_token%}
+            <input type="text" name="delete_pk" id="delete_form_pk" hidden>
+
+            <input type="text" name="delete_project" id="delete_form_pk" value="{{project.pk}}" hidden>
+          </form>
+
+          <!-- <div class="row">
+    <div class="col-md-8 scroller custom_row_display">
+      <table id="row_table" class="table table-striped tableFixHead">
+        <thead>
+          <tr id="table_header">
+
+          </tr>
+        </thead>
+        <tbody id="table_body">
+
+        </tbody>
+      </table>
+    </div>
+  </div> -->
+
+          <!-- <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-2">
+      <i class="fa fa-plus-square"  id="modal-btn"></i>
+    </div>
+    <div class="col-md-2">
+      <i class="fa fa-pencil" onclick="query_update()" aria-hidden="true" id="query_update"></i>
+    </div>
+    <div class="col-md-2"><i class="fa fa-trash" onclick="query_delete()"></i>
+    </div>
+  </div> -->
+
+          <div class="query_section_box_layout">
+            <div class="col-md-12 scroller" style="height:200px !important">
+
+              <table class="table tableFixHead fixed_width">
+                <thead>
+                  <th style="width: 3%;"></th>
+                  <th>ID</th>
+                  <th>DATE & TIME</th>
+                  <th>WHERE</th>
+                  <th style="width: 15%;">
+                    GROUP BY</th>
+                  <!-- <th>VALUE COLUMNS</th> -->
+                  <th style="width: 15%;">AGGREGATION</th>
+                  <th>FROM DATE</th>
+                  <th>TO DATE</th>
+                  <th></th>
+                </thead>
+                <tbody>
+
+
+                  {%for query in project_query%}
+                  <tr>
+                    <td><input type="checkbox" class="query_select" name="query_select" id="{{query.pk}}" value=""></td>
+                    <td>
+                      <a href="{{domain}}/project/{{query.pk}}/query/"  onclick="LoadDiv()">{{query.query_id}}</a>
+                    </td>
+                    <td><a href="{{domain}}/project/{{query.pk}}/query/"  onclick="LoadDiv()">{{query.created}}</a></td>
+                    <td><a href="{{domain}}/project/{{query.pk}}/query/"  onclick="LoadDiv()">{{query.where_query}}</a></td>
+                    <td><a href="{{domain}}/project/{{query.pk}}/query/"  onclick="LoadDiv()">{{query.group_query}}</a></td>
+                    <!-- <td><a href="{{domain}}/project/{{query.pk}}/query/"  onclick="LoadDiv()">{{query.aggregation_value}}</a></td> -->
+                    <td><a href="{{domain}}/project/{{query.pk}}/query/"  onclick="LoadDiv()">{{query.aggregation_query}}</a></td>
+                    <td><a href="{{domain}}/project/{{query.pk}}/query/"  onclick="LoadDiv()"> {{query.start_date}}</a></td>
+                    <td><a href="{{domain}}/project/{{query.pk}}/query/"  onclick="LoadDiv()">{{query.end_date}}</a></td>
+                    <td><a href="{{domain}}/project/{{query.pk}}/query/"  onclick="LoadDiv()">{{query.expected_range}}</a></td>
+
+
+                  </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <!-- <h3>Activity Log</h3> -->
+        </div>
+      </div>
+      <!-- start of modal for viewing Data -->
+      <div class="modal-dashboard" id="view_data_modal" style="display:none;">
+
+        <div class="modal-content">
+          <span class="info-close-btn" onclick="closeViewDataModal()">×</span>
+          <h2 class="fs-title" style="margin-top:4%;margin-bottom: 5%;">VIEW OF YOUR DATA</h2>
+          <!-- <h3 class="fs-subtitle">Getting the most out of your data</h3> -->
+          <div class="row">
+            <div class="col-md-6">
+              <p style="text-align:left;margin-top: 3%;">Here is a snapshot of the <span class="italic_font">First 5 rows</span> of all columns in your dataset (all files) for this project.<br /><br /> You can customise this view by selecting the row numbers in the <span class="italic_font">"GET ROWS"</span> dialog box to the right.
+                  Scroll to the right and down using the scroll bar to view the rows and columns.<br /><br />
+
+                  Check the Video for Instruction.
+              </p>
+            </div>
+            <div class="col-md-6">
+              <iframe width="330" height="200" src="https://www.youtube.com/embed/bwo-VkkP9yw?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            </div>
+          </div>
+
+          <!-- <p>vewfinofweni</p>
+          <p>vewfinofweni</p>
+          <p>vewfinofweni</p>
+          <p>vewfinofweni</p>
+          <p>vewfinofweni</p> -->
+
+        </div>
+      </div>
+      <!-- end of modal for viewing Data -->
+
+      <!-- start of modal for enter your query -->
+      <div class="modal-dashboard" id="enter_your_query_modal" style="display:none;">
+        <div class="modal-content"style="top: 21%;">
+          <span class="info-close-btn" onclick="closeEnterYourQueryModal()">×</span>
+          <h2 class="fs-title" style="margin-top:4%;margin-bottom: 5%;">ENTER YOUR QUERY</h2>
+          <!-- <h3 class="fs-subtitle">Getting the most out of your data</h3> -->
+          <div class="row">
+            <div class="col-md-6">
+              <p style="text-align:left;margin-top: 3%;">Create a new query or edit a saved query, to see the interactions in your data using the <span class="italic_font">Point n Click interface</span>.<br /><br />
+                Customise the query using <span class="bold_font">Filter</span> columns, selecting columns to <span class="bold_font">Group</span> and identifying columns to <span class="bold_font">Aggregate</span>.
+                (Click inside the textbox to customize your query.).</p>
+            </div>
+            <div class="col-md-6">
+                <iframe width="330" height="200" src="https://www.youtube.com/embed/DUu6AazEGbw?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of modal for for enter your query  -->
+
+      <!-- start of modal for add filters info -->
+      <div class="modal-dashboard" id="add_filters_info_modal" style="display:none;z-index:11">
+        <div class="modal-content"style="top: 21%;">
+          <span class="info-close-btn" onclick="closeEnterYourQueryModal()">×</span>
+          <h2 class="fs-title" style="margin-top:4%;margin-bottom: 4px;">Add Filters</h2>
+          <h3 class="fs-subtitle">Getting the most out of your data</h3>
+
+
+          <p style="text-align:left;">Set the filter context by choosing the columns in the dropdown by selecting the appropriate parameters. You can filter on more than one column by changing the 'AND/OR Operations' function and clicking the '+' botton.<br /><br />
+          All the selected columns along with the set parameters to filter on are visible in the bottom text box. Click 'ADD FILTERS' when done to add to the main query. </p>
+
+        </div>
+      </div>
+      <!-- end of modal for for add filters info  -->
+
+
+      <!-- start of modal for select grouping columns info -->
+      <div class="modal-dashboard" id="select_group_info_modal" style="display:none;z-index:11">
+        <div class="modal-content"style="top: 21%;">
+          <span class="info-close-btn" onclick="closeEnterYourQueryModal()">×</span>
+          <h2 class="fs-title" style="margin-top:4%;margin-bottom: 4px;">Select the Grouping Columns</h2>
+          <h3 class="fs-subtitle">Getting the most out of your data</h3>
+          <p style="text-align:left;">Select the columns on which you choose to group the data. Use the 'Shift' key to select a range of columns or the 'Ctrl' key to select multiple columns.<br /><br /> Click the 'CHOOSE THE COLUMNS' button to add the grouping columns to the main query.
+          (This box must be populated in order to (add aggregations parameter)s to the query.) </p>
+
+        </div>
+      </div>
+      <!-- end of modal for for select grouping columns info  -->
+
+      <!-- start of modal for Add Aggregation info -->
+      <div class="modal-dashboard" id="add_aggregation_info_modal" style="display:none;z-index:11">
+        <div class="modal-content"style="top: 21%;">
+          <span class="info-close-btn" onclick="closeEnterYourQueryModal()">×</span>
+          <h2 class="fs-title" style="margin-top:4%;margin-bottom: 4px;">Add Aggregations</h2>
+          <h3 class="fs-subtitle">Getting the most out of your data</h3>
+          <p style="text-align:left;">Select columns from the dropdown that need to be aggregated, then choose the appropriate aggregation function from the 'Aggregation' dropdown. You can choose to aggregate more than one column by changing the 'STATUS' value to 'CONTINUE' and clicking the '+' botton.<br /><br />
+                All the selected columns along with the set aggregating function are visible in the bottom text box. Click 'ADD AGGREGATIONS' when done to add to the main query.
+           </p>
+
+        </div>
+      </div>
+      <!-- end of modal for for Add Aggregation info  -->
+
+
+      <!-- START: GROUP COLUMN SELECTION -->
+      <div class="modal-dashboard" id="group_column_modal" style="display:none;">
+        <div class="modal-content" style="width:80%;height:80vh;">
+          <span class="info-close-btn" onclick="document.getElementById('group_column_modal').style.display='none'">×</span>
+          <div class="">
+
+            <label for="group_column_options" style="display: block;">Select the Grouping Columns
+              <img src="{% static 'images/info.png' %}"
+              style="width: 17px;height: 17px;margin-left: 1%;"
+                onclick="document.getElementById('select_group_info_modal').style.display='block'">
+              </label>
+            <select class="form-control" id="group_column_options" multiple="multiple" style="height: 38vh;">
+              {% for column in df_columns%}
+                <option value="{{column}}">{{column}}</option>
+                {%endfor%}
+            </select>
+          </div>
+          <!-- <input type="button" value="Choose the columns" > -->
+          <button type="button" class="grouping_column_button" name="button" style="margin-top: 13%;" id="select-values">Choose the columns</button>
+          <!-- <div id="result"></div> -->
+        </div>
+      </div>
+      <!-- END: GROUP COLUMN SELECTION -->
+
+      <!-- START: WHERE CLAUSE SELECTION -->
+      <div class="modal-dashboard" id="add_filtering_modal" style="display:none;">
+        <div class="modal-content" style="width:80%;height:80vh;">
+          <span class="info-close-btn" onclick="document.getElementById('add_filtering_modal').style.display='none'">×</span>
+          <label for="group_column_options" style="display: block;">Add Filters  <img src="{% static 'images/info.png' %}"
+            style="width: 17px;height: 17px;margin-left: 1%;"
+              onclick="document.getElementById('add_filters_info_modal').style.display='block'"></label>
+          <div class="row" style="margin-top:5%;">
+
+            <div class="col-md-3">
+              <label for="group_column_options">Columns</label>
+              <select class="form-control" id="add_filter_column_options">
+                {% for column in df_columns%}
+                  <option value="{{column}}">{{column}}</option>
+                  {%endfor%}
+              </select>
+            </div>
+
+            <div class="col-md-3">
+              <label for="group_column_options">Operators</label>
+              <!-- <input type="checkbox" name="" value="" style="visibility:hidden;"> -->
+
+              <select class="form-control" id="add_filter_operators" onchange="toggleCheckNumbers()">
+                <option value="==">is equal to</option>
+                <option value="!=">not equal to</option>
+                <option value=">">greater than</option>
+                <option value="<">lesser than</option>
+                <option value=">=">greater than or equal to</option>
+                <option value="<=">lesser than or equal to</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <div style="display:flex;">
+                <label for="">Values</label><br />
+                <div class="" id="checkbox_section">
+                  <input type="checkbox" name="" id="fields_checkbox" onclick="toggleFields()">
+                  <label style="font-size:11px;margin-top: 1%;margin-left: 2%;"> Is your value a number?</label>
+                </div>
+              </div>
+
+              <input type="text" class="form-control" name="" id="add_filters_text_value" value="">
+              <input type="number" class="form-control" name="" id="add_filters_number_value" value="" style="display:none">
+            </div>
+            <div class="col-md-3" >
+              <label for="">AND/OR Operations</label>
+
+              <div class="" style="display:flex;">
+                <select class="form-control" id="add_filter_operations" style="width:80%;">
+                  <option value="">END FILTER</option>
+                  <option value="&">AND</option>
+                  <option value="|">OR</option>
+                </select>
+                <button class="background_none" id="submit_button" title="Add Filters" onclick="addFilters()">
+                  <i class="fa fa-plus-square filtering_submit_icons" aria-hidden="true"  ></i>
+                </button>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="" style="display:flex;position:relative;">
+            <input type="text" readonly class="form-control filtering_field" value="{{query.where_query}}" id="final_filtered_values" style="background:#fff">
+            <i class="fa fa-recycle" aria-hidden="true" onclick="clearWhereList()" title="Clear"></i>
+          </div>
+          <button type="button" class="grouping_column_button filters_button" name="button" value="" id="select-values" onclick="copyFinalValues()" disabled>Add Filters</button>
+          <!-- <div id="result"></div> -->
+        </div>
+      </div>
+      <!-- END: WHERE CLAUSE SELECTION -->
+
+      <!-- START: AGGREGATION MODAL -->
+      <div class="modal-dashboard" id="add_aggregation_modal" style="display:none;">
+        <div class="modal-content" style="width:80%;height:80vh;">
+          <span class="info-close-btn" onclick="document.getElementById('add_aggregation_modal').style.display='none'">×</span>
+          <label for="group_column_options" style="display: block;">
+            Add Aggregations
+            <img src="{% static 'images/info.png' %}"
+            style="width: 17px;height: 17px;margin-left: 1%;"
+              onclick="document.getElementById('add_aggregation_info_modal').style.display='block'">
+          </label>
+
+          <div class="row" style="margin-top:5%;">
+            <div class="col-md-3">
+              <label for="group_column_options">Columns</label>
+              <select class="form-control" id="aggregation_column_options">
+                {% for column in number_columns%}
+                  <option value="{{column}}">{{column}}</option>
+                  {%endfor%}
+              </select>
+            </div>
+
+            <div class="col-md-5">
+              <label for="aggregated_functions">Aggregation</label>
+              <!-- <input type="checkbox" name="" value="" style="visibility:hidden;"> -->
+
+
+                <select class="form-control" id="aggregation_functions">
+
+                  <option value="sum">SUM OF ALL ITEMS (SUM)</option>
+                  <option value="mean">MEAN</option>
+                  <option value="median">MEDIAN</option>
+                  <option value="min">MINIMUM</option>
+                  <option value="max">MAXIMUM</option>
+                  <option value="std">STANDARD DEVIATION (STD)</option>
+                  <option value="var">VARIANCE</option>
+                  <option value="mad">MEAN ABSOLUTE DEVIATION (MAD)</option>
+                  <option value="prod">PRODUCT OF ALL ITEMS (PROD)</option>
+                  <option value="count">TOTAL NUMBER OF ITEMS (COUNT)</option>
+                  <option value="first">FIRST ITEM</option>
+                  <option value="last">LAST ITEM</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+              <label for="">STATUS</label>
+              <div class="" style="display:flex;">
+
+                <select class="form-control" id="aggregation_status">
+                  <option value="end_aggregation">END AGGREGATION</option>
+                  <option value="continue">CONTINUE</option>
+                </select>
+                <button class="background_none" id="aggregation_submit_button" onclick="addAggregations()" title="Add Aggregations" >
+                  <i class="fa fa-plus-square filtering_submit_icons" aria-hidden="true" ></i>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="" style="display:flex;position:relative;">
+            <input type="text" readonly class="form-control filtering_field" value="{{query.aggregation_query}}" id="final_aggregated_values" style="background:#fff">
+            <i class="fa fa-recycle" aria-hidden="true" onclick="clearList()" title="Clear"></i>
+          </div>
+          <button type="button" class="grouping_column_button aggregation_button" name="button" value="" id="select-values" disabled onclick="copyAggregatedValues()">Add Aggregations</button>
+          <!-- <div id="result"></div> -->
+        </div>
+      </div>
+      <!-- END: AGGREGATION MODAL -->
+
+
+      <!-- start of modal for chat box Data -->
+      <div class="modal-dashboard" id="chat_box_modal" style="display:none;">
+
+        <div class="modal-content" style="width:88%;height: 100vh;">
+          <span class="info-close-btn" onclick="document.getElementById('chat_box_modal').style.display='none'">×</span>
+          <div class="container bootstrap snippet">
+                <div class="row">
+                		<div class="col-md-4 bg-white " id="rooms_section">
+                            <div class=" row border-bottom padding-sm" style="height: 40px;">
+                            	JOIN ROOM
+                            </div>
+
+                            <!-- =============================================================== -->
+                            <!-- member list -->
+                            <ul class="friend-list">
+                                <li class="active bounceInDown">
+                                	<a href="#" class="clearfix">
+                                		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                		<div class="friend-name">
+                                			<strong>GROUP1</strong>
+                                		</div>
+                                		<div class="last-message text-muted">Hello, Are you there?</div>
+                                		<small class="time text-muted">Just now</small>
+                                		<small class="chat-alert label label-danger">1</small>
+                                	</a>
+                                </li>
+                                <li>
+                                	<a href="#" class="clearfix">
+                                		<img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                                		<div class="friend-name">
+                                			<strong>GROUP2</strong>
+                                		</div>
+                                		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                                		<small class="time text-muted">5 mins ago</small>
+                                	<small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+                                	</a>
+                                </li>
+                                <li>
+                                	<a href="#" class="clearfix">
+                                		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
+                                		<div class="friend-name">
+                                			<strong>GROUP3</strong>
+                                		</div>
+                                		<div class="last-message text-muted">Lorem ipsum dolor sit amet.</div>
+                                		<small class="time text-muted">Yesterday</small>
+                                		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+                                	</a>
+                                </li>
+                              </ul>
+                		</div>
+
+                      <!--=========================================================-->
+                  <!-- <div style="border-right:1px solid #111;"></div> -->
+                  <div class="col-md-4" style="margin-top: 8%;margin-left: 25%;width: 38%;" id="room_selection_section">
+                    <h3 style="font-size:15px; margin-bottom:4%;">INTERNAL PROJECT CHAT ROOMS COMING SOON ..!</h3>
+                    <button type="button" class="btn btn-outline-danger create_button join_room">JOIN ROOM</button><br />
+                    <button type="button" class="btn btn-outline-danger edit_button create_room" onclick="createRoom()">CREATE ROOM</button>
+                  </div>
+                    <!-- START: MINI MULTIFORM SECTION -->
+                    <!-- <ul id="progressbar">
+                      <li class="active">Account Setup</li>
+                      <li>Social Profiles</li>
+                      <li>Personal Details</li>
+                    </ul> -->
+                    <div class="col-md-4" id="multi_form_section" style="display:none;margin-left: 29%;">
+                        <form id="msform">
+
+                              <fieldset>
+                                <h2 class="fs-title">Create your Chat room</h2>
+                                <h3 class="fs-subtitle">This is step 1</h3>
+                                <input type="text" name="email" placeholder="Name" />
+                                <input type="text" name="pass" placeholder="Members" />
+                                <input type="text" name="cpass" placeholder="Confirm Password" />
+                                <input type="button" name="next" class="next action-button background_color_buuton" value="Next" />
+                              </fieldset>
+                              <fieldset>
+                                <h2 class="fs-title">users</h2>
+                                <h3 class="fs-subtitle">Add users</h3>
+                                <input type="text" name="twitter" placeholder="email" />
+                                <input type="text" name="facebook" placeholder="Department" />
+                                <input type="text" name="gplus" placeholder="count" />
+                                <input type="button" name="previous" class="previous action-button background_color_buuton" value="Previous"  />
+                                <!-- <input type="button" name="next" class="next action-button background_color_buuton" value="Next" /> -->
+                                <input type="button" name="submit" class="submit action-button background_color_buuton" value="Submit"   />
+                              </fieldset>
+                              <!-- <fieldset>
+                                <h2 class="fs-title">Personal Details</h2>
+                                <h3 class="fs-subtitle">We will never sell it</h3>
+                                <input type="text" name="fname" placeholder="First Name" />
+                                <input type="text" name="lname" placeholder="Last Name" />
+                                <input type="text" name="phone" placeholder="Phone" />
+                                <textarea name="address" placeholder="Address"></textarea>
+                                <input type="button" name="previous" class="previous action-button background_color_buuton" value="Previous" />
+                                <input type="button" name="submit" class="submit action-button background_color_buuton" value="Submit"   />
+                              </fieldset> -->
+                            </form>
+                    </div>
+                    <!-- END: MINI MULTIFORM SECTION -->
+
+                    <!--=========================================================-->
+                    <div class="row" id="chat_room_section" style="display:none;">
+                          <div class="col-md-4 bg-white " style="display:block;">
+                                  <div class=" row border-bottom padding-sm" style="height: 40px;">
+                                  	CHATS
+                                  </div>
+
+                                  <ul class="friend-list">
+                                      <li class="active bounceInDown">
+                                      	<a href="#" class="clearfix">
+                                      		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                                      		<div class="friend-name">
+                                      			<strong>PAVAN</strong>
+                                      		</div>
+                                      		<div class="last-message text-muted">Hello, Are you there?</div>
+                                      		<small class="time text-muted">Just now</small>
+                                      		<small class="chat-alert label label-danger">1</small>
+                                      	</a>
+                                      </li>
+                                      <li>
+                                      	<a href="#" class="clearfix">
+                                      		<img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle">
+                                      		<div class="friend-name">
+                                      			<strong>ANNANYA</strong>
+                                      		</div>
+                                      		<div class="last-message text-muted">I have mailed the invoice for the client</div>
+                                      		<small class="time text-muted">5 mins ago</small>
+                                      	<small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+                                      	</a>
+                                      </li>
+                                      <li>
+                                      	<a href="#" class="clearfix">
+                                      		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="" class="img-circle">
+                                      		<div class="friend-name">
+                                      			<strong>NARAYAN</strong>
+                                      		</div>
+                                      		<div class="last-message text-muted">See you at the Meeting Room.</div>
+                                      		<small class="time text-muted">Yesterday</small>
+                                      		<small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+                                      	</a>
+                                      </li>
+                                    </ul>
+                      		</div>
+                          <!-- selected chat -->
+                      	<div class="col-md-8 bg-white ">
+                              <div class="chat-message">
+                                  <ul class="chat">
+                                      <li class="left clearfix">
+                                      	<span class="chat-img pull-left">
+                                      		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
+                                      	</span>
+                                      	<div class="chat-body clearfix">
+                                      		<div class="header">
+                                      			<strong class="primary-font">NARAYAN</strong>
+                                      			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
+                                      		</div>
+                                      		<p>
+                                      			Pavan what is the status of the accouts file?
+                                      		</p>
+                                      	</div>
+                                      </li>
+                                      <li class="right clearfix">
+                                      	<span class="chat-img pull-right">
+                                      		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
+                                      	</span>
+                                      	<div class="chat-body clearfix">
+                                      		<div class="header">
+                                      			<strong class="primary-font">PAVAN</strong>
+                                      			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
+                                      		</div>
+                                      		<p>
+                                      			Will upoad it in few minutes.
+                                      		</p>
+                                      	</div>
+                                      </li>
+                                      <li class="left clearfix">
+                                          <span class="chat-img pull-left">
+                                      		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
+                                      	</span>
+                                      	<div class="chat-body clearfix">
+                                      		<div class="header">
+                                      			<strong class="primary-font">NARAYAN</strong>
+                                      			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
+                                      		</div>
+                                      		<p>
+                                      			Okay will be waiting for it..!!
+                                      		</p>
+                                      	</div>
+                                      </li>
+                                      <li class="right clearfix">
+                                      	<span class="chat-img pull-right">
+                                      		<img src="https://bootdey.com/img/Content/user_1.jpg" alt="User Avatar">
+                                      	</span>
+                                      	<div class="chat-body clearfix">
+                                      		<div class="header">
+                                      			<strong class="primary-font">PAVAN</strong>
+                                      			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 13 mins ago</small>
+                                      		</div>
+                                      		<p>
+
+                                      			File has been updated to Google Drive.
+                                      		</p>
+                                      	</div>
+                                      </li>
+                                      <li class="left clearfix">
+                                          <span class="chat-img pull-left">
+                                      		<img src="https://bootdey.com/img/Content/user_3.jpg" alt="User Avatar">
+                                      	</span>
+                                      	<div class="chat-body clearfix">
+                                      		<div class="header">
+                                      			<strong class="primary-font">NARAYAN</strong>
+                                      			<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 12 mins ago</small>
+                                      		</div>
+                                      		<p>
+                                      			Thank You..!!
+                                      		</p>
+                                      	</div>
+                                      </li>
+
+
+                                  </ul>
+                              </div>
+                              <div class="chat-box bg-white">
+                              	<div class="input-group">
+                              		<input class="form-control border no-shadow no-rounded" placeholder="Type your message here">
+                              		<span class="input-group-btn">
+                              			<button class="btn btn-success no-rounded" style="background:#4a90e2" type="button">Send</button>
+                              		</span>
+                              	</div>
+                              </div>
+                  		</div>
+                 </div>
+            	</div>
+            </div>
+        </div>
+      </div>
+      <!-- end of modal for chat box Data -->
+
+
+
+      <!-- start of modal for query -->
+      <div class="modal-dashboard" id="queries_modal" style="display:none;">
+        <div class="modal-content" style="top: 22%;">
+          <span class="info-close-btn" onclick="closeQueryModal()">×</span>
+          <h2 class="fs-title" style="margin-top:4%;margin-bottom: 5%;">QUERIES</h2>
+          <!-- <h3 class="fs-subtitle">Getting the most out of your data</h3> -->
+
+          <div class="row">
+            <div class="col-md-6">
+            <p style="text-align:left;margin-top: 3%;">Following is a list of <span class="bold_font">all past queries</span> on the data set. Select a query to reuse, edit or delete.</p>
+            </div>
+            <div class="col-md-6">
+                <iframe width="330" height="200" src="https://www.youtube.com/embed/zqxIFUkVWSM?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of modal for for query  -->
+
+
+      <!--<a id="showFilePanel">Open</a>
+           <a id="closeFilePanel">Close</a> -->
+      <!-- <div class="footer-copyright-area">
+               <div class="container-fluid">
+                   <div class="row">
+                       <div class="col-lg-12">
+                           <div class="footer-copy-right">
+                               <p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div> -->
+      <!-- <div class="footer-copyright-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer-copy-right">
+                            <p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+      <!-- start of modal for end point creation  -->
+      <div class="modal">
+
+        <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <h4>CREATE END POINT</h4>
+          <form class="" method="post" action="" id="end-point-create-form-id">
+            {%csrf_token%}
+
+
+            <!-- <div class="col-md-4" id="lable"><label>DASHBOARD</label></div> -->
+            <!-- <div class="col-md-4" id="existing_dashboard_id" hidden> {{dashboard_form.dashboard}}</div><div class="col-md-4"></div> -->
+
+            <!-- <div class="row"  existingDashboard>
+            <div class="col-md-4" id="lable"><label>DASHBOARD</label></div>
+            <div class="col-md-4" id="existing_dashboard_id" hidden> {{dashboard_form.dashboard}}</div><div class="col-md-4"></div>
+        </div> -->
+            <div class="row">
+              <!-- <div class="col-md-4" id="title_lable">
+            <label>TITLE</label>
+          </div>
+           <div class="col-md-4">
+              <input type="test" id="dashboard_title_id" name="dashboard_title">
+           </div> -->
+              <div class="col-md-4"></div>
+
+
+            </div>
+            <!-- Form design start for creating dashboard -->
+            <div class="form-group row" id="title_lable">
+              <label for="dashboard_title_id" class="col-sm-2 col-form-label">TITLE</label>
+              <div class="col-sm-10">
+                <input type="text" id="dashboard_title_id" name="end_point_name" class="form-control">
+              </div>
+            </div>
+
+
+
+
+
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Plot</label>
+              <div class="col-sm-10">
+                <select name="end_point_plot_type" id="" onchange="selectVisualiztionPlots(this)">
+                  <option value="choose_type">CHOOSE TYPE</option>
+                  <option value="scatter_2d">Scatter Plot 2D</option>
+                  <option value="scatter_3d">Scatter PLot 3D</option>
+                  <option value="line_2d">Line PLot 2D</option>
+                  <option value="line_3d">Line Plot 3D</option>
+                  <option value="bar">Bar Plot</option>
+                  <option value="histogram">Histogram Plot</option>
+
+                </select>
+              </div>
+            </div>
+
+            <!--START: 2D PLOT SECTION  -->
+            <div class="row" id="2d_plot_section" style="display:none;">
+              <div class="col-md-2">
+                <p>
+                  Select Columns
+                </p>
+              </div>
+
+              <div class="col-md-3">
+                <label for="">X AXIS</label>
+
+                <select class="select_width" name="x_2d">
+                  <option value="">---</option>
+                  {% for query in query_columns %}
+                  {%for c in query.df_columns%}
+                  <option class="{{query.id}}" value="{{c}}" style="display:none;">{{c}}</option>
+                  {%endfor%}
+                  {%endfor%}
+
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="">Y AXIS</label>
+                <select class="select_width" name="y_2d">
+                  <option value="">---</option>
+                  {% for query in query_columns %}
+                  {%for c in query.df_columns%}
+                  <option class="{{query.id}}" value="{{c}}" style="display:none;">{{c}}</option>
+                  {%endfor%}
+                  {%endfor%}
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="">COLOR</label>
+                <select class="select_width" name="color_2d">
+                  <option value="">---</option>
+                  {% for query in query_columns %}
+                  {%for c in query.string_columns %}
+                  <option class="{{query.id}}" value="{{c}}" style="display:none;">{{c}}</option>
+                  {%endfor%}
+                  {%endfor%}
+                </select>
+              </div>
+            </div>
+            <!--END: 2D PLOT SECTION  -->
+
+
+            <!--START: 3D PLOT SECTION  -->
+            <div class="row" id="3d_plot_section" style="display:none;">
+              <div class="col-md-2">
+                <p>
+                  Select Columns
+                </p>
+              </div>
+              <div class="col-md-3">
+                <label for="">X AXIS</label>
+                <select class="select_width" name="x_3d">
+                  <option value="">---</option>
+                  {% for query in query_columns %}
+                  {%for c in query.df_columns%}
+                  <option class="{{query.id}}" value="{{c}}" style="display:none;">{{c}}</option>
+                  {%endfor%}
+                  {%endfor%}
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="">Y AXIS</label>
+                <select class="select_width" name="y_3d">
+                  <option value="">---</option>
+                  {% for query in query_columns %}
+                  {%for c in query.df_columns%}
+                  <option class="{{query.id}}" value="{{c}}" style="display:none;">{{c}}</option>
+                  {%endfor%}
+                  {%endfor%}
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="">Z AXIS</label>
+                <select class="select_width" name="z">
+                  <option value="">---</option>
+                  {% for query in query_columns %}
+                  {%for c in query.df_columns%}
+                  <option class="{{query.id}}" value="{{c}}" style="display:none;">{{c}}</option>
+                  {%endfor%}
+                  {%endfor%}
+                </select>
+                <label for="">COLOR</label>
+                <select class="select_width" name="color_3d">
+                  <option value="">---</option>
+                  {% for query in query_columns %}
+                  {%for c in query.string_columns %}
+                  <option class="{{query.id}}" value="{{c}}" style="display:none;">{{c}}</option>
+                  {%endfor%}
+                  {%endfor%}
+                </select>
+              </div>
+
+            </div>
+            <!--END: 3D PLOT SECTION  -->
+
+            <!-- End of Form design start for creating dashboard -->
+
+
+
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-4" style="text-align: center;">
+                <!-- <input type="submit" name="" > -->
+                <button type="submit" class="query_button" id="end_point_final_submit" name="button"
+                  onclick="endpointAjaxCreate(this,event)" style="padding: 3% 20%;">SUBMIT</button>
+              </div>
+              <div class="col-md-4"></div>
+            </div>
+            <div class="row" hidden>
+              <div class="col-md-4"></div>
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+
+                <input type="text" name="query" id="end_point_create" value="" hidden>
+
+
+              </div>
+            </div>
+
+          </form>
+
+          <!-- <div id="query-algorithm-div-id" >
+        <form method="post" action="" id="query-algorithm-form-id">
+          {%csrf_token%}
+          <select id="query-algorthm-select" name="algorithm" data-autocomplete-light-language="en" data-autocomplete-light-function="select2" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
+            <option value="charlie">Charlie</option>
+            <option value="test1">test1</option>
+          </select>
+          <select id="query-feature-select" name="feature_column_list[]" multiple="multiple" data-autocomplete-light-language="en" data-autocomplete-light-function="select2" multiple="" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
+            <option value="">----------</option>
+
+          </select>
+          <select id="query-y-select" name="y_column" data-autocomplete-light-language="en" data-autocomplete-light-function="select2"  tabindex="-1" class="select2-hidden-accessible" aria-hidden="true" >
+            <option value="">----------</option>
+            <input type="text"  id="dashboard-query-id" name="" hidden>
+
+      <input type="submit" name="" value="Save" onclick="dashboardAlgorithmAjaxCreate()">
+
+          </select>
+
+        </form>
+        </div>
+        <div  >
+          <table>
+            <thead id="algorithm-content-div"><tr><th>ALGORITHM</th><th>FETURE COLUMNS</th><th>Y COLUMN</th><th></th></tr></thead>
+            <tbody id="algorithm-content-body"></tbody>
+          </table>
+        </div> -->
+
+        </div>
+      </div>
+
+      <!-- end of modal for endpoint creation -->
+
+
+    </div>
+    <input type="text" id="domine" value="{{domine}}" hidden>
+    <!-- <input type="button" value="button name" onclick="window.open('{{domain}}/single-project/1/','popUpWindow','height=900,width=1200,left=10,top=10,,scrollbars=yes,menubar=no')" /> -->
+    {% endblock body %}
+    <!-- plot js
+        ============================================ -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <script src="{% static 'dashboard/js/vendor/jquery-1.12.4.min.js' %}"></script>
+
+    <!-- bootstrap J
+============================================ -->
+    <script src="{% static 'dashboard/js/bootstrap.min.js' %}"></script>
+    <!-- wow JS
+============================================ -->
+    <script src="{% static 'dashboard/js/wow.min.js' %}"></script>
+    <!-- price-slider JS
+============================================ -->
+    <script src="{% static 'dashboard/js/jquery-price-slider.js' %}"></script>
+    <!-- meanmenu JS
+============================================ -->
+    <script src="{% static 'dashboard/js/jquery.meanmenu.js' %}"></script>
+    <!-- owl.carousel JS
+============================================ -->
+    <script src="{% static 'dashboard/js/owl.carousel.min.js' %}"></script>
+    <!-- sticky JS
+============================================ -->
+    <script src="{% static 'dashboard/js/jquery.sticky.js' %}"></script>
+    <!-- scrollUp JS
+============================================ -->
+    <script src="{% static 'dashboard/js/jquery.scrollUp.min.js' %}"></script>
+    <!-- counterup JS
+============================================ -->
+    <script src="{% static 'dashboard/js/counterup/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/counterup/waypoints.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/counterup/counterup-active.js' %}"></script>
+    <!-- mCustomScrollbar JS
+============================================ -->
+    <script src="{% static 'dashboard/js/scrollbar/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/scrollbar/mCustomScrollbar-active.js' %}"></script>
+    <!-- metisMenu JS
+============================================ -->
+    <script src="{% static 'dashboard/js/metisMenu/metisMenu.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/metisMenu/metisMenu-active.js' %}"></script>
+    <!-- morrisjs JS
+============================================ -->
+    <script src="{% static 'dashboard/js/morrisjs/raphael-min.js' %}"></script>
+    <script src="{% static 'dashboard/js/morrisjs/morris.js' %}"></script>
+    <script src="{% static 'dashboard/js/morrisjs/morris-active.js' %}"></script>
+    <!-- morrisjs JS
+============================================ -->
+    <script src="{% static 'dashboard/js/sparkline/jquery.sparkline.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/sparkline/jquery.charts-sparkline.js' %}"></script>
+    <script src="{% static 'dashboard/js/sparkline/sparkline-active.js' %}"></script>
+    <!-- calendar JS
+============================================ -->
+    <script src="{% static 'dashboard/js/calendar/moment.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/calendar/fullcalendar.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/calendar/fullcalendar-active.js' %}"></script>
+    <!-- plugins JS
+============================================ -->
+    <script src="{% static 'dashboard/js/plugins.js' %}"></script>
+    <!-- main JS
+============================================ -->
+<script src="{% static 'dashboard/js/main.js' %}"></script>
+<script src="{% static 'dashboard/js/project_details.js' %}"></script>
+    <!-- tawk chat JS
+============================================ -->
+    <!-- <script src="{% static 'dashboard/js/tawk-chat.js' %}"></script> -->
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css">
+    <script src="{% static '/static/admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script src="{% static '/static/autocomplete_light/select2.js' %}"></script>
+    <script src="{% static '/static/admin/js/vendor/select2/select2.full.js' %}"></script>
+
+
+
+    <!-- Test script -->
+    <script>
+
+      var closebtns = document.getElementsByClassName("close");
+      var i;
+
+      for (i = 0; i < closebtns.length; i++) {
+        closebtns[i].addEventListener("click", function () {
+          document.getElementById("myDropdown").classList.remove("show");
+          document.getElementById("blog_dropdown").classList.remove("show");
+          document.querySelector('.data_integration_link').classList.remove("background_color");
+          document.querySelector('.dashboard_link').classList.remove("background_color");
+        }, true);
+      }
+      function showFunction(event) {
+
+        event.stopPropagation();
+        // alert(e);
+        document.querySelector('.data_integration_link').classList.toggle("background_color");
+        document.querySelector('.dashboard_link').classList.remove("background_color");
+        document.querySelector('.endpoints_link').classList.remove("background_color");
+        document.getElementById("logout").classList.remove("show");
+        document.getElementById("blog_dropdown").classList.remove("show");
+        document.getElementById("endpoint_dropdown").classList.remove("show");
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+
+
+      function blogDropdown(event) {
+
+        event.stopPropagation();
+        // body...
+        document.querySelector('.dashboard_link').classList.toggle("background_color");
+        document.querySelector('.endpoints_link').classList.remove("background_color");
+        document.querySelector('.data_integration_link').classList.remove("background_color");
+        document.getElementById("logout").classList.remove("show");
+        document.getElementById("myDropdown").classList.remove("show");
+        document.getElementById("endpoint_dropdown").classList.remove("show");
+        document.getElementById("blog_dropdown").classList.toggle("show");
+
+      }
+
+      function endPointsDropdown(event) {
+
+        event.stopPropagation();
+        // body...
+        document.querySelector('.endpoints_link').classList.toggle("background_color");
+        document.querySelector('.dashboard_link').classList.remove("background_color");
+        document.querySelector('.data_integration_link').classList.remove("background_color");
+        document.getElementById("logout").classList.remove("show");
+        document.getElementById("myDropdown").classList.remove("show");
+        document.getElementById("blog_dropdown").classList.remove("show");
+
+        document.getElementById("endpoint_dropdown").classList.toggle("show");
+
+      }
+
+      function shopDropdown(event) {
+        // document.getElementById('loader').style.display="block";
+          document.querySelector('.loading-overlay').style.display = "block";
+        event.stopPropagation();
+        // body...
+        document.getElementById("shop_dropdown").classList.toggle("show");
+
+      }
+
+      // START: function to close endPointsDropdown
+
+      function closeEndpoint() {
+        document.getElementById("endpoint_dropdown").classList.remove("show");
+      }
+
+      // END: function to close endPointsDropdown
+
+      function callLogout() {
+        event.stopPropagation();
+        // body...
+        document.getElementById("myDropdown").classList.remove("show");
+        document.getElementById("blog_dropdown").classList.remove("show");
+        document.getElementById("endpoint_dropdown").classList.remove("show");
+        document.getElementById("logout").classList.toggle("show");
+      }
+
+
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function (event) {
+
+        document.getElementById("logout").classList.remove("show");
+        document.querySelector('.data_integration_link').classList.remove("background_color");
+        document.querySelector('.dashboard_link').classList.remove("background_color");
+        document.getElementById("myDropdown").classList.remove("show");
+        document.getElementById("blog_dropdown").classList.remove("show");
+        // document.getElementById("shop_dropdown").classList.remove("show");
+        document.getElementById("endpoint_dropdown").classList.remove("show");
+      }
+
+    </script>
+    <!-- test script -->
+
+
+    <!-- script for ajax dashboard and end point  create-->
+    <script>
+      function createRoom() {
+        document.getElementById('rooms_section').style.display="none";
+        document.getElementById('room_selection_section').style.display="none";
+        document.getElementById('multi_form_section').style.display="block";
+      }
+      function dashboardAjaxSubmit(self, e) {
+
+        self.innerHTML = ' <i class="fa fa-refresh fa-spin"></i> CREATING…';
+        document.getElementById('final_submit').style.pointerEvents = "none";
+        // self.innerHTML +='<button>test</button>';
+        var query = document.getElementById('query_dashboard_create').value;
+
+        var form_type = $('#dashboard_type_id').val();
+        if (form_type == 'EDIT') {
+          var feature_column = $('#query-feature-select');
+          feature_column.empty();
+          var y = $('#query-y-select');
+          y.empty();
+
+
+
+          var $myForm = $('#dashboard-create-form-id');
+          $myForm.submit(function (event) {
+            event.preventDefault();
+            var $formData = $(this).serialize();
+            var $thisURL = '/query/dashboard/create/';
+            // alert("called");
+            $.ajax({
+              method: "POST",
+              url: $thisURL,
+              data: $formData,
+              crossdomain: true,
+              dataType:"json",
+              success: function (data) {
+                if (data.msg) {
+                  alert(data.msg);
+                  window.location.reload();
+                }
+
+                //   document.getElementById('query-algorithm-div-id').style.display="block";
+                //   $('#dashboard-query-id').val(data.query);
+
+                //   $.each(data.df_columns, function(i, obj) {
+                //     // alert(i+obj);
+                //     feature_column.append("<option value="+obj+" >"+obj+"</option>");
+
+
+                // });
+                // $.each(data.df_columns, function(i, obj) {
+                //   // alert(i+obj);
+                //     y.append("<option value="+obj+" >"+obj+"</option>");
+
+
+                // });
+
+              }
+            });
+          });
+        }
+        else if (form_type == 'ADDON') {
+          var feature_column = $('#query-feature-select');
+          feature_column.empty();
+          var y = $('#query-y-select');
+          y.empty();
+
+
+
+          var $myForm = $('#dashboard-create-form-id');
+          $myForm.submit(function (event) {
+            event.preventDefault();
+            var $formData = $(this).serialize();
+            var $thisURL = '/multiple/query/dashboard/create/';
+            $.ajax({
+              method: "POST",
+              url: $thisURL,
+              data: $formData,
+              success: function (data) {
+                if (data.msg) {
+                  alert(data.msg);
+                  window.location.reload();
+                }
+
+                //   document.getElementById('query-algorithm-div-id').style.display="block";
+                //   $('#dashboard-query-id').val(data.query);
+
+                //   $.each(data.df_columns, function(i, obj) {
+                //     // alert(i+obj);
+                //     feature_column.append("<option value="+obj+" >"+obj+"</option>");
+
+
+                // });
+                // $.each(data.df_columns, function(i, obj) {
+                //   // alert(i+obj);
+                //     y.append("<option value="+obj+" >"+obj+"</option>");
+
+
+                // });
+
+              }
+            });
+          });
+        }
+        else {
+          var feature_column = $('#query-feature-select');
+          feature_column.empty();
+          var y = $('#query-y-select');
+          y.empty();
+
+
+
+          var $myForm = $('#dashboard-create-form-id');
+          $myForm.submit(function (event) {
+            event.preventDefault();
+            var $formData = $(this).serialize();
+            var $thisURL = '/query/dashboard/create/';
+            // alert("called");
+            $.ajax({
+              method: "POST",
+              url: $thisURL,
+              data: $formData,
+              success: function (data) {
+                if (data.msg) {
+                  alert(data.msg);
+                  window.location.reload();
+                }
+
+
+                //   document.getElementById('query-algorithm-div-id').style.display="block";
+                //   $('#dashboard-query-id').val(data.query);
+
+                //   $.each(data.df_columns, function(i, obj) {
+                //     // alert(i+obj);
+                //     feature_column.append("<option value="+obj+" >"+obj+"</option>");
+
+
+                // });
+                // $.each(data.df_columns, function(i, obj) {
+                //   // alert(i+obj);
+                //     y.append("<option value="+obj+" >"+obj+"</option>");
+
+
+                // });
+
+              }
+            });
+          });
+        }
+        return false;
+
+      }
+
+      //script for end point creation
+      function endpointAjaxCreate(self, e) {
+
+        self.innerHTML = ' <i class="fa fa-refresh fa-spin"></i> CREATING…';
+        document.getElementById('end_point_final_submit').style.pointerEvents = "none";
+        // self.innerHTML +='<button>test</button>';
+        var query = document.getElementById('end_point_create').value;
+        var $myForm = $('#end-point-create-form-id');
+        $myForm.submit(function (event) {
+          event.preventDefault();
+          var $formData = $(this).serialize();
+          var $thisURL = '/endpoint/' + query + '/';
+          // alert("called");
+          $.ajax({
+            method: "POST",
+            url: $thisURL,
+            data: $formData,
+            success: function (data) {
+              if (data.msg) {
+                alert(data.msg);
+                window.location.reload();
+              }
+            }
+          });
+        });
+      }
+    </script>
+    <!-- end of script for ajax dashboard create -->
+    <!-- script for ajax dashboard  query alrorithm create-->
+    <script>
+      function dashboardAlgorithmAjaxCreate() {
+
+        var query = document.getElementById('dashboard-query-id').value;
+        var content = $('#algorithm-content-body');
+
+        var $myForm = $('#query-algorithm-form-id');
+
+
+        $myForm.submit(function (event) {
+          event.preventDefault();
+          var $formData = $(this).serialize();
+          var $thisURL = '/dashboard/query/algorithm/' + query + '/create/';
+          console.log("called");
+          $.ajax({
+            method: "POST",
+            url: $thisURL,
+            data: $formData,
+
+
+
+            success: function (data) {
+              if (data.msg) {
+                // alert("duplicate algorithem");
+              }
+              else {
+                document.getElementById('algorithm-content-div').style.display = "block";
+                content.append('<tr id=' + data.pk + '><td>' + data.algorithm + '</td><td>' + data.feature + '</td><td>' + data.y_column + '</td><td><i class="fa fa-trash" onclick="dashboardQueryAlgorithmDelete(\'' + data.pk + '\')" ></i></td></tr>');
+              }
+
+
+
+            }
+          });
+        });
+
+
+
+
+      }
+
+
+
+    </script>
+    <!-- end of script for ajax dashboard query algorithm create -->
+    <!-- script for ajax dashboard  query alrorithm delete-->
+    <script>
+    // document.onreadystatechange = function() {
+    //   alert("cj")
+    //         if (document.readyState !== "complete") {
+    //             document.querySelector(
+    //               "body").style.visibility = "hidden";
+    //             document.querySelector(
+    //               "#loader").style.visibility = "visible";
+    //         } else {
+    //             document.querySelector(
+    //               "#loader").style.display = "none";
+    //             document.querySelector(
+    //               "body").style.visibility = "visible";
+    //         }
+    //     };
+      function dashboardQueryAlgorithmDelete(query) {
+
+
+        var data = { 'test': 'test' };
+        var id = "#" + query
+
+        // alert("called");
+
+        var $formData = data;
+        var $thisURL = '/dashboard/query/algorithm/' + query + '/delete/';
+        var token = '{{csrf_token}}';
+
+        $.ajax({
+          headers: { "X-CSRFToken": token },
+          method: "POST",
+          url: $thisURL,
+          data: $formData,
+
+
+
+          success: function (data) {
+            $(id).remove();
+
+
+          }
+
+        });
+      }
+    </script>
+    <!-- end of script for ajax dashboard query algorithm delete -->
+    <!-- start script for the edit and delete in queries list section  -->
+    <script type="">
+   //script for update
+function query_update(){
+
+
+
+    $('.query_select').each(function (event) {
+
+           if (this.checked == true){
+    var id= $(this).attr('id');
+    $('#update_form_pk').val(id);
+    $('#query_update_form').attr('action','/project-query/update/'+id+'/');
+
+    // alert($('#update_form_pk').val());
+    document.getElementById("query_update_form").submit();// Form submission
+
+  }
+});
+  }
+  //script for delete queries
+function query_delete(){
+
+    var delete_id="";
+
+    var deleteTrue = "False";
+
+    $('.query_select').each(function (event) {
+
+      if (this.checked == true){
+        // alert(this.checked);
+        deleteTrue = "True";
+        var id= $(this).attr('id');
+        delete_id= delete_id+','+id;
+        // alert("the pk"+delete_id);
+
+
+  }
+
+  if (deleteTrue == "True"){
+    $('#delete_form_pk').val(delete_id);
+    // alert($('#delete_form_pk').val());
+    document.getElementById("query_delete_form").submit();
+    return false
+  }
+
+
+});
+    if (deleteTrue == "False") {
+    alert("select query to delete");
+  }
+  };
+  //end of script for delete query
+
+  //script for dashboard field ajax call
+function dashboardAjax(){
+  var e = document.getElementById('id_dashboard');
+
+var dashboard_id = e.options[e.selectedIndex].value;
+ // alert(dashboard_id);
+  var project =document.getElementById('id_project').value;
+ // alert(project);
+  var data ={'dashboard':dashboard_id,'project':project};
+  var token = '{{csrf_token}}';
+  var dropdown = $('#id_dashboard_multiple_users');
+  dropdown.empty();
+
+  $.ajax({
+    headers: { "X-CSRFToken": token },
+       method: "POST",
+
+       url:'/dashboard/ajax/',
+       data:data,
+
+       success: function(data) {
+        // alert("sucess");
+         $.each(data.user_list, function() {
+          if (this.selected == "True"){
+          dropdown.append("<option value="+this.id+" selected>"+this.email+"</option>");
+          }
+          else if (this.selected == "False"){
+          dropdown.append("<option value="+this.id+" >"+this.email+"</option>");
+          }
+
+      });
+       }
+     });
+
+
+}
+
+
+
+  //script for dashboard field ajax call
+</script>
+    <!-- end script for the edit and delete in queries list section  -->
+    <!-- start of script for dashboard modal popup  -->
+    <script>
+
+      var checkboxes = document.getElementsByName('query_select');
+      for (var i = 0, n = checkboxes.length; i < n; i++) {
+        // checkboxes[i].checked = source.checked;
+        if (checkboxes[i].checked === true) {
+
+        }
+      }
+      let modalBtn = document.getElementById("modal-btn")
+      let modal = document.querySelector(".modal")
+      let closeBtn = document.querySelector(".close-btn");
+
+      modalBtn.onclick = function () {
+        // alert("called");
+        var count = 0;
+        var checkboxes = document.getElementsByName('query_select');
+        var multiple_query;
+        // alert("called");
+        for (var i = 0, n = checkboxes.length; i < n; i++) {
+          // checkboxes[i].checked = source.checked;
+          if (checkboxes[i].checked === true) {
+            count++;
+            var id = checkboxes[i].id;
+
+            // alert(multiple_query);
+          }
+        }
+        if (count === 1) {
+
+          $('#end_point_create').val(id);
+
+          modal.style.display = "block";
+          var test_id = "." + id
+          $(test_id).show();
+
+
+          // document.querySelector(test_id).style.display="block";
+        } else if (count >= 2) {
+
+          alert("Please choose any one of the query")
+        }
+      }
+      closeBtn.onclick = function () {
+        modal.style.display = "none"
+      }
+// window.onclick = function(e){
+//   if(e.target == modal){
+//     modal.style.display = "none"
+//   }
+// }
+    </script>
+    <!-- end of script for modal popup  -->
+    <script type="text/javascript">
+
+      setInterval(()=>{
+        $('#query_error_message').hide();
+      },3000)
+      // script for new dashboard -->
+      function newDashboard() {
+        document.getElementById('dashboard_title_id').style.display = 'block';
+        document.getElementById('title_lable').style.display = 'block';
+        document.getElementById('existing_dashboard_id').style.display = 'none';
+        document.getElementById('lable').style.display = 'none';
+        document.getElementById('defult_user_id').style.display = 'block';
+        document.getElementById('select_user_id').style.display = 'none';
+        $("#select_user_id").val($("#select_user_id option:eq()").val());
+        $("#dashboard_type_id").val("");
+
+      }
+
+      // end of script for new dshboard -->
+
+      //script to for existing dashboard -->
+      function existingDashboard() {
+        document.getElementById('dashboard_title_id').style.display = 'none';
+        $('#dashboard_title_id').val('');
+        document.getElementById('title_lable').style.display = 'none';
+        document.getElementById('defult_user_id').style.display = 'none';
+        document.getElementById('select_user_id').style.display = 'block';
+        $('#dashboard_type_id').val("EDIT");
+        $("#defult_user_id").val($("#defult_user_id option:eq()").val());
+        $('#select2-defult_user_id-container').html("");
+
+
+
+
+        document.getElementById('existing_dashboard_id').style.display = 'block';
+        document.getElementById('lable').style.display = 'block';
+
+      }
+      // end of script for existing dashboard  -->
+
+      // script for add on dashboard
+
+      function addonDashboard() {
+        document.getElementById('dashboard_title_id').style.display = 'none';
+        $('#dashboard_title_id').val('');
+        document.getElementById('title_lable').style.display = 'none';
+        document.getElementById('defult_user_id').style.display = 'none';
+        document.getElementById('select_user_id').style.display = 'block';
+
+        $("#defult_user_id").val($("#defult_user_id option:eq()").val());
+        $('#select2-defult_user_id-container').html("");
+        $("#dashboard_type_id").val("ADDON");
+
+
+
+        document.getElementById('existing_dashboard_id').style.display = 'block';
+        document.getElementById('lable').style.display = 'block';
+
+      }
+
+//end of script for add on dashboard
+
+
+
+
+    </script>
+    <!-- test script -->
+
+
+    <!-- script for sidebar -->
+    <script>
+      $('#sidebarCollapse').click(function (event) {
+
+        if ($('#defaulty').hasClass('div_aside')) {
+          $('#defaulty').removeClass('div_aside').addClass('new_class');
+        }
+        else if ($('#defaulty').hasClass('new_class')) {
+          $('#defaulty').removeClass('new_class').addClass('div_aside');
+        }
+        event.preventDefault();
+      });
+    </script>
+
+    <script>
+      $('#sidebarCollapse').click(function (event) {
+
+        if ($('#header_top').hasClass('header_row')) {
+          document.getElementById('show_me').style.display = "none";
+          document.getElementById('hide_me').style.display = "block";
+          $('#header_top').removeClass('header_row').addClass('new_header');
+        }
+        else if ($('#header_top').hasClass('new_header')) {
+          document.getElementById('show_me').style.display = "block";
+          document.getElementById('hide_me').style.display = "none";
+          $('#header_top').removeClass('new_header').addClass('header_row');
+        }
+        event.preventDefault();
+      });
+    </script>
+
+    <script>
+      var project_title = document.getElementById("title").value;
+      var update_title = document.getElementById("id_project_title");
+      update_title.value = project_title;
+      var project_data = document.getElementById("data").value;
+      var update_data = document.getElementById("id_data_description");
+      update_data.value = project_data;
+      var project_output = document.getElementById("ans").value;
+      var update_output = document.getElementById("id_expected_ans");
+      update_output.value = project_output;
+      $('#update_project').click(function () {
+        // alert("hi");
+        document.getElementById('hide_seek').style.display = "block";
+        document.getElementById('details').style.display = "none";
+        document.getElementById('update_project').style.display = "none";
+      }
+      )
+    </script>
+
+    <!-- script for date filling  -->
+    <script>
+      $('#prefill_from_date_id').change(function (event) {
+        // alert("called");
+        var option = $(this).val();
+        if (option == 'day') {
+          $('#query_from_date').val('1');
+        }
+        else if (option == 'week') {
+          $('#query_from_date').val('1');
+        }
+        else if (option == 'month') {
+          $('#query_from_date').val('1');
+        }
+        else if (option == 'year') {
+          $('#query_from_date').val('1');
+        }
+
+
+      });
+
+      $('#prefill_to_date_id').change(function (event) {
+
+        var option = $(this).val();
+        // alert("called",option);
+        if (option == 'day') {
+          $('#query_to_date').val('1');
+          $('#query_to_date').attr('disabled', false);
+        }
+        else if (option == 'week') {
+          $('#query_to_date').val('1');
+          $('#query_to_date').attr('disabled', false);
+        }
+        else if (option == 'month') {
+          $('#query_to_date').val('1');
+          $('#query_to_date').attr('disabled', false);
+        }
+        else if (option == 'year') {
+          $('#query_to_date').val('1');
+          $('#query_to_date').attr('disabled', false);
+        }
+        else if (option == 'today') {
+          $('#query_to_date').attr('disabled', true);
+        }
+      });
+    </script>
+    <!-- end script for date filling  -->
+
+    <!-- Script for datepicker -->
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script type="text/javascript">
+      var start_year = '{{start_year}}'
+      var end_year = '{{end_year}}'
+      var default_start_date =  '{{default_start_date | date:"Y-m-d" }}';
+      // alert("default start date"+ default_start_date);
+      var default_end_date = '{{default_end_date}}';
+      if (start_year && end_year && default_start_date && default_end_date ) {
+
+        $("#query_from_date").datepicker({
+          dateFormat: "yy-mm-dd",
+          changeMonth: true,
+          changeYear: true,
+          yearRange: start_year + ':' + end_year,
+          defaultDate: default_start_date,
+          showOn: "button",
+          buttonImage: "{% static 'images/calender.png'%}",
+          buttonImageOnly: true,
+          showOn: "both"
+        });
+        $("#query_to_date").datepicker({
+          dateFormat: "yy-mm-dd",
+          changeMonth: true,
+          changeYear: true,
+          yearRange: start_year + ':' + end_year,
+          defaultDate: default_start_date,
+          showOn: "button",
+          buttonImage: "{% static 'images/calender.png'%}",
+          buttonImageOnly: true,
+
+          showOn: "both"
+
+        });
+      }
+      else{
+        $("#query_from_date").datepicker({
+          dateFormat: "yy-mm-dd",
+          changeMonth: true,
+          changeYear: true,
+          yearRange: "-100:+0",
+          showOn: "button",
+          buttonImage: "{% static 'images/calender.png'%}",
+          buttonImageOnly: true,
+          showOn: "both"
+
+        });
+
+
+        $("#query_to_date").datepicker({
+          dateFormat: "yy-mm-dd",
+          changeMonth: true,
+          changeYear: true,
+          yearRange: "-100:+0",
+
+          showOn: "button",
+          buttonImage: "{% static 'images/calender.png'%}",
+          buttonImageOnly: true,
+
+          showOn: "both"
+
+        });
+      }
+
+    </script>
+    <!--End of Script for datepicker -->
+
+    <!-- START: SELECTION OF VISULAIZATION PLOTS -->
+
+    <script type="text/javascript">
+
+      function selectVisualiztionPlots(self) {
+        var selectedValue = self.options[self.selectedIndex].value;
+        if (selectedValue === 'scatter_2d') {
+          document.getElementById('2d_plot_section').style.display = "block";
+          document.getElementById('3d_plot_section').style.display = "none";
+        }
+        else if (selectedValue === 'scatter_3d') {
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "block";
+        }
+        else if (selectedValue === 'choose_type') {
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "none";
+        }
+        else if (selectedValue === 'line_2d') {
+          document.getElementById('2d_plot_section').style.display = "block";
+          document.getElementById('3d_plot_section').style.display = "none";
+
+        }
+        else if (selectedValue === 'line_3d') {
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "block";
+
+        }
+        else if (selectedValue === 'bar') {
+          document.getElementById('2d_plot_section').style.display = "block";
+          document.getElementById('3d_plot_section').style.display = "none";
+        }
+        else if (selectedValue === 'histogram') {
+          document.getElementById('2d_plot_section').style.display = "block";
+          document.getElementById('3d_plot_section').style.display = "none";
+        }
+      }
+    </script>
+
+    <!-- END: SELECTION OF VISULAIZATION PLOTS -->
+
+    <!-- script for dashboard modal popup -->
+    <script type="text/javascript">
+      //   let modalBtn = document.getElementById("dashboard-modal-btn")
+      // let modal = document.querySelector(".modal-dashboard")
+      // let closeBtn = document.querySelector(".close-btn");
+      //
+      // modalBtn.onclick = function(){
+      // // alert("called");
+      // var count =0;
+      // var checkboxes = document.getElementsByName('query_select');}
+      function closeViewDataModal() {
+        document.getElementById('view_data_modal').style.display = "none"
+      }
+      function closeEnterYourQueryModal() {
+        document.getElementById('enter_your_query_modal').style.display = "none"
+        document.getElementById('add_filters_info_modal').style.display = "none"
+        document.getElementById('select_group_info_modal').style.display = "none"
+        document.getElementById('add_aggregation_info_modal').style.display = "none"
+      }
+
+      function closeQueryModal() {
+        document.getElementById('queries_modal').style.display = "none"
+      }
+
+
+
+      //ajax script  to get filtered rows data
+      function filterROWS(pk) {
+        document.querySelector('.loading-overlay').style.display = "block";
+        var from_row = $('#from_row').val();
+        var to_row = $('#to_row').val();
+
+        var data = { 'from_row': from_row, 'to_row': to_row }
+        var token = '{{csrf_token}}';
+
+        if((from_row&&to_row) ===''){
+
+          alert("Please fill the fields and submit");
+          document.querySelector('.loading-overlay').style.display = "none";
+        } else {
+          var success = false;
+          // document.getElementById('loader').style.display="block";
+
+          $.ajax({
+            headers: { "X-CSRFToken": token },
+            method: "POST",
+            url: '/projectrow-col-data/' + pk + '/',
+            context: document.body,
+            async: false,   //NOTE THIS
+            data: data,
+            success: function (data) {
+
+              if (data.id) {
+
+                window.open('https://brayn.ai/filtered-row-display/' + data.id + '/', '_blank');
+                document.querySelector('.loading-overlay').style.display = "none";
+                // window.open(, );
+                //  window.open('https://www.google.com/');
+                // var newURL = window.open('', '_blank');
+                // var newURL = window.open(c, '_blank');
+                // //  var  newURL  = 'http://127.0.0.1:8000/data-df-display/' + data.id + '/';
+                //  alert(newURL);
+                //  newURL.document.write('Loading preview...');
+                //  var newWindow = window.open("", "_blank");
+                //  newWindow.location.href = 'http://127.0.0.1:8000/data-df-display/' + data.id + '/';
+                success = true
+
+              }
+
+            }
+          });
+        }
+
+
+
+      }
+    </script>
+
+    <!--  script for tool tip -->
+    <script>
+      $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+    <!-- end of script for tool tip -->
+
+    <script type="text/javascript">
+
+      // document.onreadystatechange = function () {
+      //   var state = document.readyState
+      //   if (state == 'interactive') {
+      //     document.getElementById('contents').style.visibility = "hidden";
+      //   } else if (state == 'complete') {
+      //     setTimeout(function () {
+      //       document.getElementById('interactive');
+      //       document.getElementById('load').style.visibility = "hidden";
+      //       document.getElementById('contents').style.visibility = "visible";
+      //     }, 1000);
+      //   }
+      // }
+
+
+
+      function LoadDiv() {
+          document.querySelector('.loading-overlay').style.display = "block";
+      }
+
+      function displayChatWindow() {
+        document.getElementById('chat_box_modal').style.display="block";
+      }
+
+
+      //START: Function to display select options
+      $("#select-values").click(function () {
+          var option_all = $("#group_column_options option:selected").map(function () {
+
+              return $(this).text();
+          }).get().join(',');
+          console.log(option_all);
+          $('#grouping_column_field').val(option_all);
+          document.getElementById('group_column_modal').style.display='none';
+      });
+      //END: Function to display select options
+
+
+
+
+      // START: function to toggle filters fields
+      function toggleCheckNumbers() {
+        var operators  = $('#add_filter_operators').val();
+        if(operators === ">" || operators === "<" || operators === ">=" || operators === "<="){
+          $('#add_filters_text_value').val('')
+          $('#add_filters_number_value').show()
+          $('#add_filters_text_value').hide();
+          $('#checkbox_section').hide();
+        }else {
+          $('#add_filters_number_value').val('')
+          $('#add_filters_number_value').hide()
+          $('#add_filters_text_value').show();
+          $('#checkbox_section').show();
+        }
+      }
+      // END: function to toggle filters fields
+
+
+
+      // START: Function to filter rows
+      var final_elements = []
+      function addFilters() {
+        var column     =  $('#add_filter_column_options').val();
+        var operators  = $('#add_filter_operators').val();
+        var field_values     = $('#add_filters_text_value').val();
+        var operations = $('#add_filter_operations').val();
+        var final_values;
+
+
+
+        if(field_values !== '') {
+          var split = field_values.split(',').join('","')
+          var formatted_string = '"'+split+'"'
+          final_values = '['+formatted_string+']';
+        }
+        else if(field_values == '' &&$('#add_filters_number_value').val() !==''){
+          final_values = $('#add_filters_number_value').val()
+        }
+        var append_values= column+operators+final_values+operations;
+        final_elements.push(append_values)
+        $('#final_filtered_values').val(final_elements.join(''));
+        if(operations===""){
+          document.getElementById('submit_button').disabled=true;
+          document.querySelector('.filters_button').disabled=false;
+          $('#submit_button').attr("title","You have added the end filter tag. To enable - clear the filter below")
+        }
+
+      }
+      function clearWhereList() {
+          final_elements = []
+          $('#final_filtered_values').val('');
+          document.querySelector('.filters_button').disabled=true;
+          document.getElementById('submit_button').disabled=false;
+          $('#submit_button').attr("title","Add Filters")
+      }
+      // End: Function to filter row
+
+      // START: Function to toggle filter value fields
+      function toggleFields() {
+        var checked= document.getElementById('fields_checkbox');
+
+        if(checked.checked===true){
+          $('#add_filters_text_value').val('')
+          $('#add_filters_number_value').show()
+          $('#add_filters_text_value').hide()
+        }
+        else {
+          $('#add_filters_number_value').val('')
+          $('#add_filters_number_value').hide()
+          $('#add_filters_text_value').show()
+        }
+      }
+
+
+      // START: function to copy value to where clause
+      function copyFinalValues() {
+        var final_query = $('#final_filtered_values').val();
+        $('#where_query_field').val(final_query)
+        $('#add_filtering_modal').hide();
+      }
+      // END: function to copy value to where clause
+
+      // START: Function to add Aggregations
+      var final_aggregated_elements = []
+      function addAggregations() {
+        var column     =  $('#aggregation_column_options').val();
+        var aggregated_functions  = $('#aggregation_functions').val();
+        var aggregated_status  = $('#aggregation_status').val();
+        // var field_values     = $('#add_filters_text_value').val();
+        // var operations = $('#add_filter_operations').val();
+        var column_value;
+        var aggregated_function_value;
+        var final_values;
+        column_value              = '\''+column+'\'';
+        aggregated_function_value = '\''+aggregated_functions+'\'';
+
+        if(aggregated_status==="end_aggregation"){
+          final_values = column_value+':'+aggregated_function_value+'}';
+          document.querySelector('.aggregation_button').disabled=false;
+        }
+        else if(aggregated_status === "continue"){
+          final_values = column_value+':'+aggregated_function_value;
+        }
+        var append_values= final_values;
+        final_aggregated_elements.push(append_values)
+        var final_verdict = '{'+final_aggregated_elements.join();
+        $('#final_aggregated_values').val(final_verdict);
+        if(aggregated_status==="end_aggregation"){
+          document.getElementById('aggregation_submit_button').disabled=true;
+          $('#aggregation_submit_button').attr("title","You have added the end aggregation tag. To enable - clear the aggregation below")
+        }
+
+      }
+
+      function copyAggregatedValues() {
+        var final_aggregated_value = $('#final_aggregated_values').val();
+        $('.aggregated_values').val(final_aggregated_value);
+        $('#add_aggregation_modal').hide();
+      }
+      function clearList() {
+        document.getElementById('aggregation_submit_button').disabled=false;
+        document.querySelector('.aggregation_button').disabled=true;
+          final_aggregated_elements = [];
+          $('#final_aggregated_values').val('')
+          $('#aggregation_submit_button').attr("title","Add Aggregations")
+      }
+      // End: Function to add Aggregations
+
+
+      function openAggregationModal() {
+        var grouping_column = $('#grouping_column_field').val();
+        var frequency = $('#frequency').val();
+        if(grouping_column !=='' || frequency !==''){
+          document.getElementById('add_aggregation_modal').style.display='block'
+        } else {
+          $('.grouping_column_error_message').show()
+
+          setInterval(()=>{
+              $('.grouping_column_error_message').hide()
+          },3000)
+        }
+
+      }
+
+    </script>
+
+
+    <!-- partial -->
+    <!-- <script src='https://brienlabs.com/ruby-mega-menu/js/jquery-3.1.0.min.js'></script>
+    <script src='https://brienlabs.com/ruby-mega-menu/js/ruby-demo.js'></script>
+    <script src='https://brienlabs.com/ruby-mega-menu/js/ruby-main.js'></script> -->
+</body>
+
+</html>

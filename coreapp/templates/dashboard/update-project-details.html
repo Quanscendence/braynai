@@ -1,0 +1,286 @@
+{% extends 'dashboard/project_details.html' %}
+{% load staticfiles %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'multi_form/style.css' %}">
+<style >
+  body {
+    background: #f7f7f7;
+  }
+  #hide{
+    display :none;
+  }
+  #upload{
+    display :none;
+  }
+  #time_series{
+    display: none;
+  }
+  #file1_select{
+    width:15%;
+    display : none;
+    margin-top: 5%;
+  }
+  #file2_select{
+    width:15%;
+    display : none;
+    margin-left: 20%;
+    margin-top: -2%;
+  }
+  #file3_select{
+    width:15%;
+    display : none;
+    margin-left: 40%;
+  margin-top: -26px;
+  }
+  #time_series_select{
+  width: 15%;
+  margin-top: 5%;
+  display : none;
+  }
+  #submit{
+  width: 15%;
+  margin-top: 5%;
+  display : none;
+  }
+  #date_format_select{
+
+          display : none;
+        }
+ #date_format_label{
+
+      display : none;
+      }
+# change_in_column_error{
+        display : none;
+      }
+#confirm_change{
+              display : none;
+            }
+  #no_changes{
+                display : none;
+                }
+#upload_data{
+    display : none;
+          }
+.update_project_content{
+  width: 85%;
+  background: #fff;
+  margin-left: 7%;
+  padding: 2%;
+  margin-top: 4%;
+}
+.update_button {
+  margin-top: 2%;
+  padding: 1% 8%;
+}
+
+.select2-selection{
+  height:38px !important;
+}
+</style>
+
+<!-- START: NAVIGATION THROUGH BREADCRUMBS -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'coreapp:dashboard' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'coreapp:single-project' pk=project.pk %}">{{project}}</a></li>
+    <li class="breadcrumb-item active" aria-current="page"> {{project}} Details</li>
+  </ol>
+</nav>
+<!-- END: NAVIGATION THROUGH BREADCRUMBS -->
+
+
+<div class="update_project_content">
+  <h3 style="text-transform:uppercase;">Update Project Details</h3>
+
+  <form class="" method="post" enctype="multipart/form-data"  style="margin-top:2%;">
+    {% csrf_token%}
+
+  {{update_form.media}}
+
+  <div class="row">
+      <div class="col-md-4">
+          <label for="firstname-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">PROJECT TITLE *</label>
+        {{update_form.project_title}}
+      </div>
+      <div class="col-md-4">
+        <label for="email-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">INDUSTRY *</label>
+          {{update_form.industry}}
+      </div>
+      <div class="col-md-4">
+        <label for="firstname-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">PICK A COLOR *</label>
+        {{update_form.color_code}}
+        <input name="color" id="color_id" class="form-control" style="height:35px;margin:0;color:#fff;{%if project.type.color_code%}background:{{project.type.color_code}};{%endif%}" value="{%if project.type.color_code%}{{project.type.color_code}}{%endif%}" readonly>
+        <div class="main_color_background">
+          <div class="color_height" style="background:#88e1f2;" onclick="selectedColor(this)">
+
+          </div>
+          <div class="color_height margin_class" style="background:#ED4166;" onclick="selectedColor(this)">
+
+          </div>
+          <div class="color_height margin_class" style="background:#61d4b3;" onclick="selectedColor(this)">
+
+          </div>
+          <div class="color_height margin_class" style="background:#af460f;" onclick="selectedColor(this)">
+
+          </div>
+          <div class="color_height margin_class" style="background:#0f4c75;" onclick="selectedColor(this)">
+
+          </div>
+          <div class="color_height margin_class" style="background:#617be3" onclick="selectedColor(this)">
+
+          </div>
+          <div class="color_height margin_class" style="background:#561f55" onclick="selectedColor(this)">
+
+          </div>
+          <div class="color_height margin_class" style="background:#ff8ba7" onclick="selectedColor(this)">
+
+          </div>
+          <img src="{% static 'images/info.png' %}" style="width: 15px;height: 15px;cursor: pointer;margin-left: 6%;"
+            title="Click the color palette to choose the color of the dashboard">
+        </div>
+
+      </div>
+  </div>
+
+  <div class="row" style="margin-top: 1%;">
+      <div class="col-md-6">
+        <label for="firstname-99a6d115-5e68-4355-a7d0-529207feb0b3_2983">PROJECT END GOAL *</label>
+        {{update_form.project_duration}}
+      </div>
+      <div class="col-md-6">
+        <label
+          for="edit-submitted-constituent-base-total-constituents total_number_of_constituents_in_your_database-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">PROJECT
+            END GOAL *</label>
+        <input id="end_goal" class="form-control" name="end_goal"  value="{{project.end_goal}}">
+
+      </div>
+  </div>
+  <div class="row" style="margin-top: 2%;">
+    <div class="col-md-12">
+      <label
+        for="edit-submitted-constituent-base-total-constituents total_number_of_constituents_in_your_database-99a6d115-5e68-4355-a7d0-529207feb0b3_6344">PROJECT
+        DESCRIPTION *</label>
+      <textarea id="description" class="form-control" name="data_description" rows="8" cols="40" >{{project.type.description}}</textarea>
+    </div>
+  </div>
+
+    <button type="submit" name="button" class="btn btn-primary waves-effect waves-light update_button">UPDATE</button>
+  </form>
+</div>
+
+
+
+
+
+<script>
+  function upload_file(){
+    document.getElementById("hide").style.display = "block";
+    document.getElementById("upload").style.display = "block";
+  }
+</script>
+
+<script
+  src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+  <script src =
+  "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" >
+          </script>
+<script>
+  $(document).ready(function(){
+  $("#upload").click(function(){
+    $('#file1_select').empty();
+    $('#file2_select').empty();
+    $('#file3_select').empty();
+    $('#time_series_select').empty()
+    var frm = new FormData ($('#file_form').get(0));
+    var pk = $('#pk').val();
+   alert(frm,pk)
+   console.log(frm,pk)
+ $.ajax({
+    url: "/next-upload-file/" + pk + '/',
+    method: "POST",
+    headers: {'X-CSRFToken': '{{ csrf_token }}'},
+    data : frm,
+    cache: false,
+    processData: false,
+    contentType: false,
+    crossdomain: true,
+    dataType:"json",
+    success: function (data) {
+      if(data == 'Failure')
+      {
+          $("#error_msg").html("Please fill the form");
+      }
+
+      else{
+        // alert('success');
+        var array=data
+       var x = array.hasOwnProperty('file_1_columns');
+       var y = array.hasOwnProperty('file_2_columns');
+       var z = array.hasOwnProperty('file_3_columns');
+       var whole_data=array.hasOwnProperty('whole_data');
+       var error = array.hasOwnProperty('msg');
+       alert(error)
+       if (error == true){
+         alert("success")
+         $("#change_in_column_error").html("There is a change in column, Please confirm the change");
+         document.getElementById('confirm_change').style.display = "block";
+         document.getElementById('no_changes').style.display = "block";
+         var confirm = document.getElementById("confirm_change");
+         var  no_changes = document.getElementById('no_changes');
+         console.log(confirm,no_changes)
+           if ( confirm.name == 1){
+             document.getElementById('upload_data').style.display = "block";
+    }
+
+
+
+
+
+  // document.getElementById('time_series_select').style.display = "block";
+
+        }
+        else{
+             document.getElementById('upload_data').style.display = "block";
+          }
+       }
+
+
+    }
+    })
+  });
+});
+  // $(function() {
+  //     $('#project_form').submit(upload);
+  // });
+</script>
+<script>
+document.getElementById('time-series').style.display = "none";
+document.getElementById('connectivity').style.display = "none";
+</script>
+
+
+
+<script>
+  function time_select(){
+    var time = document.getElementById("time_series_select").value
+    console.log(time)
+    if (time != "No Time Series"){
+      document.getElementById("date_format_select").style.display = "block";
+      document.getElementById("date_format_label").style.display = "block";
+    }
+  }
+
+  //START: Color selection script
+    function selectedColor(ele) {
+
+      document.getElementById('color_id').style.background = ele.style.background;
+      document.getElementById('color_id').value = ele.style.background;
+    }
+  //END: Color selection script
+</script>
+
+
+{% endblock body %}

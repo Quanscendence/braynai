@@ -1,0 +1,407 @@
+{% extends 'dashboard/project_details.html' %}
+{% load staticfiles %}
+{% block body %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+  html {
+    overflow:hidden !important;
+  }
+  body {
+    overflow-y:hidden !important
+  }
+
+  .table_height {
+    height: 280px !important;
+    overflow: auto;
+  }
+  th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    padding: 0.5rem 15px;
+    border-width: 0;
+    font-size: 15px !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-align: left;
+  }
+
+  td {
+    padding: 15px 15px;
+    border-color: #e9ecef;
+  }
+
+  .permissions {
+    display: none;
+  }
+
+  #project_pk {
+    display: none;
+  }
+
+  #success_msg {
+    display: none;
+  }
+
+  #success_msg_1 {
+    display: none;
+  }
+
+  .update_class {
+    font-size: 22px;
+    color: #737373;
+    margin-left: 4%;
+    /* margin-left: 2%;
+width: 33%;
+height: 24px;
+color: white;
+background: #4a90e2;
+border: 1px solid #4a90e2;
+border-radius: 3px; */
+}
+
+  .delete_class {
+    font-size: 22px;
+    color: #ff1e1e;
+    margin-left: 4%;
+    /* margin-left: 3%;
+    width: 29%;
+    height: 24px;
+    color: white;
+    background: #4a90e2;
+    border: 1px solid #4a90e2;
+    border-radius: 3px; */
+  }
+
+  .tableFixHead          {  height: 100px; }
+  .tableFixHead thead th { background: #fff}
+  .tableFixHead thead th { position: sticky; top: 0;background: #fff}
+</style>
+{%  block breadcrumb%}
+<!-- START: NAVIGATION THROUGH BREADCRUMBS -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'coreapp:dashboard' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'coreapp:single-project' pk=project.pk %}">{{project}}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">User Managment</li>
+  </ol>
+</nav>
+<!-- END: NAVIGATION THROUGH BREADCRUMBS -->
+{% endblock breadcrumb %}
+{% if permission == 'Admin' %}
+<form class="" method="post" style="margin-top:3%;">
+  {% csrf_token %}
+
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-top:0%;width: 65.2%;margin-left: 17.5%">
+    <h3 style="margin-left: 34%;">Add Users To The Project</h3>
+    <p id="email_msg" style="color:red;"></p>
+    <p id="email_error" style="color:red;"></p>
+
+    <table style="width:100%;margin-top:-2%;">
+      <tr>
+        <th></th>
+        <th colspan="3"></th>
+      </tr>
+      <tr>
+
+        <td>
+          <div class="form-group">
+            {{add_user_form.email}}
+
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            {{add_user_form.permissions}}
+          </div>
+        </td>
+
+        <td>
+          {%if admin_profile.type == 'Individual' %}
+          <a href="#" style="color:#fff;" data-toggle="tooltip" title="UpGrade To Company Account">
+            <button type="button" class="btn btn-primary waves-effect waves-light"
+              style="margin-bottom: 11%;background-color:#4a90e2;border:#4a90e2">Submit</button></a>
+
+          {%else%}
+          <button id="none_submit" type="submit" class="btn btn-primary waves-effect waves-light"
+            style="margin-bottom: 11%;background-color:#4a90e2;border:#4a90e2">Submit</button>
+            {%endif%}
+          </td>
+      </tr>
+    </table>
+  </div>
+  <div class="container">
+    {% if add_user_form.errors %}
+    {% for field in add_user_form  %}
+
+    {% for error in field.errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% for error in add_user_form.non_field_errors  %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</form>
+{%endif%}
+<div class="" style="width: 100%;margin-top: 5%;text-align: center;margin-left: 5%;">
+  <h3 style="margin-right: 13%;">Users added to present project </h3>
+  <div class="table_height" style="width: 89%;">
+    <table class="w3-table-all w3-card-4 tableFixHead" style="width=100%;box-shadow:none;margin-top:2%;border: 2px solid lightgray;"
+      id="mytable">
+      <thead style="border: 2px solid lightgray;">
+        <tr>
+          <th>USER</th>
+          <th>STATUS</th>
+          <th>CONTACT NO.</th>
+          <th>INVITED TIME</th>
+          <th>ACCEPTED TIME</th>
+          <th colspan="2">PERMISSION</th>
+
+        </tr>
+      </thead>
+
+      <tr class="w3-hover-grey">
+        <td>{{project.admin_user}}<br>
+        <td></td>
+        <td>{{admin_profile.contact_no}}</td>
+        <td></td>
+        <td></td>
+        <td>Owner</td>
+        <td id="project_pk">{{project.pk}}</td>
+      </tr>
+      <p id="vanish" style="margin-left: -3%;color:green">{{msg}}</p>
+      {% for p in project_users %}
+
+      <tr class="w3-hover-grey">
+        <td id="onlytd">{{p.project_user}}</td><br>{% if p.accept == 'False' %}<td style="color:red;">Invited</td>
+        {% else %}<td style="color:green;">Accepted</td> {% endif %}
+        <input type="text" id="hidden_input_{{p.project_user.pk}}" value="{{p.project_user.pk}}" class="" hidden>
+        <p id="success_msg" style="color: red;position: relative;top: -23px;margin-left: -14%;"> Permission Updated Succesfully  </p>
+        <p id="success_msg_1" style="color: red;margin-left: -13%;margin-top: -2%;display:none"> User Deleted Succesfully </p>
+        <td>{% for key , value  in customer_profiles.items %}{% if key == p.project_user.pk %}{{ value.contact_no}}{%endif%}{%endfor%}</td>
+
+        <td>{{p.created_time}}</td>
+        {% if p.accept == 'True' %}
+        <td>{{p.accepted_time}}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% if permission == 'Admin' %}
+        {% if request.user.email == p.project_user.email %}
+        <td>{%for key, value in user_permissions.items %}{% if key == p.project_user.pk %}{{value}}{%endif%}{%endfor%}</td>
+  {%else%}
+        <td class="permissions">
+          <span id="display_permission_{{p.project_user.pk}}">{%for key, value in user_permissions.items %}{% if key == p.project_user.pk %}{{value}}{%endif%}{%endfor%}</span>
+          <!-- the dynamic id is  combined of user pk and project pk -->
+          <select id="{{p.project_user.pk}}{{project.pk}}" style="display:none;">
+
+           <option value="Read">Read</option>
+           <option value="Read Write">Read Write</option>
+           <option value="Read Write Delete">Read Write Delete</option>
+           <option value="Admin">Admin</option>
+         </select>
+         <i class="fas fa-pencil-alt update_class" id="{{p.project_user.pk}}" aria-hidden="true" id="fa"></i>
+
+         <button type="button" id="update_user_{{p.project_user.pk}}" name="button" style="display:none;" onclick="updateUser('{{p.project_user.pk}}','{{p.project.pk}}')">update</button>
+         <i class="fa fa-trash delete_class" id="{{p.project_user.pk}}" aria-hidden="true"></i>
+         <!-- <button type="submit" id=" class="update_class"> Update</button>
+       <button type="submit" id= "" class="delete_class"name="delete">Delete</button> -->
+        </td>
+        {%endif%}
+        {%else%}
+        <td >{%for key, value in user_permissions.items %}{% if key == p.project_user.pk %}{{value}}{%endif%}{%endfor%}</td>
+        {%endif%}
+        <td class="permission_data" id="{{p.project_user.pk}}" class="test">
+        </td>
+      </tr>
+
+      {% endfor %}
+    </table>
+  </div>
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+<script>
+
+  var colum = document.getElementsByClassName("delete_class");
+  var i;
+
+  for (i = 0; i < colum.length; i++) {
+    colum[i].addEventListener("click", function () {
+      var project_pk = $('#mytable #project_pk').text();
+      var user = event.currentTarget.id;
+      // alert("called");
+      // alert(project_pk)
+      // var selected_value = document.getElementById(event.currentTarget.id+project_pk);
+      // var permission = selected_value.options[selected_value.selectedIndex].value;
+      //   alert(user+'different'+permission);
+      // alert(user);
+      $.ajax({
+
+        url: "/delete-user/" + project_pk + '/',
+        method: "POST",
+        headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+        data: { "user": user },
+        success: function (data) {
+          // alert("sucess");
+          $(".delete_class").click(function () {
+
+            $(this).closest("tr").remove();
+          });
+          console.log("success")
+          window.location.reload();
+          document.getElementById("success_msg_1").style.display = "block";
+        }
+      })
+
+    });
+  }
+
+</script>
+
+<script>
+  setTimeout(()=>{
+    $('#vanish').hide()
+  },6000)
+  // start script to update project user permission//
+  var coll = document.getElementsByClassName("update_class");
+  var i;
+  for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function () {
+
+    var project_pk = $('#mytable #project_pk').text();
+    $('#display_permission_'+event.currentTarget.id).hide();
+    $('#'+event.currentTarget.id).hide();
+
+    $('#'+event.currentTarget.id + project_pk).show();
+    $('#update_user_'+event.currentTarget.id).show();
+
+
+
+    // $(document).on("click",'#update_user_'+event.currentTarget.id ,function () {
+    // var project_pk = $('#mytable #project_pk').text();
+    // var user           = event.currentTarget.id;
+    // var test = '#'+event.currentTarget.id;
+    // alert(event.currentTarget.id)
+    // var selected_value = document.getElementById(event.currentTarget.id + project_pk);
+    // var permission = selected_value.options[selected_value.selectedIndex].value;
+    // alert(user+'different'+permission);
+    //   $.ajax({
+    //     url: "/update-user-permission/" + project_pk + '/',
+    //     method: "POST",
+    //     headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+    //     data: { "user": user, 'permission': permission },
+    //     success: function (data) {
+    //       console.log("success")
+    //       window.location.reload();
+    //       document.getElementById("success_msg").style.display = "block";
+    //
+    //     }
+    //   });
+    // })
+    // alert();
+
+
+  });
+}
+  // end of script to update project user permission//
+
+  $(document).ready(function () {
+    $("#id_email").change(function () {
+      var email_id = document.getElementById("id_email").value;
+      var project_pk = $('#mytable #project_pk').text();
+      console.log(email_id, project_pk)
+      $.ajax({
+        url: "/check-email/" + project_pk + '/',
+        method: "POST",
+        headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+        data: { "email_id": email_id, "project_pk": project_pk },
+        success: function (data) {
+          if (data.msg == 'Success') {
+          }
+          else if (data.msg == 'error') {
+            $("#email_msg").html("Cannot Add Your own email id to add users");
+            document.getElementById("none_submit").style.display = "none";
+          }
+          else if (data.msg == 'project_user_error') {
+            $("#email_error").html("User is already added to the project");
+            document.getElementById("none_submit").style.display = "none";
+          }
+        }
+      })
+    });
+  });
+
+
+  // Function to update users
+  function updateUser(userPK,projectPK) {
+    var selected_value= $('#'+userPK+projectPK).val();
+    $.ajax({
+        url: "/update-user-permission/" + projectPK + '/',
+        method: "POST",
+        headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+        data: { "user": userPK, 'permission': selected_value },
+        success: function (data) {
+          console.log("success")
+          window.location.reload();
+          document.getElementById("success_msg").style.display = "block";
+        }
+      });
+  }
+</script>
+
+<script>
+  function change_permission(id) {
+    // alert(id)
+    document.getElementsByClassName("permissions").style.display = "block";
+    document.getElementsByClassName("permission_data").style.display = "none";
+
+
+  }
+
+</script>
+<script>
+  $("#mytable tbody tr").each(function (i) {
+    $(this).prepend("<td>" + (i + 1) + "</td>")
+  })
+  $("#mytable thead tr").each(function (i) {
+    $(this).prepend("<th>Sl No</th>")
+  })
+</script>
+
+
+<!-- <script>
+
+ $(".delete_class").click(function(){
+   var project_pk = $('#mytable #project_pk').text();
+   var user = $('#user').val();
+   console.log(user);
+ $.ajax({
+    url: "/delete-user/"+ project_pk + '/',
+    method: "POST",
+    headers: {'X-CSRFToken': '{{ csrf_token }}'},
+    data : {"user":user},
+    success: function (data) {
+      console.log("success")
+      $(".delete_class").click(function() {
+        alert("hi");
+$(this).closest("tr").remove();
+});
+
+    }
+  })
+});
+
+</script> -->
+
+{% endblock body %}

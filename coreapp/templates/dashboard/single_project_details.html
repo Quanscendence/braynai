@@ -1,0 +1,933 @@
+{% extends 'dashboard/project_details.html' %}
+{% load staticfiles %}
+{% block body %}
+
+<style media="screen">
+   .green-color{
+    color: green;
+  }
+  .red-color{
+    color:red;
+  }
+  #tool{
+    font-size: 20px;
+    margin-left: 5%;
+  }
+  .submit{
+    margin-top: 3%;
+    background: #4a90e2;
+    width: 130px;
+    height: 30px;
+    border-radius: 3px;
+    color: white;
+    border: 1px;
+  }
+  #hide_seek{
+      display:none;
+    }
+#project{
+    height: 30px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    border: 1px solid #f7f7f7;
+    color: #333;
+    }
+    body {
+          overflow-y: scroll !important;
+    }
+
+    .all-content-wrapper{
+      background:#fff;
+    }
+
+    .sliders_section {
+      height:62vh;
+      background:#f7f7f7;
+      margin-top: 1%;
+      margin-left: 3%;
+      padding:6%;
+      width: 82%;
+    }
+
+    .update_payment_button {
+      background: #4a90e2;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      padding: 2% 5%;
+      float:right;
+    }
+
+    .text_center {
+      text-align:center;
+    }
+
+
+
+    /*START: RANGE SLIDERS SLIDERS*/
+    .range-slider {
+        margin: 0 0 31px 0%;
+      }
+
+      .range-slider {
+        display:flex;
+        width: 100%;
+      }
+
+      .range-slider__range {
+        -webkit-appearance: none;
+        width: calc(100% - (73px));
+        height: 10px;
+        border-radius: 5px;
+        background: #4a90e2;
+        outline: none;
+        padding: 0;
+        margin: 0;
+      }
+      .range-slider__range::-webkit-slider-thumb {
+        -webkit-appearance: none;
+                appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #4a90e2;
+        cursor: pointer;
+        -webkit-transition: background .15s ease-in-out;
+        transition: background .15s ease-in-out;
+      }
+      .range-slider__range::-webkit-slider-thumb:hover {
+        background:#4a90e2;
+      }
+      .range-slider__range:active::-webkit-slider-thumb {
+        background: #4a90e2;
+      }
+      .range-slider__range::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        border: 0;
+        border-radius: 50%;
+        background: #4a90e2;
+        cursor: pointer;
+        -moz-transition: background .15s ease-in-out;
+        transition: background .15s ease-in-out;
+      }
+      .range-slider__range::-moz-range-thumb:hover {
+        background: #4a90e2;
+      }
+      .range-slider__range:active::-moz-range-thumb {
+        background: #4a90e2;
+      }
+      .range-slider__range:focus::-webkit-slider-thumb {
+        box-shadow: 0 0 0 3px #fff, 0 0 0 6px #4a90e2;
+      }
+
+      .range-slider__value {
+        display: inline-block;
+        position: relative;
+        width: 60px;
+        color: #fff;
+        line-height: 20px;
+        text-align: center;
+        border-radius: 3px;
+        background: #000;
+        margin-top: -1.5%;
+        padding: 5px 10px;
+        margin-left: 8px;
+      }
+      .range-slider__value:after {
+        position: absolute;
+        top: 8px;
+        left: -7px;
+        width: 0;
+        height: 0;
+        border-top: 7px solid transparent;
+        border-right: 7px solid #000;
+        border-bottom: 7px solid transparent;
+        content: '';
+      }
+
+      ::-moz-range-track {
+        background: #d7dcdf;
+        border: 0;
+      }
+
+      input::-moz-focus-inner,
+      input::-moz-focus-outer {
+        border: 0;
+      }
+    /*END: RANGE SLIDERS SLIDERS*/
+
+    .invoice_history {
+      width: 87.5%;
+      background: #f7f7f7;
+      margin-left: 6%;
+      padding: 2% 1%;
+      height:300px;
+      overflow-y:auto;
+      margin-top: 2%;
+    }
+
+    .pay_now_button {
+      background: #008000cf;
+      border: none;
+      padding: 3% 5%;
+      color: #fff;
+      display: inline-block;
+      margin-left: 4%
+    }
+
+    .download_icon{
+      font-size: 28px;
+      color: #4a90e2;
+      margin-left: 23%;
+    }
+
+    .tableFixHead thead th {
+      position: sticky;
+      top: -13% !important;
+      background: #fff;
+    }
+
+    .fa-plus-square:hover {
+        color:#ec4445
+    }
+    .fa-plus-square {
+      font-size: 26px;
+      color:#4a90e2;
+    }
+    .qdesk_support {
+      display:flex;
+      justify-content:space-between;
+    }
+
+    .qdesk_button {
+      background:none;
+      border:none;
+      margin-top: -3%;
+    }
+
+    .ticket_button {
+      background: #4a90e2;
+      color: #fff;
+      border: none;
+      width: 20%;
+      padding: 1%;
+      margin-top: 2%;
+      border-radius: 5px;
+    }
+
+  .even_space {
+    margin:0;
+    margin-top:2%;
+  }
+
+.uploadpreview{
+  width:150px;
+  height:150px;
+  display:block;
+  border:1px solid #ccc;
+  /* margin:0 auto 15px; */
+  background-size:100% auto;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+
+.upload-wrap{
+  /* float:left; */
+  width:200px;
+  position: relative;
+  padding:0
+}
+.upload-wrap label{
+  margin-top: 40%;
+  color: #bfbfbf;
+}
+input[type="file"] {
+    color: transparent;
+    width: 120px;
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    top: 4%;
+    left: 1%;
+    opacity: 0;
+    display: block;
+    height: 21vh;
+    width: 73%;
+}
+
+</style>
+{%  block breadcrumb%}
+<!-- START: NAVIGATION THROUGH BREADCRUMBS -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'coreapp:dashboard' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'coreapp:single-project' pk=project.pk %}">{{project}}</a></li>
+    <li class="breadcrumb-item active" aria-current="page"> {{project}} Details</li>
+  </ol>
+</nav>
+<!-- END: NAVIGATION THROUGH BREADCRUMBS -->
+{% endblock breadcrumb %}
+<p style="color:green;">{{msg}}</p>
+<div class="" style="display:flex;margin-left:3%;">
+
+  <div class="card" style="width:26%;text-transform:uppercase;height:63vh;background:#f7f7f7;margin-top: 1%;margin-left: 3%;padding:2%;">
+    <h4>Project Details {% if permission == 'Admin'%}
+      <a href="{% url 'coreapp:project-update' pk=project.pk %}" data-toggle="tooltip" title="Update Project Details" id="tool">
+        <i class="fas fa-pencil-alt" aria-hidden="true" id="fa"></i></a>
+        <a href="{% url 'coreapp:delete-project' pk=project.pk %}" data-toggle="tooltip" title="Delete Project" id="tool">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </a>
+        {%elif permission == 'Admin' %}
+          <a href="{% url 'coreapp:project-update' pk=project.pk %}" data-toggle="tooltip" title="Update Project Details" id="tool">
+            <i class="fas fa-pencil-alt" aria-hidden="true" id="fa"></i>
+          </a>{% endif %}
+        </h4>
+
+    <p style="margin:0;">Project Title</p>
+    <p>{{project.name}}</p>
+    <p style="margin:0;">Project Created Date and Time</p>
+    <p>{{project.created}}</p>
+    <p style="margin:0;">Project ID</p>
+    <p>{{project.type}}</p>
+    <p style="margin:0;">Data Description</p>
+    <p>{{project.type.description}}</p>
+    <p style="margin:0;">Output Expectation</p>
+    <p>{{project.end_goal}}</p>
+    <!-- <a><i class="fa fa-arrow-right" aria-hidden="true" > </i>update project details</a> -->
+  </div>
+
+  <div style="width: 33%;text-transform:uppercase;">
+
+    <div class="card" style="width:100%;height:57vh;background:#f7f7f7;margin-top: 3%;margin-left: 5%;padding:5%;zoom: 1.1;">
+        <h4>IQU & DISK SPACE Usage</h4>
+        <canvas id="canvas" width="400" height="318" ></canvas>
+    </div>
+  </div>
+
+
+  <div class="card" style="width:28%;text-transform:uppercase;height:63vh;background:#f7f7f7;margin-top: 1%;margin-left: 3%;padding:2%;">
+    <div class="qdesk_support">
+      <h4>Q DESK SUPPORT</h4>
+      <button class="qdesk_button" title="Create New Ticket" data-toggle="modal" data-target="#qdeskModal"><i class="fas fa-plus-square"></i></button>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">TICKET ID</th>
+          <th scope="col">DATE</th>
+          <th scope="col">STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for ticket in tickets%}
+        <tr>
+          <td>
+              <a href="{% url 'qdesk:ticket-details' pk=ticket.pk %}" data-toggle="tooltip" title="{{ticket.subject}}">{{ticket.ticket_id}}</a>
+          </td>
+          <td>{{ticket.created}}</td>
+          <td>{{ticket.status}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row invoice_history">
+  <h4 style="margin-bottom: 2%;">DATA INTEGRATIONS</h4>
+  <table class="table table-striped tableFixHead">
+    <thead>
+      <tr>
+        <th scope="col">NAME</th>
+        <th scope="col">INTEGRATION</th>
+        <th scope="col">LAST UPDATED</th>
+        <th scope="col">FREQUENCY</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for data in project_integrations%}
+      <tr>
+        <td>{{data.name}}</td>
+        <td >{{data.integration_choice}}</td>
+        <td>{%for pk, time in time_diff.items %}{%if data.pk == pk %}{{time}}{%endif%}{%endfor%}</td>
+        <td >{{data.range}}</td>
+        <td>
+          <form method ="post" id="delete_integration_form" action="{% url 'coreapp:integration-delete' pk=data.pk %}">
+          {%csrf_token%}
+          <input type="name" name="" hidden="">
+
+         <i class="fa fa-trash" aria-hidden="true" title="Delete this integration" style="color:red" data-toggle="modal" data-target="#delete_integration"></i>
+        </form></td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+
+<div class="row" style="margin-left: 4.2%;margin-top:1.2%;">
+  <div class="col-md-4">
+    <div class="card sliders_section">
+      <form action="{% url 'coreapp:project-billing-update' pk=project.pk %}" method="post">
+        {%csrf_token%}
+
+      <h4 style="margin-bottom: 4%;">UPDATE CONFIGURATION</h4>
+      <!-- <label for="">NO.OF ADINS</label><br /> -->
+        <!-- <div class="range-slider">
+
+          <input class="range-slider__range"  name="admin" type="range" value="{% if project_billng %}{{project_billng.admin }}{%else%} 0{% endif %}" min="0" max="100" step="5" id="no_of_admin" required>
+          <span class="range-slider__value">{% if project_billng %}{{project_billng.admin }}{%else%} 0{% endif %}</span>
+        </div> -->
+
+      <label for="">NO.OF USERS</label><br />
+      <div class="range-slider">
+          <input class="range-slider__range"  name="user" type="range" value="{% if project_billng %}{{project_billng.user }}{%else%} 0{% endif %}" min="0" max="100" id="no_of_users" required>
+          <span class="range-slider__value">{% if project_billng %}{{project_billng.user }}{%else%} 0{% endif %}</span>
+      </div>
+
+        <label for="">NO.OF ENDPOINTS</label><br />
+
+
+
+
+        <div class="range-slider">
+          <input class="range-slider__range" type="range" name="end_point" value="{% if project_billng %}{{project_billng.end_point }}{%else%} 0{% endif %}" min="0" max="100" id="no_of_endpoints" required>
+          <span class="range-slider__value">{% if project_billng %}{{project_billng.end_point }}{%else%} 0{% endif %}</span>
+        </div>
+<!--
+        <label for="">NO.OF DASHBOARDS</label><br />
+
+        <div class="range-slider" style="margin-bottom:8px;">
+          <input class="range-slider__range" type="range" name="dashboard"  value="{% if project_billng %}{{project_billng.dahboard }}{%else%} 0{% endif %}" min="0" max="100" id="no_of_dashboards" required>
+          <span class="range-slider__value">{% if project_billng %}{{project_billng.dahboard }}{%else%} 0{% endif %}</span>
+        </div> -->
+          {% if permission == 'Admin'%}
+          {%if customer.type == 'Individual' %}
+          <a href="#" style="color:#fff;" data-toggle="tooltip" title="UpGrade To Company Account">
+        <button type="button" class="update_payment_button" name="button" onclick="updatePayment()">UPDATE</button></a>
+        {%else%}
+        <button type="submit" class="update_payment_button" name="button" onclick="updatePayment()">UPDATE</button>
+
+          {%endif%}
+          {%endif%}
+        </form>
+        <table class="table" style="margin-top: 25%;">
+          <thead>
+             <tr>
+               <th scope="col"></th>
+               <th scope="col">Used</th>
+               <th scope="col">Total</th>
+             </tr>
+           </thead>
+           <tbody>
+           <tr>
+             <th scope="row">End Points</th>
+             <td>{{d_endpoint_count}}</td>
+             <td>{{c_endpoint_count}}</td>
+           </tr>
+           <tr>
+             <th scope="row">Project Users</th>
+              <td> {{d_user_count}}</td>
+               <td>{{c_user_count}}</td>
+             </tr>
+         </tbody>
+
+        </table>
+      </div>
+  </div>
+  <div class="col-md-8" style="margin-left: -6%;width: 66%;">
+    <div class="card" style="height:62vh;text-transform:uppercase;background:#f7f7f7;margin-top: 0.5%;margin-left: 2%;padding:4%;">
+      <h4>TIER BILLING ESTIMATE</h4>
+      {%if customer.type == 'Individual' %}
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col" class="text_center">UNBILLED UNITS</th>
+            <th scope="col" class="text_center">BILLED UNITS</th>
+            <th scope="col" class="text_center">MONTHLY CHARGES</th>
+            <!-- <th scope="col" class="text_center">ANNUAL CHARGES</th> -->
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <!-- <th scope="row">3</th> -->
+            <td>ENDPOINTS</td>
+            <td class="text_center">5</td>
+            <td class="text_center" id="project_endpoints">0</td>
+            <td class="text_center" id="endpoint_monthly_charges">${{end_point_monthly_charges}}</td>
+            <!-- <td class="text_center" id="endpoint_annual_charges">${{end_point_annual_charges}}</td> -->
+
+          </tr>
+          <tr>
+            <!-- <th scope="row">3</th> -->
+            <td>Disk Space</td>
+
+
+
+            <!-- <td class="text_center">5</td> -->
+            <td class="text_center" id="project_dashboards">{{total_size_mb }} MB</td>
+            <td class="text_center" id="dashboard_monthly_charges">${{disk_space_monthly_cost}}</td>
+            <!-- <td class="text_center" id="dashboard_annual_charges">${{disk_space_yearly_cost}}</td> -->
+          </tr>
+          <tr>
+              <!-- <th scope="row">3</th> -->
+              <!-- <td>Disk Space</td>
+
+
+
+              <!<td class="text_center">5</td> >
+              <td></td>
+              <td class="text_center" id="project_dashboards">{{total_size_mb }} MB</td>
+              <td class="text_center" id="dashboard_monthly_charges">${{disk_space_monthly_cost}}</td>
+              <!-- <td class="text_center" id="dashboard_annual_charges">${{disk_space_yearly_cost}}</td> >
+            </tr> -->
+          <tr>
+            <td>DASHBOARDS</td>
+            <td class="text_center">Unlimited</td>
+            <td class="text_center" id="project_dashboards">Unlimited</td>
+            <td class="text_center" id="dashboard_monthly_charges">$0</td>
+            <td class="text_center" id="dashboard_annual_charges">$0</td>
+          </tr>
+
+          <!-- <tr>
+            <td>Disk Space</td>
+
+
+
+            <td></td>
+            <td class="text_center" id="project_dashboards">{{total_size_mb }} MB</td>
+            <td class="text_center" id="dashboard_monthly_charges">${{disk_space_monthly_cost}}</td>
+          </tr> -->
+          <tr>
+            <!-- <th scope="row">1</th> -->
+            <td>IQU</td>
+            <td class="text_center">100 iqus</td>
+            <td class="text_center">{{iqs_count }}</td>
+            <td class="text_center">0</td>
+            <!-- <td class="text_center">0</td> -->
+
+          </tr>
+          <tr>
+            <td>BASE PRICE</td>
+            <td class="text_center"></td>
+            <td class="text_center"></td>
+            <td class="text_center">$ {{monthly_maintenance}}</td>
+          </tr>
+          <tr>
+            <td>CUSTOMIZED ASSISTANCE</td>
+            <td class="text_center"></td>
+            <td class="text_center"></td>
+            <td class="text_center">{% if project_billing_pricing.custom_supprt %} ${{project_billing_pricing.custom_supprt}}{% endif %}</td>
+          </tr>
+          <tr>
+            <!-- <th scope="row">1</th> -->
+            <td><strong>TOTAL</strong></td>
+            <td class="text_center"></td>
+            <td class="text_center"></td>
+            <td class="text_center"><strong id="total_monthly_charges">${{total_monthly_charges}}</strong></td>
+            <!-- <td class="text_center"><strong id="total_annual_charges">${{total_annual_charges}}</strong></td> -->
+
+          </tr>
+
+        </tbody>
+      </table>
+      {%else%}
+      <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col"  class="text_center">UNBILLED UNITS</th>
+              <th scope="col" class="text_center">BILLED UNITS</th>
+              <th scope="col" class="text_center">MONTHLY CHARGES</th>
+              <!-- <th scope="col" class="text_center">ANNUAL CHARGES</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+              <td>ADMINS</td>
+              <td class="text_center">1</td>
+              <td class="text_center" id="project_admins">{{project_billng.admin }}</td>
+              <td class="text_center" id="admin_monthly_charges">${{admin_monthly_charges}}</td>
+              <td class="text_center" id="admin_annual_charges">${{admin_annual_charges}}</td>
+
+            </tr> -->
+
+
+
+            <tr>
+              <!-- <th scope="row">2</th> -->
+              <td>USERS</td>
+              <td class="text_center">5</td>
+              <td class="text_center" id="project_users">{{project_billng.user}}</td>
+              <td class="text_center" id="user_monthly_charges">${{user_monthly_charges}}</td>
+              <!-- <td class="text_center" id="user_annual_charges">${{user_annual_charges}}</td> -->
+
+            </tr>
+            <tr>
+              <!-- <th scope="row">3</th> -->
+              <td>ENDPOINTS</td>
+              <td class="text_center">5</td>
+              <td class="text_center" id="project_endpoints">{{project_billng.end_point }}</td>
+              <td class="text_center" id="endpoint_monthly_charges">${{end_point_monthly_charges}}</td>
+              <!-- <td class="text_center" id="endpoint_annual_charges">${{end_point_annual_charges}}</td> -->
+
+            </tr>
+              <tr>
+                <td>DASHBOARDS</td>
+                <td class="text_center">Unlimited</td>
+                <td class="text_center" id="project_dashboards">Unlimited</td>
+                <td class="text_center" id="dashboard_monthly_charges">$0</td>
+                <!-- <td class="text_center" id="dashboard_annual_charges">$0</td> -->
+              </tr>
+
+            <tr>
+              <!-- <th scope="row">3</th> -->
+              <td>Disk Space</td>
+
+
+
+              <!-- <td class="text_center">5</td> -->
+              <td></td>
+              <td class="text_center" id="project_dashboards">{{total_size_mb }} MB</td>
+              <td class="text_center" id="dashboard_monthly_charges">${{disk_space_monthly_cost}}</td>
+              <!-- <td class="text_center" id="dashboard_annual_charges">${{disk_space_yearly_cost}}</td> -->
+            </tr>
+            <tr>
+              <!-- <th scope="row">1</th> -->
+              <td>IQU</td>
+              <td class="text_center">300 iqus</td>
+              <td  class="text_center">{{iqs_count}} iqus</td>
+              <td  class="text_center">${{iqs_monthly_cost}}</td>
+              <!-- <td class="text_center">${{iqs_yearly_cost}}</td> -->
+
+            </tr>
+            <tr>
+            <td>BASE PRICE</td>
+            <td class="text_center"></td>
+            <td class="text_center"></td>
+            <td class="text_center">$ {{monthly_maintenance}}</td>
+          </tr>
+          <tr>
+            <td>CUSTOMIZED ASSISTANCE</td>
+            <td class="text_center"></td>
+            <td class="text_center"></td>
+            <td class="text_center">{% if project_billing_pricing.custom_supprt %} ${{project_billing_pricing.custom_supprt}}{% endif %}</td>
+          </tr>
+            <tr>
+              <!-- <th scope="row">1</th> -->
+              <td><strong>TOTAL</strong></td>
+              <td class="text_center"></td>
+              <td  class="text_center"></td>
+              <td  class="text_center" ><strong id="total_monthly_charges">${{total_monthly_charges}}</strong></td>
+              <!-- <td class="text_center" ><strong id="total_annual_charges">${{total_annual_charges}}</strong></td> -->
+
+            </tr>
+          </tbody>
+        </table>
+        {%endif%}
+
+
+    </div>
+  </div>
+
+
+
+</div>
+
+<!--START: Embed Modal Details-->
+<div class="modal fade" id="qdeskModal" tabindex="-1" role="dialog" aria-labelledby="qdeskModalLabel"
+  aria-hidden="true" style='top:10%'>
+  <div class="modal-dialog" role="document" style="width:100%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">CREATE NEW TICKET</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="top: 4%;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <form method="post" action="{% url 'qdesk:create-ticket' pk=project.pk %}">
+          {%csrf_token%}
+          <div class="row" style="margin:2% 0">
+            {{ticket_form.subject}}
+          </div>
+          <div class="row" style="margin:0">
+            {{ticket_form.ticket_details}}
+          </div>
+          <!-- <div class="row even_space">
+            <div class="col-md-3 upload-wrap">
+              <div class="uploadpreview 01">
+
+                <label class="label_01">Upload your Image 1</label>
+              </div>
+              <input id="01" type="file" name="image_1" accept="image/*">
+            </div>
+            <div class="col-md-3 upload-wrap">
+              <div class="uploadpreview 02">
+
+                <label class="label_02">Upload your Image 2</label>
+              </div>
+              <input id="02" type="file" name="image_2" accept="image/*">
+            </div>
+            <div class="col-md-3 upload-wrap">
+              <div class="uploadpreview 03">
+
+                <label class="label_03">Upload your Image 3</label>
+              </div>
+              <input id="03" type="file" name="image_3" accept="image/*">
+            </div>
+          </div> -->
+          <button type="submit" class="ticket_button">Add Ticket</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!--END: Embed Modal Details-->
+
+
+<div class="row invoice_history">
+    <h4 style="margin-bottom: 2%;">PAYMENT HISTORY</h4>
+  <table class="table table-striped tableFixHead">
+    <thead>
+      <tr>
+        <th scope="col">INVOICE ID</th>
+        <th scope="col">DATE OF GENERATION</th>
+        <th scope="col">FROM - TO</th>
+        <th scope="col">BILL AMOUNT</th>
+        <th scope="col">TRANSACTION ID</th>
+        <th scope="col">VIEW INVOICE</th>
+        <th scope="col">STATUS</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for invoice in project_invoice %}
+
+      <tr scope="row">
+        <td>{{invoice.invoice_id}}</td>
+        <td>{{invoice.created | date:"M d,Y" }}</td>
+        <td>{{invoice.from_date}} To {{invoice.to_date}}</td>
+        <td>$ {{invoice.total_amount}}</td>
+        <td>{{invoice.transaction_id}}</td>
+        <td><a href="{% url 'coreapp:invoice' pk=invoice.pk %}" target="_blank"><i class="fa fa-file-pdf-o download_icon" aria-hidden="true"></i></a></td>
+
+
+
+          {% if invoice.status == 'Unpaid' %}
+          <td class="red-color">
+            {{invoice.status}}
+          </td>
+          {%else%}
+          <td class="green-color">{{invoice.status}}</td>
+          {%endif%}
+      </tr>
+      {%endfor%}
+
+    </tbody>
+  </table>
+</div>
+
+<div class="" style="margin-top: 6%;">
+
+   <div class="row">
+
+  <!-- <button type="button" name="button" style="position: absolute;top: 75%;width: 142px;margin-left: 59%;height: 21px;" onclick="location.href='{% url 'coreapp:save-dashboard' pk=project.pk %}'">Save Dashboard </button> -->
+
+   </div>
+
+   <form class="" method="post" enctype="multipart/form-data" action="{% url 'coreapp:project-update' pk=project.pk %}" style="margin-left:20%;">
+     {% csrf_token%}
+      <input type="text" name="" value="{{project.name}}" id="hidden_project_name" hidden>
+     <div id="hide_seek" class="">
+   {{update_form.project_title}}
+   {{update_form.data_description}}
+    {{update_form.expected_ans}}
+     <button type="submit" name="button" class="submit">SUBMIT</button>
+    </div>
+  </form>
+   <!-- <button type="button" onclick= "update_project()" id="project"  name="button" >UPDATE PROJECT DETAILS</button> -->
+   <input type="text" id="title" value="{{project.title}}" hidden>
+   <input type="text" id="data" value="{{data_description}}" hidden>
+   <input type="text" id="ans" value="{{expected_ans}}" hidden>
+</div>
+
+
+<div class="modal fade" id="delete_integration" tabindex="-1" role="dialog" aria-labelledby="delete_integrationLabel"
+  aria-hidden="true" style='top:10%'>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width:95%;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ARE YOU SURE YOU WANT TO DELETE?</h5>
+        <button type="button" class="close" style ='margin-right:1%' data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" onclick="closeModal('clipboard_text')">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="delete_modal_buttons">
+            <button type="button" name="button" class="delete_endpoint"  onclick="deleteIntegrationModel()">yes i'm sure</button>
+            <button type="button" name="button" style="margin-right: 0;" data-dismiss="modal">No i dont want</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--START: Upload image file script -->
+
+<script type="text/javascript">
+  $('.upload-wrap input[type=file]').change(function(){
+    var id = $(this).attr("id");
+
+    var newimage = new FileReader();
+    newimage.readAsDataURL(this.files[0]);
+    newimage.onload = function(e){
+      $('.uploadpreview.' + id ).css('background-image', 'url(' + e.target.result + ')' );
+      $('.label_'+ id).hide()
+    }
+  });
+</script>
+
+<!--END: Upload image file script -->
+
+<script>
+
+const deleteIntegrationModel = () => {
+  $('#delete_integration_form').submit()
+}
+
+let project_title = document.getElementById("title").value;
+let update_title=document.getElementById("id_project_title");
+update_title.value=project_title;
+let project_data = document.getElementById("data").value;
+let update_data=document.getElementById("id_data_description");
+update_data.value=project_data;
+let project_output = document.getElementById("ans").value;
+let update_output=document.getElementById("id_expected_ans");
+update_output.value=project_output;
+  function update_project() {
+    document.getElementById('hide_seek').style.display = "block";
+    document.getElementById('details').style.display = "none";
+    document.getElementById('project').style.display = "none";
+  }
+
+</script>
+
+<!-- START: RANGE SLIDERS SCRIPT -->
+<script type="text/javascript">
+  function updatePayment() {
+    document.getElementById('project_users').innerHTML        =  document.getElementById('no_of_users').value;
+    document.getElementById('project_admins').innerHTML       =  document.getElementById('no_of_admin').value;
+    document.getElementById('project_endpoints').innerHTML    =  document.getElementById('no_of_endpoints').value;
+    document.getElementById('project_dashboards').innerHTML   =  document.getElementById('no_of_dashboards').value;
+
+    var admin_monthly_charges     = (document.getElementById('no_of_admin').value)*2;
+    var user_monthly_charges      = document.getElementById('no_of_users').value*1;
+    var endpoint_monthly_charges  = document.getElementById('no_of_endpoints').value*1;
+    var dashboard_monthly_charges = document.getElementById('no_of_dashboards').value*3;
+
+    document.getElementById('admin_monthly_charges').innerHTML      = '$' + admin_monthly_charges;
+    document.getElementById('user_monthly_charges').innerHTML       = '$' + user_monthly_charges;
+    document.getElementById('endpoint_monthly_charges').innerHTML   = '$' + endpoint_monthly_charges;
+    document.getElementById('dashboard_monthly_charges').innerHTML  = '$' + dashboard_monthly_charges;
+
+    document.getElementById('admin_annual_charges').innerHTML      =  '$' + admin_monthly_charges *12
+    document.getElementById('user_annual_charges').innerHTML       =  '$' + user_monthly_charges *12
+    document.getElementById('endpoint_annual_charges').innerHTML   =  '$' + endpoint_monthly_charges *12
+    document.getElementById('dashboard_annual_charges').innerHTML  =  '$' + dashboard_monthly_charges *12
+
+    document.getElementById('total_monthly_charges').innerHTML = '$' + (admin_monthly_charges + user_monthly_charges +endpoint_monthly_charges+dashboard_monthly_charges+18.75);
+    document.getElementById('total_annual_charges').innerHTML = '$' + ((admin_monthly_charges*12) + (user_monthly_charges*12) +(endpoint_monthly_charges*12)+(dashboard_monthly_charges*12)+(225));
+  }
+
+  // First let's set the colors of our sliders
+const settings={
+  fill: '#4a90e2',
+  background: '#d7dcdf'
+}
+
+// First find all our sliders
+const sliders = document.querySelectorAll('.range-slider');
+
+// Iterate through that list of sliders
+// ... this call goes through our array of sliders [slider1,slider2,slider3] and inserts them one-by-one into the code block below with the variable name (slider). We can then access each of wthem by calling slider
+Array.prototype.forEach.call(sliders,(slider)=>{
+  // Look inside our slider for our input add an event listener
+//   ... the input inside addEventListener() is looking for the input action, we could change it to something like change
+  slider.querySelector('input').addEventListener('input', (event)=>{
+    // 1. apply our value to the span
+    slider.querySelector('span').innerHTML = event.target.value;
+    // 2. apply our fill to the input
+    applyFill(event.target);
+  });
+  // Don't wait for the listener, apply it now!
+  applyFill(slider.querySelector('input'));
+});
+
+// This function applies the fill to our sliders by using a linear gradient background
+function applyFill(slider) {
+  // Let's turn our value into a percentage to figure out how far it is in between the min and max of our input
+  const percentage = 100*(slider.value-slider.min)/(slider.max-slider.min);
+  // now we'll create a linear gradient that separates at the above point
+  // Our background color will change here
+  const bg = `linear-gradient(90deg, ${settings.fill} ${percentage}%, ${settings.background} ${percentage+0.1}%)`;
+  slider.style.background = bg;
+}
+
+
+</script>
+<!-- END: RANGE SLIDERS SCRIPT -->
+
+<!-- CHART JS SCRIPT -->
+<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js">
+
+</script>
+<script type="text/javascript">
+  var m_list = '{{month_list}}' ;
+  var l_list = '{{iqs_list}}';
+  months_list = m_list.replace(/&quot;/g,'"');
+  console.log(JSON.parse(months_list));
+  var disk_space_count = '{{disk_space_count}}';
+  // var iqs_list = '{{iqs_list}}';
+  // months_list = m_list.replace(/&quot;/g,'"');
+  console.log(l_list);
+  console.log(JSON.parse(disk_space_count));
+  // console.log(JSON.parse(iqs_list));
+
+    // alert(typeof test_list);
+  var hidden_project_name = document.getElementById('hidden_project_name').value;
+  var dataset_1 = {"label":"IQUS","data":l_list,"fill":false,"borderColor":"#092499","lineTension":0.1}
+  var dataset_2 = {"label":"DISK SPACE","data":disk_space_count,"fill":false,"borderColor":"#25B7D3","lineTension":0.1}
+  new Chart(document.getElementById("canvas"),{"type":"line","data":{"labels":JSON.parse(months_list),"datasets":[dataset_1,dataset_2]},"options":{
+
+    tooltips: {
+      mode: 'index',
+      intersect: false,
+    },
+    hover: {
+      mode: 'nearest',
+      intersect: true
+    },
+    scales: {
+      xAxes: [{
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: 'Month'
+        }
+      }],
+      yAxes: [{
+        display: true,
+        scaleLabel: {
+          display: true,
+        },
+      }]
+    },
+  }});
+
+</script>
+<!-- END OF CHART JS SCRIPT -->
+
+{% endblock body %}

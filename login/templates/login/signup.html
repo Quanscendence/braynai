@@ -1,0 +1,1029 @@
+
+{% extends 'login/subpages_base.html' %}
+{% load staticfiles %}
+{% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href="{% static 'dot/75efae7724dbc3c055e918057.css' %}">
+<link rel="stylesheet" href="{% static 'dot/style.css' %}">
+<!-- Loading style style CSS
+============================================ -->
+<link rel="stylesheet" href="{% static 'css/loading_spinner.css' %}">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
+
+<!-- <link rel="stylesheet" href="{% static 'build/css/intlTelInput.css' %}">
+<link rel="stylesheet" href="{% static 'build/css/demo.css' %}"> -->
+<style >
+  #copy_div{
+      padding-top: 2em;
+      padding-bottom: 2em;
+      background: #262626;
+  }
+
+     #footer_info{
+/*margin-left: -15%;*/
+       margin-top: 1.4%;
+}
+#footer_details{
+padding-bottom: 0em !important;
+}
+  #dsass_header{
+position: fixed;
+background-color: white;
+-webkit-transition: all ease-out .5s;
+-moz-transition: all ease-out .5s;
+-o-transition: all ease-out .5s;
+transition: all ease-out .5s;
+  }
+  .header_active
+  {
+      background-color: #4a90e2 !important;
+      height: 85px;
+  }
+  .header_act{
+    /* position: relative;
+    top: 7px; */
+    color:white !important;
+
+  }
+#header_img{
+width: 110px;
+margin-top: -4px;
+display: none;
+}
+.loged{
+ /* position: relative;
+ top: 7px; */
+ color:white !important;
+
+}
+
+  /* #send_msg{
+    display: none;
+  } */
+
+  #enterotp{
+      display : none;
+  }
+  #gen_otp{
+      display : none;
+  }
+  #btn_otp{
+    display : none;
+  }
+  #show{
+      display : none;
+}
+#hide{
+    display : none;
+}
+#map {
+  width: 100% !important;
+  height: 0px !important;
+  position: relative !important;
+}
+input:focus{
+  outline: none;
+}
+
+.btn:focus{
+  outline: 0 !important;
+}
+
+
+@media screen and (min-width: 769px) {
+
+    /* #show_on_mobile { visibility: hidden; }
+    #show_on_desktop { visibility: visible; } */
+
+    .footer_home_link {
+      position: absolute;
+      left: 17%;
+    }
+    .footer_blog_link {
+      position: absolute;
+      left: 45%;
+    }
+
+    .footer_credits_link {
+      position: absolute;
+      margin-left: 61% !important;
+    }
+
+    .footer_login_link {
+      position: absolute;
+      left: 93%;
+    }
+
+    .social_icons {
+      margin-top: 4%
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  .footer_home_link {
+    position: absolute;
+    left: 37%;
+  }
+  .footer_blog_link {
+    position: absolute;
+    left: 54%;
+  }
+
+  .footer_credits_link {
+    position: absolute;
+    margin-left: 0%;
+    right: 21%;
+  }
+
+  .footer_login_link {
+    position: absolute;
+    left: 87%;
+  }
+  .social_icons {
+    text-align: center;
+  }
+
+}
+
+
+#header_img  {
+   width: 110px;
+   margin-top: -4px;
+   margin-left: -32%;
+
+}
+#logo_img {
+  width: 110px;
+  margin-top: -4px;
+  margin-left: -32%;
+}
+
+#send_msg{
+  background-color: #4a90e2;
+  border-radius: 5px;
+  color: white;
+  border: #4a90e2;
+  width: 100%;
+  height:35px
+}
+
+.mg-l {
+  margin-left: 21%
+}
+@media screen and (max-width: 768px) {
+  .error-page-int {
+    margin-top:0%;
+    margin-bottom: 8%;
+  }
+  #send_msg{
+    width:98%;
+  }
+  #header_img  {
+     width: 110px;
+     margin-top: -4px;
+     margin-left: -4%;
+
+  }
+  .mg-l {
+  margin-left: 4%
+}
+   #logo_img {
+     width: 110px;
+     margin-top: -4px;
+     margin-left: -4%;
+
+  }
+
+  .colorlib-nav-toggle.colorlib-nav-white > i::after{
+        background: #000;
+  }
+  .colorlib-nav-toggle.colorlib-nav-white > i {
+    background: #000;
+  }
+  .colorlib-nav-toggle.colorlib-nav-white > i::before, .colorlib-nav-toggle.colorlib-nav-white > i::after {
+    background: #000;
+  }
+
+  #colorlib-offcanvas {
+    background: #fff;
+  }
+  #canvas {
+     margin-left: -2%;
+  }
+  .login_username {
+    border-radius: 8px;
+    margin-left: 0%;
+    width: 95%;
+  }
+
+  .forgot_password_link {
+    margin-left:30%;
+  }
+
+  .login_password{
+    border-radius: 8px;
+    margin-left: 0%;
+    margin-top: -6%;
+    width: 95%;
+  }
+
+
+  .signup_form{
+    margin-top:36%;
+  }
+
+  .stagger-visualizer .dot{
+    background-color: transparent !important;
+    background-image: linear-gradient(180deg, #4a90e2 8%, #4a90e2 100%) !important;
+  }
+
+}
+
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+button:focus{
+  border: none;
+  border-color: transparent;
+  outline: none;
+}
+
+.blue-btn:hover,
+.blue-btn:active,
+.blue-btn:focus,
+.blue-btn {
+  background: transparent;
+  border: solid 1px #27a9e0;
+  border-radius: 3px;
+  color: #27a9e0;
+  font-size: 16px;
+  margin-bottom: 20px;
+  outline: none !important;
+  padding: 10px 20px;
+}
+
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+  height: 43px;
+  margin-top: 0;
+}
+
+.fileUpload input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  width: 100%;
+  height: 42px;
+}
+
+/*Chrome fix*/
+input::-webkit-file-upload-button {
+  cursor: pointer !important;
+  height: 42px;
+  width: 100%;
+}
+
+
+.msg,
+.url_error_message {
+    display: none;
+}
+.error,
+.url_error_message {
+    color: red;
+}
+.success {
+    color: green;
+}
+
+
+</style>
+<div class="loading-overlay">
+  <span class="fas fa-spinner fa-3x fa-spin"></span>
+  <span class="loading-message">Please wait..it's loading</span>
+</div>
+
+<nav class="colorlib-nav" role="navigation" id="dsass_header">
+<div class="top-menu" style="height: 85px;">
+<div class="container">
+                   <div class="row">
+                       <div class="col-md-2" >
+                         <!-- width: 122px;margin-top: -4px;margin-left: -34%; -->
+                           <a href="{% url 'coreapp:home' %}" >
+                           <img src="{% static 'images/logo.png' %}"  id="header_img">
+                           <img src="{% static 'images/header_change.png' %}"   id="logo_img">
+                       </a>
+                       </div>
+                       <div class="col-md-10 text-right menu-1">
+                           <ul>
+                             <li style="height: 32px;"><a href="{% url 'coreapp:home' %}" ><span id="header_id" style="color:#4a90e2;">Home</span></a></li>
+                             <li style="height: 32px;" ><a href="https://medium.com/braynai"   ><span id="" style="color:#4a90e2;">Blog</span></a></li>
+                             <li style="height: 32px;" ><a href="{% url 'login:login' %}"   ><span id="header_log" style="color:#4a90e2;">Login</span></a></li>
+                               <!-- <li ><a href="{% url 'coreapp:home' %}" ><span id="header_id" style="color:#4a90e2;">Home</span></a></li>
+                               <li style="height: 32px;"><a href="{% url 'login:login' %}"   ><span id="header_log" style="color:#4a90e2;">Login</span></a></li> -->
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+</div>
+
+
+</nav>
+
+<div id="colorlib-contact" >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 " >
+        <div class="row">
+          <div class="col-md-12">
+            <div class="contact-info-wrap-flex">
+              <div class="animation-wrapper" >
+                <div class="stagger-visualizer">
+                  <div class="cursor color-red" style="colo"></div>
+                    <div class="dots-wrapper"></div>
+                      </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 signup_form" >
+        <!-- <h2 style="position: absolute;top: -20px;">Register</h2> -->
+        <form method='post' id="signup_form"  enctype="multipart/form-data" style="margin-top: 5%;">
+          {% csrf_token %}
+          <p style="color:red;" id="error_msg">{{msg}}</p>
+          <!-- <div class="row form-group">
+            <div class="col-md-12" >
+            {{customer_form.type}}
+
+            </div>
+
+          </div> -->
+
+          <div class="row form-group">
+
+            <div class="col-md-6">
+              <!-- <label for="lname">Last Name</label> -->
+            {{profile_form.first_name}}
+            </div>
+            <div class="col-md-6">
+
+              {{profile_form.last_name}}
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-6">
+              <!-- <label for="subject">Subject</label> -->
+              <p id="email_msg" style="color:red;display:none;">Entered Email id is Associated with other Account</p>
+              
+             
+              {{profile_form.email}}
+                <span class="msg error">Not a valid email address</span>
+               <span class="msg success">A valid email address!</span>
+            </div>
+            <div class="col-md-6">
+              <!-- <label for="message">Message</label> -->
+              {{profile_form.password}}
+            </div>
+          </div>
+
+          <!-- <div class="row form-group">
+
+          </div> -->
+          <div class="row form-group">
+            <div class="col-md-6">
+              <!-- <label for="message">Message</label> -->
+              <p id="gender_msg" style="color:red;"></p>
+              {{customer_form.gender}}
+
+            </div>
+            <div class="col-md-6" >
+
+              {{customer_form.dob}}
+
+            </div>
+          </div>
+          <!-- <div class="row form-group">
+            <div class="col-md-6">
+              <!-- <label for="message">Message</label> >
+              <p id="gender_msg" style="color:red;"></p>
+
+
+            </div>
+            <div class="col-md-6">
+
+
+
+            </div>
+          </div> -->
+          <!-- <div class="row form-group">
+
+          </div> -->
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <!-- <input id="phone" name="phone"  type="tel" required> -->
+              {{profile_form.contact_no}}
+              <!-- <input type="button" value="VERIFY" class="btn btn-primary" id="Verify_btn" style="margin-top: -57px;margin-left: 60%;"> -->
+              <!-- <button type="button" name="button" class="btn btn-primary" id="Verify_btn">Verify</button> -->
+            </div>
+          </div>
+          <label id="enterotp" >Enter OTP </label>
+          <input type="text" id="gen_otp" name="" value="">
+                  <input type="button" id="btn_otp" name="" class="btn btn-primary" value="VERIFY OTP" style="margin-top: 1%;">
+                  <p id="error_msg" style="color:red;"></p>
+
+
+  <div class="" id="show">
+    <div class="row form-group">
+      <div class="col-md-12" id="locationField" onFocus="geolocate()">
+      {{customer_form.address_1}}
+      </div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-md-12">
+  {{customer_form.zipcode}}
+  </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-md-12">
+      {{customer_form.vat_gst_no}}
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-md-12" >
+      <!-- <div class="fileUpload blue-btn btn width100">
+          <span>Upload company profile picture</span> -->
+          <!-- {{customer_form.image}} -->
+      <!-- </div> -->
+
+    </div>
+  </div>
+</div>
+
+
+<div class=""  >
+  <div class="row">
+    <div class="col-md-12">
+    {{customer_form.company_name}}
+      </div>
+
+<div class="row">
+  <div class="col-md-12" style="margin: 3% 0% 0% 3%;">
+    <!-- <div class="fileUpload blue-btn btn width100">
+        <span>Upload your Profile picture</span>
+        {{customer_form.image}}
+    </div> -->
+  </div>
+</div>
+
+
+
+  </div>
+    <div class="row form-group">
+      <div class="col-md-12" id="locationField" onFocus="geolocate()">
+    {{customer_form.company_address_1}}
+      </div>
+
+
+
+
+      </div>
+
+    <div class="row form-group">
+      <div class="col-md-12">
+    {{customer_form.zipcode}}
+      </div>
+      </div>
+    <div class="row form-group">
+      <div class="col-md-12">
+    {{customer_form.employee_strength}}
+      </div>
+      </div>
+    <div class="row form-group">
+      <div class="col-md-12">
+      {{customer_form.url}}
+       <span class="url_error_message">Please enter a Valid URL</span>
+      </div>
+      </div>
+
+      <div class="row form-group">
+       <div class="col-md-12">
+         <!-- <div class="fileUpload blue-btn btn width100">
+             <span>Upload your Organization logo</span>
+             {{customer_form.image}}
+         </div> -->
+
+       </div>
+       </div>
+
+    </div>
+    <div class="form-group mg-l">
+      <span class="msg-error error"></span>
+      <div id="recaptcha" class="g-recaptcha" data-sitekey="6LfLNbgUAAAAAHpfqto3ov8_L-1-ECuZ8Fu2wLzM"
+        data-callback="recaptchaCallback"></div>
+    </div>
+<div class="form-group" style="text-align:center">
+  <label style="font-size: 13px;margin-bottom: 1%;">All the fields are mandatory</label>
+  <input type="submit" value="Signup for free"  onclick="submitForm()" id="send_msg">
+</div>
+
+          <div class="container">
+                                          {% if profile_form.errors %}
+                                          {% for field in profile_form  %}
+
+                                          {% for error in field.errors %}
+                                          <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                          </div>
+                                          {% endfor %}
+                                          {% endfor %}
+                                          {% for error in profile_form.non_field_errors  %}
+                                          <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                          </div>
+                                          {% endfor %}
+                                          {% endif %}
+
+                                          {% if customer_form.errors %}
+                                          {% for field in customer_form  %}
+
+                                          {% for error in field.errors %}
+                                          <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                          </div>
+                                          {% endfor %}
+                                          {% endfor %}
+                                          {% for error in customer_form.non_field_errors  %}
+                                          <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                          </div>
+                                          {% endfor %}
+                                          {% endif %}
+                                      </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="map" class="colorlib-map" ></div>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+    <!-- <script src="{% static 'build/js/intlTelInput.js' %}"></script>
+    <script>
+      var input = document.querySelector("#phone");
+      window.intlTelInput(input, {
+        // allowDropdown: false,
+        // autoHideDialCode: false,
+        // autoPlaceholder: "off",
+        // dropdownContainer: document.body,
+        // excludeCountries: ["us"],
+        // formatOnDisplay: false,
+        // geoIpLookup: function(callback) {
+        //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+        //     var countryCode = (resp && resp.country) ? resp.country : "";
+        //     callback(countryCode);
+        //   });
+        // },
+        // hiddenInput: "full_number",
+        // initialCountry: "auto",
+        // localizedCountries: { 'de': 'Deutschland' },
+        // nationalMode: false,
+        // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+        // placeholderNumberType: "MOBILE",
+        // preferredCountries: ['cn', 'jp'],
+        // separateDialCode: true,
+        utilsScript: "/static/build/js/utils.js",
+      });
+    </script> -->
+  {% block script %}
+  <script
+    src="https://code.jquery.com/jquery-1.12.4.js"
+    integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+    crossorigin="anonymous"></script>
+
+
+
+    <script>
+
+
+        $(document).ready(function($) {
+
+          // Upload btn on change call function
+          $(".uploadlogo").change(function() {
+            var filename = readURL(this);
+            $(this).parent().children('span').html(filename);
+          });
+
+          // Read File and return value
+          function readURL(input) {
+            var url = input.value;
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (input.files && input.files[0] && (
+              ext == "png" || ext == "jpeg" || ext == "jpg" || ext == "gif" || ext == "pdf"
+              )) {
+              var path = $(input).val();
+              var filename = path.replace(/^.*\\/, "");
+              // $('.fileUpload span').html('Uploaded Proof : ' + filename);
+              return "Uploaded file : "+filename;
+            } else {
+              $(input).val("");
+              return "Only image/pdf formats are allowed!";
+            }
+          }
+          // Upload btn end
+
+        });
+
+
+      $('#id_type').change(function() {
+        var val = $('#id_type').val()
+        if (val == 'Individual'){
+          // alert(val)
+          $('#show').show()
+          $('#hide').hide()
+
+        }
+        else if (val == 'Company'){
+            $('#show').hide()
+          $('#hide').show()
+        }
+
+
+      });
+
+
+
+
+
+      // $('#btn_otp').unbind("click").click(function () {
+      //   var test =  document.getElementById("id_type").selectedIndex;
+
+      //   var message = document.getElementById("gen_otp");
+      //    var getOtp = sessionStorage.getItem('OTP');
+      //    var input_otp = message.value;
+      //     if (getOtp == input_otp){
+
+      //                 var dropdown1 = document.getElementById('id_type');
+      //                 var textbox = document.getElementById('textbox');
+      //               var a = dropdown1.selectedIndex;
+      //                 if(a == 0){
+      //                   document.getElementById('hide').style.display = "none";
+      //                   document.getElementById('show').style.display = "block";
+      //                 } else if(a == 1) {
+      //               document.getElementById('show').style.display = "none";
+      //               document.getElementById('hide').style.display = "block";
+      //             }
+
+      //       document.getElementById('gen_otp').style.display = "none";
+      //       document.getElementById('enterotp').style.display = "none";
+      //       document.getElementById('btn_otp').style.display = "none";
+      //      document.getElementById('send_msg').style.display = "block";
+      //       }
+      //       else {
+      //       $("#error_msg").html("Please Enter Valid OTP")
+      //       // document.getElementById('show').style.display = "none";
+      //       }
+
+
+      //   })
+
+
+      setTimeout(function(){  document.getElementById('error_msg').style.display="none"; }, 3000);
+              // alert(data.error_msg);
+
+    </script>
+
+  <script>
+
+  //  $("#Verify_btn").unbind("click").click(function(){
+  //    event.stopImmediatePropagation();
+  //    var contact_no = $('#id_contact_no').val();
+  //    var alternate_no = $('#id_alternate_no').val();
+  //    //alert("hi");
+
+  //    var random_number = Math.floor(10000 + Math.random() * 9000);
+  //    var setOtp = sessionStorage.setItem('OTP', random_number);
+  //  $.ajax({
+  //   url: "/customer/create_user/",
+  //   method: "POST",
+  //   headers: {'X-CSRFToken': '{{ csrf_token }}'},
+  //   data : {"contact_no":contact_no,'random_number':random_number},
+  //   success: function (data) {
+  //     if (data.msg =='Success'){
+  //       console.log("success");
+  //       document.getElementById('btn_otp').style.display = "block";
+  //       document.getElementById('gen_otp').style.display = "block";
+  //       document.getElementById('Verify_btn').style.display = "None";
+  //       document.getElementById('enterotp').style.display = "block";
+  //     }
+  //     else if (data.msg=='error') {
+  //         $("#error_msg").html("Contact Number is associated with other account");
+  //         document.getElementById('btn_otp').style.display = "None";
+  //         document.getElementById('gen_otp').style.display = "None";
+
+  // }
+  // }
+  // })
+  // });
+
+$("#id_url").focusout(function() {
+    var myVariable = $('#id_url').val();
+    if(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/|www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(myVariable)){
+        // $(this).addClass("validated_ok").removeClass("validated_error");
+        $('.url_error_message').hide();
+        console.log("Hello");
+    } else {
+        // $(this).removeClass("validated_ok").addClass("validated_error");
+        $('.url_error_message').show();
+    }
+
+    });
+  </script>
+  <!-- <script>
+
+    $(document).ready(function() {
+                // messages timeout for 10 sec
+                setTimeout(function() {
+                        $('.gr').fadeOut('slow');
+                }, 500); // <-- time in milliseconds, 1000 =  1 sec
+                // delete message
+                $('#error_msg').live('click',function(){
+                        $('#error_msg').parent().attr('style', 'display:none;');
+
+                });.
+        });
+
+  </script> -->
+  <script>
+  $(document).ready(function(){
+   $("#id_email").change(function(){
+    // alert("called")
+     var email_id = $('#id_email').val();
+      var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/igm;
+      if (re.test(email_id)) {
+           $('.msg').hide();
+           $('.success').show();
+      } else {
+           $('.msg').hide();
+          $('.error').show();
+      }
+     
+     console.log("email",email_id)
+   $.ajax({
+      url: "/customer/verify_email/",
+      // contentType: 'application/json',
+      method: "POST",
+      crossdomain: true,
+      headers: {'X-CSRFToken': '{{ csrf_token }}'},
+      data : {"email_id":email_id},
+      dataType:"json",
+      success: function (data) {
+        if (data.msg =='Success'){
+          console.log("success");
+
+        }
+        else if (data.msg=='error') {
+            $("#email_msg").show();
+
+            setTimeout(function(){   $("#email_msg").hide(); $('.error').hide()}, 5000);
+
+    }
+      }
+      })
+    });
+    });
+  </script>
+
+  <script>
+    $('select').on(
+          { "focus": function() {
+              //console.log('clicked!', this, this.value);
+              this.selectedIndex = -1;
+            }
+          , "change": function() {
+              choice = $(this).val();
+                    if(choice === 'Gender'){
+              //console.log('changed!', this, choice);
+              this.blur();
+              $("#gender_msg").html("Please select a gender.");
+                    }
+            }
+          });
+
+  </script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAahtRvRcHbVIjU8ZS99fqgRbx9N1p5LmU&libraries=places" async defer></script>
+  <!-- <script src="javascripts/scripts.js"></scripts> -->
+  <!-- this script is for autocomplete of address -->
+    <script>
+var autocomplete;
+function initialize() {
+ autocomplete = new google.maps.places.Autocomplete(
+   /** @type {HTMLInputElement} */
+   (document.getElementById('id_address_1')),
+   { types: ['geocode'] }
+ );
+ google.maps.event.addListener(autocomplete, 'place_changed', function() {});
+ autoComplete = new google.maps.places.Autocomplete(
+   /** @type {HTMLInputElement} */
+   (document.getElementById('id_company_address_1')),
+   { types: ['geocode'] }
+ );
+ google.maps.event.addListener(autoComplete, 'place_changed', function() {});
+}
+</script>
+
+
+  <!-- end of script is for autocomplete of company address -->
+  <script>
+    $(document).ready(function() {
+        $('#id_dob').datepicker({
+
+      changeMonth: true,
+      changeYear: true,
+      defaultDate:"02/26/1990",
+      yearRange: "1950:2020"
+    });
+    });
+</script>
+<!-- this is script is for animated brain -->
+<script src="{%static 'dot/75efae7724dbc3c055e918057.js' %}"></script>
+<script  src="{%static 'dot/script.js' %}"></script>
+<!-- end is script is for animated brain -->
+<script>
+
+
+var scrollpos = window.scrollY;
+var header = document.getElementById("dsass_header");
+var head = document.getElementById("header_id");
+var logg = document.getElementById("header_log");
+
+function add_class_on_scroll() {
+  header.classList.add("header_active");
+         head.classList.add("header_act");
+           logg.classList.add("loged");
+           document.getElementById("logo_img").style.display = "none";
+           document.getElementById("header_img").style.display = "block";
+
+}
+
+function remove_class_on_scroll() {
+  header.classList.remove("header_active");
+       head.classList.remove("header_act");
+       logg.classList.remove("loged");
+       document.getElementById("logo_img").style.display = "block";
+       document.getElementById("header_img").style.display = "none";
+
+}
+
+window.addEventListener('scroll', function(){
+
+  scrollpos = window.scrollY;
+
+  if(scrollpos > 10){
+      add_class_on_scroll();
+  }
+  else {
+      remove_class_on_scroll();
+  }
+  console.log(scrollpos);
+});
+</script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+  //   $( '#btn-validate' ).click(function(){
+  //
+  // })
+
+  function submitForm() {
+
+    var $captcha = $('#recaptcha'),
+      response = grecaptcha.getResponse();
+
+    if (response.length === 0) {
+      $('.msg-error').text("reCAPTCHA is mandatory");
+      if (!$captcha.hasClass("error")) {
+        $captcha.addClass("error");
+      }
+    } else {
+      $('.msg-error').text('');
+      $captcha.removeClass("error");
+      document.querySelector('.loading-overlay').style.display = "block";
+      $('#signup_form').submit();
+    }
+  }
+</script>
+  {% endblock script %}
+
+
+{% endblock body %}
+{% block footer %}
+<footer id="colorlib-footer" style="padding-top: 0 !important">
+<div class="container" style=" height: 15vh;">
+<div class="row row-pb-md" id="footer_details"  >
+<div class="col-md-1 colorlib-widget">
+
+</div>
+<div class="col-md-2 colorlib-widget">
+
+</div>
+<div class="col-md-8 colorlib-widget" id="footer_info">
+
+  <p>
+  <div class="row footer-text">
+    <div class="col-md-12">
+      <a href="{% url 'coreapp:home' %}"><span style="color:#A9A9A9">Home</span></a>
+      <a href="https://medium.com/braynai"><span style="color:#A9A9A9">Blog</span></a>
+      <a href="{% url 'login:login' %}"><span style="color:#A9A9A9">Login</span></a>
+      <a href="#"><span style="color:#A9A9A9">Credits</span></a>
+      <a href="{% url 'coreapp:privacy-policy' %}"><span style="color:#A9A9A9">Privacy Policy</span></a>
+      <a href="{% url 'coreapp:terms-conditions' %}"><span style="color:#A9A9A9">Terms & Conditions</span></a>
+    </div>
+  </div>
+
+  <ul class="colorlib-social-icons social_icons" >
+      <li><a href="https://twitter.com/brayntranscend">  <i class="fab fa-twitter-square" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+      <li><a href="https://www.facebook.com/transcendbrayn/"><i class="fab fa-facebook-square" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+      <li><a href="https://linkedin.com/company/transcendbrayn"><i class="fab fa-linkedin" aria-hidden="true"  style="color:#4a90e2"></i></a></li>
+  <!-- <li><a href="#"><i class="icon-dribbble" style="color:#4a90e2"></i></a></li> -->
+  </ul>
+
+</p>
+</div>
+
+<!--<div class="col-md-3 colorlib-widget">-->
+<!--    <h4>Recent Blog</h4>-->
+<!--    <div class="f-blog">-->
+<!--    <a href="{% url 'coreapp:blogs' %}" class="blog-img" style="background-image: url('/static/images/blog-1.jpg');">-->
+<!--    </a>-->
+<!--    <div class="desc">-->
+<!--    <h2><a href="{% url 'coreapp:blogs' %}">Photoshoot Technique</a></h2>-->
+<!--    <p class="admin"><span>30 March 2018</span></p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--    <div class="f-blog">-->
+<!--    <a href="{% url 'coreapp:blogs' %}" class="blog-img" style="background-image: url('/static/images/blog-2.jpg');">-->
+<!--    </a>-->
+<!--    <div class="desc">-->
+<!--    <h2><a href="{% url 'coreapp:blogs' %}">Camera Lens Shoot</a></h2>-->
+<!--    <p class="admin"><span>30 March 2018</span></p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--    <div class="f-blog">-->
+<!--    <a href="{% url 'coreapp:blogs' %}" class="blog-img" style="background-image: url('/static/images/blog-3.jpg');">-->
+<!--    </a>-->
+<!--    <div class="desc">-->
+<!--    <h2><a href="{% url 'coreapp:blogs' %}">Imahe the biggest photography studio</a></h2>-->
+<!--    <p class="admin"><span>30 March 2018</span></p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="col-md-3 colorlib-widget">
+<!-- <h4>Contact Info</h4> -->
+<!--<ul class="colorlib-footer-links">-->
+<!--    <li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>-->
+<!--    <li><a href="tel://1234567920"><i class="icon-phone"></i> + 1235 2355 98</a></li>-->
+<!--    <li><a href="mailto:info@yoursite.com"><i class="icon-envelope"></i> info@yoursite.com</a></li>-->
+<!--    <li><a href="#"><i class="icon-location4"></i> yourwebsite.com</a></li>-->
+<!--</ul>-->
+</div>
+</div>
+</div>
+<div class="copy" id="copy_div">
+<div class="container">
+<div class="row">
+<div class="col-md-12 text-center">
+<p style="color:#A9A9A9">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |  <a href="#" ><span style="color:#A9A9A9">Quanscendence Technologies Pvt Ltd</span></a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+
+<div class="gototop js-top">
+<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+</div>
+{% endblock footer %}

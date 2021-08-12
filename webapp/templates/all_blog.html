@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {%for b in blogs%}
+    <div>
+      <h3>{{b.main_title}}</h3>
+      <a href="{% url 'webapp:single_blog' b.slug %}">
+      <img src="{{b.image.url}}" alt="Blog image"></a>
+      <p>{{b.single_line_body}}</p>
+      </div>
+      {%endfor%}
+  </body>
+</html>

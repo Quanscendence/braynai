@@ -1,0 +1,679 @@
+{% extends 'dashboard/index.html' %}
+{%block project%}
+{%endblock project%}
+{% load staticfiles %}
+{% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!-- <link rel="stylesheet" href="{% static 'build/css/intlTelInput.css' %}">
+<link rel="stylesheet" href="{% static 'build/css/demo.css' %}"> -->
+<script>
+  $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
+<style>
+  html {
+    background: #fff;
+  }
+
+  body {
+    overflow-y: scroll;
+  }
+
+  #profile_logo {
+    width: 140px;
+    height: 60px;
+  }
+
+  #verify {
+    background: #4a90e2;
+    border-radius: 3px;
+    border: 1px solid #4a90e2;
+  }
+
+  #no {
+    display: none;
+  }
+
+  #enterotp {
+    display: none;
+  }
+
+  #gen_otp {
+    display: none;
+  }
+
+  #btn_otp {
+    display: none;
+    background: #4a90e2;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+  }
+
+  #verify {
+    display: none;
+  }
+
+  #hide {
+    display: none;
+  }
+
+  /* #contact_no{
+  height: 30px;
+    background: #4a90e2;
+    color: white;
+    border: 1px solid #4a90e2;
+    border-radius: 3px;
+    width: 275px;
+} */
+  #submit {
+    /* float: right; */
+    margin-left: 13%;
+    margin-right: 16%;
+    width: 130px;
+    background: #4a90e2;
+    border: 1px solid #4a90e2;
+    margin-top: 4%;
+    height: 33px;
+    border-radius: 3px;
+  }
+
+  #fa {
+
+    font-size: 24px;
+  }
+
+  #change-contact-no {
+    display: none;
+  }
+
+  .hidden_input_file {
+    position: absolute;
+    right: 0%;
+    bottom: 7%;
+    width: 22%;
+    height: 108px;
+    left: 0%;
+    opacity: 0;
+    z-index: 22;
+  }
+
+  .update_profile_pencil {
+    position: absolute;
+    bottom: 3%;
+    right: -3%;
+  }
+
+  .image_section {
+    width: 89%;
+    height: 90%;
+  }
+
+  #profile_image {
+    width: 215px;
+    height: 215px;
+  }
+
+  label {
+    width: 30%;
+    text-transform: uppercase;
+  }
+
+  .update_contact_pencil {
+    font-size: 19px;
+    margin: 0;
+    margin-left: 3%;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .logo_file {
+    bottom: 24%;
+  }
+
+  /*Profile card styling*/
+  .tabbable-panel {
+    border: 1px solid #eee;
+    padding: 10px;
+  }
+
+  .tabbable-line>.nav-tabs {
+    border: none;
+    margin: 0px;
+  }
+
+  .tabbable-line>.nav-tabs>li {
+    margin-right: 2px;
+  }
+
+  .tabbable-line>.nav-tabs>li>a {
+    border: 0;
+    margin-right: 0;
+    color: #737373;
+  }
+
+  .tabbable-line>.nav-tabs>li>a>i {
+    color: #a6a6a6;
+  }
+
+  .tabbable-line>.nav-tabs>li.open,
+  .tabbable-line>.nav-tabs>li:hover {
+    border-bottom: 4px solid rgb(80, 144, 247);
+  }
+
+  .tabbable-line>.nav-tabs>li.open>a,
+  .tabbable-line>.nav-tabs>li:hover>a {
+    border: 0;
+    background: none !important;
+    color: #333333;
+  }
+
+  .tabbable-line>.nav-tabs>li.open>a>i,
+  .tabbable-line>.nav-tabs>li:hover>a>i {
+    color: #a6a6a6;
+  }
+
+  .tabbable-line>.nav-tabs>li.open .dropdown-menu,
+  .tabbable-line>.nav-tabs>li:hover .dropdown-menu {
+    margin-top: 0px;
+  }
+
+  .tabbable-line>.nav-tabs>li.active {
+    border-bottom: 4px solid #32465B;
+    position: relative;
+  }
+
+  .tabbable-line>.nav-tabs>li.active>a {
+    border: 0;
+    color: #333333;
+  }
+
+  .tabbable-line>.nav-tabs>li.active>a>i {
+    color: #404040;
+  }
+
+  .tabbable-line>.tab-content {
+    margin-top: -3px;
+    background-color: #fff;
+    border: 0;
+    border-top: 1px solid #eee;
+    padding: 15px 0;
+  }
+
+  .portlet .tabbable-line>.tab-content {
+    padding-bottom: 0;
+  }
+
+  .profile-picture {
+    border: 1px solid #CCC;
+    background-color: #FFF;
+    padding: 4px;
+    display: inline-block;
+    max-width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .15);
+  }
+
+
+  .upload_image_button {
+    background: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 3% 24.6%;
+
+  }
+
+  /*End of profile card styling*/
+</style>
+
+<!-- START: PROFILE SECTION TAB -->
+<form class="dropzone dropzone-custom needsclick add-professors" id="demo1-upload" method="post"
+  enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container" style="margin-top:5%;">
+    <div class="row">
+      <div class="col-md-3">
+
+      </div>
+      <div class="col-md-9">
+        <!-- <h3>Reports</h3> -->
+        <div class="form-group">
+          {%if customer.type == "Individual" %}
+          <label for="account type" style="    width: 100%;">Account Type</label>
+          {{form.type}}
+          {%else%}
+          <label for="account type" style="    width: 100%;">Account Type</label>
+          <select name="type" id="" class="form-control" onchange="project_type()">
+            <option value="Company">Company</option>
+            </select>
+
+      {%endif%}
+        </div>
+        <div class="tabbable-panel">
+          <div class="tabbable-line">
+            <ul class="nav nav-tabs ">
+              <li class="active" id="individual_list">
+                <a href="#tab_default_1" data-toggle="tab">
+                  Individual </a>
+              </li>
+              <li id="company_list" id="company">
+                <a href="#tab_default_2" data-toggle="tab">
+                  Company</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <!--START: ADD INDIVIDUAL FIELDS -->
+              <div class="tab-pane active" id="tab_default_1">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="">
+                      <div class="profile-picture">
+                        {% if customer.image %}<img src="{{ customer.image.url }}" alt="" id="profile_image">
+                        {%else%}
+                        <img src="https://therealmstorage.sgp1.digitaloceanspaces.com/brayn/images/user.png" alt=""
+                          id="profile_image">{%endif%}
+                      </div><br>
+                      <button type="button" name="button" class="upload_image_button">UPLOAD IMAGE</button>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="first_name" style="    width: 100%;">First Name</label>
+                            {{form.first_name}}
+                          </div>
+
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="first_name" style="    width: 100%;">Last Name</label>
+                            {{form.last_name}}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group" style="position:relative;">
+                            <label for="first_name" style="width:100%;">Contact No</label>
+                            {{form.contact_no}}
+                                          <!-- <input id="phone" name="phone" type="tel" style="    width: 100%;" required> -->
+
+                          </div>
+
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="email" style="    width: 100%;">Email</label>
+                            {{form.email}}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="address">Address</label>
+                            {{form.address_1}}
+                          </div>
+
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="zipcode">Zipcode</label>
+                            {{form.zipcode}}
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <!-- Contact Section Display -->
+
+                    <div>
+                      <label id="enterotp">Enter OTP </label>
+                      <div class="" style="display:flex;">
+                        <input type="number" class="form-control" id="gen_otp" name="" value="" placeholder="OTP"
+                          style="width: 47%;">
+                        <input type="button" id="btn_otp" name="" class="" onclick="verify_otp()" value="VERIFY OTP"
+                          style="margin-left: 6%;height: 38px;">
+                      </div>
+                      <p id="error_msg" style="color:red;"></p>
+                      <input type="button" name="" class="btn btn-primary waves-effect waves-light" id="verify"
+                        onclick="verify_no()" value="VERIFY NO.">
+                    </div>
+
+                    <!-- End of contactsection display -->
+                  </div>
+                </div>
+                {{form.image}}
+
+              </div>
+
+
+
+
+
+              {% if form.errors %}
+              {% for field in form  %}
+
+              {% for error in field.errors %}
+              <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+              </div>
+              {% endfor %}
+              {% endfor %}
+              {% for error in form.non_field_errors  %}
+              <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+              </div>
+              {% endfor %}
+              {% endif %}
+
+              <!--END: ADD INDIVIDUAL FIELDS -->
+
+
+
+              <!-- START: ADD COMPANY DEATILS -->
+              <div class="tab-pane" id="tab_default_2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="">
+                      <div class="" style="display:flex;">
+                        <div class="profile-picture">
+                          {%if customer.logo %}
+                          <img id="profile_logo" src="{{customer.logo.url}}" alt="">
+                          {%else%}
+                          <img id="profile_logo"
+                            src="https://therealmstorage.sgp1.digitaloceanspaces.com/brayn/images/placeholder.png"
+                            alt="">
+                          {%endif%}
+                        </div>
+                        <div class="">
+                          <i class="fa fa-info-circle" style="color: #4a90e2;margin-left: 29%;" data-toggle="tooltip"
+                            title="Upload 140 X 60 PNG format only. This will be used on company reports"
+                            aria-hidden="true" id="fa"></i>
+                        </div>
+                      </div>
+                      <button type="button" name="button" class="upload_image_button" style="padding: 3% 10.1%;">UPLOAD
+                        IMAGE</button>
+                    </div>
+                  </div>
+
+                  <!-- START: COMPANY FRONTEND -->
+                  <div class="col-md-6" id="company-frontend">
+                    <div class="">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="first_name" style="width:100%;">Company Address</label>
+                            {{form.company_address_1}}
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="first_name" style="width:100%;">Company Name</label>
+                            {{form.company_name}}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="first_name" style="width:100%;">Emploee Strength</label>
+                            {{form.employee_strength}}
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="first_name" style="width:100%;">Company Website</label>
+                            {{form.url}}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="first_name" style="width:100%;">VAT/GSTIN NO</label>
+                            {{form.vat_gst_no}}
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <!-- <label for="first_name" style="width:100%;">Company Website</label> -->
+                            <!-- {{form.url}} -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- END: COMAPNY FRONTEND -->
+
+                </div>
+
+                {{form.logo}}
+              </div>
+              <!-- END: ADD COMPANY DETAILS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-5">
+
+  </div>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-primary waves-effect waves-light" id="submit">SUBMIT</button>
+  </div>
+
+</form>
+<!-- END: PROFILE SECTION TAB -->
+
+
+<script src="{% static 'build/js/intlTelInput.js' %}"></script>
+<script>
+  var input = document.querySelector("#phone");
+  window.intlTelInput(input, {
+    // allowDropdown: false,
+    // autoHideDialCode: false,
+    // autoPlaceholder: "off",
+    // dropdownContainer: document.body,
+    // excludeCountries: ["us"],
+    // formatOnDisplay: false,
+    // geoIpLookup: function(callback) {
+    //   $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+    //     var countryCode = (resp && resp.country) ? resp.country : "";
+    //     callback(countryCode);
+    //   });
+    // },
+    // hiddenInput: "full_number",
+    // initialCountry: "auto",
+    // localizedCountries: { 'de': 'Deutschland' },
+    // nationalMode: false,
+    // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+    // placeholderNumberType: "MOBILE",
+    // preferredCountries: ['cn', 'jp'],
+    // separateDialCode: true,
+    utilsScript: "/static/build/js/utils.js",
+  });
+</script>
+<script>
+  function change_no() {
+
+    $('#id_contact_no').attr('readonly', false);
+    document.getElementById('contact_no').style.display = "None";
+    document.getElementById('verify').style.display = "block";
+    document.getElementById('submit').style.display = "None";
+
+  }
+</script>
+
+<script>
+  var dropdown1 = document.getElementById('id_type').value;
+  if (dropdown1 == 'Individual') {
+    $('#company_list').hide();
+    $('#tab_default_2').hide();
+  }
+  else if (dropdown1 == 'Company') {
+    $('#individual_list').show();
+    $('#company_list').show();
+
+  }
+
+  function project_type() {
+    var dropdown1 = document.getElementById('id_type').value;
+
+    if (dropdown1 == 'Individual') {
+      // alert("sbb")
+      $('#company_list').hide();
+      // $('#tab_default_2').hide();
+
+    } else if (dropdown1 == 'Company') {
+      $('#company_list').show();
+      // $('#tab_default_2').addClass('active');
+    }
+  }
+
+</script>
+<script>
+
+  function verify_no() {
+
+    var contact_no = $('#id_contact_no').val();
+    document.getElementById('verify').style.display = "None";
+    var random_number = Math.floor(10000 + Math.random() * 9000);
+    var setOtp = sessionStorage.setItem('OTP', random_number);
+    console.log(random_number);
+
+    $.ajax({
+      url: "/customer/verify-contact-no/",
+      method: "POST",
+      headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+      data: { "contact_no": contact_no, 'random_number': random_number },
+      crossdomain: true,
+      dataType:"json",
+      success: function (data) {
+        if (data.msg == 'Success') {
+          console.log("success");
+          document.getElementById('btn_otp').style.display = "block";
+          document.getElementById('gen_otp').style.display = "block";
+          document.getElementById('Verify_btn').style.display = "None";
+          document.getElementById('enterotp').style.display = "block";
+
+        }
+        else if (data.error_msg == 'error') {
+          $('#id_contact_no').attr('readonly', true);
+          $("#error_msg").html("Contact Number is already verified");
+          document.getElementById('btn_otp').style.display = "None";
+          document.getElementById('gen_otp').style.display = "None";
+          document.getElementById('submit').style.display = "block";
+
+        }
+        else if (data.error_msg) {
+          $("#error_msg").html(data.error_msg);
+          // document.getElementById('btn_otp').style.display = "None";
+          document.getElementById('verify').style.display = "block";
+          // document.getElementById('submit').style.display = "block";
+
+        }
+      }
+    })
+  }
+</script>
+
+
+<script>
+  function verify_otp() {
+
+
+    var message = document.getElementById("gen_otp");
+    var getOtp = sessionStorage.getItem('OTP');
+    var input_otp = message.value;
+    if (getOtp == input_otp) {
+      document.getElementById('gen_otp').style.display = "none";
+      document.getElementById('enterotp').style.display = "none";
+      document.getElementById('btn_otp').style.display = "none";
+      document.getElementById('submit').style.display = "block";
+    }
+    else {
+      $("#error_msg").html("Please Enter Valid OTP")
+
+    }
+  }
+
+  //script  for update profile image
+
+
+  function readProfile(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#profile_image')
+          .attr('src', e.target.result)
+
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  //End of script for update profile image
+  //script  for update logo image
+
+
+  function readlogo(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#profile_logo')
+          .attr('src', e.target.result)
+        $('#profile_logo_frontend')
+          .attr('src', e.target.result)
+
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+    //End of script for update logo image
+
+function callLogout() {
+  $('#logout_link').addClass('open')
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock body %}

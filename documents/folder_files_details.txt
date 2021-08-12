@@ -1,0 +1,40 @@
+'''
+Example to fill
+
+Under FOLDER populate folder name and description
+under FILES populate file name and description
+'''
+
+___FOLDER___
+####Example###
+ Core app : This is the core app.../
+####End Example###
+1. Adminapp : This is Adminstrator app to handle and maintain the backend services of the plat form ex:Tickets.
+2. Api app: this is tha app to maintain all the rest apis and their related stuff in the platform.
+3. Core app: am core app if the platform wich include all the main DB tables and to handle all the related requests of the platform.
+4. cronjob: app to handle the cron operations of the platform.
+5. data: folder to store the data files to test the platform.
+6. dataintegration: app to handle the streaming data in the platform ex:google sheets,drop box.
+7. debug yaed:
+8. documentation: folder which stores the deploy, maintain production instructions,notes in the platform.
+9. dsaas: main project folder which has settings and url configuration of the platform.
+10. engine: folder which has core operation codes like optimizer,query,data cleaner.
+11. language: 
+12. logbucket: folder to store the debug files.
+13. login : app to handle user registration,updation and authentication.
+14. media: app to store the media files of the platform .
+15. script: folder which has some code for data creation from commondline.
+16. seoapp: app to maintain the seo stuff in the platform.
+17. static : a folder to handle all the css,js, and other related static files which are needde in the platfrom.
+18. webapp : ap that handles the  the blog related stuff in the platform.
+
+
+
+
+
+
+
+___FILE___
+####Example###
+1. settings.py : This is the full setting.py file.../
+####End Example###

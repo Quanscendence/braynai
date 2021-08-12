@@ -1,0 +1,2092 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>brayn </title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <!-- favicon
+============================================ -->
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'dashboard/img/Brayn_Favicon_75.png' %}">
+  <!-- Google Fonts
+============================================ -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+  <!-- Bootstrap CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/bootstrap.min.css' %}">
+
+  <!-- Bootstrap CSS
+============================================ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <!-- <link rel="stylesheet" href="{% static 'dashboard/css/font-awesome.min.css' %}"> -->
+  <!-- owl.carousel CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/owl.carousel.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/owl.theme.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/owl.transitions.css' %}">
+  <!-- animate CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/animate.css' %}">
+  <!-- normalize CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/normalize.css' %}">
+  <!-- meanmenu icon CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/meanmenu.min.css' %}">
+  <!-- main CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}">
+  <!-- educate icon CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/educate-custon-icon.css' %}">
+  <!-- morrisjs CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/morrisjs/morris.css' %}">
+  <!-- mCustomScrollbar CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/scrollbar/jquery.mCustomScrollbar.min.css' %}">
+  <!-- metisMenu CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/metisMenu/metisMenu.min.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/metisMenu/metisMenu-vertical.css' %}">
+  <!-- calendar CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/calendar/fullcalendar.min.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/calendar/fullcalendar.print.min.css' %}">
+
+  <!-- <link rel='stylesheet' href='http://brienlabs.com/ruby-mega-menu/css/ruby-transitions.css'>
+    <link rel='stylesheet' href='http://brienlabs.com/ruby-mega-menu/css/ruby-main.css'> -->
+  <!-- style CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'dashboard/css/side_navigations.css' %}">
+  <!-- responsive CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/responsive.css' %}">
+  <!-- modernizr JS
+============================================ -->
+  <script src="{% static 'dashboard/js/vendor/modernizr-2.8.3.min.js' %}"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+
+
+
+  <!-- Loading style style CSS
+  ============================================ -->
+  <link rel="stylesheet" href="{% static 'css/loading_spinner.css' %}">
+
+
+
+
+  <style>
+    html {
+      zoom: 1 !important;
+    }
+
+    /* remove plotly icon */
+    .modebar-btn plotlyjsicon modebar-btn--logo {
+      display: none !important;
+    }
+
+    .js-plotly-plot .plotly .modebar-btn--logo {
+      display: none !important;
+    }
+
+    /* end */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* #show_me {
+     display: none;
+          } */
+    /* .default_side{
+                margin-left: -8%;
+          }
+          .no_default{
+                margin-left: 10%;
+          } */
+    .div_aside {
+      margin-left: -8%;
+    }
+
+    .new_class {
+      margin-left: 10%;
+    }
+
+    .header_row {
+      background: #4a90e2;
+      width: 118%;
+      margin-left: -12.2%;
+    }
+
+    .new_header {
+      background: #4a90e2;
+      width: 100%;
+      margin-left: 5.8%;
+    }
+
+    #hide_seek {
+      display: none;
+    }
+
+    /* .sidenav_right{
+      opacity: 1;
+      width: 200px;
+      height: auto;
+
+  }
+  .closebtn_right{
+    position: absolute;
+    margin-top: -16%;
+    margin-right: 78%;
+  } */
+
+
+    .mega_section {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    .blog_section {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    .shop_section {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    .show {
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    .background_color {
+      background: #fff !important;
+      color: #4a90e2 !important
+    }
+
+    .query_button {
+      background-color: #4a90e2;
+      color: white;
+      border: #4a90e2;
+      border-radius: 8px;
+      margin-top: 3px;
+      padding: 4px 6px;
+    }
+
+    .menu_section_style {
+      background: #4a90e2;
+      padding-top: 4px;
+      padding-left: 4px;
+      padding-right: 5px;
+    }
+
+    .cross_arrow {
+      width: 1.5%;
+      float: right;
+      margin-right: 2%;
+      margin-top: 1%;
+    }
+
+    .close {
+      cursor: pointer;
+      position: absolute;
+      font-size: 38px;
+      top: 3%;
+      z-index: 1111111;
+      right: 0%;
+      padding: 16px 16px;
+      transform: translate(0%, -50%);
+    }
+
+    .close_2 {
+      cursor: pointer;
+      position: absolute;
+      font-size: 38px;
+      top: 11%;
+      right: 0%;
+      padding: 16px 16px;
+      transform: translate(0%, -50%);
+    }
+
+    .project_titles {
+
+      line-height: 50px;
+      color: #efefef;
+      font-size: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-left: 17%;
+    }
+
+    .logo_image_style {
+      float: left;
+      position: relative;
+      z-index: 99;
+    }
+
+
+    /*style for modal */
+    .modal,
+    .delete_modal {
+      display: none;
+      position: fixed;
+      padding-top: 50px;
+      left: 0;
+      top: 0%;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      position: relative;
+      background-color: white;
+      padding: 20px;
+      margin: auto;
+      width: 47%;
+      -webkit-animation-name: animatetop;
+      -webkit-animation-duration: 0.4s;
+      animation-name: animatetop;
+      animation-duration: 0.4s;
+    }
+
+    .close-btn {
+      float: right;
+      color: lightgray;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .close-btn:hover {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    @-webkit-keyframes animatetop {
+      from {
+        top: -300px;
+        opacity: 0
+      }
+
+      to {
+        top: 0;
+        opacity: 1
+      }
+    }
+
+    @keyframes animatetop {
+      from {
+        top: -300px;
+        opacity: 0
+      }
+
+      to {
+        top: 0;
+        opacity: 1
+      }
+    }
+
+    /*end of style for modal */
+
+    .select2-container {
+      width: 100% !important;
+    }
+
+    table {
+      border: none !important;
+    }
+
+    .select_width {
+      width: 50%;
+    }
+
+
+    .plot_submit_button {
+      background-color: #4a90e2;
+      color: #fff;
+      border: none;
+      /* font-size: 14px; */
+      text-transform: uppercase;
+      padding: 1% 5%;
+      border-radius: 8px;
+    }
+
+    .disable_class {
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+
+    /* Checkbox styling */
+    /* The container */
+    .checkbox_container {
+      display: block;
+      position: relative;
+      padding-left: 29px;
+      margin-bottom: 12px;
+      /* margin-left: 6%; */
+      cursor: pointer;
+      font-size: 14px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+    .checkbox_container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+      position: absolute;
+      top: 1px;
+      left: 0;
+      height: 19px;
+      width: 20px;
+      background-color: #e6e1e1;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .checkbox_container:hover input~.checkmark {
+      background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .checkbox_container input:checked~.checkmark {
+      background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .checkbox_container input:checked~.checkmark:after {
+      display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .checkbox_container .checkmark:after {
+      left: 8px;
+      top: 4px;
+
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    /*END of Checkbox styling */
+
+
+    .center {
+      top:-8% !important;
+    }
+
+
+
+  </style>
+</head>
+
+<body style="font-family: 'Poppins', sans-serif;">
+
+  <!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="loading-overlay">
+  <span class="fas fa-spinner fa-3x fa-spin"></span>
+  <span class="loading-message">Please wait..it's loading</span>
+</div>
+
+
+  <div class="all-content-wrapper">
+    <div class="header-advance-area">
+
+
+    </div>
+  </div>
+  <!-- START: RUBY DEMO HEADER -->
+  <div class="ruby-menu-demo-header zoom_functionality" style="position:sticky;top:0;">
+    <!-- <div id="loader" class="center"></div> -->
+
+    <div class="row menu_section_style">
+      <div class="col-md-2">
+
+      </div>
+      <div class="col-md-12">
+        <!-- ########################### -->
+        <!-- START: RUBY HORIZONTAL MENU -->
+        <div class="ruby-wrapper">
+          <a href="{% url 'coreapp:dashboard' %}" class="logo_image_style">
+            <img src="{% static 'images/logo.png' %}" alt="" style="max-width: 85%;"></a>
+          <button class="c-hamburger c-hamburger--htx visible-xs">
+            <span>toggle menu</span>
+          </button>
+          <ul class="ruby-menu" style="padding-left: 15%;">
+            <!-- <li><a href="#">Home</a></li>   -->
+            <!-- <li><a href="#">Classic</a>
+          <ul class="hover">
+            <li><a href="#">2nd Level #1</a></li>
+            <li><a href="#">2nd Level #2</a></li>
+            <li><a href="#">2nd Level #3</a>
+              <ul>
+                <li><a href="#"><i class="fa fa-university" aria-hidden="true"></i>3rd Level #1</a>
+                  <ul>
+                    <li><a href="#">4th Level #1</a></li>
+                    <li><a href="#">4th Level #2</a></li>
+                  </ul>
+                <span class="ruby-dropdown-toggle"></span></li>
+                <li><a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>3rd Level #2</a></li>
+                <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i>3rd Level #3</a>
+                  <ul>
+                    <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i>4th Level #1</a></li>
+                    <li><a href="#"><i class="fa fa-print" aria-hidden="true"></i>4th Level #2</a></li>
+                    <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>4th Level #3</a></li>
+                  </ul>
+                <span class="ruby-dropdown-toggle"></span></li>
+              </ul>
+            <span class="ruby-dropdown-toggle"></span></li>
+            <li class="ruby-open-to-left"><a href="#">2nd Level #4</a>
+              <ul>
+                <li><a href="#">3rd Level #1</a></li>
+                <li><a href="#">3rd Level #2</a></li>
+                <li><a href="#">3rd Level #3</a></li>
+              </ul>
+            <span class="ruby-dropdown-toggle"></span></li>
+            <li><a href="#">2nd Level #5</a></li>
+          </ul>
+        <span class="ruby-dropdown-toggle"></span>
+       </li> -->
+            <li class="ruby-menu-mega-blog" onclick="blogDropdown(event)" style="display:none">
+              <a class="up_arrow dashboard_link" href="#">Dashboards</a>
+              <div class="blog_section" id="blog_dropdown" style="height: 269.359px !important; "
+                onclick="event.stopPropagation()">
+              </div>
+              <span class="ruby-dropdown-toggle"></span>
+            </li>
+
+            {% if permission == 'Admin' or permission == 'Delete' or permission == 'Write'%}
+            <!-- <li>
+              <a href="{% url 'coreapp:end-point-dashboard-create' pk=end_point.pk %}">
+                CREATE DASHBOARD
+              </a>
+            </li> -->
+
+            <!-- <li style="cursor:pointer;">
+              <a id="modal-btn">
+                Update Dashboard
+               
+              </a>
+            </li> -->
+            <li>
+              <a href="{% url 'coreapp:project-end-point-edit' pk=end_point.pk %}">
+                UPDATE ENDPOINT
+                <!-- <button type="button"  class="btn btn-outline-primary create_button" ></button> -->
+              </a>
+            </li>
+            <li><a id="hover_poject_style" href="{% url 'coreapp:single-project' pk=end_point.project.pk%}">PRO :
+                {{end_point.query.project}}</a></li>
+            <li class="visual_display_project_id" style="padding-left: 1%;">END POINT : {{end_point}}</li>
+            {%endif%}
+            {% if user_image.image  %}
+            <li class="ruby-menu-right"><img src="{{user_image.image.url}} " alt="user_images" onclick="callLogout()"><a
+                class="up_arrow" href="#">WELCOME {{request.user.first_name}}</a>
+              {% else %}
+            <li class="ruby-menu-right" <img src="https://img.icons8.com/cotton/64/000000/gender-neutral-user--v1.png"
+              onclick="callLogout()"><a class="up_arrow" href="#">WELCOME {{request.user.first_name}}</a>
+              {% endif %}
+
+              <ul id="logout" onclick="event.stopPropagation()">
+                <li><a href="{%url 'coreapp:logout' %}">Logout</a></li>
+              </ul>
+              <!-- <ul>
+            <li><a href="#">2nd Level #1</a></li>
+            <li><a href="#">2nd Level #2</a></li>
+            <li class="ruby-open-to-left"><a href="#">2nd Level #3</a>
+              <ul>
+                <li class="ruby-open-to-left"><a href="#"><i class="fa fa-university" aria-hidden="true"></i>3rd Level #1</a>
+                  <ul>
+                    <li><a href="#">4th Level #1</a></li>
+                    <li><a href="#">4th Level #2</a></li>
+                  </ul>
+                <span class="ruby-dropdown-toggle"></span></li>
+                <li><a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i>3rd Level #2</a></li>
+                <li><a href="#"><i class="fa fa-users" aria-hidden="true"></i>3rd Level #3</a>
+                </li><li><a href="#"><i class="fa fa-file" aria-hidden="true"></i>3rd Level #4</a>
+                  <ul>
+                    <li><a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i>4th Level #1</a></li>
+                    <li><a href="#"><i class="fa fa-print" aria-hidden="true"></i>4th Level #2</a></li>
+                    <li><a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>4th Level #3</a></li>
+                  </ul>
+                <span class="ruby-dropdown-toggle"></span></li>
+              </ul>
+            <span class="ruby-dropdown-toggle"></span></li>
+            <li class="ruby-open-to-left"><a href="#">2nd Level #4</a>
+              <ul>
+                <li><a href="#">3rd Level #1</a></li>
+                <li><a href="#">3rd Level #2</a></li>
+                <li><a href="#">3rd Level #3</a></li>
+              </ul>
+            <span class="ruby-dropdown-toggle"></span></li>
+            <li><a href="#">2nd Level #5</a></li>
+          </ul> -->
+              <span class="ruby-dropdown-toggle"></span></li>
+
+
+
+          </ul>
+        </div>
+        <!-- END:   RUBY HORIZONTAL MENU -->
+        <!-- ########################### -->
+      </div>
+    </div>
+
+  </div>
+  <!-- END: RUBY DEMO HEADER -->
+  {% block body %}
+
+
+  <!-- START: NAVIGATION THROUGH BREADCRUMBS -->
+  <nav class="zoom_functionality" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'coreapp:dashboard' %}">Home</a></li>
+      <li class="breadcrumb-item"><a
+          href="{% url 'coreapp:single-project' pk=end_point.project.pk %}">{{end_point.project}}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{end_point}}</li>
+      <!-- <li class=""> -->
+      <!-- <form method ="post" action="{% url 'coreapp:endpoint-delete' pk=end_point.pk %}" id="delete_endpoint_form">
+          {%csrf_token%}
+          <input type="name" name="" hidden="">
+
+         <button type="button" class="delete_endpoint_button"> <i class="fa fa-trash" aria-hidden="true" style="padding-right:5%;"></i>DELETE ENDPOINT</button>
+      </form> -->
+      <!-- </li> -->
+    </ol>
+  </nav>
+  <!-- END: NAVIGATION THROUGH BREADCRUMBS -->
+
+  <!-- Mobile Menu start -->
+  <div class="mobile-menu-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="mobile-menu">
+            <nav id="dropdown">
+              <ul class="mobile-menu-nav">
+                <li><a data-toggle="collapse" data-target="#Charts" href="{% url 'coreapp:home' %}">Home <span
+                      class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                <li><a data-toggle="collapse" data-target="#Charts" href="{% url 'coreapp:dashboard' %}">Dashboard <span
+                      class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                <li><a data-toggle="collapse" data-target="#Charts" href="{% url 'coreapp:about' %}">About <span
+                      class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                <li><a data-toggle="collapse" data-target="#Charts" href="{% url 'coreapp:services' %}">Services <span
+                      class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                  <!-- <ul class="collapse dropdown-header-top">
+                                    <li><a href="index.html">Dashboard v.1</a></li>
+                                    <li><a href="index-1.html">Dashboard v.2</a></li>
+                                    <li><a href="index-3.html">Dashboard v.3</a></li>
+                                    <li><a href="analytics.html">Analytics</a></li>
+                                    <li><a href="widgets.html">Widgets</a></li>
+                                </ul> -->
+                </li>
+                <!-- <li><a href="events.html">Event</a></li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#demoevent" href="#">Professors <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demoevent" class="collapse dropdown-header-top">
+                                    <li><a href="all-professors.html">All Professors</a>
+                                    </li>
+                                    <li><a href="add-professor.html">Add Professor</a>
+                                    </li>
+                                    <li><a href="edit-professor.html">Edit Professor</a>
+                                    </li>
+                                    <li><a href="professor-profile.html">Professor Profile</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#demopro" href="#">Students <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demopro" class="collapse dropdown-header-top">
+                                    <li><a href="all-students.html">All Students</a>
+                                    </li>
+                                    <li><a href="add-student.html">Add Student</a>
+                                    </li>
+                                    <li><a href="edit-student.html">Edit Student</a>
+                                    </li>
+                                    <li><a href="student-profile.html">Student Profile</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#democrou" href="#">Courses <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="democrou" class="collapse dropdown-header-top">
+                                    <li><a href="all-courses.html">All Courses</a>
+                                    </li>
+                                    <li><a href="add-course.html">Add Course</a>
+                                    </li>
+                                    <li><a href="edit-course.html">Edit Course</a>
+                                    </li>
+                                    <li><a href="course-profile.html">Courses Info</a>
+                                    </li>
+                                    <li><a href="course-payment.html">Courses Payment</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#demolibra" href="#">Library <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demolibra" class="collapse dropdown-header-top">
+                                    <li><a href="library-assets.html">Library Assets</a>
+                                    </li>
+                                    <li><a href="add-library-assets.html">Add Library Asset</a>
+                                    </li>
+                                    <li><a href="edit-library-assets.html">Edit Library Asset</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#demodepart" href="#">Departments <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demodepart" class="collapse dropdown-header-top">
+                                    <li><a href="departments.html">Departments List</a>
+                                    </li>
+                                    <li><a href="add-department.html">Add Departments</a>
+                                    </li>
+                                    <li><a href="edit-department.html">Edit Departments</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="demo" class="collapse dropdown-header-top">
+                                    <li><a href="mailbox.html">Inbox</a>
+                                    </li>
+                                    <li><a href="mailbox-view.html">View Mail</a>
+                                    </li>
+                                    <li><a href="mailbox-compose.html">Compose Mail</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
+                                    <li><a href="google-map.html">Google Map</a>
+                                    </li>
+                                    <li><a href="data-maps.html">Data Maps</a>
+                                    </li>
+                                    <li><a href="pdf-viewer.html">Pdf Viewer</a>
+                                    </li>
+                                    <li><a href="x-editable.html">X-Editable</a>
+                                    </li>
+                                    <li><a href="code-editor.html">Code Editor</a>
+                                    </li>
+                                    <li><a href="tree-view.html">Tree View</a>
+                                    </li>
+                                    <li><a href="preloader.html">Preloader</a>
+                                    </li>
+                                    <li><a href="images-cropper.html">Images Cropper</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Chartsmob" class="collapse dropdown-header-top">
+                                    <li><a href="bar-charts.html">Bar Charts</a>
+                                    </li>
+                                    <li><a href="line-charts.html">Line Charts</a>
+                                    </li>
+                                    <li><a href="area-charts.html">Area Charts</a>
+                                    </li>
+                                    <li><a href="rounded-chart.html">Rounded Charts</a>
+                                    </li>
+                                    <li><a href="c3.html">C3 Charts</a>
+                                    </li>
+                                    <li><a href="sparkline.html">Sparkline Charts</a>
+                                    </li>
+                                    <li><a href="peity.html">Peity Charts</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Tablesmob" class="collapse dropdown-header-top">
+                                    <li><a href="static-table.html">Static Table</a>
+                                    </li>
+                                    <li><a href="data-table.html">Data Table</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="formsmob" class="collapse dropdown-header-top">
+                                    <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                    </li>
+                                    <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                    </li>
+                                    <li><a href="password-meter.html">Password Meter</a>
+                                    </li>
+                                    <li><a href="multi-upload.html">Multi Upload</a>
+                                    </li>
+                                    <li><a href="tinymc.html">Text Editor</a>
+                                    </li>
+                                    <li><a href="dual-list-box.html">Dual List Box</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Appviewsmob" class="collapse dropdown-header-top">
+                                    <li><a href="basic-form-element.html">Basic Form Elements</a>
+                                    </li>
+                                    <li><a href="advance-form-element.html">Advanced Form Elements</a>
+                                    </li>
+                                    <li><a href="password-meter.html">Password Meter</a>
+                                    </li>
+                                    <li><a href="multi-upload.html">Multi Upload</a>
+                                    </li>
+                                    <li><a href="tinymc.html">Text Editor</a>
+                                    </li>
+                                    <li><a href="dual-list-box.html">Dual List Box</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                <!-- <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                <ul id="Pagemob" class="collapse dropdown-header-top">
+                                    <li><a href="{% url 'login:signup' %}">Login</a>
+                                    </li>
+                                    <li><a href="register.html">Register</a>
+                                    </li>
+                                    <li><a href="lock.html">Lock</a>
+                                    </li>
+                                    <li><a href="password-recovery.html">Password Recovery</a>
+                                    </li>
+                                    <li><a href="404.html">404 Page</a></li>
+                                    <li><a href="500.html">500 Page</a></li>
+                                </ul>
+                            </li> -->
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Mobile Menu-->
+  <!-- <div class="container-fluid">
+               <div class="row">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                       <div class="logo-pro">
+                           <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                       </div>
+                   </div>
+               </div>
+           </div> -->
+
+  <div class="header-advance-area">
+
+  </div>
+
+  <div class="row " style="margin-top: 1%;background: #fff;font-size:16px;">
+
+    <p style="color: green;">{{msg}}</p>
+    <form method="post">
+      {%csrf_token%}
+    <label>Column Name</label>
+     <input type="text" name="column_name">
+
+    <label>Formula</label>
+    <input type="text" name="formula">
+
+    <input type="submit" name="Add">
+    </form>
+
+  </div>
+
+
+
+
+
+  <!-- <div class="">
+
+</div> -->
+  <!-- <input type="button" value="button name" onclick="window.open('http://127.0.0.1:8000/single-project/1/','popUpWindow','height=900,width=1200,left=10,top=10,,scrollbars=yes,menubar=no')" /> -->
+  {% endblock body %}
+  <!-- plot js
+        ============================================ -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <script src="{% static 'dashboard/js/vendor/jquery-1.12.4.min.js' %}"></script>
+
+  <!-- bootstrap J
+============================================ -->
+  <script src="{% static 'dashboard/js/bootstrap.min.js' %}"></script>
+  <!-- wow JS
+============================================ -->
+  <script src="{% static 'dashboard/js/wow.min.js' %}"></script>
+  <!-- price-slider JS
+============================================ -->
+  <script src="{% static 'dashboard/js/jquery-price-slider.js' %}"></script>
+  <!-- meanmenu JS
+============================================ -->
+  <script src="{% static 'dashboard/js/jquery.meanmenu.js' %}"></script>
+  <!-- owl.carousel JS
+============================================ -->
+  <script src="{% static 'dashboard/js/owl.carousel.min.js' %}"></script>
+  <!-- sticky JS
+============================================ -->
+  <script src="{% static 'dashboard/js/jquery.sticky.js' %}"></script>
+  <!-- scrollUp JS
+============================================ -->
+  <script src="{% static 'dashboard/js/jquery.scrollUp.min.js' %}"></script>
+  <!-- counterup JS
+============================================ -->
+  <script src="{% static 'dashboard/js/counterup/jquery.counterup.min.js' %}"></script>
+  <script src="{% static 'dashboard/js/counterup/waypoints.min.js' %}"></script>
+  <script src="{% static 'dashboard/js/counterup/counterup-active.js' %}"></script>
+  <!-- mCustomScrollbar JS
+============================================ -->
+  <script src="{% static 'dashboard/js/scrollbar/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+  <script src="{% static 'dashboard/js/scrollbar/mCustomScrollbar-active.js' %}"></script>
+  <!-- metisMenu JS
+============================================ -->
+  <script src="{% static 'dashboard/js/metisMenu/metisMenu.min.js' %}"></script>
+  <script src="{% static 'dashboard/js/metisMenu/metisMenu-active.js' %}"></script>
+  <!-- morrisjs JS
+============================================ -->
+  <script src="{% static 'dashboard/js/morrisjs/raphael-min.js' %}"></script>
+  <script src="{% static 'dashboard/js/morrisjs/morris.js' %}"></script>
+  <script src="{% static 'dashboard/js/morrisjs/morris-active.js' %}"></script>
+  <!-- morrisjs JS
+============================================ -->
+  <script src="{% static 'dashboard/js/sparkline/jquery.sparkline.min.js' %}"></script>
+  <script src="{% static 'dashboard/js/sparkline/jquery.charts-sparkline.js' %}"></script>
+  <script src="{% static 'dashboard/js/sparkline/sparkline-active.js' %}"></script>
+  <!-- calendar JS
+============================================ -->
+  <script src="{% static 'dashboard/js/calendar/moment.min.js' %}"></script>
+  <script src="{% static 'dashboard/js/calendar/fullcalendar.min.js' %}"></script>
+  <script src="{% static 'dashboard/js/calendar/fullcalendar-active.js' %}"></script>
+  <!-- plugins JS
+============================================ -->
+  <script src="{% static 'dashboard/js/plugins.js' %}"></script>
+  <!-- main JS
+============================================ -->
+  <script src="{% static 'dashboard/js/main.js' %}"></script>
+  <!-- tawk chat JS
+============================================ -->
+  <!-- <script src="{% static 'dashboard/js/tawk-chat.js' %}"></script> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <!-- Test script -->
+  <script>
+    var closebtns = document.getElementsByClassName("close");
+    var i;
+
+    for (i = 0; i < closebtns.length; i++) {
+      closebtns[i].addEventListener("click", function () {
+        // document.getElementById("myDropdown").classList.remove("show");
+        // document.getElementById("blog_dropdown").classList.remove("show");
+        // document.querySelector('.data_integration_link').classList.remove("background_color");
+        document.querySelector('.dashboard_link').classList.remove("background_color");
+      }, true);
+    }
+    function showFunction(event) {
+
+      event.stopPropagation();
+      // alert(e);
+      // document.querySelector('.data_integration_link').classList.toggle("background_color");
+      document.querySelector('.dashboard_link').classList.remove("background_color");
+      document.getElementById("logout").classList.remove("show");
+      document.getElementById("blog_dropdown").classList.remove("show");
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+
+    function blogDropdown(event) {
+
+      event.stopPropagation();
+      // body...
+      document.querySelector('.dashboard_link').classList.toggle("background_color");
+      // document.querySelector('.data_integration_link').classList.remove("background_color");
+      document.getElementById("logout").classList.remove("show");
+      document.getElementById("myDropdown").classList.remove("show");
+      document.getElementById("blog_dropdown").classList.toggle("show");
+
+    }
+
+    function shopDropdown(event) {
+
+      event.stopPropagation();
+      // body...
+      document.getElementById("shop_dropdown").classList.toggle("show");
+
+    }
+
+    function callLogout() {
+      event.stopPropagation();
+      // body...
+      // document.getElementById("myDropdown").classList.remove("show");
+      // document.getElementById("blog_dropdown").classList.remove("show");
+      document.getElementById("logout").classList.toggle("show");
+    }
+
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+
+      document.getElementById("logout").classList.remove("show");
+      // document.querySelector('.data_integration_link').classList.remove("background_color");
+      document.querySelector('.dashboard_link').classList.remove("background_color");
+      document.getElementById("myDropdown").classList.remove("show");
+      document.getElementById("blog_dropdown").classList.remove("show");
+      document.getElementById("shop_dropdown").classList.remove("show");
+    }
+
+  </script>
+  <!-- test script -->
+
+  <!-- script for sidebar -->
+  <script>
+    $('#sidebarCollapse').click(function (event) {
+
+      if ($('#defaulty').hasClass('div_aside')) {
+        $('#defaulty').removeClass('div_aside').addClass('new_class');
+      }
+      else if ($('#defaulty').hasClass('new_class')) {
+        $('#defaulty').removeClass('new_class').addClass('div_aside');
+      }
+      event.preventDefault();
+    });
+  </script>
+
+  <script>
+    $('#sidebarCollapse').click(function (event) {
+
+      if ($('#header_top').hasClass('header_row')) {
+        document.getElementById('show_me').style.display = "none";
+        document.getElementById('hide_me').style.display = "block";
+        $('#header_top').removeClass('header_row').addClass('new_header');
+      }
+      else if ($('#header_top').hasClass('new_header')) {
+        document.getElementById('show_me').style.display = "block";
+        document.getElementById('hide_me').style.display = "none";
+        $('#header_top').removeClass('new_header').addClass('header_row');
+      }
+      event.preventDefault();
+    });
+  </script>
+
+  <script>
+    var project_title = document.getElementById("title").value;
+    var update_title = document.getElementById("id_project_title");
+    update_title.value = project_title;
+    var project_data = document.getElementById("data").value;
+    var update_data = document.getElementById("id_data_description");
+    update_data.value = project_data;
+    var project_output = document.getElementById("ans").value;
+    var update_output = document.getElementById("id_expected_ans");
+    update_output.value = project_output;
+    $('#update_project').click(function () {
+      // alert("hi");
+      document.getElementById('hide_seek').style.display = "block";
+      document.getElementById('details').style.display = "none";
+      document.getElementById('update_project').style.display = "none";
+    }
+    )
+  </script>
+
+
+
+
+  <!-- script for ajax dashboard create-->
+
+  <script>
+    function dashboardAjaxSubmit(self) {
+
+      var form_type = $('#dashboard_type_id').val();
+      alert('the choosen type' + form_type);
+
+      if (form_type == 'EDIT') {
+
+
+
+
+        var $myForm = $('#dashboard-create-form-id');
+        $myForm.submit(function (event) {
+          event.preventDefault();
+          var $formData = $(this).serialize();
+          var $thisURL = '/query/dashboard/create/';
+          // alert("called");
+          $.ajax({
+            method: "POST",
+            url: $thisURL,
+            data: $formData,
+            crossdomain: true,
+            dataType:"json",
+            success: function (data) {
+              if (data.msg) {
+                alert(data.msg);
+                window.location.reload();
+              }
+
+              //   document.getElementById('query-algorithm-div-id').style.display="block";
+              //   $('#dashboard-query-id').val(data.query);
+
+              //   $.each(data.df_columns, function(i, obj) {
+              //     // alert(i+obj);
+              //     feature_column.append("<option value="+obj+" >"+obj+"</option>");
+
+
+              // });
+              // $.each(data.df_columns, function(i, obj) {
+              //   // alert(i+obj);
+              //     y.append("<option value="+obj+" >"+obj+"</option>");
+
+
+              // });
+
+            }
+          });
+        });
+      }
+      else if (form_type == 'ADDON') {
+        var feature_column = $('#query-feature-select');
+        feature_column.empty();
+        var y = $('#query-y-select');
+        y.empty();
+
+
+
+        var $myForm = $('#dashboard-create-form-id');
+        $myForm.submit(function (event) {
+          event.preventDefault();
+          var $formData = $(this).serialize();
+          var $thisURL = '/multiple/query/dashboard/create/';
+          $.ajax({
+            method: "POST",
+            url: $thisURL,
+            data: $formData,
+            success: function (data) {
+              if (data.msg) {
+                alert(data.msg);
+                window.location.reload();
+              }
+
+              //   document.getElementById('query-algorithm-div-id').style.display="block";
+              //   $('#dashboard-query-id').val(data.query);
+
+              //   $.each(data.df_columns, function(i, obj) {
+              //     // alert(i+obj);
+              //     feature_column.append("<option value="+obj+" >"+obj+"</option>");
+
+
+              // });
+              // $.each(data.df_columns, function(i, obj) {
+              //   // alert(i+obj);
+              //     y.append("<option value="+obj+" >"+obj+"</option>");
+
+
+              // });
+
+            }
+          });
+        });
+      }
+      else {
+        var feature_column = $('#query-feature-select');
+        feature_column.empty();
+        var y = $('#query-y-select');
+        y.empty();
+
+
+
+        var $myForm = $('#dashboard-create-form-id');
+        $myForm.submit(function (event) {
+          event.preventDefault();
+          var $formData = $(this).serialize();
+          var $thisURL = '/query/dashboard/create/';
+          // alert("called");
+          $.ajax({
+            method: "POST",
+            url: $thisURL,
+            data: $formData,
+            success: function (data) {
+              if (data.msg) {
+                alert(data.msg);
+                window.location.reload(); window.location.reload();
+              }
+
+
+              //   document.getElementById('query-algorithm-div-id').style.display="block";
+              //   $('#dashboard-query-id').val(data.query);
+
+              //   $.each(data.df_columns, function(i, obj) {
+              //     // alert(i+obj);
+              //     feature_column.append("<option value="+obj+" >"+obj+"</option>");
+
+
+              // });
+              // $.each(data.df_columns, function(i, obj) {
+              //   // alert(i+obj);
+              //     y.append("<option value="+obj+" >"+obj+"</option>");
+
+
+              // });
+
+            }
+          });
+        });
+      }
+
+    }
+    //script for dashboard field ajax call
+    function dashboardAjax() {
+      // alert("called");
+      var e = document.getElementById('id_dashboard');
+
+      var dashboard_id = e.options[e.selectedIndex].value;
+      // alert(dashboard_id);
+      var project = document.getElementById('id_project').value;
+      // alert(project);
+      var data = { 'dashboard': dashboard_id, 'project': project };
+      var token = '{{csrf_token}}';
+      var dropdown = $('#id_dashboard_multiple_users');
+      dropdown.empty();
+      var endpointdropdown = $('#id_dashboard_multiple_end_point');
+      endpointdropdown.empty();
+
+      $.ajax({
+        headers: { "X-CSRFToken": token },
+        method: "POST",
+
+        url: '/dashboard/ajax/',
+        data: data,
+
+        success: function (data) {
+          // alert("sucess");
+          $.each(data.user_list, function () {
+            if (this.selected == "True") {
+              dropdown.append("<option value=" + this.id + " selected>" + this.email + "</option>");
+            }
+            else if (this.selected == "False") {
+              dropdown.append("<option value=" + this.id + " >" + this.email + "</option>");
+            }
+
+          });
+          $.each(data.end_point, function () {
+            if (this.selected == "True") {
+              endpointdropdown.append("<option value=" + this.id + " selected>" + this.name + "</option>");
+            }
+            else if (this.selected == "False") {
+              endpointdropdown.append("<option value=" + this.id + " >" + this.name + "</option>");
+            }
+
+          });
+
+        }
+      });
+    }
+
+  </script>
+  <!-- end of script for ajax dashboard create -->
+  <!-- start of script for dashboard modal popup  -->
+  <script>
+
+
+
+      let modalBtn = document.getElementById("modal-btn");
+      let deletemodalBtn = document.querySelector(".delete_endpoint_button");
+      let delete_modal = document.querySelector(".delete_modal")
+      let modal = document.querySelector(".modal")
+
+      let closeBtn = document.querySelector(".close-btn");
+
+      modalBtn.onclick = function () {
+
+        modal.style.display = "block";
+        var id = $('#project_query_id').val();
+        $('#query_dashboard_create').val(id);
+        document.getElementById('multiple_query_dashboard_create').disabled = true;
+
+      }
+
+      deletemodalBtn.onclick = function () {
+
+        delete_modal.style.display = "block";
+        var id = $('#project_query_id').val();
+        $('#query_dashboard_create').val(id);
+        document.getElementById('multiple_query_dashboard_create').disabled = true;
+
+      }
+
+
+      closeBtn.onclick = function () {
+        modal.style.display = "none"
+        delete_modal.style.display = "none"
+      }
+
+      const deleteEndpoint = ()=>{
+        $('#delete_endpoint_form').submit();
+      }
+  </script>
+  <!-- end of script for modal popup  -->
+
+  <script>
+    function AjaxLegend(elm) {
+      var id = elm.getAttribute('data-point');
+
+
+      document.getElementById(id).submit();
+
+    }
+  </script>
+  <!-- script for dashboard hide and seek -->
+  <script type="text/javascript">
+
+
+
+
+    // script for new dashboard -->
+    function newDashboard() {
+      document.getElementById('dashboard_title_id').style.display = 'block';
+      document.getElementById('title_lable').style.display = 'block';
+      document.getElementById('existing_dashboard_id').style.display = 'none';
+      document.getElementById('lable').style.display = 'none';
+      document.getElementById('defult_user_id').style.display = 'block';
+      document.getElementById('defult_end_point_id').style.display = 'block';
+      document.getElementById('select_user_id').style.display = 'none';
+      document.getElementById('select_end_point_id').style.display = 'none';
+      $("#id_dashboard_multiple_users").val($("#id_dashboard_multiple_users option:eq()").val());
+      $("#id_dashboard_multiple_end_point").val($("#id_dashboard_multiple_users option:eq()").val());
+      $("#dashboard_type_id").val("");
+
+
+
+    }
+
+    // end of script for new dshboard -->
+
+    //script to for existing dashboard -->
+    function existingDashboard() {
+      document.getElementById('dashboard_title_id').style.display = 'none';
+      $('#dashboard_title_id').val('');
+      document.getElementById('title_lable').style.display = 'none';
+      document.getElementById('defult_user_id').style.display = 'none';
+      document.getElementById('select_user_id').style.display = 'block';
+      $('#dashboard_type_id').val("EDIT");
+      $("#defult_user_id").val($("#defult_user_id option:eq()").val());
+      $('#select2-defult_user_id-container').html("");
+      document.getElementById('defult_end_point_id').style.display = 'none';
+      document.getElementById('select_end_point_id').style.display = 'block';
+
+
+
+      document.getElementById('existing_dashboard_id').style.display = 'block';
+      document.getElementById('lable').style.display = 'block';
+
+    }
+    // end of script for existing dashboard  -->
+
+    // script for add on dashboard
+
+    function addonDashboard() {
+      document.getElementById('dashboard_title_id').style.display = 'none';
+      $('#dashboard_title_id').val('');
+      document.getElementById('title_lable').style.display = 'none';
+      document.getElementById('defult_user_id').style.display = 'none';
+      document.getElementById('select_user_id').style.display = 'block';
+
+      $("#defult_user_id").val($("#defult_user_id option:eq()").val());
+      $('#select2-defult_user_id-container').html("");
+      $("#dashboard_type_id").val("ADDON");
+
+
+
+      document.getElementById('existing_dashboard_id').style.display = 'block';
+      document.getElementById('lable').style.display = 'block';
+      document.getElementById('defult_end_point_id').style.display = 'none';
+      document.getElementById('select_end_point_id').style.display = 'block';
+
+    }
+
+//end of script for add on dashboard
+  </script>
+
+  <!-- START: SCRIPT FOR DISABLING CHECKBOX -->
+  <script type="text/javascript">
+    function ckChange(ckType, id) {
+      console.log(ckType);
+      console.log(ckType.id);
+      var ckName = document.getElementsByClassName(ckType.className);
+      var checked = document.getElementById(ckType.id);
+
+      console.log("reg " + id)
+      if (id === 'scatter_plot') {
+        document.getElementById('line_2d_plot').disabled = true;
+        document.getElementById('line_3d_plot').disabled = true;
+        document.getElementById('2d_bar_plot_section').classList.toggle('disable_class');
+        document.getElementById('2d_line_plot_section').classList.toggle('disable_class');
+        document.getElementById('3d_line_plot_section').classList.toggle('disable_class');
+        document.getElementById('2d_histogram_plot_section').classList.toggle('disable_class');
+      }
+      else if (id === 'bar_plot') {
+        document.getElementById('line_2d_plot').disabled = true;
+        document.getElementById('line_3d_plot').disabled = true;
+        document.getElementById('scatter_2d_plot').disabled = true;
+        document.getElementById('scatter_3d_plot').disabled = true;
+
+        document.getElementById('2d_scatter_plot_section').classList.toggle('disable_class');
+        document.getElementById('3d_scatter_plot_section').classList.toggle('disable_class');
+        document.getElementById('2d_line_plot_section').classList.toggle('disable_class');
+        document.getElementById('3d_line_plot_section').classList.toggle('disable_class');
+        document.getElementById('2d_histogram_plot_section').classList.toggle('disable_class');
+      }
+      else if (id === 'line_plot') {
+        document.getElementById('scatter_2d_plot').disabled = true;
+        document.getElementById('scatter_3d_plot').disabled = true;
+
+
+        document.getElementById('2d_scatter_plot_section').classList.toggle('disable_class');
+        document.getElementById('3d_scatter_plot_section').classList.toggle('disable_class');
+        document.getElementById('2d_bar_plot_section').classList.toggle('disable_class');
+        document.getElementById('2d_histogram_plot_section').classList.toggle('disable_class');
+      }
+      else if (id === 'histogram_plot') {
+        document.getElementById('line_2d_plot').disabled = true;
+        document.getElementById('line_3d_plot').disabled = true;
+        document.getElementById('scatter_2d_plot').disabled = true;
+        document.getElementById('scatter_3d_plot').disabled = true;
+
+
+
+        document.getElementById('2d_scatter_plot_section').classList.toggle('disable_class');
+        document.getElementById('3d_scatter_plot_section').classList.toggle('disable_class');
+        document.getElementById('2d_line_plot_section').classList.toggle('disable_class');
+        document.getElementById('3d_line_plot_section').classList.toggle('disable_class');
+        document.getElementById('2d_bar_plot_section').classList.toggle('disable_class');
+      }
+      if (checked.checked) {
+
+        for (var i = 0; i < ckName.length; i++) {
+          if (!ckName[i].checked) {
+            ckName[i].disabled = true;
+          } else {
+            ckName[i].disabled = false;
+          }
+        }
+      }
+      else {
+        if (id === 'scatter_plot') {
+          document.getElementById('line_2d_plot').disabled = false;
+          document.getElementById('line_3d_plot').disabled = false;
+        }
+        else if (id === 'bar_plot') {
+          document.getElementById('line_2d_plot').disabled = false;
+          document.getElementById('line_3d_plot').disabled = false;
+          document.getElementById('scatter_2d_plot').disabled = false;
+          document.getElementById('scatter_3d_plot').disabled = false;
+        }
+        else if (id === 'line_plot') {
+          document.getElementById('scatter_2d_plot').disabled = false;
+          document.getElementById('scatter_3d_plot').disabled = false;
+        }
+        else if (id === 'histogram_plot') {
+          document.getElementById('line_2d_plot').disabled = false;
+          document.getElementById('line_3d_plot').disabled = false;
+          document.getElementById('scatter_2d_plot').disabled = false;
+          document.getElementById('scatter_3d_plot').disabled = false;
+        }
+        for (var i = 0; i < ckName.length; i++) {
+          ckName[i].disabled = false;
+        }
+      }
+    }
+
+
+
+    // disabling checknoxes in 2D and 3D graphs
+    function toggleCheckboxState(className, id, diabled) {
+      console.log(id)
+      if (id === '3d_scatter_plot_section') {
+        document.getElementById('3d_scatter_plot_section').classList.toggle('disable_class');
+      }
+      else if (id === '2d_scatter_plot_section') {
+        document.getElementById('2d_scatter_plot_section').classList.toggle('disable_class');
+      }
+      else if (id === '3d_line_plot_section') {
+        document.getElementById('3d_line_plot_section').classList.toggle('disable_class');
+      }
+      else if (id === '2d_line_plot_section') {
+        document.getElementById('2d_line_plot_section').classList.toggle('disable_class');
+      }
+      var checkboxes = document.getElementsByClassName(className);
+      for (var i = 0; i < checkboxes.length; ++i) {
+        checkboxes[i].checked = diabled
+      }
+    }
+    document.getElementById('scatter_2d_plot').onclick = function (e) {
+      var diabled = false
+      if (this.checked) {
+        diabled = true
+      }
+      toggleCheckboxState('scatter_3d', '3d_scatter_plot_section', diabled)
+    }
+
+    document.getElementById('scatter_3d_plot').onclick = function (e) {
+      var diabled = false
+      if (this.checked) {
+        diabled = true
+      }
+
+      toggleCheckboxState('scatter_2d', '2d_scatter_plot_section', diabled)
+    }
+
+
+    document.getElementById('line_2d_plot').onclick = function (e) {
+      var diabled = false
+      if (this.checked) {
+        diabled = true
+      }
+      toggleCheckboxState('line_3d', '3d_line_plot_section', diabled)
+    }
+
+    document.getElementById('line_3d_plot').onclick = function (e) {
+      var diabled = false
+      if (this.checked) {
+        diabled = true
+      }
+
+      toggleCheckboxState('line_2d', '2d_line_plot_section', diabled)
+    }
+  </script>
+  <!-- END: SCRIPT FOR DISABLING CHECKBOX -->
+
+
+    <!-- START: SELECTION OF VISULAIZATION PLOTS -->
+
+   <script type="text/javascript">
+
+      function selectVisualiztionPlots(self) {
+        var selectedValue = self.options[self.selectedIndex].value;
+        if (selectedValue === 'scatter_2d' || selectedValue === 'box_plot' ||  selectedValue === 'time_series_plot') {
+
+          if (selectedValue === 'time_series_plot') {
+            document.getElementById('time_series_plot_section').style.display = "block";
+            document.getElementById('2d_plot_section').style.display = "none";
+            document.getElementById('3d_plot_section').style.display = "none";
+            document.getElementById('bubble_plot_section').style.display = "none";
+            document.getElementById('pie_chart_section').style.display = "none";
+            document.getElementById('count_plot_section').style.display = "none";
+            document.getElementById('cat_plot_section').style.display = "none";
+            document.getElementById('heatmap_section').style.display = "none";
+
+            document.getElementById('count_plot_section').style.display = "none";
+            document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+            $('#time_series_x').attr('required', true);
+            $('#time_series_y').attr('required', true);
+            $('#2d_x').attr('required', false);
+            $('#2d_y').attr('required', false);
+            $('#3d_x').attr('required', false);
+            $('#3d_y').attr('required', false);
+            $('#z').attr('required', false);
+            $('#bubble_plot_x').attr('required', false);
+            $('#bubble_plot_y').attr('required', false);
+            $('#bubble_plot_size').attr('required', false);
+            $('#bubble_plot_hover').attr('required', false);
+            $('#pie_chart_name').attr('required', false);
+            $('#pie_chart_value').attr('required', false);
+            $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+
+          }
+
+          else {
+            document.getElementById('2d_plot_section').style.display = "block";
+            document.getElementById('3d_plot_section').style.display = "none";
+            document.getElementById('bubble_plot_section').style.display = "none";
+            document.getElementById('pie_chart_section').style.display = "none";
+            document.getElementById('time_series_plot_section').style.display = "none";
+            document.getElementById('cat_plot_section').style.display = "none";
+            document.getElementById('count_plot_section').style.display = "none";
+            document.getElementById('heatmap_section').style.display = "none";
+            document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+            $('#2d_x').attr('required', true);
+            $('#2d_y').attr('required', true);
+            $('#3d_x').attr('required', false);
+            $('#3d_y').attr('required', false);
+            $('#z').attr('required', false);
+            $('#bubble_plot_x').attr('required', false);
+            $('#bubble_plot_y').attr('required', false);
+            $('#bubble_plot_size').attr('required', false);
+            $('#bubble_plot_hover').attr('required', false);
+            $('#pie_chart_name').attr('required', false);
+            $('#pie_chart_value').attr('required', false);
+            $('#time_series_x').attr('required', false);
+            $('#time_series_y').attr('required', false);
+            $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heeatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+          }
+
+
+        }
+        else if (selectedValue == 'heatmap'){
+          document.getElementById('2d_plot_section').style.display = "none";
+            document.getElementById('3d_plot_section').style.display = "none";
+            document.getElementById('bubble_plot_section').style.display = "none";
+            document.getElementById('pie_chart_section').style.display = "none";
+            document.getElementById('time_series_plot_section').style.display = "none";
+            document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "block";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+            $('#2d_x').attr('required', false);
+            $('#2d_y').attr('required', false);
+            $('#3d_x').attr('required', false);
+            $('#3d_y').attr('required', false);
+            $('#z').attr('required', false);
+            $('#bubble_plot_x').attr('required', false);
+            $('#bubble_plot_y').attr('required', false);
+            $('#bubble_plot_size').attr('required', false);
+            $('#bubble_plot_hover').attr('required', false);
+            $('#pie_chart_name').attr('required', false);
+            $('#pie_chart_value').attr('required', false);
+            $('#time_series_x').attr('required', false);
+            $('#time_series_y').attr('required', false);
+            $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', true);
+            $('#heatmap_y').attr('required', true);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+
+        }
+        else if (selectedValue === 'scatter_3d') {
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "block";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#3d_x').attr('required', true);
+          $('#3d_y').attr('required', true);
+          $('#z').attr('required', true);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+        }
+        else if (selectedValue === 'choose_type') {
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+
+        }
+        else if (selectedValue === 'line_2d') {
+          document.getElementById('2d_plot_section').style.display = "block";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+
+          $('#2d_x').attr('required', true);
+          $('#2d_y').attr('required', true);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+        }
+        else if (selectedValue === 'line_3d') {
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "block";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#3d_x').attr('required', true);
+          $('#3d_y').attr('required', true);
+          $('#z').attr('required', true);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+
+        }
+        else if (selectedValue === 'horizontal_bar') {
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "block";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+
+
+          $('#bar_x').attr('required', false);
+          $('#bar_y').attr('required', false);
+          $('#h_bar_x').attr('required', true);
+          $('#h_bar_y').attr('required',true);
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+        }
+        else if (selectedValue === 'bar') {
+          document.getElementById('bar_section').style.display = "block";
+          document.getElementById('h_bar_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+
+
+          $('#bar_x').attr('required', true);
+          $('#bar_y').attr('required', true);
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#h_bar_x').attr('required', false);
+          $('#h_bar_y').attr('required', false);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+        }
+        else if (selectedValue == 'count'){
+
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "block";
+          document.getElementById('heatmap_section').style.display = "none";
+
+
+
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', true);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+        }
+        else if (selectedValue == 'cat'){
+
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "block";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', true);
+            $('#cat_y').attr('required', true);
+            $('#facet_col').attr('required', true);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+        }
+        else if (selectedValue === 'histogram') {
+          document.getElementById('2d_plot_section').style.display = "block";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+          $('#2d_x').attr('required', true);
+          $('#2d_y').attr('required', true);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#count_x').attr('required', false);
+          $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+          $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+
+        }
+        else if (selectedValue === 'bubble_plot') {
+          document.getElementById('bubble_plot_section').style.display = "block";
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('pie_chart_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+
+          $('#bubble_plot_x').attr('required', true);
+          $('#bubble_plot_y').attr('required', true);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', false);
+          $('#pie_chart_value').attr('required', false);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          // $('#z').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+
+
+        }
+        else if (selectedValue === 'pie_chart') {
+          document.getElementById('pie_chart_section').style.display = "block";
+          document.getElementById('bubble_plot_section').style.display = "none";
+          document.getElementById('2d_plot_section').style.display = "none";
+          document.getElementById('3d_plot_section').style.display = "none";
+          document.getElementById('time_series_plot_section').style.display = "none";
+          document.getElementById('cat_plot_section').style.display = "none";
+          document.getElementById('count_plot_section').style.display = "none";
+          document.getElementById('heatmap_section').style.display = "none";
+          document.getElementById('bar_section').style.display = "none";
+          document.getElementById('h_bar_section').style.display = "none";
+
+
+          $('#bubble_plot_x').attr('required', false);
+          $('#bubble_plot_y').attr('required', false);
+          $('#bubble_plot_size').attr('required', false);
+          $('#bubble_plot_hover').attr('required', false);
+          $('#pie_chart_name').attr('required', true);
+          $('#pie_chart_value').attr('required', true);
+          $('#time_series_x').attr('required', false);
+          $('#time_series_y').attr('required', false);
+          $('#2d_x').attr('required', false);
+          $('#2d_y').attr('required', false);
+          $('#3d_x').attr('required', false);
+          $('#3d_y').attr('required', false);
+          $('#z').attr('required', false);
+          $('#count_x').attr('required', false);
+
+            $('#cat_x').attr('required', false);
+            $('#cat_y').attr('required', false);
+
+            $('#facet_col').attr('required', false);
+            $('#heatmap_x').attr('required', false);
+            $('#heatmap_y').attr('required', false);
+            $('#bar_x').attr('required', false);
+            $('#bar_y').attr('required', false);
+            $('#h_bar_x').attr('required', false);
+            $('#h_bar_y').attr('required',false);
+
+
+        }
+      }
+    </script>
+
+    <!-- END: SELECTION OF VISULAIZATION PLOTS -->
+
+  <!-- script for ml prediction  -->
+  <script type="text/javascript">
+    function predictionSubmission(pk) {
+    // document.getElementById('loader').style.display = "block";
+    document.querySelector('.loading-overlay').style.display = "block"
+    var frm = new FormData($('#prediction-form').get(0));
+    var content_div = $('#content_div');
+
+    $.ajax({
+      url: "/endpoint/"+pk+"/algorithm/prediction/",
+      method: "POST",
+      headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+      data: frm,
+      cache: false,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        if (data.error_msg) {
+          // document.getElementById('loader').style.display = "none";
+          document.querySelector('.loading-overlay').style.display = "none"
+          alert(data.error_msg);
+        }
+        else if (data.Predition) {
+              let data_1 = ["ferni","vneoinv","evinoev",1221]
+              let predicted_data_value = data.Predition.map(function(item) {
+                  return `<td>${item}</td>`
+              })
+              // document.getElementById('loader').style.display = "none";
+              document.querySelector('.loading-overlay').style.display = "none"
+              $('#content_div').append(`<tr>${predicted_data_value}</tr>`);
+              $('#predictions_tab').addClass('in');
+
+            }
+
+          }
+    });
+  }
+
+
+
+  function loadDiv() {
+  document.querySelector('.loading-overlay').style.display = "block";
+
+  }
+  </script>
+  <!-- end of ml for prediction -->
+
+
+  <!-- partial -->
+  <!-- <script src='http://brienlabs.com/ruby-mega-menu/js/jquery-3.1.0.min.js'></script>
+  <script src='http://brienlabs.com/ruby-mega-menu/js/ruby-demo.js'></script>
+  <script src='http://brienlabs.com/ruby-mega-menu/js/ruby-main.js'></script> -->
+</body>
+
+</html>

@@ -1,0 +1,1621 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet"  href="">
+  <title>{{dashboard.name}}{{today }} </title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <!-- favicon
+============================================ -->
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'dashboard/img/Brayn_Favicon_75.png' %}">
+  <!-- Google Fonts
+============================================ -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+  <!-- Bootstrap CSS
+============================================ -->
+  <link rel="stylesheet" media="screen"  href="{% static 'dashboard/css/bootstrap.min.css' %}">
+  <!-- Bootstrap CSS
+============================================ -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <!-- <link rel="stylesheet" href="{% static 'dashboard/css/font-awesome.min.css' %}"> -->
+  <!-- owl.carousel CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/owl.carousel.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/owl.theme.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/owl.transitions.css' %}">
+  <!-- animate CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/animate.css' %}">
+  <!-- normalize CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/normalize.css' %}">
+  <!-- meanmenu icon CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/meanmenu.min.css' %}">
+  <!-- main CSS
+============================================ -->
+  <link rel="stylesheet" media="screen" href="{% static 'dashboard/css/main.css' %}">
+  <!-- educate icon CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/educate-custon-icon.css' %}">
+  <!-- morrisjs CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/morrisjs/morris.css' %}">
+  <!-- mCustomScrollbar CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/scrollbar/jquery.mCustomScrollbar.min.css' %}">
+  <!-- metisMenu CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/metisMenu/metisMenu.min.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/metisMenu/metisMenu-vertical.css' %}">
+  <!-- calendar CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/calendar/fullcalendar.min.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/calendar/fullcalendar.print.min.css' %}">
+
+  <!-- <link rel='stylesheet' href='http://brienlabs.com/ruby-mega-menu/css/ruby-transitions.css'>
+    <link rel='stylesheet' href='http://brienlabs.com/ruby-mega-menu/css/ruby-main.css'> -->
+  <!-- style CSS
+============================================ -->
+  <link rel="stylesheet" media="screen" href="{% static 'dashboard/css/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'dashboard/css/side_navigations.css' %}">
+  <!-- responsive CSS
+============================================ -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/responsive.css' %}">
+  <!-- modernizr JS
+============================================ -->
+  <script src="{% static 'dashboard/js/vendor/modernizr-2.8.3.min.js' %}"></script>
+
+  <!-- Loading style style CSS
+  ============================================ -->
+  <link rel="stylesheet" href="{% static 'css/loading_spinner.css' %}">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+
+  <style>
+
+    /* remove plotly icon */
+    .modebar-btn plotlyjsicon modebar-btn--logo {
+      display: none !important;
+    }
+
+    .js-plotly-plot .plotly .modebar-btn--logo {
+      display: none !important;
+    }
+
+    /* end */
+    body {
+      font-family: 'Poppins', sans-serif !important;
+      background: #fff;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .select_width {
+      width: 50%;
+    }
+
+
+    /* #show_me {
+     display: none;
+          } */
+    /* .default_side{
+                margin-left: -8%;
+          }
+          .no_default{
+                margin-left: 10%;
+          } */
+    .div_aside {
+      margin-left: -8%;
+    }
+
+    .new_class {
+      margin-left: 10%;
+    }
+
+    .header_row {
+      background: #4a90e2;
+      width: 118%;
+      margin-left: -12.2%;
+    }
+
+    .new_header {
+      background: #4a90e2;
+      width: 100%;
+      margin-left: 5.8%;
+    }
+
+    #hide_seek {
+      display: none;
+    }
+
+    /* .sidenav_right{
+      opacity: 1;
+      width: 200px;
+      height: auto;
+
+  }
+  .closebtn_right{
+    position: absolute;
+    margin-top: -16%;
+    margin-right: 78%;
+  } */
+
+
+    .mega_section {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    .blog_section {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    .shop_section {
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+
+    .show {
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    .background_color {
+      background: #fff !important;
+      color: #4a90e2 !important
+    }
+
+    .query_button {
+      background-color: #4a90e2;
+      color: white;
+      border: #4a90e2;
+      margin-top: 3px;
+      padding: 4px 6px;
+    }
+
+    .menu_section_style {
+      background: #4a90e2;
+      padding-top: 4px;
+      padding-left: 4px;
+      padding-right: 5px;
+    }
+
+    .cross_arrow {
+      width: 1.5%;
+      float: right;
+      margin-right: 2%;
+      margin-top: 1%;
+    }
+
+    .close {
+      cursor: pointer;
+      position: absolute;
+      font-size: 38px;
+      z-index: 999;
+      top: 0%;
+      right: 0%;
+      padding: 16px 16px;
+    }
+
+    .close_2 {
+      cursor: pointer;
+      position: absolute;
+      font-size: 38px;
+      top: 11%;
+      right: 0%;
+      padding: 16px 16px;
+      transform: translate(0%, -50%);
+    }
+
+    .project_titles {
+
+      line-height: 50px;
+      color: #efefef;
+      font-size: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-left: 17%;
+    }
+
+    .logo_image_style {
+      float: left;
+      position: relative;
+      z-index: 99;
+    }
+
+    .plot_submit_button {
+      background-color: #4a90e2;
+      color: #fff;
+      border: none;
+      /* font-size: 14px; */
+      text-transform: uppercase;
+      padding: 1% 5%;
+      border-radius: 8px;
+    }
+
+    hr {
+      margin: 1% 0;
+    }
+
+
+
+    /* Checkbox styling */
+    /* The container */
+    .checkbox_container {
+      display: block;
+      position: relative;
+      padding-left: 29px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 14px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+    .checkbox_container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+      position: absolute;
+      top: 1px;
+      left: 0;
+      height: 19px;
+      width: 20px;
+      background-color: #e6e1e1;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .checkbox_container:hover input~.checkmark {
+      background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .checkbox_container input:checked~.checkmark {
+      background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .checkbox_container input:checked~.checkmark:after {
+      display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .checkbox_container .checkmark:after {
+      left: 8px;
+      top: 4px;
+
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    #print_logo_image_style {
+      height: 58px;
+      padding-top: 0.3%;
+      padding-left: 0.4%;
+      -webkit-print-color-adjust: exact;
+      display: none;
+    }
+
+    /*END of Checkbox styling */
+
+    @media print {
+      /* #print_logo_image_style {background-color: #4a90e2 !important;} */
+        .download_pdf{
+          display: none;
+        }
+        .page_break {
+          page-break-after: always !important;
+        }
+        #deleteDashboard {
+          display:none !important;
+        }
+        #embedModal {
+          display:none !important;
+        }
+
+        #machine_learing_tabs {
+          display: none;
+        }
+        #exampleModal {
+          display:none !important;
+        }
+
+        #dashsboard_menu {
+          display:none !important;
+        }
+
+        #breadcrumb_section {
+          display:none !important;
+        }
+
+        #print_logo_image_style{
+          display: block !important;
+        }
+
+        #legend_section {
+          display:none !important;
+        }
+        .hide_print_endpoint {
+          display: none !important;
+        }
+
+
+        .home-page {
+          display: none !important;
+        }
+
+        .brayn_details_label {
+          display: none !important;
+        }
+
+        .rounded_button {
+          display: none !important;
+
+        }
+
+        #prediction-form {
+            display: none !important;
+        }
+
+        .predictions_print_hide {
+          display: none !important;
+        }
+
+        .display_print_endpoint {
+          display: block !important;
+        }
+
+    }
+
+
+
+
+  @media screen and (min-width: 320px) and (max-width: 767px){
+    div.ruby-wrapper {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      background: #4a90e2 !important;
+    }
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+    html {
+      transform: rotate(-90deg);
+      transform-origin: left top;
+      width: 100vh;
+      height: 100vw;
+      overflow-x: hidden;
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+  }
+
+  .refresh_button:hover{
+    color: #4a90e2 !important;
+  }
+
+
+
+
+  </style>
+  <style type="text/css" media="print">
+    @page { size: landscape; }
+
+
+  </style>
+
+  <script>
+// function myFunction() {
+//   var x = document.getElementById("hide_me");
+//   if (x.style.display === "none") {
+//     x.style.display = "block";
+//     document.getElementById('show_me').style.display = "none";
+//
+//   } else {
+//     x.style.display = "none";
+//
+//     document.getElementById('show_me').style.display = "block";
+//   }
+// }
+  </script>
+</head>
+
+<body style="font-family: 'Poppins', sans-serif;">
+  <!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="loading-overlay">
+  <span class="fas fa-spinner fa-3x fa-spin"></span>
+  <span class="loading-message">Please wait..it's loading</span>
+</div>
+
+
+<!-- START: RUBY DEMO HEADER -->
+<div class="ruby-menu-demo-header zoom_functionality" id="dashsboard_menu"  style="position:sticky;top:0;">
+  <div class="row menu_section_style">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-12">
+      <!-- ########################### -->
+      <!-- START: RUBY HORIZONTAL MENU -->
+      <div class="ruby-wrapper">
+        <a href="{% url 'coreapp:dashboard' %}" class="logo_image_style">
+          <img src="{% static 'images/logo.png' %}" alt="" style="max-width: 85%;"></a>
+        <!-- <button class="c-hamburger c-hamburger--htx visible-xs">
+          <span>toggle menu</span>
+        </button> -->
+        <ul class="ruby-menu" style="padding-left: 15%;">
+          <li class="ruby-menu-mega-blog" onclick="blogDropdown(event)" style="display:none;">
+            <a class="up_arrow dashboard_link" href="#">Dashboards</a>
+            <div class="blog_section" id="blog_dropdown" style="height: 269.359px !important; "
+              onclick="event.stopPropagation()">
+              <!-- <span class="close">&times;</span> -->
+
+            </div>
+            <span class="ruby-dropdown-toggle"></span>
+          </li>
+
+
+          <li style="color:#fff;">
+            <a id="hover_poject_style" href="{% url 'coreapp:single-project' pk=dashboard.project.pk%}">PRO : {{dashboard.project}}</a>
+          </li>
+          <li class="visual_display_project_id"  style="color:#fff;"> DASHBOARD NAME : {{dashboard}}</li>
+          <li class="visual_display_project_id" style="color:#fff;padding-top:0;">
+            <a href="{% url 'coreapp:dashboard-update' pk=dashboard.pk %}">UPDATE DASHBOARD </a>
+          </li>
+          <li style="color:#fff;padding-left:3%;">
+            <form method ="post" style="margin-top: -1%;" action="{% url 'coreapp:dashboard-delete' pk=dashboard.pk %}" id="delete_dashboard_form">
+            {%csrf_token%}
+            <input type="name" name="" hidden="">
+
+           <button type="button" id="hover_poject_style" data-toggle="modal" data-target="#deleteDashboard" style="background:none;border:none;"> DELETE DASHBOARD</button>
+
+            </form>
+            <!-- <i class="fa fa-trash" aria-hidden="true"></i> -->
+            <!-- <a id="hover_poject_style" href="{% url 'coreapp:single-project' pk=dashboard.project.pk%}">PRO : {{dashboard.project}}</a> -->
+
+          </li>
+          {% if user_image.image  %}
+          <li class="visual_display_project_id" <img src="{{user_image.image.url}} " alt="user_images"
+            onclick="callLogout()"><a class="up_arrow" href="#">WELCOME {{request.user.first_name}}</a>
+            {% else %}
+          <li class="ruby-menu-right" <img
+            src="https://img.icons8.com/cotton/64/000000/gender-neutral-user--v1.png" onclick="callLogout()"><a
+              class="up_arrow" href="#">WELCOME {{request.user.first_name}}</a>
+            {% endif %}
+
+            <ul id="logout" onclick="event.stopPropagation()">
+              <li><a href="{%url 'coreapp:logout' %}">Logout</a></li>
+            </ul>
+            <span class="ruby-dropdown-toggle"></span></li>
+        </ul>
+      </div>
+      <!-- END:   RUBY HORIZONTAL MENU -->
+      <!-- ########################### -->
+    </div>
+  </div>
+
+</div>
+<!-- END: RUBY DEMO HEADER -->
+
+
+
+
+      {% block body %}
+
+
+
+
+
+      <!-- START: NAVIGATION THROUGH BREADCRUMBS -->
+      <nav class="zoom_functionality" aria-label="breadcrumb" id="breadcrumb_section">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'coreapp:dashboard' %}">Home</a></li>
+          <li class="breadcrumb-item"><a
+              href="{% url 'coreapp:single-project' pk=dashboard.project.pk %}">{{dashboard.project}}</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{{dashboard}}</li>
+          <!-- <a href="{% url 'coreapp:project-dashboard-refresh' pk=dashboard.pk  %}">
+
+            Refresh
+          </a> -->
+          <!-- <form method ="post" action="{% url 'coreapp:dashboard-delete' pk=dashboard.pk %}">
+          {%csrf_token%}
+          <input type="name" name="" hidden="">
+
+         <button type="submit"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+
+          </form> -->
+          {%if dashboard.public_shared_code %}<button type="button" class="download_pdf" data-toggle="modal" data-target="#exampleModal"  style="width: 14%;">
+            <i class="fas fa-share-alt" aria-hidden="true" style="margin-right: 2%;"> </i> SHARE LINK
+          </button>
+
+          {%endif%}
+          <button type="button" class="download_pdf" name="button" onclick="printContent()"><i style="padding-right: 5%; " class="fas fa-download" aria-hidden="true"></i>DOWNLOAD REPORT</button>
+          <button type="button" class="download_pdf" name="button" style="width: 14%;">
+            <i style="padding-right: 5%; " class="fas fa-sync-alt" aria-hidden="true"></i>
+            <a class="refresh_button" href="{% url 'coreapp:project-dashboard-refresh' pk=dashboard.pk  %}" style="color:#fff">
+
+              REFRESH
+            </a>
+          </button>
+          {%if dashboard.public_shared_code %}
+              <button type="button" name="button" class="download_pdf" data-toggle="modal" data-target="#embedModal" style="width: 14%;">
+                <i style="padding-right: 5%; " class="fas fa-sync-alt" aria-hidden="true"></i>
+                <a class="refresh_button" href="#" style="color:#fff">
+                  Embed
+                </a>
+              </button>
+          {%endif%}
+        </ol>
+      </nav>
+
+
+      <!-- modal for sharing link -->
+
+      <!-- Button trigger modal -->
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" style='top:10%'>
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">COPY THE PUBLIC VIEW LINK</h5>
+              <button type="button" class="close" style ='margin-right:1%' data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" onclick="closeModal('clipboard_text')">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="" style="display:flex;">
+                <i class="fa fa-clipboard copy_clipboard" title="click to copy" aria-hidden="true" onclick="copyText('copy_clipboard_input','clipboard_text')"></i>
+                <input type="text" class='form-control' id="copy_clipboard_input" style='width:100%' value="{{domain}}{%url 'coreapp:public-shared-dashboard-view' key=dashboard.public_shared_code %}"  readonly>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <p id="clipboard_text" style="text-transform:uppercase;display:none;color: #6ce06c;text-align: left;">Copied to Clipboard</p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal('clipboard_text')">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end of modal for sharing link -->
+
+
+
+
+      <!--START: Embed Modal Details-->
+      <div class="modal fade" id="embedModal" tabindex="-1" role="dialog" aria-labelledby="embedModalLabel"
+        aria-hidden="true" style='top:10%'>
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">EMBED CODE</h5>
+              <button type="button" class="close" style ='margin-right:1%' data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" onclick="closeModal()">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="" style="display:flex;">
+                <i class="fa fa-clipboard copy_clipboard" title="click to copy" aria-hidden="true" onclick="copyText('copy_embed_code_input','clipboard_embed_text')"></i>
+                <input type="text" class='form-control' id="copy_embed_code_input" style='width:100%' value="<div><iframe src='{{domain}}{%url 'coreapp:public-shared-dashboard-view' key=dashboard.public_shared_code %}' height='900px' width='100%'></iframe></div>"  readonly>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <p id="clipboard_embed_text" style="text-transform:uppercase;display:none;color: #6ce06c;text-align: left;">Copied to Clipboard</p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal('clipboard_embed_text')">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <!--END: Embed Modal Details-->
+
+
+
+
+
+
+      <!--START: Delete Dahboard Modal -->
+      <div class="modal fade" id="deleteDashboard" tabindex="-1" role="dialog" aria-labelledby="deleteDashboardLabel"
+        aria-hidden="true" style='top:10%'>
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" style="width:63%;margin-left:14%;">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">ARE YOU SURE YOU WANT TO DELETE?</h5>
+              <button type="button" class="close" style ='margin-right:1%' data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" onclick="closeModal()">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="delete_modal_buttons">
+                  <button type="button" name="button" class="delete_endpoint"  onclick="deleteDashboardModel()">yes i'm sure</button>
+                  <button type="button" name="button" style="margin-right: 0;" data-dismiss="modal">No i dont want</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end: Delete Dahboard Modal -->
+
+
+
+
+
+
+
+
+      <!-- END: NAVIGATION THROUGH BREADCRUMBS -->
+
+
+
+      <div class="" id="print_content">
+
+        <div class="" id="print_logo_image_style" style="margin-bottom:12%;">
+          <div class="" style="display:flex;">
+            <!-- <a href="{% url 'coreapp:dashboard' %}" id="print_logo_image_style" style="display:none;"> -->
+              <img src="{% static 'images/header_change.png' %}" alt="" style="width:140px;height:75px;margin-bottom:3%">
+            <!-- </a> -->
+            {% if customer.type == 'Company' %}{% if customer.logo %}
+
+            <img class="" src="{{ customer.logo.url }}" alt="" style="max-width: 85%;padding-left:70%;">{%endif%}{%endif%}
+          </div>
+        </div>
+        <div class="row" style="margin-top: 1%;">
+          <!-- <button type="button" name="button" onclick="generatePDF()">generate pdf</button> -->
+
+          <div class="row page_break" style="background:#fff;">
+            {%for key, value in dashboard_format.items %}
+
+            {% if value.type == 'end_point' %}
+            <div class="col-md-12 " style="padding:0 3%;">
+              <div class="row zoom_functionality">
+                <div class="col-md-6 hide_print_display_endpoint" style="display:none;">
+                  <p class="" >{{value.end_point}}</p>
+                </div>
+                <div class="col-md-6">
+                  <form method="post" action="{% url 'coreapp:query-legend' pk=dashboard.id %}" id="{{value.id}}">
+                    {%csrf_token%}
+                    <input type="text" name="end_point_id" value="{{value.id}}" hidden>
+                    <!-- <input type="radio" name="plot_legend" data-point="{{value.id}}" onclick="AjaxLegend(this)" style="margin-left:2%;"  >
+        <lable style="margin-left:2%;">Legend</lable> -->
+                    {% for object, object_value  in value.end_point.alignment_object.items %}
+              {%if object_value.type == 'plot'  %}
+                    <label  class="checkbox_container hide_print " id="legend_section">EXCLUDE LEGENDS
+                      <input type="checkbox" {%if value.legend == True %} checked="checked" {%endif%} name="plot_legend"
+                        data-point="{{value.id}}" onclick="AjaxLegend(this)">
+                      <span class="checkmark"></span>
+                    </label>
+                    {%endif%}
+              {%endfor%}
+
+                  </form>
+                </div>
+                <div class="col-md-4">
+                  <a class="hide_print_endpoint" href="{% url 'coreapp:project-end-point' pk=value.id%}">{{value.end_point}}</a>
+                  <p class="display_print_endpoint" href="{% url 'coreapp:project-end-point' pk=value.id%}" style="display:none;">{{value.end_point}}</p>
+
+                </div>
+                <div class="col=md-4"></div>
+              </div>
+
+              {% for object, object_value  in value.end_point.alignment_object.items %}
+              {%if object_value.type == 'plot'  %}
+              <div class="card_content page_break" >
+                {{ value.div | safe }}
+              </div>
+              {%endif%}
+              {%endfor%}
+
+            </div>
+            {%if value.end_point.algorithm %}
+            <!-- START:New tabs for Machiene Learning -->
+    <div class="col-md-12 border_class_endpoint_page" id="machine_learing_tabs" style="margin-top:3%;margin-bottom: 3%;">
+      <h3 >MACHINE LEARNING</h3>
+      <div class="layout" style="grid-template-columns: 1fr 1fr;margin-top: 2%;">
+
+
+        <input name="nav_{{value.end_point}}" type="radio" class="nav home-radio brayn_details_label" id="home_{{value.end_point}}"  />
+        <div class="page home-page">
+          <div class="page-contents" style="position:absolute;top: 11%;left: 0;">
+
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="card card_border_class">
+                  <div class="card-body">
+                    <h5 class="card-title">ACCURACY</h5>
+                    <p class="card-text">{% if value.accuracy.MAE %}MAE: {{value.accuracy.MAE}}<br>MSE: {{value.accuracy.MSE}}<br>
+                    RMSE: {{value.accuracy.RMSE}}{%else%} {{value.accuracy.accuracy}}{%endif%}</p>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="card card_border_class">
+                  <div class="card-body">
+                    <h5 class="card-title">TARGET</h5>
+                    <p class="card-text">{{value.target}}</p>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="card card_border_class">
+                  <div class="card-body">
+                    <h5 class="card-title">FEATURES</h5>
+                    <div class="features_break_point">
+                      <p class="card-text">{% for column in value.features %}{{column}}<br>{%endfor%}</p>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="card card_border_class">
+                  <div class="card-body">
+                    <h5 class="card-title">INSTANCE DETAILS</h5>
+                    <p class="card-text">{{value.end_point.algorithm.type_of_prediction}}</p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <label class="nav brayn_details_label" for="home_{{value.end_point}}" >
+          <span>
+            BRAYN DETAILS
+          </span>
+        </label>
+
+        <input name="nav_{{value.end_point}}" type="radio" class="about-radio brayn_details_label" id="about_{{value.end_point}}" checked="checked"/>
+        <div class="page about-page">
+          <div class="page-contents">
+            <div class="row">
+              <div class="col-md-4">
+
+              </div>
+              <div class="col-md-4">
+
+              </div>
+              <div class="col-md-4">
+                <!-- <button class="rounded_button" title="Add Features" type="button" name="button">
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                </button> -->
+                <button class="rounded_button" disabled title="upload file coming soon" type="button" name="button">
+                  <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+            <form method="POST" accept-charset="UTF-8" enctype="multipart/form-data" id="prediction-form_{{value.end_point.pk}}">
+            <div class="row features_section">
+                            {% for key, val in value.features_cat_dict.items %}
+                <div class="col-md-3">
+                <label for="features_display">{{key}}</label><br>
+
+
+                <!-- {{key}}{{column}} -->
+
+                <select name="{{key}}" class="form-control" >
+                  {{features_cat_dict.column}}
+                  {% for k, v in val.items %}
+                  <!-- {{k}} -->
+                  <option value="{{v}}">{{k}}</option>
+                  {%endfor%}
+
+                </select>
+                </div>
+
+                {% endfor %}
+
+
+                {%for column in value.features%}
+                <div class="col-md-3">
+                <label for="features_display">{{column}}</label>
+
+                <input type="text" class="form-control"  name="{{column}}" value="" style="display:block">
+                </div>
+              {%endfor%}
+
+             <!--  <div class="col-md-3">
+                  <label for="featues_selection">FEATURES</label>
+                  <input type="text" class="form-control" id="features_display" name="" value="" style="display:block">
+              </div>
+              <div class="col-md-3">
+                  <label for="features_selection">FEATURES</label>
+                  <input type="text" class="form-control" id="features_display" name="" value="" style="display:block">
+
+              </div>
+              <div class="col-md-3">
+                  <label for="featues_selection">FEATURES</label>
+                  <input type="text" class="form-control" id="features_display" name="" value="" style="display:block">
+
+              </div> -->
+              <div class="col-md-4"></div>
+
+
+            </div>
+            <div class="row" style="padding: 0% 1.6%;">
+              <div class="col-md-4">
+
+              </div>
+              <div class="col-md-4">
+                  <button class="predict_brayn_button" type="button" onclick="predictionSubmission('{{value.end_point.pk}}','content_div_{{value.end_point.pk}}')">PREDICT</button>
+              </div>
+              <div class="col-md-4">
+
+              </div>
+            </div>
+            </form>
+            <div class="row" style="margin-top:2%">
+              <!-- <div id="loader" class="center" style="display:none;"></div> -->
+              <p class="predictions_print_hide">
+                <a style="width:100%;background:#4a90e2;border:1px solid #4a90e2" class="btn btn-primary" data-toggle="collapse" href="#predictions_tab_{{value.end_point.pk}}" role="button" aria-expanded="false" aria-controls="predictions_tab_{{value.end_point.pk}}">
+                  PREDICTIONS <i class="fas fa-chevron-circle-down" style="font-size:20px;float:right" aria-hidden="true"></i>
+                </a>
+
+              </p>
+              <div class="row">
+                <div class="col">
+                  <div class="collapse multi-collapse" id="predictions_tab_{{value.end_point.pk}}">
+                    <div class="card card-body border_class_endpoint_page height_class">
+                      <table class="table">
+                      <thead >
+                        <tr>
+                          {%for column in value.features_ml_display%}
+                          <th>{{column}}</th>
+                          {%endfor%}
+                          <th>Predicted: {{value.target}}</th>
+                        </tr>
+                      </thead>
+                      <tbody id="content_div_{{value.end_point.pk}}">
+
+                        <tr>
+
+                        </tr>
+                      </tbody>
+                    </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <label class="nav brayn_details_label" for="about_{{value.end_point}}">
+          <span>
+            USE BRAYN
+            </span>
+          </label>
+
+
+      </div>
+    </div>
+    {%endif%}
+  </div>
+    <!-- END:New tabs for Machiene Learning -->
+
+            {% elif value.type == "spacer" %}
+            <div class="col-md-12" style="margin:2%;"></div>
+
+            {% elif  value.type == "text_editor" %}
+
+            {%for k,v in value.rich_text.items %}
+            {%if k == value.id %}
+
+
+
+            <div class="col-md-12 zoom_functionality" style="margin:2%;width: 100%;padding: 0 6% 0 3%;">{{v.value | safe }}</div>
+            {% endif %}
+
+            {%endfor%}
+            {% elif value.type == "row_constructor" %}
+            <!-- {{value}} -->
+            {% for k , v in value.row_constructor_object.items %}
+            <!-- {{v}} -->
+            <div class="row row_constructor_section">
+            {% if v.columns == 2 %}
+
+
+            <div class="col-md-6">
+              {% if v.col_1  %}
+              {% if v.col_1.text %}
+
+              <p>
+                {{v.col_1.text}}
+              </p>
+              {% elif v.col_1.blank %}
+              <div class="col-md-6"></div>
+              {% elif v.col_1.image %}
+              <img src="{{v.col_1.image}}">
+              {% else %}
+                <div class="block_card">
+
+                  <p class="endpoint_display_name">
+                    Endpoint Name : {{v.col_1.end_point}}
+                  </p>
+                  <p class="operation_function">
+                    Col Name :  {{v.col_1.column_name}}
+                  </p>
+                  <div style="padding-top: 7%;">
+                    <span class="blocks_value">{{v.col_1.block}}</span>
+                    <span class="operation_name" style="left: 42%;bottom: 30%;">Operation : {{v.col_1.opration}}</span>
+                  </div>
+
+
+                  <!-- <p class="operation_function">
+                    Standard Deviation
+                  </p>
+                  <span>{{v.col_1.block}}</span>
+                  <p>
+                    {{v.col_1.column_name}}
+                  </p> -->
+                </div>
+              {%endif%}
+              {%endif%}
+            </div>
+            <div class="col-md-6">
+               {% if v.col_2  %}
+              {% if v.col_2.text %}
+                <p>
+                  {{v.col_2.text}}
+                </p>
+              {% elif v.col_2.blank %}
+              <div class="col-md-6"></div>
+              {% elif v.col_2.image %}
+              <img src="{{v.col_2.image}}">
+              {% else %}
+              <div class="block_card">
+
+                <p class="endpoint_display_name">
+                  Endpoint Name : {{v.col_2.end_point}}
+                </p>
+                <p class="operation_function">
+                  Col Name :  {{v.col_2.column_name}}
+                </p>
+                <div style="padding-top: 7%;">
+                  <span class="blocks_value">{{v.col_2.block}}</span>
+                  <span class="operation_name" style="left: 42%;bottom: 30%;">Operation : {{v.col_2.opration}}</span>
+                </div>
+
+
+
+                <!-- <p class="operation_function">
+                  Standard Deviation
+                </p>
+                <span>{{v.col_2.block}}</span>
+                <p>
+                  {{v.col_2.column_name}}
+                </p> -->
+              </div>
+
+              {%endif%}
+              {%endif%}
+            </div>
+          </div>
+          <div class="row ">
+            {% elif v.columns == 3%}
+            <div class="col-md-4">
+              {% if v.col_1  %}
+              {% if v.col_1.text %}
+              <p>
+                {{v.col_1.text}}
+              </p>
+
+              {% elif v.col_1.blank %}
+              <div class="col-md-4"></div>
+              {% elif v.col_1.image %}
+              <img src="{{v.col_1.image}}">
+              {% else %}
+              <div class="block_card_3_cloumns">
+                <p class="endpoint_display_name">
+                  Endpoint Name : {{v.col_1.end_point}}
+                </p>
+                <p class="operation_function">
+                  Col Name :  {{v.col_1.column_name}}
+                </p>
+                <div style="padding-top: 10%;">
+                  <span class="blocks_value">{{v.col_1.block}}</span>
+                  <span class="operation_name">Operation : {{v.col_1.opration}}</span>
+                </div>
+
+              </div>
+
+              {%endif%}
+              {%endif%}
+
+
+            </div>
+            <div class="col-md-4">
+              {% if v.col_2  %}
+              {% if v.col_2.text %}
+              <p style="text-align: justify;">
+                {{v.col_2.text}}
+              </p>
+
+              {% elif v.col_2.blank %}
+              <div class="col-md-4"></div>
+              {% elif v.col_2.image %}
+              <img src="{{v.col_2.image}}">
+              {% else %}
+              <div class="block_card_3_cloumns">
+                <p class="endpoint_display_name">
+                  Endpoint Name : {{v.col_2.end_point}}
+                </p>
+                <p class="operation_function">
+                  Col Name :  {{v.col_2.column_name}}
+                </p>
+                <div style="padding-top: 10%;">
+                  <span class="blocks_value">{{v.col_2.block}}</span>
+                  <span class="operation_name">Operation : {{v.col_2.opration}}</span>
+                </div>
+
+
+                <!-- <p class="operation_function">
+                  Standard Deviation
+                </p>
+                <span>{{v.col_2.block}}</span>
+                <p>
+                  {{v.col_2.column_name}}
+                </p> -->
+              </div>
+
+              {%endif%}
+              {%endif%}
+            </div>
+            <div class="col-md-4">
+              {% if v.col_3  %}
+              {% if v.col_3.text %}
+              <p style="text-align: justify;">
+                {{v.col_3.text}}
+              </p>
+
+              {% elif v.col_3.blank %}
+              <div class="col-md-4"></div>
+              {% elif v.col_3.image %}
+              <img src="{{v.col_3.image}}">
+              {% else %}
+              <div class="block_card_3_cloumns">
+
+                <p class="endpoint_display_name">
+                  Endpoint Name : {{v.col_3.end_point}}
+                </p>
+                <p class="operation_function">
+                  Col Name :  {{v.col_3.column_name}}
+                </p>
+
+                <div style="padding-top: 10%;">
+                  <span class="blocks_value">{{v.col_2.block}}</span>
+                  <span class="operation_name">Operation : {{v.col_3.opration}}</span>
+                </div>
+
+                <!-- <p class="operation_function">
+                  Standard Deviation
+                </p>
+                <span>{{v.col_3.block}}</span>
+                <p>
+                  {{v.col_3.column_name}}
+                </p> -->
+              </div>
+
+              {%endif%}
+              {%endif%}
+            </div>
+
+            {%endif%}
+          </div>
+            {% endfor %}
+
+            {% endif %}
+
+            {% endfor %}
+
+
+
+
+
+        </div>
+      </div>
+
+
+      <!--<a id="showFilePanel">Open</a>
+           <a id="closeFilePanel">Close</a> -->
+      <!-- <div class="footer-copyright-area">
+               <div class="container-fluid">
+                   <div class="row">
+                       <div class="col-lg-12">
+                           <div class="footer-copy-right">
+                               <p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div> -->
+      <!-- <div class="footer-copyright-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer-copy-right">
+                            <p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>0
+        </div> -->
+    </div>
+    <!-- <input type="button" value="button name" onclick="window.open('http://127.0.0.1:8000/single-project/1/','popUpWindow','height=900,width=1200,left=10,top=10,,scrollbars=yes,menubar=no')" /> -->
+    {% endblock body %}
+    <!-- plot js
+        ============================================ -->
+
+
+    <script src="{% static 'dashboard/js/vendor/jquery-1.12.4.min.js' %}"></script>
+
+    <!-- bootstrap J
+============================================ -->
+    <script src="{% static 'dashboard/js/bootstrap.min.js' %}"></script>
+    <!-- wow JS
+============================================ -->
+    <script src="{% static 'dashboard/js/wow.min.js' %}"></script>
+    <!-- price-slider JS
+============================================ -->
+    <script src="{% static 'dashboard/js/jquery-price-slider.js' %}"></script>
+    <!-- meanmenu JS
+============================================ -->
+    <script src="{% static 'dashboard/js/jquery.meanmenu.js' %}"></script>
+    <!-- owl.carousel JS
+============================================ -->
+    <script src="{% static 'dashboard/js/owl.carousel.min.js' %}"></script>
+    <!-- sticky JS
+============================================ -->
+    <script src="{% static 'dashboard/js/jquery.sticky.js' %}"></script>
+    <!-- scrollUp JS
+============================================ -->
+    <script src="{% static 'dashboard/js/jquery.scrollUp.min.js' %}"></script>
+    <!-- counterup JS
+============================================ -->
+    <script src="{% static 'dashboard/js/counterup/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/counterup/waypoints.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/counterup/counterup-active.js' %}"></script>
+    <!-- mCustomScrollbar JS
+============================================ -->
+    <script src="{% static 'dashboard/js/scrollbar/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/scrollbar/mCustomScrollbar-active.js' %}"></script>
+    <!-- metisMenu JS
+============================================ -->
+    <script src="{% static 'dashboard/js/metisMenu/metisMenu.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/metisMenu/metisMenu-active.js' %}"></script>
+    <!-- morrisjs JS
+============================================ -->
+    <script src="{% static 'dashboard/js/morrisjs/raphael-min.js' %}"></script>
+    <script src="{% static 'dashboard/js/morrisjs/morris.js' %}"></script>
+    <script src="{% static 'dashboard/js/morrisjs/morris-active.js' %}"></script>
+    <!-- morrisjs JS
+============================================ -->
+    <script src="{% static 'dashboard/js/sparkline/jquery.sparkline.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/sparkline/jquery.charts-sparkline.js' %}"></script>
+    <script src="{% static 'dashboard/js/sparkline/sparkline-active.js' %}"></script>
+    <!-- calendar JS
+============================================ -->
+    <script src="{% static 'dashboard/js/calendar/moment.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/calendar/fullcalendar.min.js' %}"></script>
+    <script src="{% static 'dashboard/js/calendar/fullcalendar-active.js' %}"></script>
+    <!-- plugins JS
+============================================ -->
+    <script src="{% static 'dashboard/js/plugins.js' %}"></script>
+    <!-- main JS
+============================================ -->
+    <script src="{% static 'dashboard/js/main.js' %}"></script>
+    <!-- tawk chat JS
+============================================ -->
+    <!-- <script src="{% static 'dashboard/js/tawk-chat.js' %}"></script> -->
+
+
+
+    <!-- Test script -->
+    <script>
+    function printContent() {
+      // win = parent.window.open('', '', 'status=1,width=350,height=150');
+      // win.document.write('<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg">' + o.innerHTML + '</svg>');
+      // win.print();
+      window.print()
+      // var restorepage = document.body.innerHTML;
+      // document.getElementById('print_logo_image_style').style.display="block";
+      // document.querySelector('.hide_print').style.display="none";
+      // document.querySelector('.hide_print_endpoint').style.display="none";
+      // document.querySelector('.hide_print_display_endpoint').style.display="block";
+      // var printContent = document.getElementById('print_content').innerHTML;
+      // document.body.innerHTML = printContent;
+      // window.print();
+      // document.body.innerHTML = restorepage;
+
+    }
+      var closebtns = document.getElementsByClassName("close");
+      var i;
+
+      for (i = 0; i < closebtns.length; i++) {
+        closebtns[i].addEventListener("click", function () {
+          document.getElementById("myDropdown").classList.remove("show");
+          document.getElementById("blog_dropdown").classList.remove("show");
+          document.querySelector('.data_integration_link').classList.remove("background_color");
+          document.querySelector('.dashboard_link').classList.remove("background_color");
+        }, true);
+      }
+      function showFunction(event) {
+
+        event.stopPropagation();
+        // alert(e);
+        document.querySelector('.data_integration_link').classList.toggle("background_color");
+        document.querySelector('.dashboard_link').classList.remove("background_color");
+        document.getElementById("logout").classList.remove("show");
+        document.getElementById("blog_dropdown").classList.remove("show");
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+
+
+      function blogDropdown(event) {
+
+        event.stopPropagation();
+        // body...
+        document.querySelector('.dashboard_link').classList.toggle("background_color");
+        document.querySelector('.data_integration_link').classList.remove("background_color");
+        document.getElementById("logout").classList.remove("show");
+        document.getElementById("myDropdown").classList.remove("show");
+        document.getElementById("blog_dropdown").classList.toggle("show");
+
+      }
+
+      function shopDropdown(event) {
+
+        event.stopPropagation();
+        // body...
+        document.getElementById("shop_dropdown").classList.toggle("show");
+
+      }
+
+      function callLogout() {
+        event.stopPropagation();
+        // body...
+        // document.getElementById("myDropdown").classList.remove("show");
+        // document.getElementById("blog_dropdown").classList.remove("show");
+        document.getElementById("logout").classList.toggle("show");
+      }
+
+
+      // Close the dropdown if the user clicks outside of it
+      window.onclick = function (event) {
+
+        document.getElementById("logout").classList.remove("show");
+        // document.querySelector('.data_integration_link').classList.remove("background_color");
+        // document.querySelector('.dashboard_link').classList.remove("background_color");
+        // document.getElementById("myDropdown").classList.remove("show");
+        // document.getElementById("blog_dropdown").classList.remove("show");
+        // document.getElementById("shop_dropdown").classList.remove("show");
+      }
+
+    </script>
+    <!-- test script -->
+
+    <!-- script for sidebar -->
+    <script>
+      $('#sidebarCollapse').click(function (event) {
+
+        if ($('#defaulty').hasClass('div_aside')) {
+          $('#defaulty').removeClass('div_aside').addClass('new_class');
+        }
+        else if ($('#defaulty').hasClass('new_class')) {
+          $('#defaulty').removeClass('new_class').addClass('div_aside');
+        }
+        event.preventDefault();
+      });
+    </script>
+
+    <script>
+      $('#sidebarCollapse').click(function (event) {
+
+        if ($('#header_top').hasClass('header_row')) {
+          document.getElementById('show_me').style.display = "none";
+          document.getElementById('hide_me').style.display = "block";
+          $('#header_top').removeClass('header_row').addClass('new_header');
+        }
+        else if ($('#header_top').hasClass('new_header')) {
+          document.getElementById('show_me').style.display = "block";
+          document.getElementById('hide_me').style.display = "none";
+          $('#header_top').removeClass('new_header').addClass('header_row');
+        }
+        event.preventDefault();
+      });
+    </script>
+
+    <script>
+      var project_title = document.getElementById("title").value;
+      var update_title = document.getElementById("id_project_title");
+      update_title.value = project_title;
+      var project_data = document.getElementById("data").value;
+      var update_data = document.getElementById("id_data_description");
+      update_data.value = project_data;
+      var project_output = document.getElementById("ans").value;
+      var update_output = document.getElementById("id_expected_ans");
+      update_output.value = project_output;
+      $('#update_project').click(function () {
+        document.getElementById('hide_seek').style.display = "block";
+        document.getElementById('details').style.display = "none";
+        document.getElementById('update_project').style.display = "none";
+      }
+      )
+    </script>
+
+
+    <!-- partial -->
+
+
+    <!-- script for dynamic controls changes -->
+    <script type="text/javascript">
+      function visualizationColumns(elem) {
+        // alert(elem.value);
+        document.getElementById(elem.value).style.display = "block";
+
+        var previous_id = $(elem).attr("data-value");
+        var id = '#' + previous_id;
+        // alert(id);
+
+        $(elem).attr('data-value', elem.value);
+        $(id).css("display", "none");
+
+
+
+
+      }</script>
+    <!-- script for legends remove  -->
+    <script>
+      function AjaxLegend(elm) {
+        var id = elm.getAttribute('data-point');
+
+
+        document.getElementById(id).submit();
+
+      }
+    </script>
+    <!--
+ alert(previous_id);
+
+
+
+  -->
+
+
+    <!-- START: SCRIPT FOR DISABLING CHECKBOX -->
+    <script type="text/javascript">
+      function ckChange(ckType, id) {
+        console.log(ckType);
+        console.log(ckType.id);
+        var ckName = document.getElementsByClassName(ckType.className);
+        var checked = document.getElementById(ckType.id);
+
+        console.log("reg " + id)
+        if (id === 'scatter_plot') {
+          document.getElementById('line_2d_plot').disabled = true;
+          document.getElementById('line_3d_plot').disabled = true;
+        }
+        else if (id === 'bar_plot') {
+          document.getElementById('line_2d_plot').disabled = true;
+          document.getElementById('line_3d_plot').disabled = true;
+          document.getElementById('scatter_2d_plot').disabled = true;
+          document.getElementById('scatter_3d_plot').disabled = true;
+        }
+        else if (id === 'line_plot') {
+          document.getElementById('scatter_2d_plot').disabled = true;
+          document.getElementById('scatter_3d_plot').disabled = true;
+        }
+        else if (id === 'histogram_plot') {
+          document.getElementById('line_2d_plot').disabled = true;
+          document.getElementById('line_3d_plot').disabled = true;
+          document.getElementById('scatter_2d_plot').disabled = true;
+          document.getElementById('scatter_3d_plot').disabled = true;
+        }
+        if (checked.checked) {
+
+          for (var i = 0; i < ckName.length; i++) {
+            if (!ckName[i].checked) {
+              ckName[i].disabled = true;
+            } else {
+              ckName[i].disabled = false;
+            }
+          }
+        }
+        else {
+          if (id === 'scatter_plot') {
+            document.getElementById('line_2d_plot').disabled = false;
+            document.getElementById('line_3d_plot').disabled = false;
+          }
+          else if (id === 'bar_plot') {
+            document.getElementById('line_2d_plot').disabled = false;
+            document.getElementById('line_3d_plot').disabled = false;
+            document.getElementById('scatter_2d_plot').disabled = false;
+            document.getElementById('scatter_3d_plot').disabled = false;
+          }
+          else if (id === 'line_plot') {
+            document.getElementById('scatter_2d_plot').disabled = false;
+            document.getElementById('scatter_3d_plot').disabled = false;
+          }
+          else if (id === 'histogram_plot') {
+            document.getElementById('line_2d_plot').disabled = false;
+            document.getElementById('line_3d_plot').disabled = false;
+            document.getElementById('scatter_2d_plot').disabled = false;
+            document.getElementById('scatter_3d_plot').disabled = false;
+          }
+          for (var i = 0; i < ckName.length; i++) {
+            ckName[i].disabled = false;
+          }
+        }
+      }
+
+
+
+      // disabling checknoxes in 2D and 3D graphs
+      function toggleCheckboxState(className, diabled) {
+        var checkboxes = document.getElementsByClassName(className);
+        for (var i = 0; i < checkboxes.length; ++i) {
+          checkboxes[i].disabled = diabled
+        }
+      }
+      document.getElementById('scatter_2d_plot').onclick = function (e) {
+        var diabled = false
+        if (this.checked) {
+          diabled = true
+        }
+        toggleCheckboxState('scatter_3d', diabled)
+      }
+
+      document.getElementById('scatter_3d_plot').onclick = function (e) {
+        var diabled = false
+        if (this.checked) {
+          diabled = true
+        }
+
+        toggleCheckboxState('scatter_2d', diabled)
+      }
+
+
+      document.getElementById('line_2d_plot').onclick = function (e) {
+        var diabled = false
+        if (this.checked) {
+          diabled = true
+        }
+        toggleCheckboxState('line_3d', diabled)
+      }
+
+      document.getElementById('line_3d_plot').onclick = function (e) {
+        var diabled = false
+        if (this.checked) {
+          diabled = true
+        }
+
+        toggleCheckboxState('line_2d', diabled)
+      }
+
+
+
+
+
+  // START: close modal
+    function closeModal(id) {
+      document.getElementById(id).style.display="none";
+    }
+    // END: close modal
+    </script>
+
+    <!-- END: SCRIPT FOR DISABLING CHECKBOX -->
+
+
+
+    <!-- START: script for deleting dashboard  -->
+
+    <script type="text/javascript">
+      const deleteDashboardModel = () =>{
+        // alert("hi")
+        $('#delete_dashboard_form').submit()
+      }
+    </script>
+
+    <!-- END: script for deleting dashboard  -->
+
+
+<!-- script for ml prediction  -->
+  <script type="text/javascript">
+
+    function predictionSubmission(pk,table_type) {
+    
+    document.querySelector('.loading-overlay').style.display = "block";
+    var form_id = '#prediction-form_'+pk
+    // alert(form_id)
+    // var form_data = new FormData($('#prediction-form_'+pk).get(0));
+
+    var form_data = $('#prediction-form_'+pk).serialize();
+    
+
+    $.ajax({
+      url: "/endpoint/"+pk+"/algorithm/prediction/",
+      method: "POST",
+      headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+      data: form_data,
+      cache: false,
+      processData: false,
+      success: function (data) {
+        if (data.error_msg) {
+          document.querySelector('.loading-overlay').style.display = "none";
+          alert(data.error_msg);
+        }
+        else if (data.Predition) {
+
+              let predicted_data_value = data.Predition.map(function(item) {
+                  return `<td>${item}</td>`
+              })
+              // document.getElementById('loader').style.display = "none";
+              document.querySelector('.loading-overlay').style.display = "none";
+              $('#'+table_type).append(`<tr>${predicted_data_value}</tr>`);
+              $('#predictions_tab_'+pk).addClass('in');
+            }
+
+          }
+    });
+  }
+
+  </script>
+  <!-- end of ml for prediction -->
+
+
+    <!-- end of script for dynamic script change -->
+    <!-- <script src='http://brienlabs.com/ruby-mega-menu/js/jquery-3.1.0.min.js'></script>
+    <script src='http://brienlabs.com/ruby-mega-menu/js/ruby-demo.js'></script>
+    <script src='http://brienlabs.com/ruby-mega-menu/js/ruby-main.js'></script> -->
+</body>
+
+</html>

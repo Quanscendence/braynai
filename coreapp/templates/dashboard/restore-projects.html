@@ -1,0 +1,93 @@
+
+
+{% extends 'dashboard/index.html'%}
+{% load staticfiles %}
+{% block body %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+        /* table,
+        th,
+        td {
+
+            padding: 6px;
+           text-align: center;
+        } */
+/* table{
+  padding: 6px;
+  text-align: center;
+} */
+        th {
+          vertical-align: bottom;
+          border-bottom: 2px solid #dee2e6;
+          padding: 0.5rem 15px;
+          border-width: 0;
+          font-size: 15px !important;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-weight: 400;
+          text-align: left;
+       }
+        td {
+         padding: 15px 15px;
+         border-color: #e9ecef;
+       }
+        .restore_btn{
+          background: #4a90e2;
+          border: 2px solid #4a90e2;
+          color: white;
+          border-radius: 4px;
+        }
+
+        #hide{
+          display :none;
+        }
+        #submit{
+          display :none;
+        }
+
+    </style>
+    {%block project%}
+{%endblock project%}
+    <table class="w3-table-all w3-card-4" style="margin-top:10%;margin-left: 18%;width:60%;border: 2px solid lightgray;box-shadow:none;">
+          <thead style="border: 2px solid lightgray;">
+            <tr>
+              <th>Project Title</th>
+              
+              <th>Created Date and Time</th>
+              <th>Deleted Date and Time</th>
+              <th>Restore</th>
+            </tr>
+          </thead>
+
+
+      {% for p in projects %}
+      {% if p.delete_datetime  %}
+
+      <tr class="w3-hover-grey">
+        <td>{{p.name}}</td>
+          
+
+        <td>{{p.created}}</td>
+        <td>{{p.delete_datetime}}</td>
+        <td><a href="{% url 'coreapp:restore-project' pk=p.pk %}"><i class="fa fa-undo" aria-hidden="true"></i></a></td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+
+    </table>
+
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.js"
+      integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+      crossorigin="anonymous"></script>
+
+<!-- <script>
+  function restore_project(){
+    alert("hi")
+    document.getElementById("hide").style.display = "block";
+    document.getElementById("submit").style.display = "block";
+  }
+</script> -->
+
+
+{% endblock body %}

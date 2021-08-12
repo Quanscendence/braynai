@@ -1,0 +1,13 @@
+{% extends 'dashboard/index.html' %}
+{% load staticfiles %}
+{% block body %}
+ <div class="" style="margin-top: 8%;margin-left: 7%;">
+      <p>Integrate Your files with </p>
+      <p><a href="{% url 'dataintegration:drive-details' pk=project.pk %}"><button type="button" name="button">Google Drive</button></a></p>
+      <p><a href="{% url 'dataintegration:onedrive-details' pk=project.pk %}"><button type="button" name="button">OneDrive</button></a></p>
+      <p><a href=""><button type="button" name="button">Segment</button></a></p>
+      <p><a href="{% url 'dataintegration:sheet-details' pk=project.pk%}"><button type="button" name="button">Google Sheets</button></a></p>
+      <p><a href="{% url 'dataintegration:dropbox-details' pk=project.pk%}"><button type="button" name="button">DropBox</button></a></p>
+    </div>
+
+{% endblock body %}

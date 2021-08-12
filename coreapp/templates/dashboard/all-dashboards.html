@@ -1,0 +1,9 @@
+{% extends 'dashboard/index.html' %}
+{% load staticfiles %}
+{% block body %}
+
+<div class="">
+  {% for d in all_dashboards %}
+  <p>{{d.dashboard_title}}</p>
+{% endfor %}
+</div>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div>
+      <h3>SEO Update Form</h3>
+        <div>
+        <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Submit</button>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="{% url 'seo:seo_updates' %}" style="float: left;">All SEO!</a>
+      </form>
+    </div>
+  </body>
+</html>

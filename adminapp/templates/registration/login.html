@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="text-center m-b-md custom-login" style="text-align: center;">
+<h3>LOGIN</h3>
+<p></p>
+</div>
+<form method="post" style="text-align: center;">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <div style="text-align:center;margin-right: 8%"><button type="submit" style="background-color: #4a90e2;border-radius: 8px;color: white;border: #4a90e2;width: 15%;margin-left: 14%;height:26px">LOGIN</button>
+</div>
+</form>
+  </body>
+</html>

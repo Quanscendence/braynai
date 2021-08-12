@@ -1,0 +1,39 @@
+<html>
+    <body>
+        <div class="row" style="background:#fff;">
+            {%for key, value in dashboard_format.items %}
+        
+            {% if value.type == 'end_point' %}
+            <div class="col-md-12" style="padding:0 3%;">
+        
+        
+        
+        
+                <div class="card_content">
+                    <img src="E:/projects/DSAAA/braynai/{{end_point.name}}_plot.png" alt="">
+                    
+                </div>
+        
+            </div>
+        
+            {% elif value.type == "spacer" %}
+            <div class="col-md-12" style="margin:2%;"></div>
+        
+            {% elif  value.type == "text_editor" %}
+        
+            {%for k,v in value.rich_text.items %}
+            {%if k == value.id %}
+        
+        
+        
+            <div class="col-md-12" style="margin:2%;">{{v.value | safe }}</div>
+            {% endif %}
+            {%endfor%}
+            {% endif %}
+        
+            {% endfor %}
+        
+        
+        </div>
+    </body>
+</html>

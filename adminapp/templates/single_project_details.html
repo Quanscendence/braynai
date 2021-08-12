@@ -1,0 +1,140 @@
+{% extends 'dashboard/project_details.html' %}
+{% load staticfiles %}
+{% block body %}
+
+<style media="screen">
+  #tool{
+    font-size: 20px;
+    margin-left: 5%;
+  }
+  .submit{
+    margin-top: 3%;
+    background: #4a90e2;
+    width: 130px;
+    height: 30px;
+    border-radius: 3px;
+    color: white;
+    border: 1px;
+  }
+  #hide_seek{
+      display:none;
+    }
+#project{
+    height: 30px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    border: 1px solid #f7f7f7;
+    color: #333;
+    }
+</style>
+<div class="" style="display:flex;">
+  <div class="card" style="width:25%;height:63vh;background:#f7f7f7;margin-top: 1%;margin-left: 3%;padding:2%;">
+    <h4>Project Details<a href="#" data-toggle="tooltip" title="Update Project Details" id="tool"><i class="fa fa-pencil" aria-hidden="true" id="fa"></i></a></h4>
+    <p style="margin:0;">Project Title</p>
+    <p>{{project.title}}</p>
+    <p style="margin:0;">Project Created Date and Time</p>
+    <p>{{project.date}}</p>
+    <p style="margin:0;">Project Type</p>
+    <p>{{type}}</p>
+    <p style="margin:0;">Project Title</p>
+    <p>{{project.title}}</p>
+    <p style="margin:0;">Data Description</p>
+    <p>{{data_description}}</p>
+    <p style="margin:0;">Output Expectation</p>
+    <p>{{expected_ans}}</p>
+    <!-- <a><i class="fa fa-arrow-right" aria-hidden="true" > </i>update project details</a> -->
+    <div class="" style="border-top:1px solid #111">
+
+    </div>
+     <i class="fa fa-arrow-right" aria-hidden="true" > </i><button type="button" onclick= "update_project()" id="project"  name="button" >UPDATE PROJECT DETAILS</button>
+  </div>
+
+  <div class="card" style="width:25%;height:30vh;background:#f7f7f7;margin-top: 1%;margin-left: 3%;padding:2%;">
+    <h4>User Details</h4>
+
+  </div>
+
+  <div class="card" style="width:20%;height:77vh;background:#f7f7f7;margin-top: 1%;margin-left: 3%;padding:2%;">
+    <h4>User Details</h4>
+
+  </div>
+</div>
+<div class="" style="margin-top: 6%;">
+  <!-- <h1 style="margin-left: 15%;">Project Details</h1>  <a href="#" data-toggle="tooltip" title="Update Project Details" id="tool"><i class="fa fa-pencil" aria-hidden="true" id="fa"></i></a> -->
+  <!-- <table class="table " id="details" style="margin-left:15%;width:85%;">
+     <thead>
+         <th scope="col"><h4>Project Details</h4></th>
+
+     </thead>
+     <tbody>
+       <tr>
+         <th scope="row">Project Title</th>
+         <td>{{project.title}}</td>
+
+       </tr>
+       <tr>
+         <th scope="row">Project Created Date and Time</th>
+         <td> {{project.date}}</td>
+
+       </tr>
+       <tr>
+         <th scope="row">Project Type</th>
+         <td>{{type}}</td>
+
+       </tr>
+       <tr>
+         <th scope="row">Data Description</th>
+         <td>{{data_description}}</td>
+
+       </tr>
+       <tr>
+         <th scope="row">Output Expectation</th>
+         <td>{{expected_ans}}</td>
+
+       </tr>
+
+     </tbody>
+   </table> -->
+   <div class="row">
+
+  <!-- <button type="button" name="button" style="position: absolute;top: 75%;width: 142px;margin-left: 59%;height: 21px;" onclick="location.href='{% url 'coreapp:save-dashboard' pk=project.pk %}'">Save Dashboard </button> -->
+
+
+
+   </div>
+
+   <form class="" method="post" enctype="multipart/form-data" action="{% url 'coreapp:project-update' pk=project.pk %}" style="margin-left:20%;">
+     {% csrf_token%}
+     <div id="hide_seek" class="">
+   {{update_form.project_title}}
+   {{update_form.data_description}}
+    {{update_form.expected_ans}}
+     <button type="submit" name="button" class="submit">SUBMIT</button>
+    </div>
+  </form>
+   <!-- <button type="button" onclick= "update_project()" id="project"  name="button" >UPDATE PROJECT DETAILS</button> -->
+   <input type="text" id="title" value="{{project.title}}" hidden>
+   <input type="text" id="data" value="{{data_description}}" hidden>
+   <input type="text" id="ans" value="{{expected_ans}}" hidden>
+</div>
+
+<script>
+var project_title = document.getElementById("title").value;
+var update_title=document.getElementById("id_project_title");
+update_title.value=project_title;
+var project_data = document.getElementById("data").value;
+var update_data=document.getElementById("id_data_description");
+update_data.value=project_data;
+var project_output = document.getElementById("ans").value;
+var update_output=document.getElementById("id_expected_ans");
+update_output.value=project_output;
+  function update_project() {
+    alert("hi");
+    document.getElementById('hide_seek').style.display = "block";
+    document.getElementById('details').style.display = "none";
+    document.getElementById('project').style.display = "none";
+  }
+
+</script>
+
+{% endblock body %}

@@ -1,0 +1,132 @@
+{% extends 'admin_dashboard.html' %}
+{% load staticfiles %}
+{% block body %}
+
+
+<div style="position: relative;top: -58px;">
+    <p style="text-align: center;font-size: 20px;color: grey;">Tax Dashboard</p>
+    <hr style="width:100%;margin-top:-1%">
+</div>
+
+<div class="analytics-sparkle-area" style="margin-top: -5%;">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" onclick="Tax()" style="height:68px">
+                <a href="#" style="display: block; height: 100%;">
+                    <div class="analytics-sparkle-line reso-mg-b-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5 id="projects" style="color: grey;text-align: center;line-height:28px">Indian Tax </h5>
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="height:68px" onclick="A()">
+                <a href="#" style="display: block; height: 100%;">
+                    <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5 style="color:grey;text-align: center;line-height:28px"> US Tax</h5>
+
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="height:68px">
+                <a href="#" style="display: block; height: 100%;">
+                    <div class="analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5 style="color:grey;text-align: center;line-height:28px">UK Tax</h5>
+
+                            <!-- <h2>$<span class="counter">3500</span> <span class="tuition-fees">Tuition Fees</span></h2>
+                               <span class="text-inverse">80%</span>
+                               <div class="progress m-b-0">
+                                   <div class="progress-bar progress-bar-inverse" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:80%;"> <span class="sr-only">230% Complete</span> </div>
+                               </div> -->
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" style="height:68px">
+                <!-- <a href="{% url 'adminapp:actions' %}" style="display: block; height: 100%;"> -->
+                <a href="#" style="display: block; height: 100%;">
+                    <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5 style="color:grey;text-align: center;line-height:28px">Europe Tax</h5>
+                            <!-- <h2> <span class="tuition-fees">View Conversion Table</span></h2> -->
+                            <!-- <span class="text-info">60%</span> -->
+                            <!-- <div class="progress m-b-0">
+                                   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:60%;"> <span class="sr-only">20% Complete</span> </div>
+                               </div> -->
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" onclick="" style="height:68px">
+                <a href="#" style="display: block; height: 100%;">
+                    <div class="analytics-sparkle-line reso-mg-b-30" style="height:68px">
+                        <span class="analytics-content">
+                            <h5 style="color:grey;text-align: center;line-height:28px;">UAE Tax</h5>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tax" style=" margin:85px auto;width: 83%;margin-left: 4%;display: none;">
+    <form action="{%url 'adminapp:tax' %}" method="post">
+        {%csrf_token%}
+        <div class="row">
+            <div class="col-md-6"><label for="user">NAME</label>{{form.name}}</div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+        <div class="row">
+            <div class="col-md-6"><label for="user">TAX REPRESENTATION</label>{{form.tax_representation}}</div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+        <div class="row">
+            <div class="col-md-6"><label for="user">TAX PERCENTAGE</label>{{form.tax_percentage}}</div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+        <div class="row">
+            <div class="col-md-6"><label for="user">TAX NO</label>{{form.tax_no}}</div>
+            <div class="col-md-6"> </div>
+        </div><br /><br />
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+
+    function Tax() {
+        document.getElementById('tax').style.display = "block";
+    }
+    function A() {
+        document.getElementById('tax').style.display = "none";
+
+
+    }
+    function B() {
+        document.getElementById('tax').style.display = "none";
+
+
+    }
+    function C() {
+        document.getElementById('tax').style.display = "none";
+
+
+    }
+    function D() {
+        document.getElementById('tax').style.display = "none";
+
+
+    }
+</script>
+
+{%block code%}
+
+{%endblock code%}
+{%endblock body%}

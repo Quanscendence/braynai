@@ -1,0 +1,114 @@
+{% extends 'dashboard/index.html' %}
+{% load staticfiles %}
+
+{% load class_name %}
+{%block project%}
+{%endblock project%}
+{% block body %}
+<style media="screen">
+  .search_display {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2%;
+    justify-content: space-around;
+    flex-flow: row wrap;
+  }
+</style>
+
+<form method='GET' id="searchform" class='' action="{% url 'coreapp:search' %}">
+
+  <div class="input-group form-group-no-border mx-auto" style="margin-bottom: 0px; font-size: 32px;">
+    <span class="input-group-addon cfe-nav" style='color:#000'>
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </span>
+    <input type="text" name="q" data-toggle="popover" data-placement="bottom" data-content="Press enter to search"
+      class="form-control cfe-nav mt-0 py-3" placeholder="Search..." value="" style="" data-original-title="" title=""
+      autofocus="autofocus">
+  </div>
+
+</form>
+<p></p>
+<div class="col-md-2">
+
+</div>
+<div class="col-md-10 search_display">
+{% for object in object_list %}
+
+{% with object|class_name as klass %}
+{% if klass == 'Project' %}
+
+  <a href="{%url 'coreapp:single-project'  pk=object.pk  %}">
+
+      <div  id="project_card">
+
+          <div class=" shadow-inner  responsive-mg-b-30" style="margin-bottom:10%; width: 90%;">
+
+
+              <div class="panel-body"
+                  style="background:{{object.type.color_code}} !important; border-radius: 5px;">
+                  <div class="text-center content-bg-pro">
+                      <h3>{{object.name}}</h3>
+
+                      <p>{{object.type.industry}}</p>
+                      <p>{{object.created}}</p>
+                  </div>
+
+              </div>
+
+
+
+
+
+          </div>
+
+      </div>
+  </a>
+
+
+{%elif klass == 'ProjectUser' %}
+<a href="{%url 'coreapp:single-project'  pk=object.pk  %}">
+
+    <div  id="project_card">
+
+        <div class=" shadow-inner  responsive-mg-b-30" style="margin-bottom:10%; width: 80%;">
+
+
+            <div class="panel-body"
+                style="background:{{object.type.color_code}} !important; border-radius: 5px;">
+                <div class="text-center content-bg-pro">
+                    <h3>{{object.name}}</h3>
+
+                    <p>{{object.type.industry}}</p>
+                    <p>{{object.created}}</p>
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+</a>
+
+
+
+      {% else %}
+           <div class='row'>
+             <div class='col-12 col-lg-8 offset-lg-4'>
+                <!-- <a href='{{ object.get_absolute_url }}'>{{ object }} | {{ object|class_name }}</a> -->
+                <p>No results...</p>
+            </div>
+           </div>
+        {% endif %}
+
+    {% endwith %}
+
+{% empty %}
+
+{% endfor %}
+
+</div>
+{% endblock body %}

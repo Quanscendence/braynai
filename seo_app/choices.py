@@ -1,0 +1,2 @@
+PageChoice=[('Home','Home'),('Signup','Signup'),('Login','Login'),('Dashboard','Dashboard'),('Project Creation','Project Creation'),('Project Details','Project Details'),('Single Project Details','Single Project Details'),('Update Profile','Update Profile'),('User Management','User Management'),('Delete Project','Delete Project'),('Restore Project','Restore Project'),('Password Reset','Password Reset'),('User Signup','User Signup'),('Basic Signup','Basic Signup'),('Google Drive Integration','Google Drive Integration'),
+('DropBox Integration','DropBox Integration')]

@@ -1,0 +1,23 @@
+{% extends 'dashboard/index.html' %}
+{% load staticfiles %}
+{% block body %}
+<div class=""style="margin-top:5%; margin-left:17%;">
+  <div class="" >
+    <p><a href="https://developers.google.com/drive/api/v3/quickstart/python">Please click to generate credentials</a></p>
+  </div>
+  <form class="" method="post" enctype="multipart/form-data" action="{%url 'dataintegration:sheet-details' pk=  %}">
+    {% csrf_token %}
+    <div class="row"style="margin-left:5%;">
+      <label for="">Upload Downloaded credentials.json file </label>
+      {{drive_details_form.credential}}
+    </div>
+  <div class="row" style="margin-left:5%;">
+    <label for="">Enter the name of the file </label>
+    {{drive_details_form.file_id}}
+  </div>
+  <button type="submit" id="submit" class="btn btn-primary waves-effect waves-light" style="margin-top:2%; margin-left:5%;">Submit</button>
+
+  </form>
+</div>
+
+{% endblock %}

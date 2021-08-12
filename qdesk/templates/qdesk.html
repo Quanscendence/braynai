@@ -1,0 +1,207 @@
+{% extends 'qdesk_base.html' %}
+{% load staticfiles %}
+
+{%block body%}
+  <style media="screen">
+    .client_create_button {
+      background: #364999;
+      color: #fff;
+      width: 73%;
+      text-transform: uppercase;
+    }
+
+    .sticky_header {
+      position: sticky;
+      top: 0;
+      right: 0;
+      left: 0;
+    }
+
+    .fixed_height {
+      height: 36vh;
+      overflow-y: scroll;
+    }
+
+    .tableFixHead          { overflow-y: auto; height: 100px; }
+    .tableFixHead thead th { position: sticky; top: 14%; }
+    table  { border-collapse: collapse; width: 100%; }
+    th, td { padding: 8px 16px; }
+    th     { background:#fff; }
+  </style>
+    <!-- ***** Breadcrumb Area Start ***** -->
+    <div class="breadcrumb-area">
+
+        <div class="container h-100">
+            <div class="row h-100 align-items-end">
+                <div class="col-12">
+                    <div class="breadcumb--con">
+                        <h3 class="title" style="font-size: 28px;">SUPPORT TICKETS</h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{% url 'adminapp:admin-dashboard' %}"><i class="fa fa-home"></i> Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">qdesk</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Curve -->
+        <div class="breadcrumb-bg-curve">
+            <img src="{% static 'img/core-img/curve-5.png' %}" alt="">
+        </div>
+    </div>
+    <!-- ***** Breadcrumb Area End ***** -->
+
+    <!-- ***** Contact Area Start ***** -->
+<!-- <section class="uza-contact-area section-padding-80"> -->
+    <!--  -->
+    <!-- </section> -->
+    <!-- ***** Contact Area End ***** -->
+
+    <!-- START: Code for tabs section -->
+    <div class="" style="padding: 0 10% 0% 7%;">
+      <input id="tab1" type="radio" name="tabs" checked>
+      <label for="tab1">TICKETS</label>
+
+      <input id="tab2" type="radio" name="tabs">
+      <!-- <label for="tab2">CREATE CLIENT</label> -->
+        <section id="content1">
+          <div class="container fixed_height">
+
+              <input class="form-control sticky_header" id="myInput" type="text" placeholder="Search..">
+              <br>
+              <table class="table table-bordered table-striped tableFixHead">
+                <thead>
+                  <tr>
+                    <th>DATE</th>
+                    <th>TIME</th>
+                    <th>TICKET ID</th>
+                    <th>SUBJECT</th>
+                    <th>PROJECT</th>
+                    <th>STATUS</th>
+                  </tr>
+                </thead>
+                <tbody id="client_tickets_list">
+                  {% for ticket in tickets %}
+                  <tr>
+                    <td>{{ticket.created | date}}</td>
+                    <td>{{ticket.created | time}}</td>
+                    <td><a href="{% url 'qdesk:admin-ticket-details' pk=ticket.pk %}">{{ticket.ticket_id}}</a></td>
+                    <td>{{ticket.subject}}</td>
+                    <td>{{ticket.project}}</td>
+                    <td>{{ticket.status}}</td>
+                    
+                  </tr>
+                  {%endfor%}
+                  <tr>
+
+                  </tr>
+                  <tr>
+
+                  </tr>
+                  <tr>
+
+                  </tr>
+                </tbody>
+              </table>
+
+
+            </div>
+        </section>
+        <section id="content2">
+          <form action="{% url  'qdesk:add-client' %}" method="post">
+              {%csrf_token%}
+              <div class="row">
+                  <div class="col-lg-5">
+                      <div class="form-group">
+                        {{form.name}}
+                          
+                      </div>
+                  </div>
+                  <div class="col-lg-5">
+                      <div class="form-group">
+                            {{form.url}}
+                          
+                          <p style="font-size: 11px;">url format : https://quanscendence.com/</p>
+                      </div>
+                  </div>
+                  <div class="col-lg-2">
+                      <div class="form-group">
+                        <button class="btn client_create_button" type="submit" name="button">create</button>
+                      </div>
+                  </div>
+
+              </div>
+          </form>
+
+
+
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>CLIENT NAME</th>
+                <th>DOMAIN</th>
+              </tr>
+            </thead>
+            <tbody id="client_tickets_list">
+              {% for client in clients %}
+              <tr>
+                <td>{{client.name}}</td>
+                <td>{{client.url}}</td>
+              </tr>
+              {%endfor%}
+              <!-- <tr>
+                <td>Mary</td>
+                <td>Moe</td>
+              </tr> -->
+            </tbody>
+          </table>
+        </section>
+    </div>
+
+    <!-- END: Code for tabs <section>
+
+    </section> -->
+
+    <!--&lt;!&ndash; ***** Newsletter Area Start ***** &ndash;&gt;-->
+    <!--<section class="uza-newsletter-area">-->
+        <!--<div class="container">-->
+            <!--<div class="row align-items-center justify-content-between">-->
+                <!--&lt;!&ndash; Newsletter Content &ndash;&gt;-->
+                <!--<div class="col-12 col-md-6 col-lg-6">-->
+                    <!--<div class="nl-content mb-80">-->
+                        <!--<h2>Subscribe to our Newsletter</h2>-->
+                        <!--<p>Subscribe our newsletter gor get notification about new updates, etc...</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; Newsletter Form &ndash;&gt;-->
+                <!--<div class="col-12 col-md-6 col-lg-5">-->
+                    <!--<div class="nl-form mb-80">-->
+                        <!--<form action="#" method="post">-->
+                            <!--<input type="email" name="nl-email" value="" placeholder="Your Email">-->
+                            <!--<button type="submit">Subscribe</button>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; Border Bottom &ndash;&gt;-->
+            <!--<div class="border-line"></div>-->
+        <!--</div>-->
+    <!--</section>-->
+    <!--&lt;!&ndash; ***** Newsletter Area End ***** &ndash;&gt;-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+      $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#client_tickets_list tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+</script>
+{%endblock body%}
